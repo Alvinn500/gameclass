@@ -1,0 +1,109 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    scroll-behavior: smooth;
+    height: 100%;
+}
+
+body {
+    font-family: "Open Sans", serif;
+}
+
+@keyframes grow-line-center {
+    from {
+        transform: scaleX(0);
+    }
+    to {
+        transform: scaleX(1);
+    }
+}
+
+.non-active {
+    @apply text-white;
+}
+
+.nav-active {
+    @apply text-primary ease-in duration-300;
+}
+
+.nav-active::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translateX(-50%) scaleX(0);
+    transform-origin: center;
+    height: 2px;
+    background-color: #c539ff;
+    width: 100%;
+    animation: grow-line-center 0.3s ease-in forwards;
+}
+
+.sidebar-focus {
+    @apply bg-violet-800 rounded-md;
+}
+
+.humburger-active > span:nth-child(1) {
+    @apply w-6;
+}
+
+.humburger-active > span:nth-child(2) {
+    @apply w-8;
+}
+
+.humburger-active > span:nth-child(3) {
+    @apply w-5;
+}
+
+.nav-mobile-active {
+    @apply translate-x-0;
+}
+
+.hover-fitur:hover > span {
+    @apply bg-primary;
+}
+
+section {
+    scroll-margin-top: 100px;
+}
+
+.dark-purple {
+    background: linear-gradient(144deg, rgba(25, 27, 42, 1) 38%, #2e193a 82%);
+}
+
+.gradient-profile {
+    background: linear-gradient(
+        144deg,
+        rgba(25, 27, 42, 1) 38%,
+        rgba(10, 12, 45, 1) 82%
+    );
+}
+
+.gradient-diskusi {
+    background-image: linear-gradient(310deg, #141727 0%, #3a416f 100%);
+}
+
+.dark-green {
+    background: linear-gradient(144deg, rgba(25, 27, 42, 1) 38%, #0f2c3b 82%);
+}
+
+.canvas {
+    width: 170px !important;
+    height: 170px !important;
+}
+
+#toolbar {
+    @apply border-t-0 border-x-0 border-b border-black border-opacity-30 text-white flex gap-8 justify-center;
+}
+
+#editor {
+    @apply h-96 border-none w-full;
+}
+
+/* .ql-picker-options {
+
+} */
