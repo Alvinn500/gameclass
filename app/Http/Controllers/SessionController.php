@@ -14,8 +14,6 @@ class SessionController extends Controller
      */
     public function create()
     {
-        Auth::user()->role == 'teacher' ? redirect('/teacher') : redirect('/student');
-
         return view('auth.login');
     }
 
