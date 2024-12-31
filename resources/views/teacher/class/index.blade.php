@@ -6,7 +6,7 @@
             <div class="space-y-3">
                 @foreach ( $classes as $class )
                     <a href="/teacher/class/{{$class->id}}" class="bg-main rounded-lg flex w-full md:w-5/6 p-4 gap-4">
-                        <img class="w-16 ratio-16x9 my-auto rounded-lg" src="{{asset('logo_class/' . $class->logo_class)}}" alt="icon">
+                        <img class="w-16 aspect-square my-auto rounded-lg" src="{{asset('logo_class/' . $class->logo_class)}}" alt="icon">
                         <div class="my-auto">
                             <h3 class="text-base font-medium">{{$class->study_name}}</h3>
                             <p class="text-xs text-gray-400">{{$class->class}}</p>

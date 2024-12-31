@@ -41,21 +41,21 @@
                 <div class="-z-10 grid grid-cols-1 md:grid-cols-3 px-8 space-x-0 md:space-x-4 space-y-3 md:space-y-0">
                     <div class="bg-secondary px-4 py-8 rounded-lg" data-aos="fade-up">
                         <div class="text-center">
-                            <img class="mx-auto ratio-1x1 object-contain h-8 sm:h-12 md:h-14" src="{{asset("img/game.png")}}" alt="game-image">
+                            <img class="mx-auto aspect-square object-contain h-8 sm:h-12 md:h-14" src="{{asset("img/game.png")}}" alt="game-image">
                             <h2 class="mt-6 text-2xl font-semibold">Gamifikasi</h2>
                             <p class="mt-6 text-gray-400">Dapatkan pengalaman belajar kamu seperti layaknya bermain game</p>
                         </div>
                     </div>
                     <div class="bg-secondary px-4 py-8 rounded-lg" data-aos="fade-up">
                         <div class="text-center">
-                            <img class="mx-auto ratio-1x1 object-contain h-8 sm:h-12 md:h-14" src="{{asset("img/code.png")}}" alt="game-image">
+                            <img class="mx-auto aspect-square object-contain h-8 sm:h-12 md:h-14" src="{{asset("img/code.png")}}" alt="game-image">
                             <h2 class="mt-6 text-2xl font-semibold">Quiz Interakif</h2>
                             <p class="mt-6 text-gray-400">Uji hasil belajar kamu dengan quiz pilihan ganda</p>
                         </div>
                     </div>
                     <div class="bg-secondary px-4 py-8 rounded-lg" data-aos="fade-up">
                         <div class="text-center">
-                            <img class="mx-auto ratio-1x1 object-contain h-8 sm:h-12 md:h-14" src="{{asset("img/forum.png")}}" alt="game-image">
+                            <img class="mx-auto aspect-square object-contain h-8 sm:h-12 md:h-14" src="{{asset("img/forum.png")}}" alt="game-image">
                             <h2 class="mt-6 text-2xl font-semibold">Diskusi</h2>
                             <p class="mt-6 text-gray-400">Lakukan Diskusi bersama guru dan teman sekelas</p>
                         </div>
