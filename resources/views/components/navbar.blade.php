@@ -1,4 +1,4 @@
-    <header class="sticky top-0 bg-primary z-50">
+    <header class="sticky top-0 bg-secondary z-50">
         <nav class="container md:px-12 lg:px-24 mx-auto relative">
             <div class="flex py-6 justify-between">
                 <a href="/">
@@ -6,9 +6,9 @@
                 </a>
                 <div class="my-auto">
                     <ul class="space-x-6 hidden md:flex" id="nav">
-                        <li class="relative text-white pb-1"><a id="nav-link" href="/#home-section" class=" font-semibold md:text-md lg:text-lg">Beranda</a></li>
-                        <li class="relative text-white pb-1"><a id="nav-link" href="/#about-section" class=" font-semibold md:text-md lg:text-lg">Tentang</a></li>
-                        <li class="relative text-white pb-1"><a id="nav-link" href="/#feature-section" class=" font-semibold md:text-md lg:text-lg">Fitur</a></li>
+                        <li class="relative text-white pb-1"><a id="nav-link" href="/#home-section" class=" font-medium md:text-md lg:text-lg">Beranda</a></li>
+                        <li class="relative text-white pb-1"><a id="nav-link" href="/#about-section" class=" font-medium md:text-md lg:text-lg">Tentang</a></li>
+                        <li class="relative text-white pb-1"><a id="nav-link" href="/#feature-section" class=" font-medium md:text-md lg:text-lg">Fitur</a></li>
                     </ul>
     
                     <div class="flex flex-col space-y-1.5 pr-4 md:hidden cursor-pointer" id="hamburger">

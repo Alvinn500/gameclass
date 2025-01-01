@@ -15,10 +15,10 @@ export default {
                 sans: ["Figtree", ...defaultTheme.fontFamily.sans],
             },
             backgroundColor: {
-                primary: "#121212",
-                secondary: "rgba(255, 255, 255, 0.1)",
-                tertiary: "#c539ff",
+                primary: "#c539ff",
+                secondary: "#121212",
                 main: "#191b2a ",
+                semigray: "rgba(255, 255, 255, 0.1)",
                 whiteSubNav: "#2d3144",
                 semiblack: "#141414",
                 purple: "#7200ff",

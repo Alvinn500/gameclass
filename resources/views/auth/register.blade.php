@@ -8,7 +8,7 @@
     @vite('resources/css/app.css')
     <link rel="icon" href="{{asset("img/favicon.ico")}}" type="image/x-icon">
 </head>
-<body class="bg-primary">
+<body class="bg-secondary">
     
     <x-navbar/>
 
@@ -32,23 +32,23 @@
                     <div class="">
                         <label class="text-gray-300 text-sm">Nama Lengkap</label>
                         <div class="mb-6 mt-3">
-                            <input value="{{old("name")}}" type="text" name="name" class="bg-primary border-b-primary border-b w-96 p-2 placeholder:text-sm placeholder:text-gray-500 focus:outline-none text-white" placeholder="Masukkan Nama" aria-describedby="username-addon" required>
+                            <input value="{{old("name")}}" type="text" name="name" class="bg-secondary border-b-primary border-b w-96 p-2 placeholder:text-sm placeholder:text-gray-500 focus:outline-none text-white" placeholder="Masukkan Nama" aria-describedby="username-addon" required>
                         </div>
                         <label class="text-gray-300 text-sm">Email Kamu</label>
                         <div class="mb-6 mt-3">
-                            <input value="{{old("email")}}" type="email" name="email" class="bg-primary border-b-primary border-b w-96 p-2 placeholder:text-sm placeholder:text-gray-500 focus:outline-none text-white" placeholder="Masukkan alamat e-mail" aria-label="username" aria-describedby="username-addon" required>
+                            <input value="{{old("email")}}" type="email" name="email" class="bg-secondary border-b-primary border-b w-96 p-2 placeholder:text-sm placeholder:text-gray-500 focus:outline-none text-white" placeholder="Masukkan alamat e-mail" aria-label="username" aria-describedby="username-addon" required>
                         </div>
                         <label class="text-gray-300 text-sm">Nomor Telepon Kamu</label>
                         <div class="mb-6 mt-3">
-                            <input value="{{old("phone")}}" type="number" name="phone" class="bg-primary border-b-primary border-b w-96 p-2 placeholder:text-sm placeholder:text-gray-500 focus:outline-none text-white" placeholder="Masukkan Nomor Telp" aria-label="username" aria-describedby="username-addon" required>
+                            <input value="{{old("phone")}}" type="number" name="phone" class="bg-secondary border-b-primary border-b w-96 p-2 placeholder:text-sm placeholder:text-gray-500 focus:outline-none text-white" placeholder="Masukkan Nomor Telp" aria-label="username" aria-describedby="username-addon" required>
                         </div>
                         <label class="text-gray-300 text-sm">Buat Password</label>
                         <div class="mb-6 mt-3">
-                            <input  type="password" name="password" class="bg-primary border-b-primary border-b w-96 p-2 placeholder:text-sm placeholder:text-gray-500 focus:outline-none text-white" placeholder="Password" aria-label="Buat Password" aria-describedby="password-addon" required autocomplete="off">
+                            <input  type="password" name="password" class="bg-secondary border-b-primary border-b w-96 p-2 placeholder:text-sm placeholder:text-gray-500 focus:outline-none text-white" placeholder="Password" aria-label="Buat Password" aria-describedby="password-addon" required autocomplete="off">
                         </div>
                         <label class="text-gray-300 text-sm">Konfirmasi Password</label>
                         <div class="mb-6 mt-3">
-                            <input type="password" name='password_confirmation' class="bg-primary border-b-primary border-b w-96 p-2 placeholder:text-sm placeholder:text-gray-500 focus:outline-none text-white" placeholder="Konfirmasi Password" aria-describedby="password-addon" required autocomplete="off">
+                            <input type="password" name='password_confirmation' class="bg-secondary border-b-primary border-b w-96 p-2 placeholder:text-sm placeholder:text-gray-500 focus:outline-none text-white" placeholder="Konfirmasi Password" aria-describedby="password-addon" required autocomplete="off">
                         </div>
                         <label class="text-gray-300 text-sm">Daftar Sebagai</label>
                         <div class="mb-5 mt-3 flex gap-x-4">

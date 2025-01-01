@@ -8,7 +8,7 @@
     <link rel="icon" href="{{asset("img/favicon.ico")}}" type="image/x-icon">
     <title>login</title>
 </head>
-<body class="bg-primary">
+<body class="bg-secondary">
     <x-navbar/>
 
     <main class="container md:px-12 lg:px-24 mx-auto">
@@ -29,11 +29,11 @@
                         @csrf
                         <label class="text-white">Email</label>
                         <div class="mb-6 mt-3">
-                            <input type="email" name="email" value="{{old('email')}}" class="bg-primary border-b-primary border-b w-96 p-2 placeholder:text-sm placeholder:text-gray-500 focus:outline-none text-white" placeholder="Masukkan Email" required>
+                            <input type="email" name="email" value="{{old('email')}}" class="bg-secondary border-b-primary border-b w-96 p-2 placeholder:text-sm placeholder:text-gray-500 focus:outline-none text-white" placeholder="Masukkan Email" required>
                         </div>
                         <label class="text-white">Password</label>
                         <div class="mb-6 mt-3"> 
-                            <input type="password" name="password" class="bg-primary border-b-primary border-b w-96 p-2 placeholder:text-sm placeholder:text-gray-500 focus:outline-none text-white" placeholder="Masukkan Password" required>
+                            <input type="password" name="password" class="bg-secondary border-b-primary border-b w-96 p-2 placeholder:text-sm placeholder:text-gray-500 focus:outline-none text-white" placeholder="Masukkan Password" required>
                         </div>
     
                         <div class="text-left">

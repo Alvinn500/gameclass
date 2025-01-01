@@ -9,7 +9,7 @@
     <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
     <title>{{$title}}</title>
 </head>
-    <body class="bg-primary">
+    <body class="bg-secondary">
         {{$slot}}
     </body>
 </html>

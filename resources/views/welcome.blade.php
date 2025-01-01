@@ -8,7 +8,7 @@
     <link rel="icon" href="{{asset("img/favicon.ico")}}" type="image/x-icon">
     <title>gameclass</title>
 </head> 
-<body class="bg-primary">
+<body class="bg-secondary">
     
     <x-navbar/>
 
@@ -39,21 +39,21 @@
                     </div>
                 </div>
                 <div class="-z-10 grid grid-cols-1 md:grid-cols-3 px-8 space-x-0 md:space-x-4 space-y-3 md:space-y-0">
-                    <div class="bg-secondary px-4 py-8 rounded-lg" data-aos="fade-up">
+                    <div class="bg-semigray px-4 py-8 rounded-lg" data-aos="fade-up">
                         <div class="text-center">
                             <img class="mx-auto aspect-square object-contain h-8 sm:h-12 md:h-14" src="{{asset("img/game.png")}}" alt="game-image">
                             <h2 class="mt-6 text-2xl font-semibold">Gamifikasi</h2>
                             <p class="mt-6 text-gray-400">Dapatkan pengalaman belajar kamu seperti layaknya bermain game</p>
                         </div>
                     </div>
-                    <div class="bg-secondary px-4 py-8 rounded-lg" data-aos="fade-up">
+                    <div class="bg-semigray px-4 py-8 rounded-lg" data-aos="fade-up">
                         <div class="text-center">
                             <img class="mx-auto aspect-square object-contain h-8 sm:h-12 md:h-14" src="{{asset("img/code.png")}}" alt="game-image">
                             <h2 class="mt-6 text-2xl font-semibold">Quiz Interakif</h2>
                             <p class="mt-6 text-gray-400">Uji hasil belajar kamu dengan quiz pilihan ganda</p>
                         </div>
                     </div>
-                    <div class="bg-secondary px-4 py-8 rounded-lg" data-aos="fade-up">
+                    <div class="bg-semigray px-4 py-8 rounded-lg" data-aos="fade-up">
                         <div class="text-center">
                             <img class="mx-auto aspect-square object-contain h-8 sm:h-12 md:h-14" src="{{asset("img/forum.png")}}" alt="game-image">
                             <h2 class="mt-6 text-2xl font-semibold">Diskusi</h2>
@@ -72,51 +72,51 @@
                 </div>
             </div>
             <div class="grid px-8 grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="text-center px-2 py-3 bg-secondary hover:bg-tertiary hover:text-secondary transition-colors duration-300 hover-fitur" data-aos="fade-up">
+                <div class="text-center px-2 py-3 bg-semigray hover:bg-tertiary hover:text-secondary transition-colors duration-300 hover-fitur" data-aos="fade-up">
                         <h3 class="mb-3 uppercase font-medium text-xs sm:text-sm lg:text-base">Akses Materi 24/7</h3>
                         <span class="block h-[0.0625rem] mx-auto w-10 bg-yellow-400"></span>
                     </div>
-                <div class="text-center px-2 py-3 bg-secondary hover:bg-tertiary hover:text-secondary transition-colors duration-300 hover-fitur" data-aos="fade-up">
+                <div class="text-center px-2 py-3 bg-semigray hover:bg-tertiary hover:text-secondary transition-colors duration-300 hover-fitur" data-aos="fade-up">
                         <h3 class="mb-3 uppercase font-medium text-xs sm:text-sm lg:text-base ">Kerjakan Quiz</h3>
                         <span class="block h-[0.0625rem] mx-auto w-10 bg-yellow-400"></span>
                     </div>
-                <div class="text-center px-2 py-3 bg-secondary hover:bg-tertiary hover:text-secondary transition-colors duration-300 hover-fitur" data-aos="fade-up">
+                <div class="text-center px-2 py-3 bg-semigray hover:bg-tertiary hover:text-secondary transition-colors duration-300 hover-fitur" data-aos="fade-up">
                         <h3 class="mb-3 uppercase font-medium text-xs sm:text-sm lg:text-base ">Forum Diskusi</h3>
                         <span class="block h-[0.0625rem] mx-auto w-10 bg-yellow-400"></span>
                     </div>
-                <div class="text-center px-2 py-3 bg-secondary hover:bg-tertiary hover:text-secondary transition-colors duration-300 hover-fitur" data-aos="fade-up">
+                <div class="text-center px-2 py-3 bg-semigray hover:bg-tertiary hover:text-secondary transition-colors duration-300 hover-fitur" data-aos="fade-up">
                         <h3 class="mb-3 uppercase font-medium text-xs sm:text-sm lg:text-base ">Kerjakan Test</h3>
                         <span class="block h-[0.0625rem] mx-auto w-10 bg-yellow-400"></span>
                     </div>
-                <div class="text-center px-2 py-3 bg-secondary hover:bg-tertiary hover:text-secondary transition-colors duration-300 hover-fitur" data-aos="fade-up">
+                <div class="text-center px-2 py-3 bg-semigray hover:bg-tertiary hover:text-secondary transition-colors duration-300 hover-fitur" data-aos="fade-up">
                         <h3 class="mb-3 uppercase font-medium text-xs sm:text-sm lg:text-base ">Naikkan Level</h3>
                         <span class="block h-[0.0625rem] mx-auto w-10 bg-yellow-400"></span>
                     </div>
-                <div class="text-center px-2 py-3 bg-secondary hover:bg-tertiary hover:text-secondary transition-colors duration-300 hover-fitur" data-aos="fade-up">
+                <div class="text-center px-2 py-3 bg-semigray hover:bg-tertiary hover:text-secondary transition-colors duration-300 hover-fitur" data-aos="fade-up">
                         <h3 class="mb-3 uppercase font-medium text-xs sm:text-sm lg:text-base ">Dapatkan Reward</h3>
                         <span class="block h-[0.0625rem] mx-auto w-10 bg-yellow-400"></span>
                     </div>
-                <div class="text-center px-2 py-3 bg-secondary hover:bg-tertiary hover:text-secondary transition-colors duration-300 hover-fitur" data-aos="fade-up">
+                <div class="text-center px-2 py-3 bg-semigray hover:bg-tertiary hover:text-secondary transition-colors duration-300 hover-fitur" data-aos="fade-up">
                         <h3 class="mb-3 uppercase font-medium text-xs sm:text-sm lg:text-base ">Leaderboard</h3>
                         <span class="block h-[0.0625rem] mx-auto w-10 bg-yellow-400"></span>
                     </div>
-                <div class="text-center px-2 py-3 bg-secondary hover:bg-tertiary hover:text-secondary transition-colors duration-300 hover-fitur" data-aos="fade-up">
+                <div class="text-center px-2 py-3 bg-semigray hover:bg-tertiary hover:text-secondary transition-colors duration-300 hover-fitur" data-aos="fade-up">
                         <h3 class="mb-3 uppercase font-medium text-xs sm:text-sm lg:text-base ">Avatar Unik</h3>
                         <span class="block h-[0.0625rem] mx-auto w-10 bg-yellow-400"></span>
                     </div>
-                <div class="text-center px-2 py-3 bg-secondary hover:bg-tertiary hover:text-secondary transition-colors duration-300 hover-fitur" data-aos="fade-up">
+                <div class="text-center px-2 py-3 bg-semigray hover:bg-tertiary hover:text-secondary transition-colors duration-300 hover-fitur" data-aos="fade-up">
                         <h3 class="mb-3 uppercase font-medium text-xs sm:text-sm lg:text-base ">Manajemen Kelas (Guru)</h3>
                         <span class="block h-[0.0625rem] mx-auto w-10 bg-yellow-400"></span>
                     </div>
-                <div class="text-center px-2 py-3 bg-secondary hover:bg-tertiary hover:text-secondary transition-colors duration-300 hover-fitur" data-aos="fade-up">
+                <div class="text-center px-2 py-3 bg-semigray hover:bg-tertiary hover:text-secondary transition-colors duration-300 hover-fitur" data-aos="fade-up">
                         <h3 class="mb-3 uppercase font-medium text-xs sm:text-sm lg:text-base ">Kelola Materi dan Quiz (Guru)</h3>
                         <span class="block h-[0.0625rem] mx-auto w-10 bg-yellow-400"></span>
                     </div>
-                <div class="text-center px-2 py-3 bg-secondary hover:bg-tertiary hover:text-secondary transition-colors duration-300 hover-fitur" data-aos="fade-up">
+                <div class="text-center px-2 py-3 bg-semigray hover:bg-tertiary hover:text-secondary transition-colors duration-300 hover-fitur" data-aos="fade-up">
                         <h3 class="mb-3 uppercase font-medium text-xs sm:text-sm lg:text-base ">Akses Rekap Nilai (Guru)</h3>
                         <span class="block h-[0.0625rem] mx-auto w-10 bg-yellow-400"></span>
                     </div>
-                <div class="text-center px-2 py-3 bg-secondary hover:bg-tertiary hover:text-secondary transition-colors duration-300 hover-fitur" data-aos="fade-up">
+                <div class="text-center px-2 py-3 bg-semigray hover:bg-tertiary hover:text-secondary transition-colors duration-300 hover-fitur" data-aos="fade-up">
                         <h3 class="mb-3 uppercase font-medium text-xs sm:text-sm lg:text-base ">Forum Diskusi (Guru)</h3>
                         <span class="block h-[0.0625rem] mx-auto w-10 bg-yellow-400"></span>
                     </div>
