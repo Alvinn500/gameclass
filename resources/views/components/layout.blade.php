@@ -7,6 +7,7 @@
     @vite('resources/css/app.css')
     <link rel="icon" href="{{asset("img/favicon.ico")}}" type="image/x-icon">
     <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <title>{{$title}}</title>
 </head>
     <body class="bg-secondary">

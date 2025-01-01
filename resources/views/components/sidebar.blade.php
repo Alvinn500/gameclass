@@ -7,14 +7,29 @@
     </div>
     <div class="flex flex-col gap-4 py-8 px-4">
         <div class="flex flex-col text-sm text-gray-300 font-light">
-            <a href="/{{$dashboardUrl}}" class="py-3 px-6 {{request()->path()  == $dashboardUrl ? 'sidebar-focus' : ''}}">Dashboard</a>
-            <a href="/{{$classUrl}}" class="py-3 px-6 {{strpos( request()->path(), "class")  ? 'sidebar-focus' : ''}}">Kelas</a>
-            <a href="/{{$discussioniUrl}}" class="py-3 px-6 {{request()->path() == $discussioniUrl ? 'sidebar-focus' : ''}}">Diskusi</a>
+            <div class="py-3 space-x-2 px-6 {{request()->path()  == $dashboardUrl ? 'sidebar-focus' : ''}}">
+                <i class="fa fa-home" aria-hidden="true"></i>
+                <a href="/{{$dashboardUrl}}" class="font-medium">Dashboard</a>
+            </div>
+            <div class="py-3 space-x-2 px-6 {{strpos( request()->path(), "class")  ? 'sidebar-focus' : ''}}">
+                <i class="fas fa-chalkboard-teacher "></i>
+                <a href="/{{$classUrl}}" class="font-medium">Kelas</a>
+            </div>
+            <div class="py-3 space-x-2 px-6 {{request()->path() == $discussioniUrl ? 'sidebar-focus' : ''}}">
+                <i class="fas fa-comments "></i>
+                <a href="/{{$discussioniUrl}}" class="font-medium">Diskusi</a>
+            </div>
         </div>
         <h3 class="uppercase text-sm font-medium text-gray-300 px-3">profil</h3>
         <div class="flex flex-col text-sm text-gray-300 font-light">
-            <a href="/{{$profileSettingUrl}}" class="py-3 px-6 {{request()->path() == $profileSettingUrl ? 'sidebar-focus' : ''}}">Pengaturan Profile</a>
-            <button class="text-left py-3 px-6" form="logout">Keluar</button>
+            <div class="py-3 space-x-2 px-6 {{request()->path() == $profileSettingUrl ? 'sidebar-focus' : ''}}">
+                <i class="fas fa-user-alt "></i>
+                <a href="/{{$profileSettingUrl}}" class="font-medium">Pengaturan Profile</a>
+            </div>
+            <div class="text-left py-3 space-x-2 px-6">
+                <i class="fas fa-sign-out-alt "></i>
+                <button form="logout">Keluar</button>
+            </div>
         </div>
     </div>
 </aside>

@@ -34,17 +34,23 @@
         </div>
         <div class="h-1/2">
             <div class="flex md:flex-col lg:flex-row lg:flex-wrap justify-center lg:justify-normal gap-4 md:gap-6 w-full ">
-                <div class="dark-green p-5 rounded-xl sm:min-w-[180px] lg:min-w-[140px] xl:min-w-[180px] w-1/3 h-32">
-                    <h3 class="text-sm md:text-base uppercase mb-4 md:mb-2">total xp</h3>
-                    <p class="text-2xl md:text-3xl font-medium text-center">500</p>
+                <div class="dark-green p-5 rounded-xl sm:min-w-[180px] lg:min-w-[140px] xl:min-w-[180px] w-1/3 h-[8.5rem]">
+                    <div class="flex items-center gap-2 mb-5 md:mb-4">
+                        <i class="fas fa-dot-circle text-lime-500 text-sm"></i>
+                        <h3 class="text-sm uppercase font-semibold">total xp</h3>
+                    </div>
+                    <p class="text-3xl font-semibold text-center">500</p>
                 </div>
-                <div class="dark-green p-5 rounded-xl sm:min-w-[180px] lg:min-w-[140px] xl:min-w-[180px] w-1/3 h-32">
-                    <h3 class="text-sm md:text-base uppercase mb-4 md:mb-2">level</h3>
-                    <p class="text-2xl md:text-3xl font-medium text-center">1</p>
+                <div class="dark-green p-5 rounded-xl sm:min-w-[180px] lg:min-w-[140px] xl:min-w-[180px] w-1/3 h-[8.5rem]">
+                    <div class="flex items-center gap-2 mb-5 md:mb-4">
+                        <i class="fas fa-dot-circle text-lime-500 text-sm"></i>
+                        <h3 class="text-sm uppercase font-semibold">level</h3>
+                    </div>
+                    <p class="text-3xl font-semibold text-center">1</p>
                 </div>
-                <div class="mx-auto md:mx-0 bg-main p-2 md:p-4 rounded-xl sm:min-w-[180px] lg:min-w-[140px] xl:min-w-[180px] w-1/3 h-32">
+                <div class="mx-auto md:mx-0 bg-main p-2 md:p-4 rounded-xl sm:min-w-[180px] lg:min-w-[140px] xl:min-w-[180px] w-1/3 h-[8.5rem]">
                     <div class="gradient-diskusi w-full h-full rounded-lg pt-6 pl-3">
-                        <h3 class="text-sm md:text-base mb-2 md:mb-4 font-semibold">Forum Diskusi</h3>
+                        <h3 class="text-xs md:text-sm mb-2 md:mb-4 font-semibold">Forum Diskusi</h3>
                         <p class="text-xs md:text-sm font-normal md:font-medium">Jelajahi Forum</p>
                     </div>
                 </div>
