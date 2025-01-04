@@ -10,7 +10,7 @@
                 <div class="flex p-5 h-24">
                     <div class="h-16 w-1/2">
                         <p class="text-sm mb-1">kelas</p>
-                        <p class="text-2xl font-medium">5</p>     
+                        <p class="text-2xl font-medium">{{$totalClass}}</p>     
                     </div>
                     <div class="h-16 w-1/2">
                         <p class="text-sm mb-1">tantangan</p>
@@ -60,10 +60,12 @@
     <div class="-mt-32 sm:-mt-40 md:mt-0 ">
         <h3 class="font-semibold mb-4">Kelas Terbaru</h3>
         <div class="mb-4">
-            <div class="flex bg-main p-4 rounded-lg items-center gap-4 w-full sm:w-3/5 md:w-1/3">
-                <img class="ratio-16x9 h-10 rounded-md" src="{{asset("img/default.jpg")}}" alt="class image">
-                <h3>kelas</h3>
-            </div>
+            @foreach ($classes as $class )
+                <a href="/student/class/{{$class->id}}" class="flex bg-main p-4 rounded-lg items-center gap-4 w-full sm:w-3/5 md:w-1/3">
+                    <img class="ratio-16x9 h-10 rounded-md" src="{{asset("logo_class/$class->logo_class")}}" alt="class image">
+                    <h3>{{$class->study_name}}</h3>
+                </a>
+            @endforeach
         </div> 
         <button class="w-full md:w-auto  uppercase bg-yellow-500 text-black rounded-md px-4 py-3 font-semibold text-xs mb-6">LIHAT SEMUA KELAS</button>
     </div>

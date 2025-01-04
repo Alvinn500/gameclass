@@ -7,25 +7,6 @@ AOS.init({
     once: true,
 });
 
-// function updateActiveNav() {
-//     let hash = window.location.hash;
-//     let nav = document.getElementById("nav");
-
-//     for (let i = 0; i < nav.children.length; i++) {
-//         console.log(nav.children[i].children[0].getAttribute("href"));
-//         console.log("hash", hash);
-//         if (nav.children[i].children[0].getAttribute("href") == hash) {
-//             // nav.children[i].classList.remove("non-active");
-//             nav.children[i].classList.add("nav-active");
-//         } else {
-//             nav.children[i].classList.remove("nav-active");
-//             // nav.children[i].classList.add("non-active");
-//         }
-//     }
-// }
-
-// window.addEventListener("scroll", updateActiveNav);
-
 const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll("#nav-link");
 

@@ -104,6 +104,22 @@ section {
     @apply h-96 border-none w-full;
 }
 
-/* .ql-picker-options {
+.ql-align-center {
+    @apply text-center mb-4;
+}
 
-} */
+.ql-size-huge {
+    @apply text-4xl;
+}
+
+.ql-size-large {
+    @apply text-xl;
+}
+
+.ql-size-normal {
+    @apply text-base;
+}
+
+.ql-size-small {
+    @apply text-sm;
+}

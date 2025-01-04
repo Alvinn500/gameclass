@@ -26,6 +26,8 @@ export default {
             textColor: {
                 primary: "#c539ff",
                 secondary: "#121212",
+                main: "#191b2a ",
+                breadcrumb: "#a592f0",
             },
             gradientColorStops: {
                 primary: "#c539ff",

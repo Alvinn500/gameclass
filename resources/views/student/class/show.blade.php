@@ -1,19 +1,35 @@
 <x-student-layout title="kelas">
-    <x- sub-nav/>
+    <x-breadcrumbs :breadcrumbs="$breadcrumbs"/>
+    <x-student-sub-nav
+        missionPath="/student/class/{{$class->id}}"
+        leaderboardPath="/student/class/{{$class->id}}/leaderboard"
+        activityPath="/student/class/{{$class->id}}/activity"
+        informationPath="/student/class/{{$class->id}}/information"
+    />
     <div class="flex gap-6 mt-6">
         <div class="w-[70%]">
-            <a id="lesson" class="flex dark-green items-center justify-between bg-main rounded-xl py-3 px-5 cursor-pointer">
-                <h3 class="text-base font-normal">lesson</h3>
-                <img class="w-6 duration-300 ease-in-out" src="{{asset("img/arrow.png")}}" alt="arrow">
-            </a>
-            <div id="content" class="hidden ease-in-out bg-semiblack pt-3 pb-4 px-5 rounded-b-xl">
-                <a href="/student/class/lesson/1/materi/1" class="flex items-center justify-between border-b border-gray-600 py-3">
-                    <h4 class="text-sm font-medium">
-                        materi
-                    </h4>
-                    <img class="w-6" src="{{asset("img/arrow.png")}}" alt="arrow">
-                </a>
-            </div>
+            @foreach ($lessons as $lesson)
+                <div class="mb-2">
+                    <a 
+                        id="lesson" 
+                        data-lesson-id="{{$lesson->id}}"
+                        class="flex dark-green items-center justify-between bg-main rounded-xl py-3 px-5 cursor-pointer"
+                    >
+                        <h3 class="text-base font-normal">{{$lesson->name}}</h3>
+                        <img class="w-6 duration-300 ease-in-out" src="{{asset("img/arrow.png")}}" alt="arrow">
+                    </a>
+                    <div id="content{{$lesson->id}}" class="hidden ease-in-out bg-semiblack pt-3 pb-4 px-5 rounded-b-xl">
+                        @foreach ($lesson->subjects as $subject)
+                            <a href="/student/lesson/1/subject/{{$subject->id}}" class="flex items-center justify-between border-b border-gray-600 py-3">
+                                <h4 class="text-sm font-medium">
+                                    {{$subject->title}}
+                                </h4>
+                                <img class="w-6" src="{{asset("img/arrow.png")}}" alt="arrow">
+                            </a>
+                        @endforeach
+                    </div>
+                </div>
+            @endforeach
         </div>
         <div class="w-[30%] flex gap-6 flex-col">
             <div class="bg-main p-3 rounded-xl text-center">
@@ -24,7 +40,7 @@
                 <div class="flex justify-evenly mb-4">
                     <div class="text-center">
                         <h4 class="font-medium text-base">Skor</h4>
-                        <p class="text-yellow-400 font-semibold text-lg">450</p>
+                        <p class="text-yellow-400 font-semibold text-lg">{{$score}}</p>
                     </div>
                     <div class="text-center">
                         <h4 class="font-medium text-base">Total XP</h4>

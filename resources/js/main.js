@@ -1,5 +1,6 @@
 import axios from "axios";
 
+// Humburger
 let humburgerDashboard = document.getElementById("humburger-dashboard");
 let sidebar = document.getElementById("sidebar");
 
@@ -11,6 +12,7 @@ humburgerDashboard.addEventListener("click", () => {
     // }, 250);
 });
 
+// Sidebar
 let closeSidebar = document.getElementById("close");
 
 closeSidebar.addEventListener("click", () => {
@@ -19,40 +21,38 @@ closeSidebar.addEventListener("click", () => {
     console.log("close");
 });
 
-let lesson = document.getElementById("lesson");
-let content = document.getElementById("content");
-
-lesson.addEventListener("click", () => {
-    lesson.children[1].classList.toggle("rotate-90");
-    lesson.classList.toggle("rounded-xl");
-    lesson.classList.toggle("rounded-t-xl");
-    content.classList.toggle("hidden");
-});
-
+// Modal
 let modalCreate = document.getElementById("modalCreate");
 let addLesson = document.getElementById("addLesson");
 
-modalCreate.addEventListener("click", (event) => {
-    if (event.target == modalCreate) {
-        modalCreate.classList.add("hidden");
-        modalCreate.classList.remove("flex");
-    }
-});
+if (modalCreate) {
+    modalCreate.addEventListener("click", (event) => {
+        if (event.target == modalCreate) {
+            modalCreate.classList.add("hidden");
+            modalCreate.classList.remove("flex");
+        }
+    });
+}
 
-addLesson.addEventListener("click", () => {
-    modalCreate.classList.remove("hidden");
-    modalCreate.classList.add("flex");
-});
+if (addLesson) {
+    addLesson.addEventListener("click", () => {
+        modalCreate.classList.remove("hidden");
+        modalCreate.classList.add("flex");
+    });
+}
 
 let modalEdit = document.getElementById("modalEdit");
 
-modalEdit.addEventListener("click", (event) => {
-    if (event.target == modalEdit) {
-        modalEdit.classList.add("hidden");
-        modalEdit.classList.remove("flex");
-    }
-});
+if (modalEdit) {
+    modalEdit.addEventListener("click", (event) => {
+        if (event.target == modalEdit) {
+            modalEdit.classList.add("hidden");
+            modalEdit.classList.remove("flex");
+        }
+    });
+}
 
+// Manipulasi Form Lesson
 let editLesson = document.querySelectorAll("#editLesson");
 let inputLesson = document.getElementById("inputLesson");
 let deleteForm = document.getElementById("deleteForm");
@@ -76,5 +76,20 @@ editLesson.forEach((lesson) => {
 
         modalEdit.classList.remove("hidden");
         modalEdit.classList.add("flex");
+    });
+});
+
+// Manipulasi Content
+const lessons = document.querySelectorAll("#lesson");
+
+lessons.forEach((lesson) => {
+    lesson.addEventListener("click", () => {
+        const lessonId = lesson.getAttribute("data-lesson-id");
+        const content = document.getElementById(`content${lessonId}`);
+
+        lesson.children[1].classList.toggle("rotate-90");
+        lesson.classList.toggle("rounded-xl");
+        lesson.classList.toggle("rounded-t-xl");
+        content.classList.toggle("hidden");
     });
 });

@@ -1,4 +1,5 @@
 <x-teacher-layout title="Tambah Materi">
+    <x-breadcrumbs :breadcrumbs="$breadcrumbs"/>
     <x-teacher-sub-nav 
         classPath="/teacher/class/{{$class->id}}" 
         activityPath="/teacher/class/{{$class->id}}/activity" 
@@ -8,7 +9,7 @@
     />
     <div>
         <h2 class="my-4 px-2">Buat Materi</h2>
-        <form id="formSubject" action="/teacher/class/{{$class->id}}/subject" method="POST" enctype=multipart/form-data>
+        <form id="formSubject" action="/teacher/lesson/{{$lesson->id}}/subject" method="POST" enctype=multipart/form-data>
             @csrf
             <div class="bg-main p-4 rounded-lg">
                 <div class="flex flex-col mb-4">

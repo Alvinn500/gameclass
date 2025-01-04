@@ -13,12 +13,13 @@
                     </div>
                     <h2 class="font-semibold text-base">{{$title}}</h2>
                 </div>
-                <h2 class="font-light text-gray-300">{{Auth::user()->name}}</h2>
+                <h2 class="font-medium text-gray-300">{{Auth::user()->name}}</h2>
             </div>
             {{$slot}}
         </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.min.js"></script>
     @vite('resources/js/chart.js')
     @vite('resources/js/game.js')
     @vite('resources/js/main.js')

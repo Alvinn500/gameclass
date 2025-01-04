@@ -10,12 +10,23 @@ use Illuminate\Support\Facades\Auth;
 
 class ClassController extends Controller
 {
-    public function index()
+    public function teacher()
     {
+
         $user = Auth::user();
         $classes = $user->classes()->get();
 
         return view('teacher.class.index', ["classes" => $classes]);
+    }
+
+    public function student()
+    {
+
+        $user = Auth::user();
+        $classes = $user->classes()->get();
+        
+        return view('student.class.index', ["classes" => $classes]);
+
     }
 
     public function create()
@@ -57,6 +68,19 @@ class ClassController extends Controller
         $lessons = $class->lessons()->get();
         $lesson = lesson::find(request()->lesson_id);
 
-        return view('teacher.class.show', ["class" => $class, "lessons" => $lessons, "lesson" => $lesson]);
+        $breadcrumbs = [
+            ['link' => "/teacher/class", 'name' => "Kelas"],
+            ['name' => $class->class],
+        ];
+
+        return view('teacher.class.show', ["class" => $class, "lessons" => $lessons, "lesson" => $lesson, "breadcrumbs" => $breadcrumbs]);
+    }
+
+    public function find() {
+
+        $classes = Class_Listing::all();
+
+        return view('student.class.find', ["classes" => $classes]);
+
     }
 }

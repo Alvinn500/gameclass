@@ -1,5 +1,3 @@
-// import { Chart } from "chart.js/auto";
-
 const data = {
     labels: ["Selesai", "Belum Selesai"], // Label untuk bagian chart
     datasets: [

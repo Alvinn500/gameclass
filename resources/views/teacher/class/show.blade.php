@@ -1,4 +1,5 @@
 <x-teacher-layout title="{{$class->study_name}}-{{$class->class}}">
+    <x-breadcrumbs :breadcrumbs="$breadcrumbs"/>
     <x-teacher-sub-nav 
         classPath="/teacher/class/{{$class->id}}" 
         activityPath="/teacher/class/{{$class->id}}/activity" 
@@ -15,7 +16,7 @@
                         <h2 class="font-semibold text-lg">{{$lesson->name}}</h2>
                         <span class="block h-[0.0625rem] my-4 mx-auto w-full bg-gray-600"></span>
                         <div class="flex items-center text-cyan-400">
-                            <a href="/teacher/class/{{$class->id}}/subject" class="uppercase border border-cyan-400 rounded-r-none rounded-lg p-2 m-0 text-xs font-semibold">+tambah materi</a>
+                            <a href="/teacher/lesson/{{$lesson->id}}/subject" class="uppercase border border-cyan-400 rounded-r-none rounded-lg p-2 m-0 text-xs font-semibold">+tambah materi</a>
                             <a href="" class="uppercase border-t border-cyan-400 border-b p-2 m-0 text-xs font-semibold">+tambah soal</a>
                             <button id="editLesson" data-name="{{$lesson->name}}" data-lessonId="{{$lesson->id}}" data-classId="{{$class->id}}" class="uppercase border border-cyan-400 rounded-r-md p-2 m-0 text-xs font-semibold">edit cp</button>
                         </div>

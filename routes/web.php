@@ -8,6 +8,12 @@ use App\Http\Controllers\SubjectController;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\EnsureTeacherRole;
+use App\Http\Middleware\EnsureStudentRole;
+use App\Models\Class_Listing;
+use App\http\Controllers\StudentController;
+use App\Models\Lesson;
+use App\Models\Subject;
 
 Route::get('/', function () {
     return view('welcome');
@@ -26,63 +32,69 @@ Route::get("/profileSetting", function () {
 });
 
 
-// teacher
-Route::get("/teacher", function () {
-    $user = Auth::user();
-    $classes = $user->classes()->orderBy('created_at', 'desc')->get();
-    $totalClass = $user->classes()->count();
+Route::middleware('auth', EnsureTeacherRole::class)->group(function () {
+    
+    // teacher
+    Route::get("/teacher", function () {
+        $user = Auth::user();
+        $classes = $user->classes()->orderBy('created_at', 'desc')->get();
+        $totalClass = $user->classes()->count();
+    
+        return view('teacher.dashboard', ["classes" => $classes, "totalClass" => $totalClass]);
+    });
+    
+    
+    // teacher class
+    Route::get("/teacher/class", [ClassController::class, 'teacher']);
+    
+    Route::get("/teacher/class/create", [ClassController::class, 'create']);
+    Route::post("/teacher/class/create", [ClassController::class, 'store']);
+    Route::get("/teacher/class/{class}", [ClassController::class, 'show']);
+    
+    
+    // teacher lesson
+    Route::post("/teacher/class/{class}", [LessonController::class, 'store']);
+    Route::patch("/teacher/class/{class}/edit/{lesson}", [LessonController::class, 'update']);
+    Route::delete("/teacher/class/{class}/lesson/delete/{lesson}", [LessonController::class, 'destroy']);
+    
+    
+    // teacher subject
+    Route::get("/teacher/lesson/{lesson}/subject", [SubjectController::class, 'create']);
+    Route::post("/teacher/lesson/{lesson}/subject", [SubjectController::class, 'store']);
+    
+    
+    // teacher discussion
+    Route::get("/teacher/discussion", function () {
+        return view('teacher.discussion');
+    });
 
-    return view('teacher.dashboard', ["classes" => $classes, "totalClass" => $totalClass]);
-})->middleware('auth');
+});    
 
 
-// teacher class
-Route::get("/teacher/class", [ClassController::class, 'index'])->middleware('auth');
+Route::middleware('auth', EnsureStudentRole::class)->group(function () {
+    
+    // student
+    Route::get("/student", [StudentController::class, 'index']);
+    
+    
+    // student class
+    Route::get("/student/class", [ClassController::class, 'student']);
+    Route::get("/student/class/find" , [ClassController::class, 'find']);
 
-Route::get("/teacher/class/create", [ClassController::class, 'create'])->middleware('auth');
-Route::post("/teacher/class/create", [ClassController::class, 'store'])->middleware('auth');
-Route::get("/teacher/class/{class}", [ClassController::class, 'show'])->middleware('auth');
+    Route::post("/student/class/join/{class}", [StudentController::class, 'store']);
+    Route::get("/student/class/{class}", [StudentController::class, 'show']);
+    
 
+    // student lesson
+    Route::get("/student/lesson/{lesson}/subject/{subject}", [SubjectController::class, 'index']); 
+    Route::post("/student/lesson/{lesson}/subject/{subject}", [SubjectController::class, 'readed']);
 
-// teacher lesson
-Route::post("/teacher/class/{class}", [LessonController::class, 'store'])->middleware('auth');
-Route::patch("/teacher/class/{class}/edit/{lesson}", [LessonController::class, 'update'])->middleware('auth');
-Route::delete("/teacher/class/{class}/lesson/delete/{lesson}", [LessonController::class, 'destroy'])->middleware('auth');
+    
+    
+    // student discussion
+    Route::get("/student/discussion", function () {
+        return view('student.discussion');
+    });
 
-
-// teacher subject
-Route::get("/teacher/class/{class}/subject", [SubjectController::class, 'index'])->middleware('auth');
-Route::post("/teacher/class/{class}/subject", [SubjectController::class, 'store'])->middleware('auth');
-
-
-// teacher discussion
-Route::get("/teacher/discussion", function () {
-    return view('teacher.discussion');
 });
 
-
-
-Route::get("/game/{game}", function () {
-    return view('task.game');
-})->middleware('auth');
-
-// student
-Route::get("/student", function () {
-    return view("student.dashboard");
-})->middleware('auth');
-
-Route::get("/student/class/{id}", function () {
-    return view('student.class.index');
-});
-
-Route::get("/student/discussion", function () {
-    return view('student.discussion');
-});
-
-Route::get("/student/class/lesson/{lesson}", function () {
-    return view('student.class.show');
-});
-
-Route::get("/student/class/lesson/{lesson}/materi/{materi}", function () {
-    return view('student.class.materi.index');
-});

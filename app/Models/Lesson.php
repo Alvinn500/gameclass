@@ -10,7 +10,7 @@ class Lesson extends Model
     protected $fillable = ['name', 'class_listing_id'];
 
     public function class() {
-        return $this->belongsTo(Class_listing::class);
+        return $this->belongsTo(Class_listing::class, 'class_listing_id');
     }
 
     public function subjects() {

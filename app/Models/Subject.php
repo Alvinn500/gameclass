@@ -19,4 +19,9 @@ class Subject extends Model
         return $this->belongsTo(Lesson::class);
     }
 
+    public function SubjectReadeds()
+    {
+        return $this->hasMany(SubjectReaded::class);
+    }
+
 }

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Str;
+use App\Models\Teacher;
+use App\Models\Student;
 
 class RegisterController extends Controller
 {
@@ -26,7 +28,7 @@ class RegisterController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users,email',
             'phone' => 'required',
             'role' => 'required',
             'password' => ['required', 'confirmed', Password::default()],
@@ -41,8 +43,15 @@ class RegisterController extends Controller
         Auth::login($user, true);
 
         if (Auth::user()->role == 'teacher') {
+            Teacher::create([
+                'user_id' => $user->id
+            ]);
             return redirect('/teacher');
         } else {
+            Student::create([
+                'score' => 0,
+                'user_id' => $user->id
+            ]);
             return redirect('/student');
         }
     }
