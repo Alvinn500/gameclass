@@ -15,12 +15,17 @@ class SubjectController extends Controller
 
         $user = Auth::user();
         $class = $lesson->class;
-        // dd($subject->SubjectReadeds->is_readed);
-        $subjectReadeds = SubjectReaded::where('subject_id', $subject->id)->where('user_id', $user->id) ?? [];
-        dd($subjectReadeds->is_readed);
-        // foreach ($subjectReadeds as $subjectReaded) {
-        //     dd($subjectReaded->is_readed);
-        // }
+        
+        $subjectReaded = $subject->SubjectReadeds()
+        ->where('user_id', $user->id)
+        ->firstOrCreate([
+            'subject_id' => $subject->id,
+            'user_id' => $user->id,
+        ],[
+            'is_readed' => false,
+            'score' => 0,
+        ]);
+        
         $breadcrumbs = [
             ['link' => "/student/class", 'name' => "Kelas"],
             ['link' => "/student/class/$class->id", 'name' => $class->study_name],
@@ -33,7 +38,7 @@ class SubjectController extends Controller
             'subject' => $subject, 
             "breadcrumbs" => $breadcrumbs, 
             "lesson" => $lesson,
-            'subjectReadeds' => $subjectReadeds
+            'subjectReaded' => $subjectReaded
         ]);
 
     }
@@ -55,10 +60,24 @@ class SubjectController extends Controller
         request()->validate([
             'title' => ['required', 'min:3'],
             'content' => ['required'],
-            'file' => ['file', 'max:2048']
+            'assignment' => ['file', 'max:2048']
         ]);
 
         $class = $lesson->class;
+
+        if (request()->hasFile('assignment')) {
+            $file = request()->file("assignment");
+            $filename = $file->getClientOriginalName();
+            $file->move('subject', $filename);
+        }
+        
+
+        $subject = Subject::create([
+            'lesson_id' => $lesson->id,
+            'title' => request()->title,
+            'content' => request()->content,
+            'assignment' => $filename,
+        ]);
 
         return redirect("/teacher/class/$class->id");
     }
@@ -67,14 +86,24 @@ class SubjectController extends Controller
 
         $user = Auth::user();
         // dd($SubjectReaded);
-        SubjectReaded::create([
+        $subject->SubjectReadeds()->where('user_id', $user->id)->update([
             'is_readed' => true,
             'score' => 200,
-            'subject_id' => $subject->id,
-            'user_id' => $user->id,
         ]);
 
         return redirect('/student/class/' . $lesson->class->id);
+
+    }
+
+    public function download($filename) {
+        
+        $filepath = public_path('subject/' . $filename);
+
+        if(!file_exists($filepath)) {
+            abort(404, 'File not found');
+        }
+
+        return response()->download($filepath);
 
     }
 

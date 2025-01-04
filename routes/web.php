@@ -88,6 +88,7 @@ Route::middleware('auth', EnsureStudentRole::class)->group(function () {
     // student lesson
     Route::get("/student/lesson/{lesson}/subject/{subject}", [SubjectController::class, 'index']); 
     Route::post("/student/lesson/{lesson}/subject/{subject}", [SubjectController::class, 'readed']);
+    Route::get("/student/download/{filename}", [SubjectController::class, 'download']);
 
     
     

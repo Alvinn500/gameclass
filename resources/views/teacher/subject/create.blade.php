@@ -14,13 +14,13 @@
             <div class="bg-main p-4 rounded-lg">
                 <div class="flex flex-col mb-4">
                     <label class="mb-2 text-xs font-semibold" for="title">Judul Materi</label>
-                    <input class="focus:outline-none bg-main rounded-lg text-sm py-2.5 px-3 border" type="text" name="title" id="title" placeholder="Judul Materi">
+                    <input class="focus:outline-none bg-main rounded-lg text-sm py-2.5 px-3 border" type="text" name="title" id="title" placeholder="Judul Materi" value="{{old('title')}}">
                     <x-form-error name="title"/>
                 </div>
                 <div class="flex flex-col">
-                    <label class="mb-2 text-xs font-semibold" for="assigment">Tambahkan Lampiran (opsional)</label>
-                    <input class="focus:outline-none bg-main rounded-lg text-sm py-2.5 px-3 border w-1/3" type="file" name="assigment" id="assigment">
-                    <x-form-error name="assigment"/>
+                    <label class="mb-2 text-xs font-semibold" for="assignment">Tambahkan Lampiran (opsional)</label>
+                    <input class="focus:outline-none bg-main rounded-lg text-sm py-2.5 px-3 border w-1/3" type="file" name="assignment" id="assignment">
+                    <x-form-error name="assignment"/>
                 </div>
                 <div class="border border-black border-opacity-30 my-4 rounded-lg">
                     <div id="toolbar">
