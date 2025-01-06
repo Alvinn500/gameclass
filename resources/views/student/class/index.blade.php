@@ -8,7 +8,7 @@
             </div>
             <div>
                 @foreach ($classes as $class )
-                    <a href="/student/class/{{$class->id}}" class="bg-main rounded-lg flex w-full gap-4 md:w-5/6 p-4">
+                    <a href="/student/class/{{$class->id}}" class="bg-main rounded-lg flex w-full gap-4 md:w-5/6 p-4 mb-2">
                         <img class="w-14 aspect-square my-auto rounded-md" src="{{asset("logo_class/$class->logo_class")}}" alt="icon">
                         <div class="my-auto">
                             <h3 class="text-base font-medium">{{$class->study_name}}</h3>

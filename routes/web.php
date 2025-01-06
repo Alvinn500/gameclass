@@ -39,8 +39,10 @@ Route::middleware('auth', EnsureTeacherRole::class)->group(function () {
         $user = Auth::user();
         $classes = $user->classes()->orderBy('created_at', 'desc')->get();
         $totalClass = $user->classes()->count();
+        $totalStudent = $user->classes->flatMap->users->where("role", "student")->count();
+        
     
-        return view('teacher.dashboard', ["classes" => $classes, "totalClass" => $totalClass]);
+        return view('teacher.dashboard', ["classes" => $classes, "totalClass" => $totalClass, "totalStudent" => $totalStudent]);
     });
     
     
@@ -83,6 +85,23 @@ Route::middleware('auth', EnsureStudentRole::class)->group(function () {
 
     Route::post("/student/class/join/{class}", [StudentController::class, 'store']);
     Route::get("/student/class/{class}", [StudentController::class, 'show']);
+
+    Route::get("/student/{class}/leaderboard", function ($class) {
+
+        $classes = Class_listing::find($class);
+        $users = $classes->users->where("role", "student");
+
+        $user = Auth::user();
+
+        $score = $user->classes->flatMap->lessons->flatMap->subjects->flatMap->SubjectReadeds;
+        // dd($score);
+        $breadcrumbs = [
+            ['link' => "/student/class", 'name' => "Kelas"],
+            ['name' => "Leaderboard"],
+        ];
+
+        return view('student.class.leaderboard', ["breadcrumbs" => $breadcrumbs, "class" => $classes, "users" => $users, "score" => $score]);
+    });
     
 
     // student lesson

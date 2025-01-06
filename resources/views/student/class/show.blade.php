@@ -2,7 +2,7 @@
     <x-breadcrumbs :breadcrumbs="$breadcrumbs"/>
     <x-student-sub-nav
         missionPath="/student/class/{{$class->id}}"
-        leaderboardPath="/student/class/{{$class->id}}/leaderboard"
+        leaderboardPath="/student/{{$class->id}}/leaderboard"
         activityPath="/student/class/{{$class->id}}/activity"
         informationPath="/student/class/{{$class->id}}/information"
     />
@@ -33,6 +33,9 @@
         </div>
         <div class="w-[30%] flex gap-6 flex-col">
             <div class="bg-main p-3 rounded-xl text-center">
+                <input type="hidden" id="completed_mission" value="{{$completed_mission}}">
+                <input type="hidden" id="ongoing_mission" value="{{$ongoing_mission}}">
+                <input type="hidden" id="total_mission" value="{{$total_mission}}">
                 <h3 class="mb-4 font-medium">Tantangan</h3>
                 <canvas id="myChart" class="canvas mx-auto"></canvas>
             </div>
@@ -44,7 +47,7 @@
                     </div>
                     <div class="text-center">
                         <h4 class="font-medium text-base">Total XP</h4>
-                        <p class="text-yellow-400 font-semibold text-lg">1020</p>
+                        <p class="text-yellow-400 font-semibold text-lg">{{$total_xp}}</p>
                     </div>
                     <div class="text-center">
                         <h4 class="font-medium text-base">Level</h4>

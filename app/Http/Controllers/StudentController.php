@@ -7,6 +7,7 @@ use App\Models\Class_listing;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Lesson;
 use App\Models\SubjectReaded;
+use App\Models\Subject;
 
 class StudentController extends Controller
 {
@@ -19,8 +20,51 @@ class StudentController extends Controller
         $user = Auth::user();
         $classes = $user->classes()->orderBy('created_at', 'desc')->get();
         $totalClass = $user->classes()->count();
+        $total_xp = $user->classes->flatMap->lessons->flatMap->subjects->flatMap->SubjectReadeds->where("user_id", $user->id)->sum('score');
+        $level = 0;
+        $emblem = "";
+        
+        $class = $user->classes()->get();
+        $totalSubject = $user->classes->flatMap->lessons->flatMap->subjects->count();
+        $subjectReaded = $class->flatMap->lessons->flatMap->subjects->flatMap->SubjectReadeds->where("is_readed", true)->where("user_id", $user->id)->count();
+        // dd($subjectReaded);
+        $ongoing_mission = $totalSubject - $subjectReaded;
+        $total_mission = $totalSubject;
 
-        return view("student.dashboard", ["classes" => $classes, "totalClass" => $totalClass]);
+        if ($total_xp >= 500 && $total_xp <= 1000) {
+            $level = 1;
+            $emblem = "pemula";
+        }
+
+        if ($total_xp >= 1000 && $total_xp <= 2000) {
+            $level = 2;
+            $emblem = "petualang";
+        }
+
+        if ($total_xp >= 2000 && $total_xp <= 4000) {
+            $level = 3;
+            $emblem = "pejuang";
+        }
+
+        if ($total_xp >= 4000 && $total_xp <= 8000) {
+            $level = 4;
+            $emblem = "petarung";
+        }
+
+        if ($total_xp >= 8000) {
+            $level = 5;
+            $emblem = "master";
+        }
+
+        return view("student.dashboard", [
+            "classes" => $classes, 
+            "totalClass" => $totalClass, 
+            'total_xp' => $total_xp, 
+            'level' => $level,
+            'emblem' => $emblem,
+            'total_mission' => $total_mission, 
+            'ongoing_mission' => $ongoing_mission
+        ]);
 
     }
 
@@ -49,21 +93,47 @@ class StudentController extends Controller
      */
     public function show(Class_listing $class)
     {
-        $score = 0;
         $user = Auth::user();
         $lessons = $class->lessons()->get();
-        $SubjectReadeds = SubjectReaded::where('user_id', $user->id)->get();
+        $subjedId = $lessons->flatMap->subjects->pluck('id');
+        $subjectReadeds = SubjectReaded::whereIn('subject_id', $subjedId)->where('user_id', $user->id)->get();
         
-        foreach ($SubjectReadeds as $SubjectReaded) { 
-            $score += $SubjectReaded->score;
-        }
+        
+        $score = $subjectReadeds->sum('score');
+        $total_xp = $user->classes->flatMap->lessons->flatMap->subjects->flatMap->SubjectReadeds->where("user_id", $user->id)->sum('score');
+        
+        
+        $totalSubject = $lessons->flatMap->subjects->count();
+        $totalQuiz = 0;
+        $totalEssay = 0;
+        $totalUploadTask = 0;
+
+
+        $readed = $subjectReadeds->count('is_readed');
+        $quizAnswered = 0;
+        $essayAnswered = 0;
+        $uploaded = 0;
+        
+        $total_mission = $totalSubject + $totalQuiz + $totalEssay + $totalUploadTask;
+        $completed_mission = $readed + $quizAnswered + $essayAnswered + $uploaded;
+        $ongoing_mission = $total_mission - $completed_mission;
+        
 
         $breadcrumbs = [
             ['link' => "/student/class", 'name' => "Kelas"],
             ['name' => $class->study_name],
         ];
 
-        return view('student.class.show', ["class" => $class, "lessons" => $lessons, "breadcrumbs" => $breadcrumbs, "score" => $score]);
+        return view('student.class.show', [
+            "class" => $class, 
+            "lessons" => $lessons, 
+            "breadcrumbs" => $breadcrumbs, 
+            "total_xp" => $total_xp,
+            "score" => $score, 
+            "total_mission" => $total_mission, 
+            "completed_mission" => $completed_mission, 
+            "ongoing_mission" => $ongoing_mission
+        ]);
 
     }
 

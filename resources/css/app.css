@@ -123,3 +123,16 @@ section {
 .ql-size-small {
     @apply text-sm;
 }
+
+.tooltip::before {
+    content: "";
+    /* background-color: #fff; */
+    position: absolute;
+    bottom: -10px;
+    right: 50%;
+    height: 0px;
+    width: 0px;
+    border-top: solid 10px #fff;
+    border-left: solid 8px transparent;
+    border-right: solid 8px transparent;
+}

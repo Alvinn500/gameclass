@@ -76,7 +76,7 @@ class SubjectController extends Controller
             'lesson_id' => $lesson->id,
             'title' => request()->title,
             'content' => request()->content,
-            'assignment' => $filename,
+            'assignment' => $filename ?? null,
         ]);
 
         return redirect("/teacher/class/$class->id");

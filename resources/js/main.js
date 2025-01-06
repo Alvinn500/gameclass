@@ -93,3 +93,22 @@ lessons.forEach((lesson) => {
         content.classList.toggle("hidden");
     });
 });
+
+// badge tooltip
+
+const badge = document.querySelectorAll("#badge");
+const tooltip = document.querySelectorAll(".tooltip");
+
+// badge.addEventListener("mouseover", () => {
+//     console.log("mouseover");
+// });
+
+badge.forEach((badge, index) => {
+    badge.addEventListener("mouseover", () => {
+        console.log("mouseover");
+        tooltip[index].classList.remove("hidden");
+    });
+    badge.addEventListener("mouseout", () => {
+        tooltip[index].classList.add("hidden");
+    });
+});
