@@ -13,15 +13,15 @@
                 </div>
                 <div class="h-16">
                     <p class="text-sm mb-1">materi</p>
-                    <p class="text-xl font-semibold">1</p>
+                    <p class="text-xl font-semibold">{{$totalSubject}}</p>
                 </div>
                 <div class="h-16">
                     <p class="text-sm mb-1">siswa</p>
-                    <p class="text-xl font-semibold">1</p>
+                    <p class="text-xl font-semibold">{{$totalStudent}}</p>
                 </div>
                 <div class="h-16">
                     <p class="text-sm mb-1">quiz</p>
-                    <p class="text-xl font-semibold">1</p>
+                    <p class="text-xl font-semibold">{{$totalQuiz}}</p>
                 </div>
             </div>
         </div>

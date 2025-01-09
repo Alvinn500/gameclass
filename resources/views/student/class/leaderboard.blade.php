@@ -3,8 +3,8 @@
     <x-student-sub-nav
         missionPath="/student/class/{{$class->id}}"
         leaderboardPath="/student/{{$class->id}}/leaderboard"
-        activityPath="/student/class/{{$class->id}}/activity"
-        informationPath="/student/class/{{$class->id}}/information" 
+        activityPath="/student/{{$class->id}}/activity"
+        informationPath="/student/{{$class->id}}/information" 
     /> 
     <div class="flex mt-6">
         <div class="w-[50%]">

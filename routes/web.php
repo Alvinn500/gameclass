@@ -6,14 +6,13 @@ use App\Http\Controllers\SessionController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\SubjectController;
 use Illuminate\Contracts\Session\Session;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\EnsureTeacherRole;
 use App\Http\Middleware\EnsureStudentRole;
-use App\Models\Class_Listing;
 use App\http\Controllers\StudentController;
-use App\Models\Lesson;
-use App\Models\Subject;
+use App\http\Controllers\TaskController;
+use App\http\Controllers\QuizController;
+use App\http\Controllers\TeacherController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -35,15 +34,7 @@ Route::get("/profileSetting", function () {
 Route::middleware('auth', EnsureTeacherRole::class)->group(function () {
     
     // teacher
-    Route::get("/teacher", function () {
-        $user = Auth::user();
-        $classes = $user->classes()->orderBy('created_at', 'desc')->get();
-        $totalClass = $user->classes()->count();
-        $totalStudent = $user->classes->flatMap->users->where("role", "student")->count();
-        
-    
-        return view('teacher.dashboard', ["classes" => $classes, "totalClass" => $totalClass, "totalStudent" => $totalStudent]);
-    });
+    Route::get("/teacher", [TeacherController::class, 'index']);
     
     
     // teacher class
@@ -62,9 +53,24 @@ Route::middleware('auth', EnsureTeacherRole::class)->group(function () {
     
     // teacher subject
     Route::get("/teacher/lesson/{lesson}/subject", [SubjectController::class, 'create']);
+    Route::get("/teacher/lesson/{lesson}/subject/{subject}", [SubjectController::class, 'show']);
     Route::post("/teacher/lesson/{lesson}/subject", [SubjectController::class, 'store']);
     
+
+    // teacher task
+    Route::get("/teacher/{class}/{lesson}/task/create", [TaskController::class, 'create']); 
+    Route::post("/teacher/{class}/{lesson}/task/create", [TaskController::class, 'store']);
+    Route::patch("/quiz/edit/{task}", [TaskController::class, 'update']);
+    Route::delete("/quiz/delete/{task}", [TaskController::class, 'destroy']);
+
+
+    // teacher quiz
+    Route::get("/teacher/{class}/{lesson}/{task}/quiz/create", [QuizController::class, 'create']);
+    Route::get("/teacher/{class}/{lesson}/{task}/quiz/{quiz}", [QuizController::class, 'show']);
+    Route::post("/teacher/{class}/{lesson}/{task}/quiz/create", [QuizController::class, 'store']);
+    Route::delete("/quiz/question/delete/{quiz}", [QuizController::class, 'destroy']);
     
+
     // teacher discussion
     Route::get("/teacher/discussion", function () {
         return view('teacher.discussion');
@@ -86,25 +92,9 @@ Route::middleware('auth', EnsureStudentRole::class)->group(function () {
     Route::post("/student/class/join/{class}", [StudentController::class, 'store']);
     Route::get("/student/class/{class}", [StudentController::class, 'show']);
 
-    Route::get("/student/{class}/leaderboard", function ($class) {
+    Route::get("/student/{class}/leaderboard", [ClassController::class, 'leaderboard']);
 
-        $classes = Class_listing::find($class);
-        $users = $classes->users->where("role", "student");
-
-        $user = Auth::user();
-
-        $score = $user->classes->flatMap->lessons->flatMap->subjects->flatMap->SubjectReadeds;
-        // dd($score);
-        $breadcrumbs = [
-            ['link' => "/student/class", 'name' => "Kelas"],
-            ['name' => "Leaderboard"],
-        ];
-
-        return view('student.class.leaderboard', ["breadcrumbs" => $breadcrumbs, "class" => $classes, "users" => $users, "score" => $score]);
-    });
-    
-
-    // student lesson
+    // student subject
     Route::get("/student/lesson/{lesson}/subject/{subject}", [SubjectController::class, 'index']); 
     Route::post("/student/lesson/{lesson}/subject/{subject}", [SubjectController::class, 'readed']);
     Route::get("/student/download/{filename}", [SubjectController::class, 'download']);

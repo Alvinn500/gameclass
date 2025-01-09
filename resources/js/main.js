@@ -99,10 +99,6 @@ lessons.forEach((lesson) => {
 const badge = document.querySelectorAll("#badge");
 const tooltip = document.querySelectorAll(".tooltip");
 
-// badge.addEventListener("mouseover", () => {
-//     console.log("mouseover");
-// });
-
 badge.forEach((badge, index) => {
     badge.addEventListener("mouseover", () => {
         console.log("mouseover");
@@ -112,3 +108,57 @@ badge.forEach((badge, index) => {
         tooltip[index].classList.add("hidden");
     });
 });
+
+// quiz modal
+const parentQuizOverlay = document.getElementById("parent_quiz_overlay");
+const quizOverlay = document.getElementById("quiz_overlay");
+const quizModal = document.getElementById("quiz_modal");
+const addQuiz = document.getElementById("addQuiz");
+const quizClose = document.getElementById("quiz_close");
+
+if (quizOverlay && quizModal) {
+    quizOverlay.addEventListener("click", (event) => {
+        if (event.target == quizOverlay) {
+            parentQuizOverlay.classList.toggle("hidden");
+        }
+    });
+}
+
+if (addQuiz) {
+    addQuiz.addEventListener("click", () => {
+        parentQuizOverlay.classList.toggle("hidden");
+    });
+}
+
+if (quizClose) {
+    quizClose.addEventListener("click", () => {
+        parentQuizOverlay.classList.toggle("hidden");
+    });
+}
+
+// manipulasi question
+
+const quiz = document.querySelectorAll("#quiz");
+
+quiz.forEach((quiz) => {
+    quiz.addEventListener("click", () => {
+        const quizId = quiz.getAttribute("data-quizId");
+        const quizOption = document.getElementById(`quizOption${quizId}`);
+
+        quiz.children[1].classList.toggle("rotate-90");
+        quiz.classList.toggle("rounded-2xl");
+        quiz.classList.toggle("rounded-t-2xl");
+        quizOption.classList.toggle("hidden");
+    });
+});
+
+// manupalasi quiz
+const editQuiz = document.getElementById("editQuiz");
+const inputTask = document.getElementById("inputTask");
+
+if (editQuiz) {
+    editQuiz.addEventListener("click", () => {
+        modalEdit.classList.toggle("hidden");
+        modalEdit.classList.toggle("flex");
+    });
+}

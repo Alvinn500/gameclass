@@ -2,10 +2,10 @@
     <x-breadcrumbs :breadcrumbs="$breadcrumbs"/>
     <x-teacher-sub-nav 
         classPath="/teacher/class/{{$class->id}}" 
-        activityPath="/teacher/class/{{$class->id}}/activity" 
-        gradePath="/teacher/class/{{$class->id}}/grade" 
-        studentPath="/teacher/class/{{$class->id}}/student" 
-        settingPath="/teacher/class/{{$class->id}}/setting"
+        activityPath="/teacher/{{$class->id}}/activity" 
+        gradePath="/teacher/{{$class->id}}/grade" 
+        studentPath="/teacher/{{$class->id}}/student" 
+        settingPath="/teacher/{{$class->id}}/setting"
     />
     <div>
         <h2 class="my-4 px-2">Buat Materi</h2>

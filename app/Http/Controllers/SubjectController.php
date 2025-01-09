@@ -82,6 +82,25 @@ class SubjectController extends Controller
         return redirect("/teacher/class/$class->id");
     }
 
+    public function show(Lesson $lesson, Subject $subject) {
+
+        $class = $lesson->class;
+        $studentReaded = $subject->SubjectReadeds->count();
+
+        $breadcrumbs = [
+            ['link' => "/teacher/class", 'name' => "Kelas"],
+            ['link' => "/teacher/class/$class->id", 'name' => $class->study_name . "-" . $class->class],
+            ['name' => "Lihat Materi"],
+        ];
+        
+        return view('teacher.subject.show', [
+            'class' => $class,
+            'subject' => $subject,
+            'breadcrumbs' => $breadcrumbs,
+            'studentReaded' => $studentReaded
+        ]);
+    }
+
     public function readed(Lesson $lesson, Subject $subject) {
 
         $user = Auth::user();

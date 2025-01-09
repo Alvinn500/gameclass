@@ -67,13 +67,20 @@ class ClassController extends Controller
         $user = Auth::user();
         $lessons = $class->lessons()->get();
         $lesson = lesson::find(request()->lesson_id);
+        $quizzes = $class->lessons->flatMap->tasks->where("type", "1");
 
         $breadcrumbs = [
             ['link' => "/teacher/class", 'name' => "Kelas"],
             ['name' => $class->class],
         ];
 
-        return view('teacher.class.show', ["class" => $class, "lessons" => $lessons, "lesson" => $lesson, "breadcrumbs" => $breadcrumbs]);
+        return view('teacher.class.show', [
+            "class" => $class,
+             "lessons" => $lessons, 
+             "lesson" => $lesson, 
+             "breadcrumbs" => $breadcrumbs,
+             "quizzes" => $quizzes,
+            ]);
     }
 
     public function find() {
@@ -81,6 +88,28 @@ class ClassController extends Controller
         $classes = Class_Listing::all();
 
         return view('student.class.find', ["classes" => $classes]);
+
+    }
+
+    public function leaderboard(Class_listing $class) {
+        
+        $users = $class->users->where("role", "student");
+
+        $user = Auth::user();
+
+        $score = $class->lessons->flatMap->subjects->flatMap->SubjectReadeds;
+        
+        $breadcrumbs = [
+            ['link' => "/student/class", 'name' => "Kelas"],
+            ['name' => "Leaderboard"],
+        ];
+
+        return view('student.class.leaderboard', [
+            "breadcrumbs" => $breadcrumbs, 
+            "class" => $class, 
+            "users" => $users, 
+            "score" => $score
+        ]);
 
     }
 }

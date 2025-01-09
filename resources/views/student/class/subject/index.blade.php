@@ -2,9 +2,9 @@
     <x-breadcrumbs :breadcrumbs="$breadcrumbs"/>
     <x-student-sub-nav
         missionPath="/student/class/{{$class->id}}"
-        leaderboardPath="/student/class/{{$class->id}}/leaderboard"
-        activityPath="/student/class/{{$class->id}}/activity"
-        informationPath="/student/class/{{$class->id}}/information" 
+        leaderboardPath="/student/{{$class->id}}/leaderboard"
+        activityPath="/student/{{$class->id}}/activity"
+        informationPath="/student/{{$class->id}}/information" 
     /> 
     <div class="bg-main rounded-xl py-7 px-5 my-6 relative">
         <h1 class="text-3xl font-semibold">{{$subject->title}}</h1>
