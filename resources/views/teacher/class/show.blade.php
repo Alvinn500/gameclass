@@ -31,6 +31,12 @@
                                     {{$counter++}}. Quiz: {{$quiz->title}}
                                 </a>
                             @endforeach
+
+                            @foreach ($lesson->tasks->where("type", "2") as $quiz)
+                                <a href="/teacher/{{$class->id}}/{{$lesson->id}}/{{$quiz->id}}/quiz/create" class="text-sm font-semibold">
+                                    {{$counter++}}. Test: {{$quiz->title}}
+                                </a>
+                            @endforeach
                         </div>
                         <div class="flex items-center text-cyan-400">
                             <a href="/teacher/lesson/{{$lesson->id}}/subject" class="uppercase border border-cyan-400 rounded-r-none rounded-lg p-2 m-0 text-xs font-semibold">+tambah materi</a>

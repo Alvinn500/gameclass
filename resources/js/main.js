@@ -138,9 +138,9 @@ if (quizClose) {
 
 // manipulasi question
 
-const quiz = document.querySelectorAll("#quiz");
+const quizzes = document.querySelectorAll("#quiz");
 
-quiz.forEach((quiz) => {
+quizzes.forEach((quiz) => {
     quiz.addEventListener("click", () => {
         const quizId = quiz.getAttribute("data-quizId");
         const quizOption = document.getElementById(`quizOption${quizId}`);
@@ -154,11 +154,60 @@ quiz.forEach((quiz) => {
 
 // manupalasi quiz
 const editQuiz = document.getElementById("editQuiz");
-const inputTask = document.getElementById("inputTask");
 
 if (editQuiz) {
     editQuiz.addEventListener("click", () => {
         modalEdit.classList.toggle("hidden");
         modalEdit.classList.toggle("flex");
+    });
+}
+
+// manipulasi edit quiz
+const parentEditQuiz = document.getElementById("parent_edit_quiz_overlay");
+const editQuizOverlay = document.getElementById("edit_quiz_overlay");
+
+if (editQuizOverlay && parentEditQuiz) {
+    editQuizOverlay.addEventListener("click", (event) => {
+        if (event.target == editQuizOverlay) {
+            parentEditQuiz.classList.toggle("hidden");
+        }
+    });
+}
+
+const formEditQuiz = document.getElementById("formEditQuiz");
+const questionInput = document.getElementById(`editQuestion`);
+const a = document.getElementById(`editA`);
+const b = document.getElementById(`editB`);
+const c = document.getElementById(`editC`);
+const d = document.getElementById(`editD`);
+const e = document.getElementById(`editE`);
+const answareInput = document.getElementById(`editAnsware`);
+const editQuestion = document.querySelectorAll(`.buttonEditQuestion`);
+const editQuizClose = document.getElementById(`edit_quiz_close`);
+
+if (editQuizClose) {
+    editQuizClose.addEventListener("click", () => {
+        parentEditQuiz.classList.add("hidden");
+    });
+}
+
+if (editQuestion) {
+    editQuestion.forEach((question) => {
+        question.addEventListener("click", () => {
+            let options = JSON.parse(question.getAttribute("data-options"));
+
+            formEditQuiz.action =
+                "/quiz/question/edit/" + question.getAttribute("data-quizId");
+            questionInput.value = question.getAttribute("data-question");
+            a.value = options.a;
+            b.value = options.b;
+            c.value = options.c;
+            d.value = options.d;
+            e.value = options.e;
+            answareInput.value = question.getAttribute("data-answare");
+        });
+        question.addEventListener("click", () => {
+            parentEditQuiz.classList.remove("hidden");
+        });
     });
 }

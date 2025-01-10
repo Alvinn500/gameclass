@@ -13,6 +13,7 @@ use App\http\Controllers\StudentController;
 use App\http\Controllers\TaskController;
 use App\http\Controllers\QuizController;
 use App\http\Controllers\TeacherController;
+use App\http\Controllers\TestController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -68,6 +69,7 @@ Route::middleware('auth', EnsureTeacherRole::class)->group(function () {
     Route::get("/teacher/{class}/{lesson}/{task}/quiz/create", [QuizController::class, 'create']);
     Route::get("/teacher/{class}/{lesson}/{task}/quiz/{quiz}", [QuizController::class, 'show']);
     Route::post("/teacher/{class}/{lesson}/{task}/quiz/create", [QuizController::class, 'store']);
+    Route::patch("/quiz/question/edit/{quiz}", [QuizController::class, 'update']);
     Route::delete("/quiz/question/delete/{quiz}", [QuizController::class, 'destroy']);
     
 

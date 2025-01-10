@@ -3,12 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Class_listing;
-use App\Models\Lesson;
-use App\Models\multipleChoice;
-use App\Models\Task;
 
-class QuizController extends Controller
+class TestController extends Controller
 {
     
     public function create(Class_listing $class, Lesson $lesson, Task $task) {
@@ -16,12 +12,12 @@ class QuizController extends Controller
         $breadcrumbs = [
             ['link' => "/teacher/class", 'name' => "Kelas"],
             ['link' => "/teacher/class/$class->id", 'name' => $class->study_name . " - " . $class->class],
-            ['name' => $task->type === 1 ? "Soal Quiz" : "Soal Test" . " - " . $task->title],
+            ['name' => "Soal Test" . " - " . $task->title],
         ];
 
         $quizzes = $task->multipleChoices()->get();
 
-        return view('teacher.quiz.create', [
+        return view('teacher.test.create', [
             'class' => $class,
             'lesson' => $lesson,
             'breadcrumbs' => $breadcrumbs,
@@ -65,42 +61,11 @@ class QuizController extends Controller
             "tasks_id" => $task->id
         ]);
 
-        return redirect("/teacher/$class->id/$lesson->id/$task->id/quiz/create");
-    }
-
-    public function update(multipleChoice $quiz) {
-        
-        request()->validate([
-            "question" => ["required", "min:3"],
-            "a" => ["required", "string"],
-            "b" => ["required", "string"],
-            "c" => ["required", "string"],
-            "d" => ["required", "string"],
-            "e" => ["required", "string"],
-            "answare" => ["required"],
-            "image" => ["file", "max:2048"],
-        ]);
-
-        if(request()->hasFile("image")) {
-            $file = request()->file("image");
-            $filename = $file->getClientOriginalName();
-            $file->move("mutiple_choices", $filename);
+        if($task->type == 2) {
+            return redirect("/teacher/$class->id/$lesson->id/$task->id/test/create");
         }
-
-        $quiz->update([
-            "question" => request()->question,
-            "options" => [
-                "a" => request()->a, 
-                "b" => request()->b, 
-                "c" => request()->c, 
-                "d" => request()->d, 
-                "e" => request()->e
-            ],
-            "answer" => request()->answare,
-            "image" => $filename ?? null
-        ]);
-
-        return redirect()->back();
+        
+        return redirect("/teacher/$class->id/$lesson->id/$task->id/quiz/create");
     }
 
     public function destroy(multipleChoice $quiz) {
