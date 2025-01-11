@@ -296,3 +296,40 @@ if (editEssay) {
         modalEditTaskEssay.classList.toggle("flex");
     });
 }
+
+// manipulasi add upload
+const addUpload = document.getElementById("addUpload");
+const parentUploadOverlay = document.getElementById("parent_upload_overlay");
+const uploadOverlay = document.getElementById("upload_overlay");
+const closeUpload = document.getElementById("upload_close");
+
+if (addUpload) {
+    addUpload.addEventListener("click", () => {
+        parentUploadOverlay.classList.remove("hidden");
+    });
+}
+
+if (uploadOverlay) {
+    uploadOverlay.addEventListener("click", (event) => {
+        if (event.target == uploadOverlay) {
+            parentUploadOverlay.classList.add("hidden");
+        }
+    });
+}
+
+if (closeUpload) {
+    closeUpload.addEventListener("click", () => {
+        parentUploadOverlay.classList.add("hidden");
+    });
+}
+
+// manipulasi edit upload modal
+const editUpload = document.getElementById("editUpload");
+const modalEditUpload = document.getElementById("modalEditUpload");
+
+if (editUpload) {
+    editUpload.addEventListener("click", () => {
+        modalEditUpload.classList.toggle("hidden");
+        modalEditUpload.classList.toggle("flex");
+    });
+}

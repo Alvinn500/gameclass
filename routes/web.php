@@ -15,7 +15,7 @@ use App\http\Controllers\QuizController;
 use App\http\Controllers\TeacherController;
 use App\http\Controllers\TestController;
 use App\http\Controllers\EssayController;
-use App\http\Controllers\TaskEssayController;
+use App\http\controllers\UploadController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -75,6 +75,10 @@ Route::middleware('auth', EnsureTeacherRole::class)->group(function () {
     Route::delete("/essay/delete/{task}", [TaskController::class, 'destroy']);
 
 
+    // teacher task uploads
+    Route::patch("/upload/edit/{task}", [TaskController::class, 'update']);
+    Route::delete("/upload/delete/{task}", [TaskController::class, 'destroy']);
+
     // teacher quiz
     Route::get("/teacher/{class}/{lesson}/{task}/quiz/create", [QuizController::class, 'create']);
     Route::get("/teacher/{class}/{lesson}/{task}/quiz/{quiz}", [QuizController::class, 'show']);
@@ -89,6 +93,12 @@ Route::middleware('auth', EnsureTeacherRole::class)->group(function () {
     Route::patch("/essay/question/edit/{essay}", [EssayController::class, 'update']);
     Route::delete("/essay/question/delete/{essay}", [EssayController::class, 'destroy']);
 
+
+    // teacher uploads
+    Route::get("/teacher/{class}/{lesson}/{task}/upload/create", [UploadController::class, 'create']);
+    Route::post("/teacher/{class}/{lesson}/{task}/upload/create", [UploadController::class, 'store']);
+    Route::patch("/upload/question/edit/{upload}", [UploadController::class, 'update']);
+    Route::delete("/upload/question/delete/{upload}", [UploadController::class, 'destroy']);
 
     // teacher discussion
     Route::get("/teacher/discussion", function () {

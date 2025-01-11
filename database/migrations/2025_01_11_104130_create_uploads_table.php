@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('uploads', function (Blueprint $table) {
             $table->id();
+            $table->text('question');
+            $table->string('file')->nullable();
+            $table->unsignedBigInteger('tasks_id');
+            $table->foreign('tasks_id')->references('id')->on('tasks')->cascadeOnDelete();
             $table->timestamps();
         });
     }

@@ -44,6 +44,12 @@
                                     </a>
                                 @endforeach
 
+                                @foreach ($lesson->tasks->where("type", "4") as $upload)
+                                    <a href="/teacher/{{$class->id}}/{{$lesson->id}}/{{$upload->id}}/upload/create" class="text-sm font-semibold">
+                                        {{$counter++}}. Upload: {{$upload->title}}
+                                    </a>
+                                @endforeach
+
                         </div>
                         <div class="flex items-center text-cyan-400">
                             <a href="/teacher/lesson/{{$lesson->id}}/subject" class="uppercase border border-cyan-400 rounded-r-none rounded-lg p-2 m-0 text-xs font-semibold">+tambah materi</a>
