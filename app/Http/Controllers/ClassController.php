@@ -68,7 +68,7 @@ class ClassController extends Controller
         $lessons = $class->lessons()->get();
         $lesson = lesson::find(request()->lesson_id);
         $quizzes = $class->lessons->flatMap->tasks->where("type", "1");
-
+        // dd($lessons->flatMap->tasks->where("type", "2"));
         $breadcrumbs = [
             ['link' => "/teacher/class", 'name' => "Kelas"],
             ['name' => $class->class],

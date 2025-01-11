@@ -211,3 +211,88 @@ if (editQuestion) {
         });
     });
 }
+
+// modal create essay
+const addEssay = document.getElementById("addEssay");
+const essayClose = document.getElementById("essay_close");
+const parrentEssayOverlay = document.getElementById("parent_essay_overlay");
+const essayOverlay = document.getElementById("essay_overlay");
+
+if (addEssay) {
+    addEssay.addEventListener("click", () => {
+        parrentEssayOverlay.classList.remove("hidden");
+    });
+}
+
+if (essayClose) {
+    essayClose.addEventListener("click", () => {
+        parrentEssayOverlay.classList.add("hidden");
+    });
+}
+
+if (essayOverlay) {
+    essayOverlay.addEventListener("click", (event) => {
+        if (event.target == essayOverlay) {
+            parrentEssayOverlay.classList.add("hidden");
+        }
+    });
+}
+
+// manipulasi essay
+const essays = document.querySelectorAll("#essay");
+
+essays.forEach((essay) => {
+    essay.addEventListener("click", () => {
+        const essayId = essay.getAttribute("data-essayId");
+        document.getElementById(`essay${essayId}`).classList.toggle("hidden");
+        essay.children[1].children[0].classList.toggle("rotate-90");
+    });
+});
+
+// manipulasi edit essay
+const buttonEditEssay = document.querySelectorAll("#buttonEditEssay");
+const parentEditEssayOverlay = document.getElementById(
+    "parent_edit_essay_overlay"
+);
+const editEssayOverlay = document.getElementById("edit_essay_overlay");
+const editEssayClose = document.getElementById("edit_essay_close");
+const inputEditEssay = document.getElementById("inputEditEssay");
+const formEditEssay = document.getElementById("formEditEssay");
+
+if (buttonEditEssay) {
+    buttonEditEssay.forEach((essay) => {
+        essay.addEventListener("click", () => {
+            inputEditEssay.value = essay.getAttribute("data-question");
+            formEditEssay.action =
+                "/essay/question/edit/" + essay.getAttribute("data-essayId");
+            console.log(essay.getAttribute("data-essayId"));
+            parentEditEssayOverlay.classList.toggle("hidden");
+            parentEditEssayOverlay.classList.toggle("flex");
+        });
+    });
+}
+
+if (editEssayOverlay) {
+    editEssayOverlay.addEventListener("click", (event) => {
+        if (event.target == editEssayOverlay) {
+            parentEditEssayOverlay.classList.add("hidden");
+        }
+    });
+}
+
+if (editEssayClose) {
+    editEssayClose.addEventListener("click", () => {
+        parentEditEssayOverlay.classList.add("hidden");
+    });
+}
+
+// manipulasi edit task essay
+const editEssay = document.getElementById("editEssay");
+const modalEditTaskEssay = document.getElementById("modalEditTaskEssay");
+
+if (editEssay) {
+    editEssay.addEventListener("click", () => {
+        modalEditTaskEssay.classList.toggle("hidden");
+        modalEditTaskEssay.classList.toggle("flex");
+    });
+}

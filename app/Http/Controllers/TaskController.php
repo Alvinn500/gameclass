@@ -54,6 +54,17 @@ class TaskController extends Controller
             return redirect("/teacher/$class->id/$lesson->id/$task->id/test/create");
         }
 
+        if(request()->type === "3") {
+
+            $task = Task::create([
+                'title' => request()->title,
+                'type' => request()->type,
+                'lesson_id' => $lesson->id,
+            ]);
+
+            return redirect("/teacher/$class->id/$lesson->id/$task->id/essay/create");
+        }
+
         return redirect("/teacher/class/$class->id");
     }
 

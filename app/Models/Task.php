@@ -22,4 +22,8 @@ class Task extends Model
         return $this->hasMany(MultipleChoice::class, 'tasks_id');
     }
 
+    public function essays() {
+        return $this->hasMany(Essay::class, 'tasks_id');
+    }
+
 }
