@@ -51,7 +51,7 @@ class TaskController extends Controller
                 'lesson_id' => $lesson->id,
             ]);
 
-            return redirect("/teacher/$class->id/$lesson->id/$task->id/test/create");
+            return redirect("/teacher/$class->id/$lesson->id/$task->id/quiz/create");
         }
 
         if(request()->type === "3") {

@@ -333,3 +333,19 @@ if (editUpload) {
         modalEditUpload.classList.toggle("flex");
     });
 }
+
+// hideshow multipleChoice
+document.addEventListener("DOMContentLoaded", () => {
+    function hideshow(hide, show) {
+        console.log(hide, show);
+        let element = document.getElementById(show);
+        if (element) {
+            document.getElementById(hide).style.display = "none";
+            element.style.display = "flex";
+        } else {
+            document.getElementById(hide).style.display = "none";
+            document.getElementById("end").style.display = "flex";
+        }
+    }
+    window.hideshow = hideshow;
+});

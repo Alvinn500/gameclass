@@ -32,7 +32,7 @@ class SubjectController extends Controller
             ['name' => "Materi $lesson->name"],
         ];
         
-        return view('student.class.subject.index', [
+        return view('student.subject.index', [
             'user' => $user,
             'class' => $class, 
             'subject' => $subject, 

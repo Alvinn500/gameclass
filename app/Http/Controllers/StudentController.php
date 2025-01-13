@@ -22,7 +22,7 @@ class StudentController extends Controller
         $totalClass = $user->classes()->count();
         $total_xp = $user->classes->flatMap->lessons->flatMap->subjects->flatMap->SubjectReadeds->where("user_id", $user->id)->sum('score');
         $level = 0;
-        $emblem = "";
+        $emblem = ""; 
         
         $class = $user->classes()->get();
         $totalSubject = $user->classes->flatMap->lessons->flatMap->subjects->count();
@@ -63,7 +63,7 @@ class StudentController extends Controller
             'level' => $level,
             'emblem' => $emblem,
             'total_mission' => $total_mission, 
-            'ongoing_mission' => $ongoing_mission
+            'ongoing_mission' => $ongoing_mission,
         ]);
 
     }
@@ -98,7 +98,7 @@ class StudentController extends Controller
         $subjedId = $lessons->flatMap->subjects->pluck('id');
         $subjectReadeds = SubjectReaded::whereIn('subject_id', $subjedId)->where('user_id', $user->id)->get();
         
-        
+        // dd($user->subjectReadeds);
         $score = $subjectReadeds->sum('score');
         $total_xp = $user->classes->flatMap->lessons->flatMap->subjects->flatMap->SubjectReadeds->where("user_id", $user->id)->sum('score');
         
@@ -119,11 +119,40 @@ class StudentController extends Controller
         $ongoing_mission = $total_mission - $completed_mission;
         
 
+        $level = 0;
+        $emblem = "";
+
+        if ($total_xp >= 500 && $total_xp <= 1000) {
+            $level = 1;
+            $emblem = "pemula";
+        }
+
+        if ($total_xp >= 1000 && $total_xp <= 2000) {
+            $level = 2;
+            $emblem = "petualang";
+        }
+
+        if ($total_xp >= 2000 && $total_xp <= 4000) {
+            $level = 3;
+            $emblem = "pejuang";
+        }
+
+        if ($total_xp >= 4000 && $total_xp <= 8000) {
+            $level = 4;
+            $emblem = "petarung";
+        }
+
+        if ($total_xp >= 8000) {
+            $level = 5;
+            $emblem = "master";
+        }
+
+
         $breadcrumbs = [
             ['link' => "/student/class", 'name' => "Kelas"],
             ['name' => $class->study_name],
         ];
-
+        // dd($class->lessons);
         return view('student.class.show', [
             "class" => $class, 
             "lessons" => $lessons, 
@@ -132,7 +161,10 @@ class StudentController extends Controller
             "score" => $score, 
             "total_mission" => $total_mission, 
             "completed_mission" => $completed_mission, 
-            "ongoing_mission" => $ongoing_mission
+            "ongoing_mission" => $ongoing_mission,
+            'level' => $level,
+            'emblem' => $emblem,
+            'subjectReadeds' => $subjectReadeds
         ]);
 
     }

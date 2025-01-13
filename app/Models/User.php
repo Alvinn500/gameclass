@@ -60,4 +60,8 @@ class User extends Authenticatable
     public function SubjectReadeds() {
         return $this->hasMany(SubjectReaded::class);
     }
+
+    public function multipleChoiceAnswers() {
+        return $this->hasMany(MultipleChoiceAnswer::class);
+    }
 }

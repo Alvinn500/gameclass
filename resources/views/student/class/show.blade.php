@@ -20,9 +20,48 @@
                     </a>
                     <div id="content{{$lesson->id}}" class="hidden ease-in-out bg-semiblack pt-3 pb-4 px-5 rounded-b-xl">
                         @foreach ($lesson->subjects as $subject)
-                            <a href="/student/lesson/1/subject/{{$subject->id}}" class="flex items-center justify-between border-b border-gray-600 py-3">
+                            {{-- @php
+                                var_dump($subject->subjectReadeds->where('user_id', Auth::user()->id));
+                            @endphp --}}
+                            <a href="/student/lesson/{{$lesson->id}}/subject/{{$subject->id}}" class=" flex items-center justify-between border-b border-gray-600 py-3">
                                 <h4 class="text-sm font-medium">
                                     {{$subject->title}}
+                                </h4>
+                                <img class="w-6" src="{{asset("img/arrow.png")}}" alt="arrow">
+                            </a>
+                        @endforeach
+
+                        @foreach ($lesson->tasks->where("type", "1") as $quiz)
+                            <a href="/student/{{$class->id}}/{{$lesson->id}}/quiz/{{$quiz->id}}" class="flex items-center justify-between border-b border-gray-600 py-3">
+                                <h4 class="text-sm font-medium">
+                                    {{$quiz->title}}
+                                </h4>
+                                <img class="w-6" src="{{asset("img/arrow.png")}}" alt="arrow">
+                            </a>
+                        @endforeach
+
+                        @foreach ($lesson->tasks->where("type", "2") as $test)
+                            <a href="/student/lesson/1/test/{{$test->id}}" class="flex items-center justify-between border-b border-gray-600 py-3">
+                                <h4 class="text-sm font-medium">
+                                    {{$test->title}}
+                                </h4>
+                                <img class="w-6" src="{{asset("img/arrow.png")}}" alt="arrow">
+                            </a>
+                        @endforeach
+
+                        @foreach ($lesson->tasks->where("type", "3") as $essay)
+                            <a href="/student/lesson/1/essay/{{$essay->id}}" class="flex items-center justify-between border-b border-gray-600 py-3">
+                                <h4 class="text-sm font-medium">
+                                    {{$essay->title}}
+                                </h4>
+                                <img class="w-6" src="{{asset("img/arrow.png")}}" alt="arrow">
+                            </a>
+                        @endforeach
+
+                        @foreach ($lesson->tasks->where("type", "4") as $upload)
+                            <a href="/student/lesson/1/upload/{{$upload->id}}" class="flex items-center justify-between border-b border-gray-600 py-3">
+                                <h4 class="text-sm font-medium">
+                                    {{$upload->title}}
                                 </h4>
                                 <img class="w-6" src="{{asset("img/arrow.png")}}" alt="arrow">
                             </a>
@@ -51,17 +90,41 @@
                     </div>
                     <div class="text-center">
                         <h4 class="font-medium text-base">Level</h4>
-                        <p class="text-yellow-400 font-semibold text-lg">2</p>
+                        <p class="text-yellow-400 font-semibold text-lg">{{$level}}</p>
                     </div>
                 </div>
                 <img class="w-[58%] mx-auto mb-4" src="{{asset("img/character/2.png")}}" alt="character">
-                <h4 class="bg-primary text-center p-2 text-lg font-medium">Petualangan</h4>
+                <h4 class="bg-secondary text-center p-2 text-lg font-medium">{{$emblem}}</h4>
                 <div class="flex justify-center px-5 gap-2 py-4">
-                    <img class="w-[16%] md:w-[14%] aspect-square" src="{{asset("img/badge/1-gs.png")}}" alt="badge">
-                    <img class="w-[16%] md:w-[14%] aspect-square" src="{{asset("img/badge/2-gs.png")}}" alt="badge">
-                    <img class="w-[16%] md:w-[14%] aspect-square" src="{{asset("img/badge/3-gs.png")}}" alt="badge">
-                    <img class="w-[16%] md:w-[14%] aspect-square" src="{{asset("img/badge/4-gs.png")}}" alt="badge">
-                    <img class="w-[16%] md:w-[14%] aspect-square" src="{{asset("img/badge/5-gs.png")}}" alt="badge">
+                    @if($total_xp > 500)
+                        <img class="w-[16%] md:w-[14%] aspect-square" src="{{asset("img/badge/1.png")}}" alt="badge">
+                    @else
+                        <img class="w-[16%] md:w-[14%] aspect-square" src="{{asset("img/badge/1-gs.png")}}" alt="badge">
+                    @endif
+
+                    @if($total_xp > 1000)
+                        <img class="w-[16%] md:w-[14%] aspect-square" src="{{asset("img/badge/2.png")}}" alt="badge">
+                    @else
+                        <img class="w-[16%] md:w-[14%] aspect-square" src="{{asset("img/badge/2-gs.png")}}" alt="badge">
+                    @endif
+
+                    @if($total_xp > 2000)
+                        <img class="w-[16%] md:w-[14%] aspect-square" src="{{asset("img/badge/3.png")}}" alt="badge">
+                    @else
+                        <img class="w-[16%] md:w-[14%] aspect-square" src="{{asset("img/badge/3-gs.png")}}" alt="badge">
+                    @endif
+
+                    @if($total_xp > 4000)
+                        <img class="w-[16%] md:w-[14%] aspect-square" src="{{asset("img/badge/4.png")}}" alt="badge">
+                    @else
+                        <img class="w-[16%] md:w-[14%] aspect-square" src="{{asset("img/badge/4-gs.png")}}" alt="badge">
+                    @endif
+
+                    @if($total_xp > 8000)
+                        <img class="w-[16%] md:w-[14%] aspect-square" src="{{asset("img/badge/5.png")}}" alt="badge">
+                    @else
+                        <img class="w-[16%] md:w-[14%] aspect-square" src="{{asset("img/badge/5-gs.png")}}" alt="badge">
+                    @endif
                 </div>
             </div>
         </div>

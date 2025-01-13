@@ -16,6 +16,7 @@ use App\http\Controllers\TeacherController;
 use App\http\Controllers\TestController;
 use App\http\Controllers\EssayController;
 use App\http\controllers\UploadController;
+use App\http\controllers\Student\SQuizController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -123,12 +124,18 @@ Route::middleware('auth', EnsureStudentRole::class)->group(function () {
 
     Route::get("/student/{class}/leaderboard", [ClassController::class, 'leaderboard']);
 
+
     // student subject
     Route::get("/student/lesson/{lesson}/subject/{subject}", [SubjectController::class, 'index']); 
     Route::post("/student/lesson/{lesson}/subject/{subject}", [SubjectController::class, 'readed']);
     Route::get("/student/download/{filename}", [SubjectController::class, 'download']);
 
     
+    // student quiz
+    route::get("/student/{class}/{lesson}/quiz/{task}", [SQuizController::class, 'show']);
+    route::post("/student/{class}/{lesson}/quiz/{task}", [SQuizController::class, 'store']);
+    route::get("/student/{class}/{lesson}/quiz/{task}/result", [SQuizController::class, 'result']);
+
     
     // student discussion
     Route::get("/student/discussion", function () {

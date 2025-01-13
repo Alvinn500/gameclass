@@ -22,6 +22,7 @@ export default {
                 whiteSubNav: "#2d3144",
                 semiblack: "#141414",
                 purple: "#7200ff",
+                indigoCustom: "#383d6e",
             },
             textColor: {
                 primary: "#c539ff",

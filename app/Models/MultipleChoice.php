@@ -18,12 +18,16 @@ class MultipleChoice extends Model
         'tasks_id' 
     ];
 
-    public function task() {
-        return $this->belongsTo(Task::class);
-    }
-    
     protected $casts = [
         "options" => 'array'
     ];
+    
+    public function task() {
+        return $this->belongsTo(Task::class);
+    }
+
+    public function answers() {
+        return $this->hasMany(MultipleChoiceAnswer::class);
+    }    
 
 }
