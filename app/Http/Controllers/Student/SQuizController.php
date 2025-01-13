@@ -88,7 +88,7 @@ class SQuizController extends Controller
             ]);
         }   
 
-        return redirect("/student/class/$class->id");
+        return redirect()->back();
     }
 
 }

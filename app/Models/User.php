@@ -53,10 +53,6 @@ class User extends Authenticatable
         return $this->belongsToMany(Class_listing::class, 'pivot_user_classes', 'user_id', 'class_listing_id');
     }
 
-    public function lessons() {
-        return $this->hasMany(Lesson::class);
-    }
-
     public function SubjectReadeds() {
         return $this->hasMany(SubjectReaded::class);
     }
@@ -64,4 +60,9 @@ class User extends Authenticatable
     public function multipleChoiceAnswers() {
         return $this->hasMany(MultipleChoiceAnswer::class);
     }
+
+    public function essayAnswers() {
+        return $this->hasMany(EssayAnswer::class);
+    }
+
 }

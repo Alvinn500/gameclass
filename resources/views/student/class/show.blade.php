@@ -50,7 +50,7 @@
                         @endforeach
 
                         @foreach ($lesson->tasks->where("type", "3") as $essay)
-                            <a href="/student/lesson/1/essay/{{$essay->id}}" class="flex items-center justify-between border-b border-gray-600 py-3">
+                            <a href="/student/{{$class->id}}/{{$lesson->id}}/essay/{{$essay->id}}" class="flex items-center justify-between border-b border-gray-600 py-3">
                                 <h4 class="text-sm font-medium">
                                     {{$essay->title}}
                                 </h4>

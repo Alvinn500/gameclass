@@ -17,4 +17,8 @@ class Essay extends Model
         return $this->belongsTo(Task::class);
     }
 
+    public function answers() {
+        return $this->hasMany(EssayAnswer::class);
+    }
+
 }

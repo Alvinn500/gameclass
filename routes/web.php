@@ -17,6 +17,7 @@ use App\http\Controllers\TestController;
 use App\http\Controllers\EssayController;
 use App\http\controllers\UploadController;
 use App\http\controllers\Student\SQuizController;
+use App\http\controllers\Student\SEssayController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -137,6 +138,12 @@ Route::middleware('auth', EnsureStudentRole::class)->group(function () {
     route::get("/student/{class}/{lesson}/quiz/{task}/result", [SQuizController::class, 'result']);
 
     
+    // student essay
+    Route::get("/student/{class}/{lesson}/essay/{task}", [SEssayController::class, 'show']);
+    Route::post("/student/{class}/{lesson}/essay/{task}", [SEssayController::class, 'store']);
+    Route::get("/student/{class}/{lesson}/essay/{task}/result", [SEssayController::class, 'result']);
+
+
     // student discussion
     Route::get("/student/discussion", function () {
         return view('student.discussion');

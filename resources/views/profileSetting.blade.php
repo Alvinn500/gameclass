@@ -1,5 +1,5 @@
 <x-teacher-layout title="Profil">
-    <div class="w-11/12 mx-auto gradient-profile rounded-lg p-4">
+    <div class="w-11/12 mx-auto dark-blue rounded-lg p-4">
         <form>  
             <div class="text-center mb-8">
                 <img class="rounded-full w-40 mx-auto mb-2" src="{{asset("img/default.jpg")}}" alt="Photo profile">

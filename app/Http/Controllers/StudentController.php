@@ -18,18 +18,43 @@ class StudentController extends Controller
     {
 
         $user = Auth::user();
-        $classes = $user->classes()->orderBy('created_at', 'desc')->get();
-        $totalClass = $user->classes()->count();
-        $total_xp = $user->classes->flatMap->lessons->flatMap->subjects->flatMap->SubjectReadeds->where("user_id", $user->id)->sum('score');
+        $class = $user->classes()->get();
+        
+        
+        $totalSubjectXP = $user->SubjectReadeds->sum('score'); 
+        $totalQuizXP = 0;
+
+        foreach($user->multipleChoiceAnswers as $answer) {
+            if( $answer->is_correct ) {
+                $totalQuizXP += 50;
+            } else {
+                $totalQuizXP += 10;
+            }
+        }
+        // dd($totalSubjectXP);
+
+        $total_xp =  $totalSubjectXP + $totalQuizXP;
         $level = 0;
         $emblem = ""; 
-        
-        $class = $user->classes()->get();
+        $classes = $user->classes()->orderBy('created_at', 'desc')->get();
+        $totalClass = $user->classes()->count();
+        // dd($total_xp);
+
+
         $totalSubject = $user->classes->flatMap->lessons->flatMap->subjects->count();
-        $subjectReaded = $class->flatMap->lessons->flatMap->subjects->flatMap->SubjectReadeds->where("is_readed", true)->where("user_id", $user->id)->count();
-        // dd($subjectReaded);
-        $ongoing_mission = $totalSubject - $subjectReaded;
-        $total_mission = $totalSubject;
+        $subjectReaded = $user->SubjectReadeds->where("is_readed", true)->count();
+        $ongoing_subject = $totalSubject - $subjectReaded;
+        
+        $totalQuiz = $user->classes->flatMap->lessons->flatMap->tasks->filter(function ($task) {
+            return in_array($task->type, [1,2]);
+        })->count();
+        $quizAnswered = $user->multipleChoiceAnswers->where("is_correct", true)->count();
+        $ongoing_quiz = $totalQuiz - $quizAnswered;
+
+        $ongoing_mission = $ongoing_subject + $ongoing_quiz;
+        $total_mission = $totalSubject + $totalQuiz;
+        // dd($totalQuiz);
+        // dd($user->classes->flatMap->lessons->flatMap->tasks->where("type", "2")); 
 
         if ($total_xp >= 500 && $total_xp <= 1000) {
             $level = 1;
