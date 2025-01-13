@@ -30,7 +30,7 @@
                                 <img class="w-6" src="{{asset("img/arrow.png")}}" alt="arrow">
                             </a>
                         @endforeach
-
+                        {{-- Quiz --}}
                         @foreach ($lesson->tasks->where("type", "1") as $quiz)
                             <a href="/student/{{$class->id}}/{{$lesson->id}}/quiz/{{$quiz->id}}" class="flex items-center justify-between border-b border-gray-600 py-3">
                                 <h4 class="text-sm font-medium">
@@ -39,9 +39,9 @@
                                 <img class="w-6" src="{{asset("img/arrow.png")}}" alt="arrow">
                             </a>
                         @endforeach
-
+                        {{-- Test Quiz --}}
                         @foreach ($lesson->tasks->where("type", "2") as $test)
-                            <a href="/student/lesson/1/test/{{$test->id}}" class="flex items-center justify-between border-b border-gray-600 py-3">
+                            <a href="/student/{{$class->id}}/{{$lesson->id}}/quiz/{{$test->id}}" class="flex items-center justify-between border-b border-gray-600 py-3">
                                 <h4 class="text-sm font-medium">
                                     {{$test->title}}
                                 </h4>
