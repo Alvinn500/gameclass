@@ -1,4 +1,4 @@
-<x-teacher-layout title="soal {{$task->title}}">
+<x-student-layout title="soal {{$task->title}}">
     <x-breadcrumbs :breadcrumbs="$breadcrumbs"/>
     <x-student-sub-nav
         missionPath="/student/class/{{$class->id}}"
@@ -57,4 +57,4 @@
             </div>
         </div>
     </div>
-</x-teacher-layout>
+</x-student-layout>

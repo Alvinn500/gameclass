@@ -1,4 +1,4 @@
-<x-teacher-layout title="Hasil Essay">
+<x-student-layout title="Hasil Essay">
     <x-breadcrumbs :breadcrumbs="$breadcrumbs"/>
     <x-student-sub-nav
         missionPath="/student/class/{{$class->id}}"
@@ -33,4 +33,4 @@
             </div>
    
             </div>
-</x-teacher-layout>
+</x-student-layout>

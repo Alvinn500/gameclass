@@ -6,8 +6,8 @@
         activityPath="/student/{{$class->id}}/activity"
         informationPath="/student/{{$class->id}}/information"
     />
-    <div class="flex gap-6 mt-6">
-        <div class="w-[70%]">
+    <div class="flex flex-col sm:flex-row gap-6 mt-6">
+        <div class="w-full sm:w-[62%] md:w-[70%]">
             @foreach ($lessons as $lesson)
                 <div class="mb-2">
                     <a 
@@ -70,7 +70,7 @@
                 </div>
             @endforeach
         </div>
-        <div class="w-[30%] flex gap-6 flex-col">
+        <div class="w-full sm:w-[38%] md:w-[30%] flex gap-6 flex-col">
             <div class="bg-main p-3 rounded-xl text-center">
                 <input type="hidden" id="completed_mission" value="{{$completed_mission}}">
                 <input type="hidden" id="ongoing_mission" value="{{$ongoing_mission}}">
@@ -93,37 +93,37 @@
                         <p class="text-yellow-400 font-semibold text-lg">{{$level}}</p>
                     </div>
                 </div>
-                <img class="w-[58%] mx-auto mb-4" src="{{asset("img/character/2.png")}}" alt="character">
+                <img class="w-[45%] sm:w-[58%] mx-auto mb-4" src="{{asset("img/character/2.png")}}" alt="character">
                 <h4 class="bg-secondary text-center p-2 text-lg font-medium">{{$emblem}}</h4>
                 <div class="flex justify-center px-5 gap-2 py-4">
                     @if($total_xp > 500)
-                        <img class="w-[16%] md:w-[14%] aspect-square" src="{{asset("img/badge/1.png")}}" alt="badge">
+                        <img class="w-[12%] sm:w-[16%] md:w-[14%] aspect-square" src="{{asset("img/badge/1.png")}}" alt="badge">
                     @else
-                        <img class="w-[16%] md:w-[14%] aspect-square" src="{{asset("img/badge/1-gs.png")}}" alt="badge">
+                        <img class="w-[12%] sm:w-[16%] md:w-[14%] aspect-square" src="{{asset("img/badge/1-gs.png")}}" alt="badge">
                     @endif
 
                     @if($total_xp > 1000)
-                        <img class="w-[16%] md:w-[14%] aspect-square" src="{{asset("img/badge/2.png")}}" alt="badge">
+                        <img class="w-[12%] sm:w-[16%] md:w-[14%] aspect-square" src="{{asset("img/badge/2.png")}}" alt="badge">
                     @else
-                        <img class="w-[16%] md:w-[14%] aspect-square" src="{{asset("img/badge/2-gs.png")}}" alt="badge">
+                        <img class="w-[12%] sm:w-[16%] md:w-[14%] aspect-square" src="{{asset("img/badge/2-gs.png")}}" alt="badge">
                     @endif
 
                     @if($total_xp > 2000)
-                        <img class="w-[16%] md:w-[14%] aspect-square" src="{{asset("img/badge/3.png")}}" alt="badge">
+                        <img class="w-[12%] sm:w-[16%] md:w-[14%] aspect-square" src="{{asset("img/badge/3.png")}}" alt="badge">
                     @else
-                        <img class="w-[16%] md:w-[14%] aspect-square" src="{{asset("img/badge/3-gs.png")}}" alt="badge">
+                        <img class="w-[12%] sm:w-[16%] md:w-[14%] aspect-square" src="{{asset("img/badge/3-gs.png")}}" alt="badge">
                     @endif
 
                     @if($total_xp > 4000)
-                        <img class="w-[16%] md:w-[14%] aspect-square" src="{{asset("img/badge/4.png")}}" alt="badge">
+                        <img class="w-[12%] sm:w-[16%] md:w-[14%] aspect-square" src="{{asset("img/badge/4.png")}}" alt="badge">
                     @else
-                        <img class="w-[16%] md:w-[14%] aspect-square" src="{{asset("img/badge/4-gs.png")}}" alt="badge">
+                        <img class="w-[12%] sm:w-[16%] md:w-[14%] aspect-square" src="{{asset("img/badge/4-gs.png")}}" alt="badge">
                     @endif
 
                     @if($total_xp > 8000)
-                        <img class="w-[16%] md:w-[14%] aspect-square" src="{{asset("img/badge/5.png")}}" alt="badge">
+                        <img class="w-[12%] sm:w-[16%] md:w-[14%] aspect-square" src="{{asset("img/badge/5.png")}}" alt="badge">
                     @else
-                        <img class="w-[16%] md:w-[14%] aspect-square" src="{{asset("img/badge/5-gs.png")}}" alt="badge">
+                        <img class="w-[12%] sm:w-[16%] md:w-[14%] aspect-square" src="{{asset("img/badge/5-gs.png")}}" alt="badge">
                     @endif
                 </div>
             </div>
