@@ -19,6 +19,8 @@ return new class extends Migration
             $table->foreign('multiple_choice_id')->references('id')->on('multiple_choices')->cascadeOnDelete();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
+            $table->unsignedBigInteger('task_id');
+            $table->foreign('task_id')->references('id')->on('tasks')->cascadeOnDelete();
             $table->timestamps();
         });
     }

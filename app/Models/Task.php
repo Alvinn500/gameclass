@@ -26,6 +26,10 @@ class Task extends Model
         return $this->hasMany(Essay::class, 'tasks_id');
     }
 
+    public function essayScores() {
+        return $this->hasMany(EssayScore::class);
+    }
+
     public function upload() {
         return $this->hasOne(Upload::class, 'tasks_id');
     }

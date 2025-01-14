@@ -60,6 +60,9 @@ Route::middleware('auth', EnsureTeacherRole::class)->group(function () {
     Route::get("/teacher/lesson/{lesson}/subject", [SubjectController::class, 'create']);
     Route::get("/teacher/lesson/{lesson}/subject/{subject}", [SubjectController::class, 'show']);
     Route::post("/teacher/lesson/{lesson}/subject", [SubjectController::class, 'store']);
+    Route::get("/teacher/lesson/{lesson}/subject/edit/{subject}", [SubjectController::class, 'edit']);
+    Route::patch("/teacher/lesson/{lesson}/subject/edit/{subject}", [SubjectController::class, 'update']);
+    Route::delete("/teacher/lesson/{lesson}/subject/delete/{subject}", [SubjectController::class, 'destroy']);
     
 
     // teacher task

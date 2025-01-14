@@ -65,4 +65,8 @@ class User extends Authenticatable
         return $this->hasMany(EssayAnswer::class);
     }
 
+    public function essayScores() {
+        return $this->hasMany(EssayScore::class);
+    }
+
 }

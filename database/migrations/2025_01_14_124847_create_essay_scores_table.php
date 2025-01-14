@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('essay_answers', function (Blueprint $table) {
+        Schema::create('essay_scores', function (Blueprint $table) {
             $table->id();
-            $table->text('answer');
+            $table->integer('score')->default(0);
+            $table->integer('XP')->default(0);
+            $table->unsignedBigInteger('task_id');
+            $table->foreign('task_id')->references('id')->on('tasks')->onDelete('cascade');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
-            $table->unsignedBigInteger('essay_id');
-            $table->foreign('essay_id')->references('id')->on('essays')->cascadeOnDelete();    
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('essay_answers');
+        Schema::dropIfExists('essay_scores');
     }
 };

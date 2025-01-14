@@ -4,18 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class EssayAnswer extends Model
+class EssayScore extends Model
 {
     
     protected $fillable = [
-        'answer',
-        'user_id',
-        'essay_id',
+        'score',
+        'XP',
+        'task_id',
+        'user_id'
     ];
 
-    public function essay()
+    public function task()
     {
-        return $this->belongsTo(Essay::class);
+        return $this->belongsTo(Task::class);
     }
 
     public function user()

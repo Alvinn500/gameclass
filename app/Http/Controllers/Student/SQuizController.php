@@ -85,6 +85,7 @@ class SQuizController extends Controller
                 "is_correct" => $is_correct,
                 "multiple_choice_id" => $quiz->id,
                 "user_id" => Auth::user()->id,
+                "task_id" => $task->id
             ]);
         }   
 
