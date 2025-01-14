@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Lesson;
 use App\Models\SubjectReaded;
 use App\Models\Subject;
+use App\Models\Task;
+use App\Models\MultipleChoice;
 
 class StudentController extends Controller
 {
@@ -31,30 +33,28 @@ class StudentController extends Controller
                 $totalQuizXP += 10;
             }
         }
-        // dd($totalSubjectXP);
-
+        
         $total_xp =  $totalSubjectXP + $totalQuizXP;
         $level = 0;
         $emblem = ""; 
-        $classes = $user->classes()->orderBy('created_at', 'desc')->get();
-        $totalClass = $user->classes()->count();
-        // dd($total_xp);
+        $classes = $user->classes()->orderBy('created_at', 'desc')->limit(2)->get();
+        $totalClass = $user->classes()->count();;
 
-
+         
         $totalSubject = $user->classes->flatMap->lessons->flatMap->subjects->count();
         $subjectReaded = $user->SubjectReadeds->where("is_readed", true)->count();
-        $ongoing_subject = $totalSubject - $subjectReaded;
         
         $totalQuiz = $user->classes->flatMap->lessons->flatMap->tasks->filter(function ($task) {
             return in_array($task->type, [1,2]);
         })->count();
-        $quizAnswered = $user->multipleChoiceAnswers->where("is_correct", true)->count();
-        $ongoing_quiz = $totalQuiz - $quizAnswered;
+        $quizAnswered = $user->multipleChoiceAnswers->pluck('task_id')->unique()->count();
 
-        $ongoing_mission = $ongoing_subject + $ongoing_quiz;
-        $total_mission = $totalSubject + $totalQuiz;
-        // dd($totalQuiz);
-        // dd($user->classes->flatMap->lessons->flatMap->tasks->where("type", "2")); 
+        $totalEssay = $user->classes->flatMap->lessons->flatMap->tasks->where("type", "3")->count();
+        $essayAnswered = $user->essayScores->count();
+
+        $ongoing_mission = $subjectReaded + $quizAnswered + $essayAnswered;
+        $total_mission = $totalSubject + $totalQuiz + $totalEssay;
+        // dd($totalEssay, $essayAnswered); 
 
         if ($total_xp >= 500 && $total_xp <= 1000) {
             $level = 1;
@@ -120,23 +120,36 @@ class StudentController extends Controller
     {
         $user = Auth::user();
         $lessons = $class->lessons()->get();
+        $taskId = $lessons->flatMap->tasks->pluck('id');
         $subjedId = $lessons->flatMap->subjects->pluck('id');
         $subjectReadeds = SubjectReaded::whereIn('subject_id', $subjedId)->where('user_id', $user->id)->get();
         
-        // dd($user->subjectReadeds);
+        
+        $totalSubjectXP = $subjectReadeds->sum('score');
+        $totalQuizXP = 0;
+
+        foreach($user->multipleChoiceAnswers->whereIn('task_id', $taskId) as $answer) { 
+            if( $answer->is_correct ) {
+                $totalQuizXP += 50;
+            } else {
+                $totalQuizXP += 10;
+            }
+        }
+        // dd($user->multipleChoiceAnswers, $taskId);
         $score = $subjectReadeds->sum('score');
         $total_xp = $user->classes->flatMap->lessons->flatMap->subjects->flatMap->SubjectReadeds->where("user_id", $user->id)->sum('score');
         
         
         $totalSubject = $lessons->flatMap->subjects->count();
-        $totalQuiz = 0;
-        $totalEssay = 0;
+        $totalQuiz = $lessons->flatMap->tasks->filter(function ($task) {
+            return in_array($task->type, [1,2]);
+        })->count();
+        $totalEssay = $lessons->flatMap->tasks->where("type", "3")->count();
         $totalUploadTask = 0;
 
-
         $readed = $subjectReadeds->count('is_readed');
-        $quizAnswered = 0;
-        $essayAnswered = 0;
+        $quizAnswered = $user->multipleChoiceAnswers->whereIn('task_id', $taskId)->pluck('task_id')->unique()->count();
+        $essayAnswered = $lessons->flatMap->tasks->where("type", "3")->whereIn('id', $user->essayScores->pluck('task_id'))->count();
         $uploaded = 0;
         
         $total_mission = $totalSubject + $totalQuiz + $totalEssay + $totalUploadTask;

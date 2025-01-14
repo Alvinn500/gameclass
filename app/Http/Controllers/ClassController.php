@@ -14,7 +14,7 @@ class ClassController extends Controller
     {
 
         $user = Auth::user();
-        $classes = $user->classes()->get();
+        $classes = $user->classes()->orderBy('created_at', 'desc')->get();
 
         return view('teacher.class.index', ["classes" => $classes]);
     }
@@ -23,7 +23,7 @@ class ClassController extends Controller
     {
 
         $user = Auth::user();
-        $classes = $user->classes()->get();
+        $classes = $user->classes()->orderBy('created_at', 'desc')->get();
         
         return view('student.class.index', ["classes" => $classes]);
 
