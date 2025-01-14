@@ -9,15 +9,33 @@
     />
     <div>
         <h1 class="px-4 text-sm font-semibold my-4 uppercase">Materi</h1>
-        <div class="flex flex-col md:flex-row gap-4">
-            <div class="bg-main px-4 py-6 rounded-2xl order-2 md:order-1 w-full md:w-[70%] lg:w-[75%] space-y-2">
-                <h2 class="font-semibold text-3xl mb-4">{{$subject->title}}</h2>
-                {!! $subject->content !!}
+        <div class="flex flex-col sm:flex-row gap-4">
+            <div class="order-2 sm:order-1 w-full sm:w-[70%] lg:w-[75%]">
+                <div class="bg-main px-4 py-6 rounded-2xl space-y-2 min-h-36">
+                    <h2 class="font-semibold text-3xl mb-4">{{$subject->title}}</h2>
+                    {!! $subject->content !!}
+                </div>
             </div>
-            <div class="order-1 md:order-2 w-full md:w-[30%] lg:w-[25%] h-fit dark-green rounded-2xl p-4">
-                <h2 class="font-bold mb-2 text-4xl lg:text-5xl">{{$studentReaded}}</h2>
-                <p class="text-sm mb-4">Siswa telah membaca materi</p>
-                <a href="" class="uppercase text-center block text-xs px-4 py-3 rounded-lg font-bold bg-yellow-500 text-black">lihat hasil</a>
+            <div class="order-1 sm:order-2 w-full sm:w-[30%] lg:w-[25%] space-y-3">
+                <div class="dark-purple h-fit rounded-2xl p-4 space-y-3">
+                    <h2 class="font-bold text-xl">Berkas Lampiran</h2>
+                    <p class="font-medium">{{$subject->assignment}}</p>
+                    <a href="/student/download{{$subject->assignment}}" class="bg-violet-800 text-white py-2.5 px-5 text-sm font-semibold rounded-lg inline-block">Download</a>
+                </div>
+                <div class="h-fit dark-green rounded-2xl p-4">
+                    <h2 class="font-bold mb-2 text-4xl lg:text-5xl">{{$studentReaded}}</h2>
+                    <p class="text-sm mb-4">Siswa telah membaca materi</p>
+                    <a href="" class="uppercase text-center block text-xs px-4 py-3 rounded-lg font-bold bg-yellow-500 text-black">lihat hasil</a>
+                </div>
+                <div class="flex gap-2">
+                    <a href="/teacher/lesson/{{$lesson->id}}/subject/edit/{{$subject->id}}" class="bg-yellow-500 text-black py-2.5 px-5 text-sm font-semibold rounded-lg inline-block">Edit</a>
+                    <form action="/teacher/lesson/{{$lesson->id}}/subject/delete/{{$subject->id}}" method="POST">
+                        @csrf
+                        @method("DELETE")
+                    
+                        <button type="submit" class="bg-red-600 text-white py-2.5 px-5 text-sm font-semibold rounded-lg inline-block">Hapus</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

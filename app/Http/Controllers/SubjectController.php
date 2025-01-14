@@ -56,6 +56,7 @@ class SubjectController extends Controller
         return view('teacher.subject.create', ['class' => $class, "breadcrumbs" => $breadcrumbs, "lesson" => $lesson]);  
     }
 
+
     public function store(Lesson $lesson) {
         request()->validate([
             'title' => ['required', 'min:3'],
@@ -96,9 +97,66 @@ class SubjectController extends Controller
         return view('teacher.subject.show', [
             'class' => $class,
             'subject' => $subject,
+            'lesson' => $lesson,
             'breadcrumbs' => $breadcrumbs,
             'studentReaded' => $studentReaded
         ]);
+    }
+
+    public function edit(Lesson $lesson, Subject $subject) {
+        
+        $class = $lesson->class;
+        
+        $breadcrumbs = [
+            ['link' => "/teacher/class", 'name' => "Kelas"],
+            ['link' => "/teacher/class/$class->id", 'name' => $class->study_name . "-" . $class->class],
+            ['name' => "Edit Materi: {{$subject->title}}"],
+        ];
+
+        return view('teacher.subject.edit', [
+            'class' => $class,
+            'lesson' => $lesson,
+            'subject' => $subject,
+            'breadcrumbs' => $breadcrumbs
+        ]);
+
+    }
+
+    public function update(Lesson $lesson, Subject $subject) {
+
+        request()->validate([
+            'title' => ['required', 'min:3'],
+            'content' => ['required'],
+            'assignment' => ['file', 'max:2048']
+        ]);
+
+        $class = $lesson->class;
+
+        if (request()->hasFile('assignment')) {
+            $file = request()->file("assignment");
+            $filename = $file->getClientOriginalName();
+            $file->move('subject', $filename);
+        }
+        
+
+        $subject->update([
+            'lesson_id' => $lesson->id,
+            'title' => request()->title,
+            'content' => request()->content,
+            'assignment' => $filename ?? null,
+        ]);
+
+        return redirect("/teacher/lesson/$lesson->id/subject/$subject->id");
+
+    }
+
+    public function destroy(Lesson $lesson, Subject $subject) {
+
+        $class = $lesson->class;
+    
+        $subject->delete();
+
+        return redirect("/teacher/class/$class->id");
     }
 
     public function readed(Lesson $lesson, Subject $subject) {
