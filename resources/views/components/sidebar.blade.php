@@ -11,7 +11,7 @@
                 <i class="fa fa-home" aria-hidden="true"></i>
                 <a href="/{{$dashboardUrl}}" class="font-medium">Dashboard</a>
             </div>
-            <div class="py-3 space-x-2 px-6 {{preg_match('/class|lesson|task|quiz|essay|upload/', request()->path()) ? 'sidebar-focus' : ''}}">
+            <div class="py-3 space-x-2 px-6 {{preg_match('/class|lesson|task|quiz|essay|upload|leaderboard/', request()->path()) ? 'sidebar-focus' : ''}}">
                 <i class="fas fa-chalkboard-teacher "></i>
                 <a href="/{{$classUrl}}" class="font-medium">Kelas</a>
             </div>

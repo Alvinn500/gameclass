@@ -18,6 +18,7 @@ use App\http\Controllers\EssayController;
 use App\http\controllers\UploadController;
 use App\http\controllers\Student\SQuizController;
 use App\http\controllers\Student\SEssayController;
+use App\http\controllers\Student\SUploadController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -145,6 +146,12 @@ Route::middleware('auth', EnsureStudentRole::class)->group(function () {
     Route::get("/student/{class}/{lesson}/essay/{task}", [SEssayController::class, 'show']);
     Route::post("/student/{class}/{lesson}/essay/{task}", [SEssayController::class, 'store']);
     Route::get("/student/{class}/{lesson}/essay/{task}/result", [SEssayController::class, 'result']);
+
+
+    // student uploads
+    Route::get("/student/{class}/{lesson}/upload/{task}", [sUploadController::class, 'show']);
+    Route::post("/student/{class}/{lesson}/upload/{task}", [sUploadController::class, 'store']);
+    Route::get("/student/{class}/{lesson}/upload/{task}/result", [sUploadController::class, 'result']);
 
 
     // student discussion

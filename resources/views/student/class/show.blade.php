@@ -59,7 +59,7 @@
                         @endforeach
 
                         @foreach ($lesson->tasks->where("type", "4") as $upload)
-                            <a href="/student/lesson/1/upload/{{$upload->id}}" class="flex items-center justify-between border-b border-gray-600 py-3">
+                            <a href="/student/{{$class->id}}/{{$lesson->id}}/upload/{{$upload->id}}" class="flex items-center justify-between border-b border-gray-600 py-3">
                                 <h4 class="text-sm font-medium">
                                     {{$upload->title}}
                                 </h4>

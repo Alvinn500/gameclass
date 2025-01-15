@@ -18,4 +18,10 @@ class Upload extends Model
         return $this->belongsTo(Task::class);
     }
 
+    public function answer() {
+        
+        return $this->hasOne(UploadAnswer::class);
+
+    }
+
 }
