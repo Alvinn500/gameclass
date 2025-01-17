@@ -22,8 +22,8 @@
                             <img class="aspect-square w-7" src="{{asset("photo_profile/$user->photo")}}" alt="photo profile">
                             <h4>{{$user->name}}</h4>
                         </div>
-                        <div>
-                            <p>{{$score->where('user_id', $user->id)->sum('score')}}</p>
+                        <div> 
+                            <p>{{$subjectScore->where('user_id', $user->id)->sum('score') + $quizScore->where('user_id', $user->id)->sum('score')}}</p>
                             <span class="absolute block h-full -right-2 top-0 mx-auto w-2 bg-yellow-400"></span>
                         </div>
                     </div>

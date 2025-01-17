@@ -1,8 +1,9 @@
     <header class="sticky top-0 bg-secondary z-50">
         <nav class="container md:px-12 lg:px-24 mx-auto relative">
-            <div class="flex py-6 justify-between">
-                <a href="/">
-                    <img src="{{asset("img/logo.png")}}" alt="logo" class="h-10">
+            <div class="flex pl-4 py-6 justify-between">
+                <a href="/" class="flex justify-center items-center gap-2">
+                    <img src="{{asset("image/logo.png")}}" alt="logo" class="h-6 ms:h-8">
+                    <h1 class="text-white font-permanentMarker text-xl md:text-2xl">PLAYED</h1>
                 </a>
                 <div class="my-auto">
                     <ul class="space-x-6 hidden md:flex" id="nav">

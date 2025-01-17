@@ -13,22 +13,25 @@ export default {
         extend: {
             fontFamily: {
                 sans: ["Figtree", ...defaultTheme.fontFamily.sans],
+                permanentMarker: [
+                    "Permanent Marker",
+                    ...defaultTheme.fontFamily.serif,
+                ],
             },
             backgroundColor: {
                 primary: "#c539ff",
                 secondary: "#121212",
-                main: "#191b2a ",
+                main: "#171717 ",
                 semigray: "rgba(255, 255, 255, 0.1)",
                 whiteSubNav: "#2d3144",
                 semiblack: "#141414",
-                purple: "#7200ff",
                 indigoCustom: "#383d6e",
             },
             textColor: {
                 primary: "#c539ff",
                 secondary: "#121212",
                 main: "#191b2a ",
-                breadcrumb: "#a592f0",
+                breadcrumb: "#84cc16",
             },
             gradientColorStops: {
                 primary: "#c539ff",

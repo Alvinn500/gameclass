@@ -22,8 +22,10 @@
                     <div class="p-4 dark-blue rounded-xl space-y-3">
                         <p class="text-yellow-500 uppercase text-sm">pertanyaan no {{$loop->iteration}}</p>
                         <h3 class="text-base font-semibold">{{$essay->question}}</h3>
-                        <img class="rounded-xl h-[50%] md:h-[25%]" src="{{asset("essays/$essay->image")}}" alt="img">
-                        @foreach ($essay->answers as $answer)
+                        @if($essay->image)
+                            <img class="rounded-xl h-[50%] md:h-[25%]" src="{{asset("essays/$essay->image")}}" alt="img">
+                        @endif
+                        @foreach ($essay->answers->where('user_id', Auth::user()->id) as $answer)
                             <div class="bg-secondary p-4">
                                 <p class="text-gray-400">{{$answer->answer}}</p>
                             </div>

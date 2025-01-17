@@ -1,9 +1,9 @@
 <x-student-layout title="Kelas">
         <div class="flex flex-col md:flex-row gap-8">
         <div class=" w-full md:w-2/4">
-            <a href="/student/class/find" class="w-full md:w-auto inline-block uppercase bg-yellow-500 text-black rounded-md px-4 py-3 font-semibold text-xs mb-6">Temukan Kelas</a>
+            <a href="/student/class/find" class="w-full md:w-auto inline-block uppercase bg-main text-white rounded-md px-4 py-3.5 font-bold text-xs mb-6">Temukan Kelas</a>
             <div class="flex items-center gap-2 mb-2.5">
-                <i class="fas fa-dot-circle text-yellow-500 text-sm"></i>
+                <i class="fas fa-dot-circle text-lime-500 text-sm"></i>
                 <h4 class="uppercase text-sm font-semibold">Kelas Saya</h4>
             </div>
             <div>

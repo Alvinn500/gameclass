@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -27,7 +28,7 @@ body {
 }
 
 .nav-active {
-    @apply text-primary ease-in duration-300;
+    @apply text-lime-500 ease-in duration-300;
 }
 
 .nav-active::after {
@@ -38,13 +39,17 @@ body {
     transform: translateX(-50%) scaleX(0);
     transform-origin: center;
     height: 2px;
-    background-color: #c539ff;
+    background-color: #84cc16;
     width: 100%;
     animation: grow-line-center 0.3s ease-in forwards;
 }
 
 .sidebar-focus {
-    @apply bg-violet-800 rounded-md;
+    @apply bg-indigo-600;
+}
+
+.sub-nav-focus {
+    background-color: #ffffff0e;
 }
 
 .humburger-active > span:nth-child(1) {
@@ -64,31 +69,35 @@ body {
 }
 
 .hover-fitur:hover > span {
-    @apply bg-primary;
+    @apply bg-neutral-900;
 }
 
 section {
     scroll-margin-top: 100px;
 }
 
+.orange-white {
+    background: linear-gradient(90deg, #fb923c 55%, #fff 280%);
+}
+
+.dark-white {
+    background: linear-gradient(138deg, #fff -80%, #121212 20%);
+}
+
 .dark-purple {
-    background: linear-gradient(144deg, rgba(25, 27, 42, 1) 38%, #2e193a 82%);
+    background: linear-gradient(144deg, #171717 38%, #2e193a 150%);
 }
 
 .dark-blue {
-    background: linear-gradient(
-        144deg,
-        rgba(25, 27, 42, 1) 38%,
-        rgba(10, 12, 45, 1) 82%
-    );
+    background: linear-gradient(144deg, #171717 38%, rgba(10, 12, 45, 1) 150%);
 }
 
 .gradient-diskusi {
-    background-image: linear-gradient(310deg, #141727 0%, #3a416f 100%);
+    background-image: linear-gradient(310deg, #171717 30%, #3a416f 250%);
 }
 
 .dark-green {
-    background: linear-gradient(144deg, rgba(25, 27, 42, 1) 38%, #0f2c3b 82%);
+    background: linear-gradient(144deg, #171717 38%, #0f2c3b 150%);
 }
 
 .canvas {

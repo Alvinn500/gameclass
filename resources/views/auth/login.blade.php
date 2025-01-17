@@ -13,33 +13,33 @@
 
     <main class="container md:px-12 lg:px-24 mx-auto">
         <section>
-            <div class="grid grid-cols-1 md:grid-cols-2">
-                <div class="hidden lg:block">
-                    <img src="{{asset("/img/vector/Mobile login-cuate.svg")}}" class="w-full mx-auto" alt="login-img" style="position:relative">
-                </div>
-                <div class="pb-5 mt-16">                    
-                    <h4 class="mt-3 mb-2 text-white text-2xl font-bold"><span>Login</span> </h4>
-                    <h6 class="mb-4 small text-gray-500 text-sm font-light">Belum memiliki akun? <a href="register" class="text-primary font-semibold">Daftar</a></h6>
+            <div class="flex justify-center items-center h-[90vh] w-full px-4 sm:px-0">
+                <div class="space-y-4"> 
+                    <div class="space-y-2">
+                        <h4 class="text-center text-white text-2xl font-bold">Selamat Datang</h4>
+                        <p class="text-center text-gray-500 text-sm font-light">Masukan email dan panssword untuk mengakses akun kamu</p>                       
+                    </div>
                     
                     @error('email')
                         <div class="text-sm font-light text-red-600">{{$message}}</div>
                     @enderror
     
-                    <form method="POST" action="login">
+                    <form method="POST" action="login" class="space-y-6">
                         @csrf
-                        <label class="text-white">Email</label>
-                        <div class="mb-6 mt-3">
-                            <input type="email" name="email" value="{{old('email')}}" class="bg-secondary border-b-primary border-b w-96 p-2 placeholder:text-sm placeholder:text-gray-500 focus:outline-none text-white" placeholder="Masukkan Email" required>
+                        <div class="flex flex-col gap-2">
+                            <label class="text-white">Email</label>
+                            <input type="email" name="email" value="{{old('email')}}" class="bg-neutral-900 rounded-md w-full p-3 text-sm placeholder:text-gray-500 focus:outline-none text-white" placeholder="Masukkan Email" required>
                         </div>
-                        <label class="text-white">Password</label>
-                        <div class="mb-6 mt-3"> 
-                            <input type="password" name="password" class="bg-secondary border-b-primary border-b w-96 p-2 placeholder:text-sm placeholder:text-gray-500 focus:outline-none text-white" placeholder="Masukkan Password" required>
+                        <div class="flex flex-col gap-2"> 
+                            <label class="text-white">Password</label>
+                            <input type="password" name="password" class="bg-neutral-900 rounded-md w-full p-3 text-sm placeholder:text-gray-500 focus:outline-none text-white" placeholder="Masukkan Password" required>
                         </div>
     
                         <div class="text-left">
-                            <button type="submit" class="uppercase bg-gradient-to-r hover:bg-gradient-to-l from-primary to-violet-950 text-sm py-3.5 px-6 font-medium text-white">Masuk</button>
+                            <button type="submit" class="uppercase w-full bg-indigo-600 text-sm rounded-md py-3.5 px-6 font-medium text-white">Masuk</button>
                         </div>
                     </form>
+                    <p class="text-center text-gray-500 text-sm font-light">Belum memiliki akun? <a href="register" class="text-lime-500 font-semibold">Daftar</a></p>
                 </div>
             </div>
         </section>

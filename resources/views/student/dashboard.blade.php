@@ -1,10 +1,10 @@
 <x-student-layout title="Dashboard">
     <div class="grid grid-rows-2  md:flex  gap-8 mb-0 md:mb-8 mt-14 md:mt-0">
-        <div class="flex mx-auto md:mx-0 dark-purple rounded-xl w-full md:w-[70%] lg:w-3/5 md:min-w-[298.73px] duration-600 ease-in-out">
+        <div class="flex mx-auto md:mx-0 dark-purple rounded-xl w-full md:w-[70%] md:min-w-[298.73px] duration-600 ease-in-out">
             <div class="w-3/5 flex flex-col">
                 <div class="px-5 pt-5 mb-3">
                     <h3 class="uppercase text-xl font-medium">student</h3>
-                    <h3 class="uppercase text-3xl font-semibold text-yellow-400">{{$emblem}}</h3>
+                    <h3 class="uppercase text-3xl font-semibold text-lime-500">{{$emblem}}</h3>
                 </div>
                 <span class="block h-[0.0625rem] mx-auto w-[90%] bg-gray-600"></span>
                 <div class="flex p-5 h-24">
@@ -94,28 +94,28 @@
             </div>
             
         </div>
-        <div class="h-1/2 w-full md:w-[20%] xl:w-[40%]">
-            <div class="flex md:flex-col lg:flex-row lg:flex-wrap justify-center lg:justify-normal gap-4 md:gap-6 w-full ">
-                <div class="dark-green p-5 rounded-xl sm:min-w-[180px] lg:min-w-[140px] xl:min-w-[180px] w-1/3 h-[8.5rem]">
-                    <div class="flex items-center gap-2 mb-5 md:mb-4">
+        <div class="h-1/2 w-full md:w-[30%]">
+            <div class="flex flex-col justify-center lg:justify-normal gap-4 md:gap-6 w-full ">
+                <div class="dark-green p-5 rounded-xl sm:min-w-[180px] lg:min-w-[140px] xl:min-w-[180px] w-full h-[9.5rem]">
+                    <div class="flex items-center gap-2 mb-5">
                         <i class="fas fa-dot-circle text-lime-500 text-sm"></i>
-                        <h3 class="text-sm uppercase font-semibold">total xp</h3>
+                        <h3 class="text-sm uppercase font-bold">total xp</h3>
                     </div>
                     <p class="text-3xl font-semibold text-center">{{$total_xp}}</p>
                 </div>
-                <div class="dark-green p-5 rounded-xl sm:min-w-[180px] lg:min-w-[140px] xl:min-w-[180px] w-1/3 h-[8.5rem]">
-                    <div class="flex items-center gap-2 mb-5 md:mb-4">
+                <div class="dark-green p-5 rounded-xl sm:min-w-[180px] lg:min-w-[140px] xl:min-w-[180px] w-full h-[9.5rem]">
+                    <div class="flex items-center gap-2 mb-5">
                         <i class="fas fa-dot-circle text-lime-500 text-sm"></i>
-                        <h3 class="text-sm uppercase font-semibold">level</h3>
+                        <h3 class="text-sm uppercase font-bold">level</h3>
                     </div>
                     <p class="text-3xl font-semibold text-center">{{$level}}</p>
                 </div>
-                <div class="mx-auto md:mx-0 bg-main p-2 md:p-4 rounded-xl sm:min-w-[180px] lg:min-w-[140px] xl:min-w-[180px] w-1/3 h-[8.5rem]">
+                {{-- <div class="mx-auto md:mx-0 bg-main p-2 md:p-4 rounded-xl sm:min-w-[180px] lg:min-w-[140px] xl:min-w-[180px] w-1/3 h-[8.5rem]">
                     <div class="gradient-diskusi w-full h-full rounded-lg pt-6 pl-3">
                         <h3 class="text-xs md:text-sm mb-2 md:mb-4 font-semibold">Forum Diskusi</h3>
                         <p class="text-xs md:text-sm font-normal md:font-medium">Jelajahi Forum</p>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
@@ -129,6 +129,6 @@
                 </a>
             @endforeach
         </div> 
-        <button class="w-full md:w-auto  uppercase bg-yellow-500 text-black rounded-md px-4 py-3 font-semibold text-xs mb-6">LIHAT SEMUA KELAS</button>
+        <a href="/student/class" class="w-full md:w-auto inline-block uppercase bg-violet-800 text-white rounded-md px-4 py-3 font-semibold text-xs mb-6">LIHAT SEMUA KELAS</a>
     </div>
 </x-student-layout>

@@ -23,7 +23,7 @@
                     <input class="focus:outline-none py-2 px-3 text-sm bg-main border border-white rounded-lg" type="file" name="logo_class" id="logo_class">
                     <x-form-error name="logo_class"/>
                 </div>
-                <button class="uppercase font-semibold py-3 px-4 text-xs rounded-lg bg-purple">Buat kelas</button>
+                <button class="uppercase font-semibold py-3 px-4 text-xs rounded-lg bg-violet-800">Buat kelas</button>
             </form>
         </div>
         <div class="w-1/2 hidden md:block">

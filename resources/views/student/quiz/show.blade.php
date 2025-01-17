@@ -28,7 +28,7 @@
                 <form action="" method="POST">
                     @csrf
                     @foreach ($quizzes as $quiz)    
-                        <div id="Q{{$i}}" style="display: none" class="flex-col sm:flex-row">
+                        <div id="Q{{$i}}" style="display: none" class="flex-col items-center sm:flex-row">
                             <div class="w-full sm:w-[50%] h-32 flex justify-center items-center">
                                 <h1 class="font-semibold">{{$quiz->question}}</h1>
                             </div>
