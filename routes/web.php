@@ -49,6 +49,7 @@ Route::middleware('auth', EnsureTeacherRole::class)->group(function () {
     Route::get("/teacher/class/create", [ClassController::class, 'create']);
     Route::post("/teacher/class/create", [ClassController::class, 'store']);
     Route::get("/teacher/class/{class}", [ClassController::class, 'show']);
+    Route::get("teacher/{class}/activity", [ClassController::class, 'TeacherActivity']);
     
     
     // teacher lesson
@@ -123,11 +124,11 @@ Route::middleware('auth', EnsureStudentRole::class)->group(function () {
     // student class
     Route::get("/student/class", [ClassController::class, 'student']);
     Route::get("/student/class/find" , [ClassController::class, 'find']);
-
     Route::post("/student/class/join/{class}", [StudentController::class, 'store']);
     Route::get("/student/class/{class}", [StudentController::class, 'show']);
-
     Route::get("/student/{class}/leaderboard", [ClassController::class, 'leaderboard']);
+    Route::get("/student/{class}/activity", [ClassController::class, 'StudentActivity']);
+
 
 
     // student subject

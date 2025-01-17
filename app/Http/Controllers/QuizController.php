@@ -7,6 +7,7 @@ use App\Models\Class_listing;
 use App\Models\Lesson;
 use App\Models\multipleChoice;
 use App\Models\Task;
+use App\Models\Activity;
 
 class QuizController extends Controller
 {
@@ -57,7 +58,7 @@ class QuizController extends Controller
             "e" => request()->e
         ];
         
-        multipleChoice::create([
+        $quiz = multipleChoice::create([
             "question" => request()->question,
             "options" => $options,
             "answer" => request()->answare,

@@ -18,4 +18,13 @@ class Class_listing extends Model
     {
         return $this->hasMany(Lesson::class);
     }
+
+    public function activity() {
+        return $this->hasMany(Activity::class, 'class_id');
+    }
+
+    public function scores() {
+        return $this->hasMany(ClassScore::class, 'class_id');    
+    }
+
 }

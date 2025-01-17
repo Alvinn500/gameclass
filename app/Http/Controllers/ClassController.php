@@ -7,6 +7,7 @@ use App\Models\lesson;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\MultipleChoiceAnswer;
 
 class ClassController extends Controller
 {
@@ -87,28 +88,76 @@ class ClassController extends Controller
 
         $classes = Class_Listing::all();
 
-        return view('student.class.find', ["classes" => $classes]);
+        $breadcrumbs = [
+            ['link' => "/student/class", 'name' => "Kelas"],
+            ['name' => "Temukan Kelas"]
+        ];
+
+        return view('student.class.find', [
+            "classes" => $classes,
+            "breadcrumbs" => $breadcrumbs
+        ]);
 
     }
 
     public function leaderboard(Class_listing $class) {
         
         $users = $class->users->where("role", "student");
-
-        $user = Auth::user();
-
-        $score = $class->lessons->flatMap->subjects->flatMap->SubjectReadeds;
+        $lessons = $class->lessons()->get();
+        $taskId = $lessons->flatMap->tasks->pluck('id');
         
+        // $quizScore = MultipleChoiceAnswer::whereIn('task_id', $taskId)->get();
+        // $subjectScore = $class->lessons->flatMap->subjects->flatMap->SubjectReadeds;
+        
+        $scores = $class->scores()->orderBy('score', 'desc')->get();
+        // dd($scores);
         $breadcrumbs = [
             ['link' => "/student/class", 'name' => "Kelas"],
             ['name' => "Leaderboard"],
         ];
-
+        
         return view('student.class.leaderboard', [
             "breadcrumbs" => $breadcrumbs, 
             "class" => $class, 
             "users" => $users, 
-            "score" => $score
+            "scores" => $scores
+            // "subjectScore" => $subjectScore,
+            // "quizScore" => $quizScore
+        ]);
+
+    }
+
+    public function TeacherActivity(Class_listing $class) {
+
+        $activities = $class->activity()->orderBy('created_at', 'desc')->get();
+        // dd($class);
+        $breadcrumbs = [
+            ['link' => "/teacher/class", 'name' => "Kelas"],
+            ['link => "/teacher/class/$class->id', 'name' => $class->study_name],
+            ['name' => "Aktifitas"]
+        ];
+
+        return view('teacher.class.activity', [
+            "class" => $class,
+            "breadcrumbs" => $breadcrumbs,
+            "activities" => $activities
+        ]);
+
+    }
+
+    public function StudentActivity(Class_listing $class) {
+
+        $activities = $class->activity()->orderBy('created_at', 'desc')->get();
+       
+        $breadcrumbs = [
+            ['link' => "/student/class", 'name' => "Kelas"],
+            ['name' => $class->study_name]
+        ];
+
+        return view('student.class.activity', [
+            "class" => $class,
+            "breadcrumbs" => $breadcrumbs,
+            "activities" => $activities
         ]);
 
     }

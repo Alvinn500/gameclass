@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Class_listing;
 use App\Models\Task; 
 use App\Models\Lesson;
+use App\Models\Activity;
+use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
@@ -40,6 +42,12 @@ class TaskController extends Controller
                 'lesson_id' => $lesson->id,
             ]);
 
+            Activity::create([
+                'description' => "membuat soal quiz: " . $task->title,
+                'user_id' => Auth::user()->id,
+                "class_id" => $class->id
+            ]);
+
             return redirect("/teacher/$class->id/$lesson->id/$task->id/quiz/create");
         }
 
@@ -49,6 +57,12 @@ class TaskController extends Controller
                 'title' => request()->title,
                 'type' => request()->type,
                 'lesson_id' => $lesson->id,
+            ]);
+
+            Activity::create([
+                'description' => "membuat soal tes: " . $task->title,
+                'user_id' => Auth::user()->id,
+                "class_id" => $class->id
             ]);
 
             return redirect("/teacher/$class->id/$lesson->id/$task->id/quiz/create");
@@ -62,6 +76,12 @@ class TaskController extends Controller
                 'lesson_id' => $lesson->id,
             ]);
 
+            Activity::create([
+                'description' => "membuat soal essay: " . $task->title,
+                'user_id' => Auth::user()->id,
+                "class_id" => $class->id
+            ]);
+
             return redirect("/teacher/$class->id/$lesson->id/$task->id/essay/create");
         }
 
@@ -71,6 +91,12 @@ class TaskController extends Controller
                 'title' => request()->title,
                 'type' => request()->type,
                 'lesson_id' => $lesson->id,
+            ]);
+
+            Activity::create([
+                'description' => "membuat soal tugas: " . $task->title,
+                'user_id' => Auth::user()->id,
+                "class_id" => $class->id
             ]);
 
             return redirect("/teacher/$class->id/$lesson->id/$task->id/upload/create");

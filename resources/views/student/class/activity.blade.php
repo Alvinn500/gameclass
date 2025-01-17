@@ -1,0 +1,24 @@
+<x-student-layout title="{{$class->study_name}} - {{$class->class}}">
+    <x-breadcrumbs :breadcrumbs="$breadcrumbs"/>
+    <x-student-sub-nav
+        missionPath="/student/class/{{$class->id}}"
+        leaderboardPath="/student/{{$class->id}}/leaderboard"
+        activityPath="/student/{{$class->id}}/activity"
+        informationPath="/student/{{$class->id}}/information" 
+    /> 
+    <div class="bg-neutral-900 mt-4 rounded-lg p-6 space-y-3">
+        <h1 class="text-sm font-semibold">AKTIVITAS</h1>
+        <div class="border-l-2 border-lime-500">
+            @foreach ($activities as $activity)
+                <div class="ml-4 py-1 flex items-center gap-6">
+                    <img class="h-7" src="{{asset("photo_profile/" . $activity->user->photo)}}" alt="user profile image">
+                    <div class="flex gap-1">
+                        <h2 class="font-semibold text-lime-500 text-sm">{{$activity->user->name}}</h2>
+                        <p class="text-sm">{{$activity->description}}. </p>
+                        <p class="text-sm text-gray-400">{{$activity->created_at->setTimezone('Asia/Jakarta')->format('d M Y (H:i T)')}}</p>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</x-student-layout>

@@ -82,7 +82,7 @@
                 <div class="flex justify-evenly mb-4">
                     <div class="text-center">
                         <h4 class="font-medium text-base">Skor</h4>
-                        <p class="text-yellow-400 font-semibold text-lg">{{$score}}</p>
+                        <p class="text-yellow-400 font-semibold text-lg">{{$score->score ?? 0}}</p>
                     </div>
                     <div class="text-center">
                         <h4 class="font-medium text-base">Total XP</h4>

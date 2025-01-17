@@ -69,4 +69,12 @@ class User extends Authenticatable
         return $this->hasMany(EssayScore::class);
     }
 
+    public function activity() {
+        return $this->hasMany(Activity::class);
+    }
+ 
+    public function classScores() {
+        return $this->hasMany(ClassScore::class);
+    }
+
 }

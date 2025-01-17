@@ -9,6 +9,8 @@ use App\Models\Lesson;
 use App\Models\Task;
 use App\Models\MultipleChoice;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Activity;
+use App\Models\ClassScore;
 
 class SQuizController extends Controller
 {
@@ -79,15 +81,39 @@ class SQuizController extends Controller
         // dd(request()->all());
         foreach ($quizzes as $quiz) {
             $is_correct = request("user_answer" . $quiz->id) == $quiz->answer ? true : false;
+            $score = $is_correct ? 50 : 10;
             
             $quiz->answers()->create([
                 "answer" => request("user_answer" . $quiz->id),
                 "is_correct" => $is_correct,
+                "score" => $score,
                 "multiple_choice_id" => $quiz->id,
                 "user_id" => Auth::user()->id,
                 "task_id" => $task->id
             ]);
+        
+            $DBscore = ClassScore::firstOrCreate([
+                "class_id" => $class->id,
+                "user_id" => Auth::user()->id,
+            ]);
+
+            $DBscore->score += $score;
+            $DBscore->save();
         }   
+
+        if($task->type === 1) {
+            Activity::create([
+                'description' => "menyelesaikan soal quiz: " . $task->title,
+                'user_id' => Auth::user()->id,
+                "class_id" => $class->id
+            ]);
+        } else {
+            Activity::create([
+                'description' => "menyelesaikan soal tes: " . $task->title,
+                'user_id' => Auth::user()->id,
+                "class_id" => $class->id
+            ]);
+        }
 
         return redirect()->back();
     }

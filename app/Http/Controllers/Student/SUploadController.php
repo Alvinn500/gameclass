@@ -9,6 +9,7 @@ use App\Models\Lesson;
 use App\Models\Task;
 use App\Models\UploadAnswer;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Activity;
 
 class SUploadController extends Controller
 {
@@ -54,6 +55,12 @@ class SUploadController extends Controller
             "file" => $filename,
             "upload_id" => $upload->id,
             "user_id" => Auth::user()->id
+        ]);
+
+        Activity::create([
+            'description' => "mengumpulkan tugas: " . $task->title,
+            'user_id' => Auth::user()->id,
+            "class_id" => $class->id
         ]);
 
         return redirect()->back();

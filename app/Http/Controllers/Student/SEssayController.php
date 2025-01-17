@@ -10,6 +10,7 @@ use App\Models\Task;
 use App\Models\Essay;
 use App\Models\EssayScore;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Activity;
 
 class SEssayController extends Controller
 {
@@ -59,6 +60,12 @@ class SEssayController extends Controller
         EssayScore::create([
             "task_id" => $task->id,
             "user_id" => Auth::user()->id
+        ]);
+
+        Activity::create([
+            'description' => "menyelesaikan soal essay: " . $task->title,
+            'user_id' => Auth::user()->id,
+            "class_id" => $class->id
         ]);
 
         return redirect()->back();

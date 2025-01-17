@@ -8,6 +8,8 @@ use App\Models\Subject;
 use App\Models\Lesson;
 use Illuminate\Support\Facades\Auth;
 use App\Models\SubjectReaded;
+use App\Models\Activity;
+use App\Models\ClassScore;
 
 class SubjectController extends Controller
 {
@@ -72,12 +74,17 @@ class SubjectController extends Controller
             $file->move('subject', $filename);
         }
         
-
         $subject = Subject::create([
             'lesson_id' => $lesson->id,
             'title' => request()->title,
             'content' => request()->content,
             'assignment' => $filename ?? null,
+        ]);
+
+        Activity::create([
+            'description' => "membuat materi: " . $subject->title,
+            'user_id' => Auth::user()->id,
+            "class_id" => $class->id
         ]);
 
         return redirect("/teacher/class/$class->id");
@@ -162,11 +169,26 @@ class SubjectController extends Controller
     public function readed(Lesson $lesson, Subject $subject) {
 
         $user = Auth::user();
+        $class = $lesson->class;
         // dd($SubjectReaded);
         $subject->SubjectReadeds()->where('user_id', $user->id)->update([
             'is_readed' => true,
             'score' => 200,
         ]);
+
+        Activity::create([
+            'description' => "membaca materi: " . $subject->title,
+            'user_id' => Auth::user()->id,
+            "class_id" => $class->id
+        ]);
+
+        $score = ClassScore::firstOrNew([
+            "class_id" => $class->id,
+            "user_id" => $user->id,
+        ]);
+
+        $score->score += 200;
+        $score->save();
 
         return redirect('/student/class/' . $lesson->class->id);
 

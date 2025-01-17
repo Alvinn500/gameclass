@@ -124,21 +124,9 @@ class StudentController extends Controller
         $subjedId = $lessons->flatMap->subjects->pluck('id');
         $subjectReadeds = SubjectReaded::whereIn('subject_id', $subjedId)->where('user_id', $user->id)->get();
         
-        
-        $totalSubjectXP = $subjectReadeds->sum('score');
-        $totalQuizXP = 0;
-
-        foreach($user->multipleChoiceAnswers->whereIn('task_id', $taskId) as $answer) { 
-            if( $answer->is_correct ) {
-                $totalQuizXP += 50;
-            } else {
-                $totalQuizXP += 10;
-            }
-        }
-        // dd($user->multipleChoiceAnswers, $taskId);
-        $score = $subjectReadeds->sum('score');
-        $total_xp = $user->classes->flatMap->lessons->flatMap->subjects->flatMap->SubjectReadeds->where("user_id", $user->id)->sum('score');
-        
+        $score = $class->scores()->where('user_id', $user->id)->first();
+        $total_xp = $user->classScores->sum('score');
+        // dd($score->score ?? 0);
         
         $totalSubject = $lessons->flatMap->subjects->count();
         $totalQuiz = $lessons->flatMap->tasks->filter(function ($task) {
