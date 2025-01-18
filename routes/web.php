@@ -19,6 +19,8 @@ use App\http\controllers\UploadController;
 use App\http\controllers\Student\SQuizController;
 use App\http\controllers\Student\SEssayController;
 use App\http\controllers\Student\SUploadController;
+use App\http\controllers\RecapController;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('welcome');
@@ -33,7 +35,11 @@ Route::get("/register", [RegisterController::class, 'create']);
 Route::post("/register", [RegisterController::class, 'store']);
 
 Route::get("/profileSetting", function () {
-    return view('profileSetting');
+    $user = Auth::user();
+    // dd($user);
+    return view('profileSetting', [
+        "user" => $user
+    ]);
 });
 
 
@@ -49,7 +55,10 @@ Route::middleware('auth', EnsureTeacherRole::class)->group(function () {
     Route::get("/teacher/class/create", [ClassController::class, 'create']);
     Route::post("/teacher/class/create", [ClassController::class, 'store']);
     Route::get("/teacher/class/{class}", [ClassController::class, 'show']);
-    Route::get("teacher/{class}/activity", [ClassController::class, 'TeacherActivity']);
+    Route::get("/teacher/{class}/activity", [ClassController::class, 'TeacherActivity']);
+
+    Route::get("/teacher/{class}/recap", [RecapController::class, 'index']);
+    Route::get("/teacher/{class}/{task}/recap", [RecapController::class, 'show']);
     
     
     // teacher lesson
