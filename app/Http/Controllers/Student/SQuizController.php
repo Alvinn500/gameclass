@@ -22,7 +22,7 @@ class SQuizController extends Controller
             $query->where('user_id', Auth::user()->id);
         })->get();
         $totalQuiz = $task->multipleChoices()->count();
-        // dd($quizzes);
+        
         $breadcrumbs = [
             ['link' => "/student/class", 'name' => "Kelas"],
             ['link' => "/student/class/$class->id", 'name' => $class->study_name . " - " . $class->class],
@@ -78,7 +78,7 @@ class SQuizController extends Controller
         $quizzes = MultipleChoice::where('tasks_id', $task->id)->whereDoesntHave('answers', function ($query) {
             $query->where('user_id', Auth::user()->id);
         })->get();
-        // dd(request()->all());
+        
         foreach ($quizzes as $quiz) {
             $is_correct = request("user_answer" . $quiz->id) == $quiz->answer ? true : false;
             $score = $is_correct ? 50 : 10;

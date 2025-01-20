@@ -34,7 +34,7 @@ class StudentController extends Controller
             }
         }
         
-        $total_xp =  $totalSubjectXP + $totalQuizXP;
+        $total_xp =  $user->classScores->sum('score');
         $level = 0;
         $emblem = ""; 
         $classes = $user->classes()->orderBy('created_at', 'desc')->limit(2)->get();

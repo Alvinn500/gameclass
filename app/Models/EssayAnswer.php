@@ -23,4 +23,8 @@ class EssayAnswer extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function score() {
+        return $this->belongsTo(EssayScore::class);
+    }
+
 }

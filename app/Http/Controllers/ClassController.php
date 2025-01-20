@@ -133,7 +133,7 @@ class ClassController extends Controller
         // dd($class);
         $breadcrumbs = [
             ['link' => "/teacher/class", 'name' => "Kelas"],
-            ['link => "/teacher/class/$class->id', 'name' => $class->study_name],
+            ['link' => "/teacher/class/$class->id", 'name' => $class->study_name],
             ['name' => "Aktifitas"]
         ];
 
@@ -161,4 +161,19 @@ class ClassController extends Controller
         ]);
 
     }
+
+    public function indexRecap(Class_listing $class) {
+
+        $breadcrumbs = [
+            ['link' => '/student/class', 'name' => 'Kelas'],
+            ['link' => "/student/class/$class->id", 'name' => $class->studey_name],
+            ['name' => 'Rekap Nilai']
+        ];
+
+        return view("teacher.class.recap", [
+            "breadcrumbs" => $breadcrumbs,
+            "class" => $class
+            
+        ]);
+    } 
 }

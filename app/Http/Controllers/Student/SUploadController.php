@@ -8,6 +8,7 @@ use App\Models\Class_listing;
 use App\Models\Lesson;
 use App\Models\Task;
 use App\Models\UploadAnswer;
+use App\Models\UploadScore;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Activity;
 
@@ -53,6 +54,11 @@ class SUploadController extends Controller
 
         UploadAnswer::create([
             "file" => $filename,
+            "upload_id" => $upload->id,
+            "user_id" => Auth::user()->id
+        ]);
+
+        UploadScore::create([
             "upload_id" => $upload->id,
             "user_id" => Auth::user()->id
         ]);

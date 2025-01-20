@@ -18,19 +18,14 @@
             </div>
             <h2 class="font-bold text-xl md:text-2xl my-4 uppercase">Jawaban kamu</h2>
             <div class="flex flex-col gap-5">
-                {{-- @foreach ($task->upload as $upload) --}}
-                    <div class="p-4 dark-blue rounded-xl space-y-3">
-                        <p class="text-yellow-500 uppercase text-sm">pertanyaan</p>
-                        <h3 class="text-base font-semibold">{{$task->upload->question}}</h3>
-                        <img class="rounded-xl h-[50%] md:h-[25%]" src="{{asset("uploads/" . $task->upload->answer->file)}}" alt="img">
-                        {{-- @foreach ($essay->answers as $answer) --}}
-                            {{-- <div class="bg-secondary p-4">
-                                <p class="text-gray-400">{{$upload->answer}}</p>
-                            </div> --}}
-                        {{-- @endforeach --}}
-                    </div>
-                {{-- @endforeach --}}
+                <div class="p-4 dark-blue rounded-xl space-y-4">
+                    <p class="text-yellow-500 uppercase text-sm">pertanyaan</p>
+                    <h3 class="text-base font-semibold">{{$task->upload->question}}</h3>
+                    @if($task->upload->file)
+                        <img class="rounded-xl h-[50%] md:h-[25%]" src="{{asset("uploads/" . $task->upload->file)}}" alt="img">
+                    @endif
+                    <a href="{{asset("uploads/" . $task->upload->file)}}" target="_blank" class="bg-violet-800 inline-block text-sm font-semibold uppercase py-3 px-8 mb-2 rounded-lg">lihat jawabanmu</a>
+                </div>
             </div>
-   
-            </div>
+        </div>
 </x-student-layout>

@@ -145,3 +145,8 @@ section {
     border-left: solid 8px transparent;
     border-right: solid 8px transparent;
 }
+
+/* datatable style */
+.dt-paging-button .current {
+    @apply bg-white;
+}

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('score')->default(0);
             $table->integer('XP')->default(0);
-            $table->integer('comment')->nullable();
+            $table->text('comment')->nullable();
             $table->unsignedBigInteger('upload_id');
             $table->foreign('upload_id')->references('id')->on('uploads')->onDelete('cascade');
             $table->unsignedBigInteger('user_id');

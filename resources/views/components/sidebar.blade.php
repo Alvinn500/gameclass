@@ -1,4 +1,4 @@
-<aside id="sidebar" class="fixed z-50 -translate-x-96 duration-700 ease-in-out bg-neutral-900 border-r border-neutral-800 h-screen w-64 text-white lg:-translate-x-0">
+<aside id="sidebar" class="fixed z-40 -translate-x-96 duration-700 ease-in-out bg-neutral-900 border-r border-neutral-800 h-screen w-64 text-white lg:-translate-x-0">
    <div>
     <svg id="close" class="block lg:hidden ml-auto cursor-pointer" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
    </div>
@@ -12,7 +12,7 @@
                 <i class="fa fa-home" aria-hidden="true"></i>
                 <p class="font-medium">Dashboard</p>
             </a>
-            <a href="/{{$classUrl}}" class="flex items-center py-3 space-x-2 px-6 rounded-lg {{preg_match('/class|lesson|task|quiz|essay|upload|leaderboard/', request()->path()) ? 'sidebar-focus' : ''}}">
+            <a href="/{{$classUrl}}" class="flex items-center py-3 space-x-2 px-6 rounded-lg {{preg_match('/class|lesson|task|quiz|essay|upload|leaderboard|activity|recap/', request()->path()) ? 'sidebar-focus' : ''}}">
                 <i class="fas fa-chalkboard-teacher "></i>
                 <p class="font-medium">Kelas</p>
             </a>

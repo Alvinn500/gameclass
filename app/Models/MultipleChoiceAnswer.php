@@ -8,7 +8,7 @@ class MultipleChoiceAnswer extends Model
 {
     
     protected $fillable = [
-        "answer",'is_correct','multiple_choice_id','user_id','task_id'
+        "answer", 'score','is_correct','multiple_choice_id','user_id','task_id'
     ];
 
     public function multipleChoice() {

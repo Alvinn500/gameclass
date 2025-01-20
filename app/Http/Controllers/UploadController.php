@@ -59,4 +59,15 @@ class UploadController extends Controller
         return redirect()->back();
     }
 
+    public function downloadAnswer($filename) {
+
+        $filepath = public_path('uploads/' . $filename);
+
+        if(!file_exists($filepath)) {
+            abort(404, 'File not found');
+        }
+
+        return response()->download($filepath);
+    }
+
 }

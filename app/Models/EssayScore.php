@@ -10,8 +10,9 @@ class EssayScore extends Model
     protected $fillable = [
         'score',
         'XP',
+        'status',
         'task_id',
-        'user_id'
+        'user_id',
     ];
 
     public function task()

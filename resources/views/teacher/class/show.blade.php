@@ -3,7 +3,7 @@
     <x-teacher-sub-nav 
         classPath="/teacher/class/{{$class->id}}" 
         activityPath="/teacher/{{$class->id}}/activity" 
-        gradePath="/teacher/{{$class->id}}/grade" 
+        gradePath="/teacher/{{$class->id}}/recap" 
         studentPath="/teacher/{{$class->id}}/student" 
         settingPath="/teacher/{{$class->id}}/setting"
     />
@@ -12,10 +12,10 @@
         <div class="flex flex-col md:flex-row gap-6 h-full">
             <div class="flex flex-col gap-4 w-full md:w-[74%] order-2 md:order-1">
                 @foreach ($lessons as $lesson )
-                    <div class="dark-purple p-5 flex flex-col justify-center rounded-xl">
+                    <div class="bg-neutral-900 p-5 flex flex-col justify-center rounded-xl">
                         <h2 class="font-semibold text-lg">{{$lesson->name}}</h2>
                         <span class="block h-[0.0625rem] my-4 mx-auto w-full bg-gray-600"></span>
-                        <div class="mb-3 flex flex-col gap-1">
+                        <div class="mb-3 flex flex-col gap-2">
                             @php
                                 $counter = 1;
                             @endphp

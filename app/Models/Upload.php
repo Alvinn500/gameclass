@@ -24,4 +24,8 @@ class Upload extends Model
 
     }
 
+    public function score() {
+        return $this->hasOne(UploadScore::class);
+    }
+
 }

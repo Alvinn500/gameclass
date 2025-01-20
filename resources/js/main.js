@@ -324,13 +324,41 @@ if (closeUpload) {
 }
 
 // manipulasi edit upload modal
-const editUpload = document.getElementById("editUpload");
+const editUploadTask = document.getElementById("editUploadTask");
 const modalEditUpload = document.getElementById("modalEditUpload");
+const buttonEditUpload = document.getElementById("buttonEditUpload");
+const parent_edit_upload_overlay = document.getElementById(
+    "parent_edit_upload_overlay"
+);
+const edit_upload_overlay = document.getElementById("edit_upload_overlay");
 
-if (editUpload) {
-    editUpload.addEventListener("click", () => {
-        modalEditUpload.classList.toggle("hidden");
-        modalEditUpload.classList.toggle("flex");
+if (editUploadTask) {
+    editUploadTask.addEventListener("click", () => {
+        modalEditUpload.classList.remove("hidden");
+        modalEditUpload.classList.add("flex");
+    });
+}
+
+if (modalEditUpload) {
+    modalEditUpload.addEventListener("click", (event) => {
+        if (event.target == modalEditUpload) {
+            modalEditUpload.classList.add("hidden");
+            modalEditUpload.classList.remove("flex");
+        }
+    });
+}
+
+if (buttonEditUpload) {
+    buttonEditUpload.addEventListener("click", () => {
+        parent_edit_upload_overlay.classList.remove("hidden");
+    });
+}
+
+if (edit_upload_overlay) {
+    edit_upload_overlay.addEventListener("click", (event) => {
+        if (event.target == edit_upload_overlay) {
+            parent_edit_upload_overlay.classList.add("hidden");
+        }
     });
 }
 
@@ -349,3 +377,48 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     window.hideshow = hideshow;
 });
+
+// datatable
+import DataTable from "datatables.net-dt";
+
+document.addEventListener("DOMContentLoaded", () => {
+    const table = document.querySelector("#example");
+    if (table) {
+        new DataTable(table, {
+            paging: true,
+            searching: true,
+            responsive: true,
+            order: [[0, "asc"]], // Sort by the first column
+            language: {
+                search: "Find:",
+                lengthMenu: "Show _MENU_ entries",
+            },
+        });
+    }
+});
+
+// manipulasi updateScore
+const updateScore = document.getElementById("updateScore");
+const parentScoreOverlay = document.getElementById("parent_score_overlay");
+const scoreOverlay = document.getElementById("score_overlay");
+const scoreClose = document.getElementById("score_close");
+
+if (updateScore) {
+    updateScore.addEventListener("click", () => {
+        parentScoreOverlay.classList.remove("hidden");
+    });
+}
+
+if (scoreOverlay) {
+    scoreOverlay.addEventListener("click", (event) => {
+        if (event.target == scoreOverlay) {
+            parentScoreOverlay.classList.add("hidden");
+        }
+    });
+}
+
+if (scoreClose) {
+    scoreClose.addEventListener("click", () => {
+        parentScoreOverlay.classList.add("hidden");
+    });
+}

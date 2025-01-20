@@ -53,14 +53,15 @@ class SEssayController extends Controller
             $essay->answers()->create([
                 "answer" => request("user_answer" . $essay->id),
                 "essay_id" => $essay->id,
-                "user_id" => Auth::user()->id,
+                "user_id" => Auth::user()->id
             ]);
         }
 
         EssayScore::create([
             "task_id" => $task->id,
-            "user_id" => Auth::user()->id
+            "user_id" => Auth::user()->id,
         ]);
+        
 
         Activity::create([
             'description' => "menyelesaikan soal essay: " . $task->title,

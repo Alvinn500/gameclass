@@ -21,6 +21,7 @@
         </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+    <script src="https://cdn.datatables.net/2.2.1/js/dataTables.js"></script>
     @vite('resources/js/editor.js')
     @vite('resources/js/main.js')
 </x-layout>

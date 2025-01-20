@@ -51,15 +51,28 @@ Route::middleware('auth', EnsureTeacherRole::class)->group(function () {
     
     // teacher class
     Route::get("/teacher/class", [ClassController::class, 'teacher']);
-    
     Route::get("/teacher/class/create", [ClassController::class, 'create']);
     Route::post("/teacher/class/create", [ClassController::class, 'store']);
     Route::get("/teacher/class/{class}", [ClassController::class, 'show']);
     Route::get("/teacher/{class}/activity", [ClassController::class, 'TeacherActivity']);
-
+    // recap
     Route::get("/teacher/{class}/recap", [RecapController::class, 'index']);
-    Route::get("/teacher/{class}/{task}/recap", [RecapController::class, 'show']);
-    
+    // recap subject
+    Route::get("/teacher/recap/{lesson}/{subject}/subject", [RecapController::class, 'subject']);
+    // recap quiz
+    Route::get("/teacher/recap/{lesson}/{quiz}/quiz", [RecapController::class, 'quiz']);
+    Route::get("/teacher/recap/{user}/{quiz}/quiz/answer", [RecapController::class, 'quizAnswer']);
+    // recap essay
+    Route::get("/teacher/recap/{lesson}/{essay}/essay", [RecapController::class, 'essay']);
+    Route::get("/teacher/recap/{user}/{essay}/essay/answer", [RecapController::class, 'essayAnswer']);
+    Route::patch("/teacher/recap/{user}/{essay}/essay/answer", [RecapController::class, 'essayUpdate']);
+    // recap upload
+    Route::get("/teacher/recap/{lesson}/{upload}/upload", [RecapController::class, 'upload']);
+    Route::get("/teacher/recap/{user}/{upload}/upload/answer", [RecapController::class, 'uploadAnswer']);
+    Route::patch("/teacher/recap/{user}/{upload}/upload/answer", [RecapController::class, 'uploadUpdate']);
+    // student list
+    Route::
+
     
     // teacher lesson
     Route::post("/teacher/class/{class}", [LessonController::class, 'store']);
@@ -115,6 +128,7 @@ Route::middleware('auth', EnsureTeacherRole::class)->group(function () {
     Route::post("/teacher/{class}/{lesson}/{task}/upload/create", [UploadController::class, 'store']);
     Route::patch("/upload/question/edit/{upload}", [UploadController::class, 'update']);
     Route::delete("/upload/question/delete/{upload}", [UploadController::class, 'destroy']);
+    Route::post("/upload/answer/download/{filename}", [UploadController::class, 'downloadAnswer']);
 
     // teacher discussion
     Route::get("/teacher/discussion", function () {
