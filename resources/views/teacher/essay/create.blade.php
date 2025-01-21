@@ -3,7 +3,7 @@
     <x-teacher-sub-nav 
         classPath="/teacher/class/{{$class->id}}" 
         activityPath="/teacher/{{$class->id}}/activity" 
-        gradePath="/teacher/{{$class->id}}/recap" 
+        gradePath="/teacher/recap/{{$lesson->id}}/{{$task->id}}/essay" 
         studentPath="/teacher/{{$class->id}}/student" 
         settingPath="/teacher/{{$class->id}}/setting"
     />
@@ -61,9 +61,9 @@
                 @endforeach
             </div>
             <div class="order-1 md:order-2 w-full md:w-[30%] lg:w-[25%] h-fit dark-green rounded-2xl p-4">
-                <h2 class="font-bold mb-2 text-4xl lg:text-5xl">0</h2>
+                <h2 class="font-bold mb-2 text-4xl lg:text-5xl">{{$studentAnswered}}</h2>
                 <p class="text-sm mb-4">Siswa telah mengerjakan Soal {{$task->type === 1 ? "Quiz" : "Test"}}</p>
-                <a href="" class="uppercase text-center block text-xs px-4 py-3 rounded-lg font-bold bg-yellow-500 text-black">lihat hasil</a>
+                <a href="/teacher/recap/{{$lesson->id}}/{{$task->id}}/essay" class="uppercase text-center block text-xs px-4 py-3 rounded-lg font-bold bg-yellow-500 text-black">lihat hasil</a>
             </div>
         </div>
 

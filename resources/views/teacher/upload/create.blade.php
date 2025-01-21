@@ -3,7 +3,7 @@
     <x-teacher-sub-nav 
         classPath="/teacher/class/{{$class->id}}" 
         activityPath="/teacher/{{$class->id}}/activity" 
-        gradePath="/teacher/{{$class->id}}/recap" 
+        gradePath="/teacher/recap/{{$lesson->id}}/{{$task->id}}/upload" 
         studentPath="/teacher/{{$class->id}}/student" 
         settingPath="/teacher/{{$class->id}}/setting"
     />
@@ -60,9 +60,9 @@
                     </div>
                 </div>
                 <div class="order-1 md:order-2 w-full md:w-[30%] lg:w-[25%] h-fit dark-green rounded-2xl p-4">
-                    <h2 class="font-bold mb-2 text-4xl lg:text-5xl">0</h2>
+                    <h2 class="font-bold mb-2 text-4xl lg:text-5xl">{{$uploadAnswered}}</h2>
                     <p class="text-sm mb-4">Siswa telah mengumpulkan tugas</p>
-                    <a href="" class="uppercase text-center block text-xs px-4 py-3 rounded-lg font-bold bg-yellow-500 text-black">lihat hasil</a>
+                    <a href="/teacher/recap/{{$lesson->id}}/{{$task->id}}/upload" class="uppercase text-center block text-xs px-4 py-3 rounded-lg font-bold bg-yellow-500 text-black">lihat hasil</a>
                 </div>
             @endif
         </div>
@@ -96,8 +96,9 @@
 
     <div id="parent_edit_upload_overlay" class="fixed hidden z-50 bg-black bg-opacity-70 w-full h-full top-0 left-0 overflow-scroll">
         <div id="edit_upload_overlay" class="flex h-full justify-center items-center py-6">
-            <form action="" method="POST" enctype="multipart/form-data" class="bg-main p-4 rounded-xl w-[80%] md:w-[60%]">
+            <form action="/upload/question/edit/{{$upload->id}}" method="POST" enctype="multipart/form-data" class="bg-main p-4 rounded-xl w-[80%] md:w-[60%]">
                 @csrf
+                @method("PATCH")
                 <div class="flex justify-between">
                     <h2 class="text-sm md:text-base font-semibold">Buat Tugas</h2>
                     <img id="edit_upload_close" class="cursor-pointer" src="{{asset("img/close.svg")}}" alt="close image">

@@ -45,7 +45,8 @@ class RecapController extends Controller
         return view('teacher.recap.subject', [
             "class" => $class,
             "breadcrumbs" => $breadcrumbs,
-            "subject" => $subject
+            "subject" => $subject,
+            "lesson" => $lesson
         ]);
 
     }
@@ -65,7 +66,8 @@ class RecapController extends Controller
             "class" => $class,
             "breadcrumbs" => $breadcrumbs,
             "users" => $users,
-            "quiz" => $quiz
+            "quiz" => $quiz,
+            "lesson" => $lesson
         ]);
 
     }
@@ -116,7 +118,8 @@ class RecapController extends Controller
             "class" => $class,
             "breadcrumbs" => $breadcrumbs,
             "essay" => $essay,
-            "users" => $users
+            "users" => $users,
+            "lesson" => $lesson
         ]);
 
     }
@@ -183,7 +186,8 @@ class RecapController extends Controller
            "class" => $class,
            "upload" => $upload,
            "breadcrumbs" => $breadcrumbs,
-           "users" => $users
+           "users" => $users,
+           "lesson" => $lesson
         ]);
 
     }

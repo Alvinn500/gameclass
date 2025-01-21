@@ -1,7 +1,7 @@
 <x-teacher-layout title="Rekap Nilai">
     <x-breadcrumbs :breadcrumbs="$breadcrumbs"/>
     <x-teacher-sub-nav 
-        classPath="/teacher/class/{{$class->id}}" 
+        classPath="/teacher/{{$class->id}}/{{$lesson->id}}/{{$essay->id}}/essay/create" 
         activityPath="/teacher/{{$class->id}}/activity" 
         gradePath="/teacher/{{$class->id}}/recap" 
         studentPath="/teacher/{{$class->id}}/student" 

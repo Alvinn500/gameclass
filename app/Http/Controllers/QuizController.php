@@ -8,11 +8,15 @@ use App\Models\Lesson;
 use App\Models\multipleChoice;
 use App\Models\Task;
 use App\Models\Activity;
+use App\Models\MultipleChoiceAnswer;
+use Illuminate\Support\Facades\DB;
 
 class QuizController extends Controller
 {
     
     public function create(Class_listing $class, Lesson $lesson, Task $task) {
+
+        $studentAnswered = DB::table('multiple_choice_answers')->where("task_id", $task->id)->select(DB::raw('COUNT(DISTINCT user_id) as unique_count'))->value('unique_count');
 
         $breadcrumbs = [
             ['link' => "/teacher/class", 'name' => "Kelas"],
@@ -27,7 +31,8 @@ class QuizController extends Controller
             'lesson' => $lesson,
             'breadcrumbs' => $breadcrumbs,
             'task' => $task,
-            'quizzes' => $quizzes
+            'quizzes' => $quizzes,
+            "studentAnswered" => $studentAnswered
         ]);
     }
 
@@ -98,7 +103,7 @@ class QuizController extends Controller
                 "e" => request()->e
             ],
             "answer" => request()->answare,
-            "image" => $filename ?? null
+            "image" => $filename ?? $quiz->image
         ]);
 
         return redirect()->back();

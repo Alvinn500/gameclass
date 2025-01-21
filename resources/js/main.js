@@ -331,6 +331,7 @@ const parent_edit_upload_overlay = document.getElementById(
     "parent_edit_upload_overlay"
 );
 const edit_upload_overlay = document.getElementById("edit_upload_overlay");
+const edit_upload_close = document.getElementById("edit_upload_close");
 
 if (editUploadTask) {
     editUploadTask.addEventListener("click", () => {
@@ -359,6 +360,12 @@ if (edit_upload_overlay) {
         if (event.target == edit_upload_overlay) {
             parent_edit_upload_overlay.classList.add("hidden");
         }
+    });
+}
+
+if (edit_upload_close) {
+    edit_upload_close.addEventListener("click", () => {
+        parent_edit_upload_overlay.classList.add("hidden");
     });
 }
 
@@ -423,14 +430,21 @@ if (scoreClose) {
     });
 }
 
-// modal delete class
+// modal confirm class
 const deleteClass = document.getElementById("deleteClass");
 const confirmOverlay = document.getElementById("confirm_overlay");
 const confirmModal = document.getElementById("confirm_modal");
 const unconfirm = document.getElementById("unconfirm");
+const leaveClass = document.getElementById("leaveClass");
 
 if (deleteClass) {
     deleteClass.addEventListener("click", () => {
+        confirmOverlay.classList.remove("hidden");
+    });
+}
+
+if (leaveClass) {
+    leaveClass.addEventListener("click", () => {
         confirmOverlay.classList.remove("hidden");
     });
 }

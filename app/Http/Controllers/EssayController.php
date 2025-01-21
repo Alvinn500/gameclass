@@ -14,7 +14,8 @@ class EssayController extends Controller
     public function create(Class_listing $class, Lesson $lesson, Task $task) {
 
         $essays = $task->essays;
-
+        $studentAnswered = $task->essayScores->count();
+        
         $breadcrumbs = [
             ['link' => "/teacher/class", 'name' => "Kelas"],
             ['link' => "/teacher/class/{$class->id}", 'name' => $class->study_name . " - " . $class->class],
@@ -25,7 +26,9 @@ class EssayController extends Controller
             "breadcrumbs" => $breadcrumbs,
             "class" => $class,
             'task' => $task,
-            'essays' => $essays
+            'essays' => $essays,
+            'lesson' => $lesson,
+            'studentAnswered' => $studentAnswered
         ]);
     }
 
@@ -67,7 +70,7 @@ class EssayController extends Controller
 
         $essay->update([
             "question" => request()->question,
-            "image" => $filename ?? null,
+            "image" => $filename ?? $essay->image,
         ]);
 
         return redirect()->back();

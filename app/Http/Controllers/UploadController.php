@@ -14,7 +14,9 @@ class UploadController extends Controller
     public function create(Class_listing $class, Lesson $lesson, Task $task) {
 
         $upload = $task->upload;
-        // dd($upload);
+        
+        $uploadAnswered = $task->upload->scores->count();
+        
         $breadcrumbs = [
             ['link' => "/teacher/class", 'name' => "Kelas"],
             ['link' => "/teacher/class/$class->id", 'name' => $class->study_name . " - " . $class->class],
@@ -26,7 +28,8 @@ class UploadController extends Controller
             "lesson" => $lesson,
             "task" => $task,
             'breadcrumbs' => $breadcrumbs,
-            'upload' => $upload
+            'upload' => $upload,
+            'uploadAnswered' => $uploadAnswered
         ]);
     }
 
@@ -50,6 +53,29 @@ class UploadController extends Controller
         ]);
 
         return redirect()->back();
+    }
+
+    public function update(Upload $upload) {
+
+        request()->validate([
+           'question' => ['required', 'min:3'],
+           'file' => ['file', 'max:2048']
+        ]);
+
+        if(request()->hasFile("file")) {
+            $file = request()->file("file");
+            $filename = $file->getClientOriginalName();
+            $file->move("uploads", $filename);
+        };
+
+        $upload->update([
+            "question" => request()->question,
+            "file" => $filename ?? $upload->file ?? null,
+        ]);
+
+        return redirect()->back();
+
+
     }
 
     public function destroy(Upload $upload) {

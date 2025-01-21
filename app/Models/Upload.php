@@ -28,4 +28,8 @@ class Upload extends Model
         return $this->hasOne(UploadScore::class);
     }
 
+    public function scores() {
+        return $this->hasMany(UploadScore::class);
+    }
+
 }

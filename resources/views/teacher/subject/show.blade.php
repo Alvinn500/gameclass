@@ -25,7 +25,7 @@
                 <div class="h-fit dark-green rounded-2xl p-4">
                     <h2 class="font-bold mb-2 text-4xl lg:text-5xl">{{$studentReaded}}</h2>
                     <p class="text-sm mb-4">Siswa telah membaca materi</p>
-                    <a href="" class="uppercase text-center block text-xs px-4 py-3 rounded-lg font-bold bg-yellow-500 text-black">lihat hasil</a>
+                    <a href="/teacher/recap/{{$lesson->id}}/{{$subject->id}}/subject" class="uppercase text-center block text-xs px-4 py-3 rounded-lg font-bold bg-yellow-500 text-black">lihat hasil</a>
                 </div>
                 <div class="flex gap-2">
                     <a href="/teacher/lesson/{{$lesson->id}}/subject/edit/{{$subject->id}}" class="bg-yellow-500 text-black py-2.5 px-5 text-sm font-semibold rounded-lg inline-block">Edit</a>
