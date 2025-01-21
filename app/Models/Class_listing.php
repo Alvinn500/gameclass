@@ -27,4 +27,12 @@ class Class_listing extends Model
         return $this->hasMany(ClassScore::class, 'class_id');    
     }
 
+    public function essayScores() {
+        return $this->hasMany(EssayScore::class, 'class_id');
+    }
+
+    public function uploadScores() {
+        return $this->hasMany(UploadScore::class, 'class_id');
+    }
+
 }

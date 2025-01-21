@@ -60,6 +60,7 @@ class SEssayController extends Controller
         EssayScore::create([
             "task_id" => $task->id,
             "user_id" => Auth::user()->id,
+            "class_id" => $class->id
         ]);
         
 

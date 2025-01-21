@@ -28,7 +28,7 @@
                         $counter = 1
                     @endphp
                     @foreach ($users as $user) 
-                        @if(!$user->essayScores->where("task_id", $essay->id)->isEmpty())
+                        @if($user->essayScores && !$user->essayScores->where("task_id", $essay->id)->isEmpty())
                             <tr>
                                 <td class="border border-neutral-800 text-base">{{$counter++}}</td>
                                 <td class="border border-neutral-800 text-base"><img class="w-8 aspect-square" src="{{asset("photo_profile/" . $user->photo)}}" alt="profile picture"></td>

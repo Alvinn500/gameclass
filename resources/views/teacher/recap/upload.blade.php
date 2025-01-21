@@ -28,7 +28,7 @@
                         $counter = 1
                     @endphp
                     @foreach ($users as $user) 
-                        @if(!$user->uploadScores->where("upload_id", $upload->upload->id)->isEmpty())
+                        @if($user->uploadScores && !$user->uploadScores->where("upload_id", $upload->upload->id)->isEmpty())
                             <tr>
                                 <td class="border border-neutral-800 text-base">{{$counter++}}</td>
                                 <td class="border border-neutral-800 text-base"><img class="w-8 aspect-square" src="{{asset("photo_profile/" . $user->photo)}}" alt="profile picture"></td>

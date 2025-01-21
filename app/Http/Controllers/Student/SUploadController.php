@@ -51,7 +51,7 @@ class SUploadController extends Controller
             $filename = $file->getClientOriginalName();
             $file->move("uploads", $filename);
         };
-
+        // dd($class->id);
         UploadAnswer::create([
             "file" => $filename,
             "upload_id" => $upload->id,
@@ -60,7 +60,8 @@ class SUploadController extends Controller
 
         UploadScore::create([
             "upload_id" => $upload->id,
-            "user_id" => Auth::user()->id
+            "user_id" => Auth::user()->id,
+            "class_id" => $class->id,
         ]);
 
         Activity::create([

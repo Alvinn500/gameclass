@@ -13,6 +13,7 @@ class EssayScore extends Model
         'status',
         'task_id',
         'user_id',
+        'class_id'
     ];
 
     public function task()

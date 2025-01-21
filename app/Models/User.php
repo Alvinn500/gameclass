@@ -73,8 +73,8 @@ class User extends Authenticatable
         return $this->hasMany(UploadAnswer::class);
     }
 
-    public function uploadScore() {
-        return $this->hasOne(UploadScore::class);
+    public function uploadScores() {
+        return $this->hasMany(UploadScore::class);
     }
 
     public function activity() {

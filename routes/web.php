@@ -71,7 +71,7 @@ Route::middleware('auth', EnsureTeacherRole::class)->group(function () {
     Route::get("/teacher/recap/{user}/{upload}/upload/answer", [RecapController::class, 'uploadAnswer']);
     Route::patch("/teacher/recap/{user}/{upload}/upload/answer", [RecapController::class, 'uploadUpdate']);
     // student list
-    Route::
+    Route::get("/teacher/{class}/student", [ClassController::class, 'studentList']);
 
     
     // teacher lesson

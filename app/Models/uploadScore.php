@@ -13,11 +13,16 @@ class uploadScore extends Model
         "comment", 
         "status",
         "upload_id",
-        "user_id"
+        "user_id",
+        "class_id"
     ];
 
     public function user() {
         return $this->belongsTo(User::class);
+    }
+
+    public function class() {
+        return $this->belongsTo(Class_listing::class);
     }
 
 }

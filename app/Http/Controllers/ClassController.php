@@ -176,4 +176,22 @@ class ClassController extends Controller
             
         ]);
     } 
+
+    public function studentList(Class_listing $class) {
+
+        $users = $class->users->where("role", "student");
+
+        $breadcrumbs = [
+            ['link' => "/teacher/class", 'name' => "Kelas"],
+            ['link' => "/teacher/class/$class->id", 'name' => $class->study_name ." - " . $class->class],
+            ['name' => "Daftar Siswa"]
+        ];
+        // dd($class->users);
+        return view('teacher.class.studentList', [
+            "class" => $class,
+            "breadcrumbs" => $breadcrumbs,
+            "users" => $users
+        ]);
+
+    }
 }
