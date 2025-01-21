@@ -41,7 +41,7 @@
     </div>
     <div id="confirm_overlay" class="fixed hidden top-0 left-0 w-full h-full z-50 bg-black bg-opacity-50">
         <div id="confirm_modal" class="flex justify-center items-center h-full">
-            <form action="" method="POST" id="deleteForm" class="bg-neutral-900 rounded-lg p-4 flex flex-col gap-4">
+            <form action="" method="POST" id="deleteForm" class="bg-neutral-900 rounded-lg p-4 w-80 flex flex-col gap-4">
                 @csrf
                 @method("DELETE")
                 <div>
@@ -49,7 +49,7 @@
                     <p class="text-center text-sm  text-gray-400">Anda yakin ingin menghapus kelas ini?</p>
                 </div>
                 <div>
-                    <button id="unconfirm" class="border border-lime-500 py-2.5 px-14 rounded-lg shadow-lg text-xs font-semibold uppercase">batal</button>
+                    <button id="unconfirm" type="button" class="border border-lime-500 py-2.5 px-14 rounded-lg shadow-lg text-xs font-semibold uppercase">batal</button>
                     <button class="bg-red-600 py-2.5 px-16 rounded-lg shadow-lg text-xs font-semibold uppercase">iya</button>
                 </div>
             </form>
