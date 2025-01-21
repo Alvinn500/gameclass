@@ -388,7 +388,7 @@ document.addEventListener("DOMContentLoaded", () => {
             paging: true,
             searching: true,
             responsive: true,
-            order: [[0, "asc"]], // Sort by the first column
+            order: [[0, "asc"]],
             language: {
                 search: "Find:",
                 lengthMenu: "Show _MENU_ entries",
@@ -420,5 +420,31 @@ if (scoreOverlay) {
 if (scoreClose) {
     scoreClose.addEventListener("click", () => {
         parentScoreOverlay.classList.add("hidden");
+    });
+}
+
+// modal delete class
+const deleteClass = document.getElementById("deleteClass");
+const confirmOverlay = document.getElementById("confirm_overlay");
+const confirmModal = document.getElementById("confirm_modal");
+const unconfirm = document.getElementById("unconfirm");
+
+if (deleteClass) {
+    deleteClass.addEventListener("click", () => {
+        confirmOverlay.classList.remove("hidden");
+    });
+}
+
+if (confirmModal) {
+    confirmModal.addEventListener("click", (event) => {
+        if (event.target == confirmModal) {
+            confirmOverlay.classList.add("hidden");
+        }
+    });
+}
+
+if (unconfirm) {
+    unconfirm.addEventListener("click", () => {
+        confirmOverlay.classList.add("hidden");
     });
 }

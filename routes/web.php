@@ -70,8 +70,12 @@ Route::middleware('auth', EnsureTeacherRole::class)->group(function () {
     Route::get("/teacher/recap/{lesson}/{upload}/upload", [RecapController::class, 'upload']);
     Route::get("/teacher/recap/{user}/{upload}/upload/answer", [RecapController::class, 'uploadAnswer']);
     Route::patch("/teacher/recap/{user}/{upload}/upload/answer", [RecapController::class, 'uploadUpdate']);
-    // student list
+    // class student list
     Route::get("/teacher/{class}/student", [ClassController::class, 'studentList']);
+    // class setting
+    Route::get("/teacher/{class}/setting", [ClassController::class, 'setting']);
+    Route::patch("/teacher/{class}/setting", [ClassController::class, 'settingUpdate']);
+    Route::delete("/teacher/{class}/setting", [ClassController::class, 'settingDestroy']);
 
     
     // teacher lesson

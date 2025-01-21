@@ -194,4 +194,51 @@ class ClassController extends Controller
         ]);
 
     }
+
+    public function setting(Class_listing $class) {
+
+        $breadcrumbs = [
+          ['link' => "/teacher/class", 'name' => "Kelas"],
+          ['link' => "/teacher/class/$class->id", 'name' => $class->study_name . " - " . $class->class],
+          ['name' => "Pengaturan"]  
+        ];
+
+        return view("teacher.class.setting", [
+            "class" => $class,
+            "breadcrumbs" => $breadcrumbs
+        ]);
+
+    }
+
+    public function settingUpdate(Class_listing $class) {
+
+        request()->validate([
+            "study_name" => ["required", 'min:3'],
+            "school_name" => ["required", 'min:5'],
+            "class" => ["required", 'min:3'],
+            "logo_class" => ["file", "mimes:jpg,jpeg,png", "max:2048"],
+        ]);
+
+        if (request()->hasFile('logo_class')) {
+            $file = request()->file("logo_class");
+            $filename = $file->getClientOriginalName();
+            $file->move('logo_class', $filename);
+        }
+
+        $class->update([
+            "study_name" => request()->study_name,
+            "school_name" => request()->school_name,
+            "class" => request()->class,
+            "logo_class" => $filename ?? $class->logo_class,
+        ]);
+
+        return redirect()->back();
+    }
+
+    public function settingDestroy(Class_listing $class) {
+
+        $class->delete();
+
+        return redirect('/teacher/class');
+    }
 }
