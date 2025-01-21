@@ -241,4 +241,28 @@ class ClassController extends Controller
 
         return redirect('/teacher/class');
     }
+
+    public function information(Class_listing $class) {
+
+        $user = Auth::user();
+
+        $breadcrumbs = [
+            ['link' => "/student/class", 'name' => "Kelas"],
+            ['link' => "/student/class/$class->id", 'name' => $class->study_name . " - " . $class->class],
+            ['name' => "Informasi"]
+        ];
+
+        return view("student.class.information", [
+            "breadcrumbs" => $breadcrumbs,
+            "class" => $class,
+            "user" => $user
+        ]);
+    }
+
+    public function leave(Class_listing $class, User $user) {
+
+        $user->classes()->detach($class->id);
+
+        return redirect("/student/class");
+    }
 }

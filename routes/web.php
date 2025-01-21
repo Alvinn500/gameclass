@@ -155,7 +155,8 @@ Route::middleware('auth', EnsureStudentRole::class)->group(function () {
     Route::get("/student/class/{class}", [StudentController::class, 'show']);
     Route::get("/student/{class}/leaderboard", [ClassController::class, 'leaderboard']);
     Route::get("/student/{class}/activity", [ClassController::class, 'StudentActivity']);
-
+    Route::get("/student/{class}/information", [ClassController::class, 'information']);
+    Route::post("/leave/class/{class}/{user}", [ClassController::class, 'leave']);    
 
 
     // student subject
