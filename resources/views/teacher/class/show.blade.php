@@ -50,6 +50,11 @@
                                     </a>
                                 @endforeach
 
+                                @foreach ($lesson->tasks->where("type", "5") as $game)
+                                    <a href="/teacher/{{$class->id}}/{{$lesson->id}}/{{$game->id}}/game/create" class="text-sm font-semibold">
+                                        {{$counter++}}. game: {{$game->title}}
+                                    </a>
+                                @endforeach
                         </div>
                         <div class="flex items-center text-cyan-400">
                             <a href="/teacher/lesson/{{$lesson->id}}/subject" class="uppercase border border-cyan-400 rounded-r-none rounded-lg p-2 m-0 text-xs font-semibold">+tambah materi</a>

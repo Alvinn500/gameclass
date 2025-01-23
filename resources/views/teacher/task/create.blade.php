@@ -24,6 +24,7 @@
                         <option value="2">Test (Pilihan Ganda)</option>
                         <option value="3">Essay</option>
                         <option value="4">Tugas Upload</option>
+                        <option value="5">Memory Game</option>
                     </select>
                 </div>
                 <button type="submit" class="text-xs font-semibold bg-violet-800 py-3 px-5 rounded-lg shadow-lg">BUAT SOAL</button>
@@ -35,6 +36,7 @@
                     <li class="mb-1">2. <span class="text-yellow-400 font-semibold">Test:</span> Siswa tidak dapat mengetahui nilai dan kunci jawaban</li>
                     <li class="mb-1">3. <span class="text-yellow-400 font-semibold">Essay:</span> Soal uraian</li>
                     <li class="mb-1">4. <span class="text-yellow-400 font-semibold">Tugas Upload:</span> Jenis soal yang mengharuskan siswa mengunggah file tertentu</li>
+                    <li class="mb-1">5. <span class="text-yellow-400 font-semibold">Memory Game:</span> Pembalajaran yang di kombinasikan dengan game</li>
                 </ol>
             </div>   
         </div>

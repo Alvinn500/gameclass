@@ -102,7 +102,23 @@ class TaskController extends Controller
             return redirect("/teacher/$class->id/$lesson->id/$task->id/upload/create");
         }
 
-        return redirect("/teacher/class/$class->id");
+        if(request()->type === "5") {
+
+            $task = Task::create([
+                'title' => request()->title,
+                'type' => request()->type,
+                'lesson_id' => $lesson->id,
+            ]);
+
+            Activity::create([
+                'description' => "membuat memory game: " . $task->title,
+                'user_id' => Auth::user()->id,
+                "class_id" => $class->id
+            ]);
+
+        }
+
+        return redirect("/teacher/class/$class->id/$lesson->id/$task->id/game/create");
     }
 
     public function update(Task $task) {

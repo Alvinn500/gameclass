@@ -34,4 +34,8 @@ class Task extends Model
         return $this->hasOne(Upload::class, 'tasks_id');
     }
 
+    public function memoryGames() {
+        return $this->hasMany(MemoryGame::class);
+    }
+
 }

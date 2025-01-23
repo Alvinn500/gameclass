@@ -21,6 +21,8 @@ use App\http\controllers\Student\SEssayController;
 use App\http\controllers\Student\SUploadController;
 use App\http\controllers\RecapController;
 use Illuminate\Support\Facades\Auth;
+use App\http\controllers\ProfileController;
+use App\http\controllers\MemoryGameController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -34,13 +36,11 @@ Route::delete('/logout', [SessionController::class, 'destroy']);
 Route::get("/register", [RegisterController::class, 'create']);
 Route::post("/register", [RegisterController::class, 'store']);
 
-Route::get("/profileSetting", function () {
-    $user = Auth::user();
-    // dd($user);
-    return view('profileSetting', [
-        "user" => $user
-    ]);
-});
+Route::get("/profile", [ProfileController::class, 'index']);
+Route::post("/profile", [ProfileController::class, 'profileUpdate']);
+
+Route::get('/profile/password', [ProfileController::class, 'password']);
+Route::post('/profile/password', [ProfileController::class, 'passwordUpdate']);
 
 
 Route::middleware('auth', EnsureTeacherRole::class)->group(function () {
@@ -112,6 +112,10 @@ Route::middleware('auth', EnsureTeacherRole::class)->group(function () {
     Route::patch("/upload/edit/{task}", [TaskController::class, 'update']);
     Route::delete("/upload/delete/{task}", [TaskController::class, 'destroy']);
 
+    // teacher task memory game
+    Route::patch("/memory/edit/{task}", [TaskController::class, 'update']);
+    Route::delete("/memory/delete/{task}", [TaskController::class, 'destroy']);
+
     // teacher quiz
     Route::get("/teacher/{class}/{lesson}/{task}/quiz/create", [QuizController::class, 'create']);
     Route::get("/teacher/{class}/{lesson}/{task}/quiz/{quiz}", [QuizController::class, 'show']);
@@ -133,6 +137,14 @@ Route::middleware('auth', EnsureTeacherRole::class)->group(function () {
     Route::patch("/upload/question/edit/{upload}", [UploadController::class, 'update']);
     Route::delete("/upload/question/delete/{upload}", [UploadController::class, 'destroy']);
     Route::post("/upload/answer/download/{filename}", [UploadController::class, 'downloadAnswer']);
+
+    
+    // teacher game
+    Route::get("/teacher/{class}/{lesson}/{task}/game/create", [MemoryGameController::class, 'index']); 
+    Route::post("/teacher/{class}/{lesson}/{task}/game/create", [MemoryGameController::class, 'store']); 
+    Route::patch("/game/images/edit/{task}", [MemoryGameController::class, 'update']);
+    Route::delete("/game/images/delete/{game}", [MemoryGameController::class, 'destroy']);
+
 
     // teacher discussion
     Route::get("/teacher/discussion", function () {

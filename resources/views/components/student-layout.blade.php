@@ -1,7 +1,7 @@
 <x-layout title="{{$title}}">
     <main class="h-full flex">
         <div> 
-            <x-sidebar dashboardUrl="student" discussioniUrl="student/discussion" classUrl="student/class" profileSettingUrl="profileSetting"/>
+            <x-sidebar dashboardUrl="student" discussioniUrl="student/discussion" classUrl="student/class" profileSettingUrl="profile"/>
         </div>
         <div class="text-white flex-1 m-0 lg:ml-64 relative">
             <div class="flex justify-between items-center p-6 mb-5 bg-neutral-900 h-[69px] border-b border-neutral-800">

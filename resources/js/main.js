@@ -462,3 +462,80 @@ if (unconfirm) {
         confirmOverlay.classList.add("hidden");
     });
 }
+
+// manipulasi type password
+const passwordInput = document.querySelectorAll(".passwordInput");
+
+// manipulasi game modal
+const addChallenge = document.getElementById("addChallenge");
+const challenge_overlay = document.getElementById("challenge_overlay");
+const modal_challenge = document.getElementById("modal_challenge");
+const challenge_close = document.getElementById("challenge_close");
+
+if (addChallenge) {
+    addChallenge.addEventListener("click", () => {
+        challenge_overlay.classList.remove("hidden");
+    });
+}
+
+if (challenge_close) {
+    challenge_close.addEventListener("click", () => {
+        challenge_overlay.classList.add("hidden");
+    });
+}
+
+if (modal_challenge) {
+    modal_challenge.addEventListener("click", (event) => {
+        if (event.target == modal_challenge) {
+            challenge_overlay.classList.add("hidden");
+        }
+    });
+}
+
+// manipulasi modal edit task
+const ButtonEditTask = document.getElementById("ButtonEditTask");
+const modalEditTask = document.getElementById("modalEditTask");
+
+if (ButtonEditTask) {
+    ButtonEditTask.addEventListener("click", () => {
+        modalEditTask.classList.remove("hidden");
+        modalEditTask.classList.add("flex");
+    });
+}
+
+if (modalEditTask) {
+    modalEditTask.addEventListener("click", (even) => {
+        if (even.target == modalEditTask) {
+            modalEditTask.classList.add("hidden");
+            modalEditTask.classList.remove("flex    ");
+        }
+    });
+}
+
+// manipulasi edit challenge
+const buttonEditChallenge = document.getElementById("buttonEditChallenge");
+const edit_challenge_overlay = document.getElementById(
+    "edit_challenge_overlay"
+);
+const modal_edit_challenge = document.getElementById("modal_edit_challenge");
+const edit_challenge_close = document.getElementById("edit_challenge_close");
+
+if (buttonEditChallenge) {
+    buttonEditChallenge.addEventListener("click", () => {
+        edit_challenge_overlay.classList.remove("hidden");
+    });
+}
+
+if (modal_edit_challenge) {
+    modal_edit_challenge.addEventListener("click", (event) => {
+        if (event.target == modal_edit_challenge) {
+            edit_challenge_overlay.classList.add("hidden");
+        }
+    });
+}
+
+if (edit_challenge_close) {
+    edit_challenge_close.addEventListener("click", () => {
+        edit_challenge_overlay.classList.add("hidden");
+    });
+}
