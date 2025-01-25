@@ -23,6 +23,7 @@ use App\http\controllers\RecapController;
 use Illuminate\Support\Facades\Auth;
 use App\http\controllers\ProfileController;
 use App\http\controllers\MemoryGameController;
+use App\http\controllers\Student\SMemoryGameController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -190,10 +191,15 @@ Route::middleware('auth', EnsureStudentRole::class)->group(function () {
 
 
     // student uploads
-    Route::get("/student/{class}/{lesson}/upload/{task}", [sUploadController::class, 'show']);
-    Route::post("/student/{class}/{lesson}/upload/{task}", [sUploadController::class, 'store']);
-    Route::get("/student/{class}/{lesson}/upload/{task}/result", [sUploadController::class, 'result']);
+    Route::get("/student/{class}/{lesson}/upload/{task}", [SUploadController::class, 'show']);
+    Route::post("/student/{class}/{lesson}/upload/{task}", [SUploadController::class, 'store']);
+    Route::get("/student/{class}/{lesson}/upload/{task}/result", [SUploadController::class, 'result']);
 
+
+    // student game
+    Route::get("/student/{class}/{lesson}/game/{task}", [SMemoryGameController::class, 'show']);
+    Route::post("/student/{class}/{lesson}/game/{task}", [SMemoryGameController::class, 'store']);
+    Route::get("/student/{class}/{lesson}/game/{task}/result", [SMemoryGameController::class, 'result']);
 
     // student discussion
     Route::get("/student/discussion", function () {

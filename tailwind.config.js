@@ -42,6 +42,9 @@ export default {
                 primary: "#c539ff",
                 main: "#191b2a ",
             },
+            gridTemplateColumns: {
+                game: "repeat(4, minmax(100px, 1fr))",
+            },
         },
     },
     plugins: [],

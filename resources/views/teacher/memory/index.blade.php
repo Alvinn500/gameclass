@@ -45,10 +45,10 @@
             @else
                 <div class="order-2 md:order-1 w-full md:w-[70%] lg:w-[75%] space-y-2">
                     <div class="flex flex-col gap-3 justify-between bg-main px-4 py-6 rounded-2xl">
-                        <div class="flex flex-wrap gap-2"> 
+                        <div class="grid grid-cols-3 gap-2"> 
                             @if($memory)
-                                @foreach ($memory->images as $key => $image)
-                                    <div class="w-[24%] bg-neutral-800 p-2 rounded-lg">
+                                @foreach (array_slice($memory->images, 0, 6) as $key => $image)
+                                    <div class="w-full bg-neutral-800 p-2 rounded-lg">
                                         <img class="w-full rounded-lg" src="{{asset("$image")}}" alt="image memory game {{$key}}">
                                     </div>
                                 @endforeach
@@ -107,10 +107,10 @@
                     <img id="edit_challenge_close" class="cursor-pointer" src="{{asset("img/close.svg")}}" alt="close image">
                 </div>
                 <span class="block h-[0.0625rem] mx-auto w-full bg-gray-500 my-4"></span>
-                <div class="flex flex-wrap gap-2 mb-2"> 
+                <div class="grid grid-cols-3 gap-2 mb-2"> 
                     @if($memory)
-                        @foreach ($memory->images as $key => $image)
-                            <div class="w-[24%] bg-neutral-800 p-2 rounded-lg">
+                        @foreach (array_slice($memory->images, 0, 6) as $key => $image)
+                            <div class="w-full bg-neutral-800 p-2 rounded-lg">
                                 <img class="w-full rounded-lg" src="{{asset("$image")}}" alt="image memory game {{$key}}">
                             </div>
                         @endforeach

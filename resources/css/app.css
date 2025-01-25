@@ -145,3 +145,32 @@ section {
     border-left: solid 8px transparent;
     border-right: solid 8px transparent;
 }
+
+.memory-gmae {
+    perspective: 1000px;
+}
+
+.memory-card {
+    transform: scale(1);
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+    backface-visibility: hidden;
+}
+
+.memory-card:active {
+    transform: scale(0.97);
+    transition: transform 0.2s;
+}
+
+.memory-card.flip {
+    transform: rotateY(180deg);
+}
+
+.front-face,
+.back-face {
+    backface-visibility: hidden;
+}
+
+.front-face {
+    transform: rotateY(180deg);
+}

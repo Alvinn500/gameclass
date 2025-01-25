@@ -65,6 +65,15 @@
                                 </h4>
                                 <img class="w-6" src="{{asset("img/arrow.png")}}" alt="arrow">
                             </a>
+                        @endforeach 
+                    
+                        @foreach ($lesson->tasks->where("type", "5") as $game)
+                            <a href="/student/{{$class->id}}/{{$lesson->id}}/game/{{$game->id}}" class="flex items-center justify-between border-b border-gray-600 py-3">
+                                <h4 class="text-sm font-medium">
+                                    {{$game->title}}
+                                </h4>
+                                <img class="w-6" src="{{asset("img/arrow.png")}}" alt="arrow">
+                            </a>
                         @endforeach
                     </div>
                 </div>

@@ -539,3 +539,62 @@ if (edit_challenge_close) {
         edit_challenge_overlay.classList.add("hidden");
     });
 }
+
+// memory game
+const cards = document.querySelectorAll(".memory-card");
+
+let hasFlippedCard = false;
+let lockBoard = false;
+let firstCard, secondCard;
+
+function flipCard() {
+    this.classList.toggle("flip");
+
+    const audio = new Audio("/sounds/tap-card.mp3");
+    audio.play();
+
+    if (!hasFlippedCard) {
+        hasFlippedCard = true;
+        firstCard = this;
+
+        return;
+    }
+
+    hasFlippedCard = false;
+    secondCard = this;
+
+    checkForMatch();
+}
+
+function checkForMatch() {
+    let isMatch =
+        firstCard.dataset.game === secondCard.dataset.game &&
+        firstCard.id != secondCard.id;
+
+    isMatch ? disableCards() : unflipCards();
+}
+
+function disableCards() {
+    setTimeout(() => {
+        const audio = new Audio("/sounds/card-match.mp3");
+        audio.play();
+    }, 500);
+
+    firstCard.removeEventListener("click", flipCard);
+    secondCard.removeEventListener("click", flipCard);
+}
+
+function unflipCards() {
+    lockBoard = true;
+
+    setTimeout(() => {
+        firstCard.classList.remove("flip");
+        secondCard.classList.remove("flip");
+
+        lockBoard = false;
+    }, 500);
+}
+
+if (cards) {
+    cards.forEach((card) => card.addEventListener("click", flipCard));
+}
