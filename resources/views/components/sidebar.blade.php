@@ -1,10 +1,10 @@
 <aside id="sidebar" class="fixed z-40 -translate-x-96 duration-700 ease-in-out bg-neutral-900 border-r border-neutral-800 h-screen w-64 text-white lg:-translate-x-0">
-   <div>
-    <svg id="close" class="block lg:hidden ml-auto cursor-pointer" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
-   </div>
-    <div class="py-[1.13rem] border-b border-neutral-800 flex justify-center items-center gap-3">
-        <img class="h-8" src="{{asset("image/logo.png")}}" alt="logo">
-        <h1 class="font-extrabold text-xl">PLAYED</h1>
+    <div class="py-[1.13rem] px-4 border-b border-neutral-800 flex justify-center items-center gap-8">
+        <div class="flex gap-3 mr-10">
+            <img class="h-8 ml-4" src="{{asset("image/logo.png")}}" alt="logo">
+            <h1 class="font-extrabold text-xl">PLAYED</h1>
+        </div>
+        <img id="close" class="w-6 cursor-pointer block lg:hidden" src="{{asset("image/minimize-sidebar.png")}}" alt="image minimize">
     </div>
     <div class="flex flex-col gap-4 py-8 px-4">
         <div class="flex flex-col gap-3 text-sm text-gray-300 font-light">

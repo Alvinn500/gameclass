@@ -4,22 +4,34 @@ import axios from "axios";
 let humburgerDashboard = document.getElementById("humburger-dashboard");
 let sidebar = document.getElementById("sidebar");
 
-humburgerDashboard.addEventListener("click", () => {
-    humburgerDashboard.classList.toggle("humburger-active");
-    sidebar.classList.toggle("-translate-x-96");
-    // setTimeout(() => {
-    //     sidebar.classList.toggle("absolute");
-    // }, 250);
-});
+if (humburgerDashboard) {
+    humburgerDashboard.addEventListener("click", () => {
+        humburgerDashboard.classList.toggle("humburger-active");
+        sidebar.classList.toggle("-translate-x-96");
+        // setTimeout(() => {
+        //     sidebar.classList.toggle("absolute");
+        // }, 250);
+    });
+}
+
+const openSidebar = document.getElementById("openSidebar");
+
+if (openSidebar) {
+    openSidebar.addEventListener("click", () => {
+        sidebar.classList.toggle("-translate-x-96");
+    });
+}
 
 // Sidebar
 let closeSidebar = document.getElementById("close");
 
-closeSidebar.addEventListener("click", () => {
-    humburgerDashboard.classList.toggle("humburger-active");
-    sidebar.classList.toggle("-translate-x-96");
-    console.log("close");
-});
+if (closeSidebar) {
+    closeSidebar.addEventListener("click", () => {
+        humburgerDashboard.classList.toggle("humburger-active");
+        sidebar.classList.toggle("-translate-x-96");
+        console.log("close");
+    });
+}
 
 // Modal
 let modalCreate = document.getElementById("modalCreate");

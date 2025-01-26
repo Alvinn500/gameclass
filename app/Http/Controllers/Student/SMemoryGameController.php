@@ -27,6 +27,7 @@ class SMemoryGameController extends Controller
             'game' => $game,
             'gameImages' => $gameImages,
             'class' => $class,
+            'task' => $task,
         ]);
     }
     
