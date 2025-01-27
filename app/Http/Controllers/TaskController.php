@@ -118,7 +118,7 @@ class TaskController extends Controller
 
         }
 
-        return redirect("/teacher/class/$class->id/$lesson->id/$task->id/game/create");
+        return redirect("/teacher/$class->id/$lesson->id/$task->id/game/create");
     }
 
     public function update(Task $task) {
