@@ -48,8 +48,8 @@
                         <div class="grid grid-cols-3 gap-2"> 
                             @if($memory)
                                 @foreach (array_slice($memory->images, 0, 6) as $key => $image)
-                                    <div class="w-full bg-neutral-800 p-2 rounded-lg">
-                                        <img class="w-full rounded-lg" src="{{asset("$image")}}" alt="image memory game {{$key}}">
+                                    <div class="w-full flex justify-center items-center bg-neutral-800 p-8 rounded-lg">
+                                        <img class="w-[60%] rounded-lg" src="{{asset("$image")}}" alt="image memory game {{$key}}">
                                     </div>
                                 @endforeach
                             @endif  

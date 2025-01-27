@@ -174,3 +174,7 @@ section {
 .front-face {
     transform: rotateY(180deg);
 }
+
+.modalGradient {
+    background: linear-gradient(180deg, #262626 -10%, #171717 100%);
+}
