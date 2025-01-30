@@ -33,6 +33,5 @@
                     </div>
                 @endforeach
             </div>
-   
-            </div>
+        </div>
 </x-student-layout>

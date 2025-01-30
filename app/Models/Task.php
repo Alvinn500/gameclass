@@ -38,4 +38,7 @@ class Task extends Model
         return $this->hasMany(MemoryGame::class);
     }
 
+    public function memoryGameScores() {
+        return $this->hasMany(MemoryGameScore::class);
+    }
 }

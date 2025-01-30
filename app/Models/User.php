@@ -85,4 +85,12 @@ class User extends Authenticatable
         return $this->hasMany(ClassScore::class);
     }
 
+    public function memoryGameAnswers() {
+        return $this->hasMany(MemoryGameAnswer::class);
+    }
+
+    public function memoryGameScores() {
+        return $this->hasMany(MemoryGameScore::class);
+    }
+
 }

@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>register</title>
         @vite('resources/css/app.css')
-        <link rel="icon" href="{{asset("img/favicon.ico")}}" type="image/x-icon">
+        <link rel="icon" href="{{asset("image/logo.png")}}" type="image/x-icon">
     </head>
     <body class="bg-secondary">
         <x-navbar/>

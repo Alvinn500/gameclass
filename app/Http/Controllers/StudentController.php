@@ -11,6 +11,7 @@ use App\Models\Subject;
 use App\Models\Task;
 use App\Models\MultipleChoice;
 
+
 class StudentController extends Controller
 {
     /**
@@ -124,8 +125,8 @@ class StudentController extends Controller
         $subjedId = $lessons->flatMap->subjects->pluck('id');
         $subjectReadeds = SubjectReaded::whereIn('subject_id', $subjedId)->where('user_id', $user->id)->get();
         
-        $score = $class->scores()->where('user_id', $user->id)->first();
-        $total_xp = $user->classScores->sum('score');
+        $score = $class->scores()->where('user_id', $user->id)->first()->score + $class->essayScores()->where('user_id', $user->id)->first()->XP + $class->uploadScores()->where('user_id', $user->id)->first()->XP + $class->memoryGameScores()->where('user_id', $user->id)->first()->XP;
+        $total_xp = $user->classScores->sum('score') + $user->essayScores->sum('XP') + $user->uploadScores->sum('XP') + $user->memoryGameScores->sum('XP');
         // dd($score->score ?? 0);
         
         $totalSubject = $lessons->flatMap->subjects->count();

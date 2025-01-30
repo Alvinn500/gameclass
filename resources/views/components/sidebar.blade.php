@@ -16,20 +16,17 @@
                 <i class="fas fa-chalkboard-teacher "></i>
                 <p class="font-medium">Kelas</p>
             </a>
-            <a href="/{{$discussioniUrl}}" class="flex items-center py-3 space-x-2 px-6 rounded-lg {{request()->path() == $discussioniUrl ? 'sidebar-focus' : ''}}">
+            {{-- <a href="/{{$discussioniUrl}}" class="flex items-center py-3 space-x-2 px-6 rounded-lg {{request()->path() == $discussioniUrl ? 'sidebar-focus' : ''}}">
                 <i class="fas fa-comments "></i>
                 <p class="font-medium">Diskusi</p>
-            </a>
-        </div>
-        <h3 class="uppercase text-sm font-medium text-gray-300 px-3">profil</h3>
-        <div class="flex flex-col gap-3 text-sm text-gray-300 font-light">
+            </a> --}}
             <a href="/{{$profileSettingUrl}}" class="flex items-center py-3 space-x-2 px-6 rounded-lg {{request()->path() == $profileSettingUrl ? 'sidebar-focus' : ''}}">
                 <i class="fas fa-user-alt "></i>
                 <p class="font-medium">Pengaturan Profile</p>
             </a>
-            <div class="text-left py-3 space-x-2 px-6 rounded-lg">
+            <div class="text-left py-3 mt-auto space-x-2 px-6 rounded-lg">
                 <i class="fas fa-sign-out-alt "></i>
-                <button form="logout">Keluar</button>
+                <button form="logout" class="font-medium">Keluar</button>
             </div>
         </div>
     </div>

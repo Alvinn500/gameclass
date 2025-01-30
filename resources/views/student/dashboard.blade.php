@@ -20,7 +20,7 @@
                 <span class="block h-[0.0625rem] mx-auto w-[90%] bg-gray-600 mb-2"></span>
                 <div>   
                     <h4 class="px-5">Lencana</h4>
-                    <div class="flex p-4 gap-1">
+                    <div class="flex p-4 gap-2">
                         <div class="relative flex items-center">
                             <div class="tooltip absolute hidden bg-white rounded-xl w-56 -top-24 -left-20 z-50">
                                 <div class="bg-gray-200 rounded-t-xl px-4 py-2">
@@ -29,9 +29,9 @@
                                 <p class="text-gray-500 text-xs px-4 py-2">Raih 500XP untuk mendapatkan lencana PEMULA</p>
                             </div>
                             @if($total_xp > 500)
-                                <img id="badge" class="w-14 sm:w-12 aspect-square" src="{{asset("img/badge/1.png")}}" alt="badge">
+                                <img id="badge" class="w-14 sm:w-16 aspect-square" src="{{asset("image/badge/1.png")}}" alt="badge">
                             @else
-                                <img id="badge" class="w-14 sm:w-12 aspect-square" src="{{asset("img/badge/1-gs.png")}}" alt="badge">
+                                <img id="badge" class="w-14 sm:w-16 aspect-square" src="{{asset("image/badge/1-gs.png")}}" alt="badge">
                             @endif
                         </div>
                         <div class="relative flex items-center">
@@ -42,9 +42,9 @@
                                 <p class="text-gray-500 text-xs px-4 py-2">Raih 1000XP untuk mendapatkan lencana PETUALANG</p>
                             </div>
                             @if($total_xp > 1000)
-                                <img id="badge" class="w-14 sm:w-12 aspect-square" src="{{asset("img/badge/2.png")}}" alt="badge">
+                                <img id="badge" class="w-14 sm:w-16 aspect-square" src="{{asset("image/badge/2.png")}}" alt="badge">
                             @else
-                                <img id="badge" class="w-14 sm:w-12 aspect-square" src="{{asset("img/badge/2-gs.png")}}" alt="badge">
+                                <img id="badge" class="w-14 sm:w-16 aspect-square" src="{{asset("image/badge/2-gs.png")}}" alt="badge">
                             @endif
                         </div>
                         <div class="relative flex items-center">
@@ -55,9 +55,9 @@
                                 <p class="text-gray-500 text-xs px-4 py-2">Raih 2000XP untuk mendapatkan lencana PEJUANG</p>
                             </div>
                             @if($total_xp > 2000)
-                                <img id="badge" class="w-14 sm:w-12 aspect-square" src="{{asset("img/badge/3.png")}}" alt="badge">
+                                <img id="badge" class="w-14 sm:w-16 aspect-square" src="{{asset("image/badge/3.png")}}" alt="badge">
                             @else
-                                <img id="badge" class="w-14 sm:w-12 aspect-square" src="{{asset("img/badge/3-gs.png")}}" alt="badge">
+                                <img id="badge" class="w-14 sm:w-16 aspect-square" src="{{asset("image/badge/3-gs.png")}}" alt="badge">
                             @endif
                         </div>
                         <div class="relative flex items-center">
@@ -68,9 +68,9 @@
                                 <p class="text-gray-500 text-xs px-4 py-2">Raih 4000XP untuk mendapatkan lencana PETARUNG</p>
                             </div>
                             @if($total_xp > 4000)
-                                <img id="badge" class="w-14 sm:w-12 aspect-square" src="{{asset("img/badge/4.png")}}" alt="badge">
+                                <img id="badge" class="w-14 sm:w-16 aspect-square" src="{{asset("image/badge/4.png")}}" alt="badge">
                             @else
-                                <img id="badge" class="w-14 sm:w-12 aspect-square" src="{{asset("img/badge/4-gs.png")}}" alt="badge">   
+                                <img id="badge" class="w-14 sm:w-16 aspect-square" src="{{asset("image/badge/4-gs.png")}}" alt="badge">   
                             @endif
                         </div>
                         <div class="relative flex items-center">
@@ -81,9 +81,9 @@
                                 <p class="text-gray-500 text-xs px-4 py-2">Raih 8000XP untuk mendapatkan lencana MASTER</p>
                             </div>
                             @if($total_xp > 8000)
-                                <img id="badge" class="w-14 sm:w-12 aspect-square" src="{{asset("img/badge/5.png")}}" alt="badge">
+                                <img id="badge" class="w-14 sm:w-16 aspect-square" src="{{asset("image/badge/5.png")}}" alt="badge">
                             @else
-                                <img id="badge" class="w-14 sm:w-12 aspect-square" src="{{asset("img/badge/5-gs.png")}}" alt="badge">
+                                <img id="badge" class="w-14 sm:w-16 aspect-square" src="{{asset("image/badge/5-gs.png")}}" alt="badge">
                             @endif
                         </div>
                     </div>

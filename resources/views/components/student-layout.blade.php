@@ -23,6 +23,5 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.min.js"></script>
     @vite('resources/js/chart.js')
-    @vite('resources/js/game.js')
     @vite('resources/js/main.js')
 </x-layout>

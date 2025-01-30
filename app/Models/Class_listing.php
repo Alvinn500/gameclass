@@ -35,4 +35,8 @@ class Class_listing extends Model
         return $this->hasMany(UploadScore::class, 'class_id');
     }
 
+    public function memoryGameScores() {
+        return $this->hasMany(MemoryGameScore::class, 'class_id');
+    }
+
 }

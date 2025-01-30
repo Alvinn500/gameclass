@@ -28,9 +28,7 @@
                             <h3>{{$score->user->name}}</h3>
                         </div>
                         <div> 
-                            <p>{{$score->score}}</p>
-                            {{-- <p>{{$subjectScore->where('user_id', $user->id)->sum('score') + $quizScore->where('user_id', $user->id)->sum('score')}}</p> --}}
-                            {{-- <span class="absolute block h-full -right-2 top-0 mx-auto w-2 bg-yellow-400"></span> --}}
+                            <p>{{$score->score + $score->user->essayScores->sum("XP") + $score->user->uploadScores->sum("XP") + $score->user->memoryGameScores->sum("XP")}}</p>
                         </div>
                     </div>
                 @endforeach

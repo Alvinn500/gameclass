@@ -14,5 +14,6 @@
     <body class="bg-secondary">
         {{$slot}}
         <script src="https://kit.fontawesome.com/5fe78a9205.js" crossorigin="anonymous"></script>
+        @vite('resources/js/game.js')
     </body>
 </html>

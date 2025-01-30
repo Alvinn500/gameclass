@@ -105,12 +105,9 @@ class ClassController extends Controller
         $users = $class->users->where("role", "student");
         $lessons = $class->lessons()->get();
         $taskId = $lessons->flatMap->tasks->pluck('id');
-        
-        // $quizScore = MultipleChoiceAnswer::whereIn('task_id', $taskId)->get();
-        // $subjectScore = $class->lessons->flatMap->subjects->flatMap->SubjectReadeds;
-        
+         
         $scores = $class->scores()->orderBy('score', 'desc')->get();
-        // dd($scores);
+        
         $breadcrumbs = [
             ['link' => "/student/class", 'name' => "Kelas"],
             ['name' => "Leaderboard"],

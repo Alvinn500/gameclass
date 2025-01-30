@@ -71,6 +71,12 @@ class MemoryGameController extends Controller
                 "task_id" => $task->id
             ]);
         
+            Activity::create([
+                'description' => "membuat memory game: " . $task->title,
+                'user_id' => Auth::user()->id,
+                "class_id" => $class->id
+            ]);
+
         } else {
             request()->validate([
                 "questionmemory1" => ['required', 'string', 'max:255'],

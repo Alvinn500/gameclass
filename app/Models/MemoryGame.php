@@ -21,4 +21,8 @@ class MemoryGame extends Model
         "questions" => 'array'
     ];
 
+    public function answers() {
+        return $this->hasMany(MemoryGameAnswer::class);
+    }
+
 }
