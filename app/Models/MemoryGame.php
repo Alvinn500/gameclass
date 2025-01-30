@@ -17,7 +17,8 @@ class MemoryGame extends Model
     }
 
     protected $casts = [
-        "images" => 'array'
+        "images" => 'array',
+        "questions" => 'array'
     ];
 
 }

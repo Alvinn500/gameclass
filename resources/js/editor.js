@@ -1,4 +1,3 @@
-console.log("hallo");
 const quill = new Quill("#editor", {
     theme: "snow",
     modules: {
@@ -13,5 +12,3 @@ formSubject.addEventListener("submit", (e) => {
     content.value = quill.root.innerHTML; // Ambil konten HTML Quill
     // console.log(quill.root.innerHTML);
 });
-
-console.log(quill);

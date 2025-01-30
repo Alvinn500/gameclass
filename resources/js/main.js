@@ -475,32 +475,16 @@ if (unconfirm) {
     });
 }
 
-// manipulasi type password
-const passwordInput = document.querySelectorAll(".passwordInput");
+// manipulasi add game
+const emptyGame = document.getElementById("emptyGame");
+const addGame = document.getElementById("addGame");
+const addImgaeGame = document.getElementById("addImageGame");
 
-// manipulasi game modal
-const addChallenge = document.getElementById("addChallenge");
-const challenge_overlay = document.getElementById("challenge_overlay");
-const modal_challenge = document.getElementById("modal_challenge");
-const challenge_close = document.getElementById("challenge_close");
-
-if (addChallenge) {
-    addChallenge.addEventListener("click", () => {
-        challenge_overlay.classList.remove("hidden");
-    });
-}
-
-if (challenge_close) {
-    challenge_close.addEventListener("click", () => {
-        challenge_overlay.classList.add("hidden");
-    });
-}
-
-if (modal_challenge) {
-    modal_challenge.addEventListener("click", (event) => {
-        if (event.target == modal_challenge) {
-            challenge_overlay.classList.add("hidden");
-        }
+if (addGame) {
+    addGame.addEventListener("click", () => {
+        // console.log(emptyGame, addImgaeGame);
+        addImgaeGame.classList.remove("hidden");
+        emptyGame.classList.add("hidden");
     });
 }
 
@@ -591,7 +575,7 @@ function disableCards() {
     setTimeout(() => {
         const audio = new Audio("/sounds/card-match.mp3");
         audio.play();
-        gameScore.innerHTML = parseInt(gameScore.innerHTML) + 100 + " XP";
+        gameScore.innerHTML = parseInt(gameScore.innerHTML) + 50 + " XP";
     }, 500);
 
     firstCard.removeEventListener("click", flipCard);
@@ -612,6 +596,8 @@ function unflipCards() {
 if (cards) {
     cards.forEach((card) => card.addEventListener("click", flipCard));
 }
+
+// finis
 
 // manipulasi content modal game
 

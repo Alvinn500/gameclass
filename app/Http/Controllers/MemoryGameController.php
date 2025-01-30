@@ -16,7 +16,7 @@ class MemoryGameController extends Controller
     public function index(Class_listing $class, Lesson $lesson, Task $task) {
 
         $memory = $task->memoryGames()->where('task_id', $task->id)->first();
-
+        // dd($memory->images);
         $breadcrumbs = [
             ["link" => "/teacher/class", "name" => "Kelas"],
             ['link' => "/teacher/class/$class->id", 'name' => $class->study_name . " - " . $class->class],
@@ -34,95 +34,163 @@ class MemoryGameController extends Controller
     }
 
     public function store(Class_listing $class, Lesson $lesson, Task $task) {
-
-        request()->validate([
-            "images" => ["required", "array", "min:6", "max:6", ],
-            "images.*" => ["required", "file", "mimes:jpg,jpeg,png", "max:2048"]
-        ]);
-
-        $uploadFiles = request()->file("images");
-        $counter = 1;
-
-        foreach($uploadFiles as $file) {
-            $image = $file->move("memory/$task->id", "game" . $counter . ".". $file->extension(),"public");
-
-            $paths[] = str_replace( "\\", "/" ,$image->getPathName());
+        // dd($task->memoryGames->count() == 0 ? true : false);
+        if($task->memoryGames->count() == 0 ? true : false) {
+            request()->validate([
+                "images" => ["required", "array", "min:6", "max:6", ],
+                "images.*" => ["required", "file", "mimes:jpg,jpeg,png", "max:2048"]
+            ]);
+    
+            $uploadFiles = request()->file("images");
+            $counter = 1;
+    
+            foreach($uploadFiles as $file) {
+                $image = $file->move("memory/$task->id", "game" . $counter . ".". $file->extension(),"public");
+    
+                $paths[] = str_replace( "\\", "/" ,$image->getPathName());
+                
+                $counter++;
+            }
             
-            $counter++;
-        }
+    
+            MemoryGame::create([
+                "images" => [
+                    "memory1" => $paths[0],
+                    "memory2" => $paths[1],
+                    "memory3" => $paths[2],
+                    "memory4" => $paths[3],
+                    "memory5" => $paths[4],
+                    "memory6" => $paths[5],
+                    "memory7" => $paths[0],
+                    "memory8" => $paths[1],
+                    "memory9" => $paths[2],
+                    "memory10" => $paths[3],
+                    "memory11" => $paths[4],
+                    "memory12" => $paths[5],           
+                ],
+                "task_id" => $task->id
+            ]);
         
+        } else {
+            request()->validate([
+                "questionmemory1" => ['required', 'string', 'max:255'],
+                "questionmemory2" => ['required', 'string', 'max:255'],
+                "questionmemory3" => ['required', 'string', 'max:255'],
+                "questionmemory4" => ['required', 'string', 'max:255'],
+                "questionmemory5" => ['required', 'string', 'max:255'],
+                "questionmemory6" => ['required', 'string', 'max:255'],
+                "time" => ['required', 'regex:/^\d{2}:\d{2}$/'],
+            ]);
 
-        MemoryGame::create([
-            "images" => [
-                "memory1" => $paths[0],
-                "memory2" => $paths[1],
-                "memory3" => $paths[2],
-                "memory4" => $paths[3],
-                "memory5" => $paths[4],
-                "memory6" => $paths[5],
-                "memory7" => $paths[0],
-                "memory8" => $paths[1],
-                "memory9" => $paths[2],
-                "memory10" => $paths[3],
-                "memory11" => $paths[4],
-                "memory12" => $paths[5],
-                // "memory13" => $paths[4],
-                // "memory14" => $paths[5],
-                // "memory15" => $paths[6],
-                // "memory16" => $paths[7],              
-            ],
-            "task_id" => $task->id
-        ]);
+            $task->memoryGames()->update([
+                "questions" => [
+                    "memory1" => request("questionmemory1"),
+                    "memory2" => request("questionmemory2"),
+                    "memory3" => request("questionmemory3"),
+                    "memory4" => request("questionmemory4"),
+                    "memory5" => request("questionmemory5"),
+                    "memory6" => request("questionmemory6"),
+                ],
+                "time" => request("time")
+            ]);
+
+        }
 
         return redirect()->back();
 
     }
 
+
+
     public function update(Request $request, Class_listing $class, Lesson $lesson, Task $task) {
         
-        request()->validate([
-            "images" => ["required", "array", "min:8", "max:8", ],
-            "images.*" => ["required", "file", "mimes:jpg,jpeg,png", "max:2048"]
-        ]);
+        $memory = $task->memoryGames()->where('task_id', $task->id)->first();
 
+        if(request()->file("images")) {
 
-        File::deleteDirectory(public_path("memory/$task->id"));
-
-        $uploadFiles = request()->file("images");
-
-        $firstCounter = 1;
-        $secondCounter = 2;
-
-        foreach($uploadFiles as $file) {
-            $first = $file->move("memory/$task->id", "game" . $firstCounter . "." . $file->extension(),"public");
-            $second = $file->move("memory/$task->id", "game" . $secondCounter . "." . $file->extension(),"public");
+            request()->validate([
+                "images" => ["required", "array", "min:6", "max:6", ],
+                "images.*" => ["required", "file", "mimes:jpg,jpeg,png", "max:2048"],
+                "questionmemory1" => ['required', 'string', 'max:255'],
+                "questionmemory2" => ['required', 'string', 'max:255'],
+                "questionmemory3" => ['required', 'string', 'max:255'],
+                "questionmemory4" => ['required', 'string', 'max:255'],
+                "questionmemory5" => ['required', 'string', 'max:255'],
+                "questionmemory6" => ['required', 'string', 'max:255'],
+                "time" => ['required', 'regex:/^\d{2}:\d{2}$/'],
+            ]);
             
-            $firstPaths[] = str_replace( "\\", "/" ,$first->getPathName());
-            $secondPaths[] = str_replace( "\\", "/" ,$second->getPathName());
-            $counter++;
-        }
-        
+            File::deleteDirectory(public_path("memory/$task->id"));
+    
+            $uploadFiles = request()->file("images");
+            $counter = 1;
+    
+            foreach($uploadFiles as $file) {
+                $image = $file->move("memory/$task->id", "game" . $counter . ".". $file->extension(),"public");
+    
+                $paths[] = str_replace( "\\", "/" ,$image->getPathName());
+                
+                $counter++;
+            }
+            
+    
+            $task->memoryGames()->update([
+               "images" => [
+                    "memory1" => $paths[0],
+                    "memory2" => $paths[1],
+                    "memory3" => $paths[2],
+                    "memory4" => $paths[3],
+                    "memory5" => $paths[4],
+                    "memory6" => $paths[5],
+                    "memory7" => $paths[0],
+                    "memory8" => $paths[1],
+                    "memory9" => $paths[2],
+                    "memory10" => $paths[3],
+                    "memory11" => $paths[4],
+                    "memory12" => $paths[5],               
+                ],
+                "questions" => [
+                    "memory1" => request("questionmemory1"),
+                    "memory2" => request("questionmemory2"),
+                    "memory3" => request("questionmemory3"),
+                    "memory4" => request("questionmemory4"),
+                    "memory5" => request("questionmemory5"),
+                    "memory6" => request("questionmemory6"),
+                ],
+                "time" => request("time")
+            ]);
+        } else {
 
-        $task->memoryGames()->update([
-           "images" => [
-                "memory1" => $firstPaths[0],
-                "memory2" => $firstPaths[1],
-                "memory3" => $firstPaths[2],
-                "memory4" => $firstPaths[3],
-                "memory5" => $firstPaths[4],
-                "memory6" => $firstPaths[5],
-                "memory7" => $firstPaths[6],
-                "memory8" => $firstPaths[7],
-                "memory9" => $secondPaths[0],
-                "memory10" => $secondPaths[1],
-                "memory11" => $secondPaths[2],
-                "memory12" => $secondPaths[3],
-                "memory13" => $secondPaths[4],
-                "memory14" => $secondPaths[5],
-                "memory15" => $secondPaths[6],
-                "memory16" => $secondPaths[7],              
-            ],
-        ]);
+            request()->validate([
+                "questionmemory1" => ['required', 'string', 'max:255'],
+                "questionmemory2" => ['required', 'string', 'max:255'],
+                "questionmemory3" => ['required', 'string', 'max:255'],
+                "questionmemory4" => ['required', 'string', 'max:255'],
+                "questionmemory5" => ['required', 'string', 'max:255'],
+                "questionmemory6" => ['required', 'string', 'max:255'],
+                "time" => ['required', 'regex:/^\d{2}:\d{2}$/'],
+            ]);
+   
+            foreach($memory->images as $key => $image) {
+
+                $paths[] = $image;
+                
+            }
+                        
+            $task->memoryGames()->update([
+                "questions" => [
+                    "memory1" => request("questionmemory1"),
+                    "memory2" => request("questionmemory2"),
+                    "memory3" => request("questionmemory3"),
+                    "memory4" => request("questionmemory4"),
+                    "memory5" => request("questionmemory5"),
+                    "memory6" => request("questionmemory6"),
+                ],
+                "time" => request("time")
+            ]);
+
+        }
+
 
         return redirect()->back();
 
