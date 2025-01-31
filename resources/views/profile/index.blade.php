@@ -4,7 +4,7 @@
             <form action="" method="POST">
                 @csrf  
                 <div class="text-center mb-8">
-                    <img class="rounded-full w-40 mx-auto mb-2" src="{{asset("photo_profile/" . $user->photo)}}" alt="Photo profile">
+                    <img class="rounded-full w-40 mx-auto mb-2" src="{{asset($user->photo)}}" alt="Photo profile">
                     <a href="/profile/avatar" class="text-sm font-medium text-lime-500 mb-2">Ubah Avatar</a>
                     <p class="text-xl">{{$user->name}}</p>    
                 </div>
@@ -31,7 +31,7 @@
             <form action="" method="POST">
                 @csrf  
                 <div class="text-center mb-8">
-                    <img class="rounded-full w-40 mx-auto mb-2" src="{{asset("photo_profile/" . $user->photo)}}" alt="Photo profile">
+                    <img class="rounded-full w-40 mx-auto mb-2" src="{{asset($user->photo)}}" alt="Photo profile">
                     <a href="/profile/avatar" class="text-sm font-medium text-lime-500 mb-2">Ubah Avatar</a>
                     <p class="text-xl">{{$user->name}}</p>    
                 </div>

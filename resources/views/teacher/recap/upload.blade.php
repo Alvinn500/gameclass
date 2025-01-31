@@ -31,7 +31,7 @@
                         @if($user->uploadScores && !$user->uploadScores->where("upload_id", $upload->upload->id)->isEmpty())
                             <tr>
                                 <td class="border border-neutral-800 text-base">{{$counter++}}</td>
-                                <td class="border border-neutral-800 text-base"><img class="w-8 aspect-square" src="{{asset("photo_profile/" . $user->photo)}}" alt="profile picture"></td>
+                                <td class="border border-neutral-800 text-base"><img class="w-8 aspect-square" src="{{asset($user->photo)}}" alt="profile picture"></td>
                                 <td class="border border-neutral-800 text-base">{{$user->name}}</td>
                                 <td class="border border-neutral-800 text-base">{{$user->uploadScores->where("upload_id", $upload->upload->id)->first()->score}}</td>
                                 <td class="border border-neutral-800 text-base">{{$user->uploadScores->where("upload_id", $upload->upload->id)->first()->created_at->setTimezone('Asia/Jakarta')->format('d M Y (H:i T)')}}</td>

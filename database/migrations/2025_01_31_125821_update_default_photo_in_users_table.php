@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('photo')->after("password")->default('default.jpg'); 
+            $table->string('photo')->default('image/avatar/default.jpg')->change(); 
         });
     }
 
@@ -22,7 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('photo');
+            $table->string('photo')->default('default.jpg')->change();
         });
     }
 };

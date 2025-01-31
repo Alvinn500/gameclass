@@ -15,7 +15,7 @@
             @endif
             @foreach ($activities as $activity)
                 <div class="ml-4 py-1 flex items-center gap-6">
-                    <img class="h-7" src="{{asset("photo_profile/" . $activity->user->photo)}}" alt="user profile image">
+                    <img class="h-7" src="{{asset($activity->user->photo)}}" alt="user profile image">
                     <div class="flex gap-1">
                         <h2 class="font-semibold text-lime-500 text-sm">{{$activity->user->name}}</h2>
                         <p class="text-sm">{{$activity->description}}. </p>

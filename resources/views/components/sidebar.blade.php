@@ -20,7 +20,7 @@
                 <i class="fas fa-comments "></i>
                 <p class="font-medium">Diskusi</p>
             </a> --}}
-            <a href="/{{$profileSettingUrl}}" class="flex items-center py-3 space-x-2 px-6 rounded-lg {{request()->path() == $profileSettingUrl ? 'sidebar-focus' : ''}}">
+            <a href="/{{$profileSettingUrl}}" class="flex items-center py-3 space-x-2 px-6 rounded-lg {{preg_match('/profile/', request()->path()) ? 'sidebar-focus' : ''}}">
                 <i class="fas fa-user-alt "></i>
                 <p class="font-medium">Pengaturan Profile</p>
             </a>

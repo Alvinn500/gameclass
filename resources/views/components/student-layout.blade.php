@@ -13,7 +13,10 @@
                     </div>
                     <h2 class="font-semibold text-lg">{{$title}}</h2>
                 </div>
-                <h2 class="font-medium text-gray-300">{{Auth::user()->name}}</h2>
+                <div class="flex gap-2">
+                    <img class="w-6" src="{{asset(Auth::user()->photo)}}" alt="user avatar image">
+                    <h2 class="font-medium text-gray-300">{{Auth::user()->name}}</h2>
+                </div>
             </div>
             <div class="mx-6">
                 {{$slot}}

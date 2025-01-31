@@ -24,7 +24,7 @@
                 @foreach ($scores as $score)
                     <div class="flex justify-between px-3 py-3 dark-green border-r-4 border-lime-500">
                         <div class="flex gap-6">
-                            <img class="aspect-square w-7" src="{{asset("photo_profile/" . $score->user->photo)}}" alt="photo profile">
+                            <img class="aspect-square w-7" src="{{asset($score->user->photo)}}" alt="photo profile">
                             <h3>{{$score->user->name}}</h3>
                         </div>
                         <div> 

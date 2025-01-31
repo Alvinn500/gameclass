@@ -44,7 +44,7 @@ Route::get('/profile/password', [ProfileController::class, 'password']);
 Route::post('/profile/password', [ProfileController::class, 'passwordUpdate']);
 
 Route::get('/profile/avatar', [ProfileController::class, 'avatar']);
-Route::post('/profile/avatar', [ProfileController::class, 'updateAvatar']);
+Route::post('/profile/avatar', [ProfileController::class, 'avatarUpdate']);
 
 
 Route::middleware('auth', EnsureTeacherRole::class)->group(function () {

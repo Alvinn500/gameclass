@@ -35,7 +35,7 @@ class StudentController extends Controller
             }
         }
         
-        $total_xp =  $user->classScores->sum('score');
+        $total_xp =  $user->classScores->sum('score') + $user->essayScores->sum('XP') + $user->uploadScores->sum('XP') + $user->memoryGameScores->sum('XP');
         $level = 0;
         $emblem = ""; 
         $classes = $user->classes()->orderBy('created_at', 'desc')->limit(2)->get();
@@ -53,8 +53,14 @@ class StudentController extends Controller
         $totalEssay = $user->classes->flatMap->lessons->flatMap->tasks->where("type", "3")->count();
         $essayAnswered = $user->essayScores->count();
 
-        $ongoing_mission = $subjectReaded + $quizAnswered + $essayAnswered;
-        $total_mission = $totalSubject + $totalQuiz + $totalEssay;
+        $totalUploadTask = $user->classes->flatMap->lessons->flatMap->tasks->where("type", "4")->count();
+        $uploadAnswered = $user->uploadScores->count();
+
+        $totalMemoryGameTask = $user->classes->flatMap->lessons->flatMap->tasks->where("type", "5")->count();
+        $memoryGameAnswered = $user->memoryGameScores->count();
+
+        $ongoing_mission = $subjectReaded + $quizAnswered + $essayAnswered + $uploadAnswered + $memoryGameAnswered;
+        $total_mission = $totalSubject + $totalQuiz + $totalEssay + $totalUploadTask + $totalMemoryGameTask;
         // dd($totalEssay, $essayAnswered); 
 
         if ($total_xp >= 500 && $total_xp <= 1000) {
@@ -95,14 +101,6 @@ class StudentController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(Class_listing $class)
@@ -134,15 +132,17 @@ class StudentController extends Controller
             return in_array($task->type, [1,2]);
         })->count();
         $totalEssay = $lessons->flatMap->tasks->where("type", "3")->count();
-        $totalUploadTask = 0;
+        $totalUploadTask = $lessons->flatMap->tasks->where("type", "4")->count();
+        $totalMemoryGameTask = $lessons->flatMap->tasks->where("type", "5")->count();
 
         $readed = $subjectReadeds->count('is_readed');
         $quizAnswered = $user->multipleChoiceAnswers->whereIn('task_id', $taskId)->pluck('task_id')->unique()->count();
         $essayAnswered = $lessons->flatMap->tasks->where("type", "3")->whereIn('id', $user->essayScores->pluck('task_id'))->count();
-        $uploaded = 0;
+        $uploaded = $class->uploadScores()->where('user_id', $user->id)->count();
+        $memoryGameAnswered = $class->memoryGameScores()->where('user_id', $user->id)->count();
         
-        $total_mission = $totalSubject + $totalQuiz + $totalEssay + $totalUploadTask;
-        $completed_mission = $readed + $quizAnswered + $essayAnswered + $uploaded;
+        $total_mission = $totalSubject + $totalQuiz + $totalEssay + $totalUploadTask + $totalMemoryGameTask;
+        $completed_mission = $readed + $quizAnswered + $essayAnswered + $uploaded + $memoryGameAnswered;
         $ongoing_mission = $total_mission - $completed_mission;
         
 

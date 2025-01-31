@@ -22,8 +22,14 @@ class ProfileController extends Controller
 
         $user = Auth::user();
 
+        $breadcrumbs = [ 
+            ['link' => "/profile", 'name' => "Profile"], 
+            ['name' => "Password"]
+        ];
+
         return view('profile.password', [
-            "user" => $user
+            "user" => $user,
+            "breadcrumbs" => $breadcrumbs
         ]);
 
     }
@@ -64,6 +70,35 @@ class ProfileController extends Controller
         ]);
 
         return redirect("/profile");
+
+    }
+
+    public function avatar() {
+
+        $user = Auth::user();
+
+        $breadcrumbs = [ 
+            ['link' => "/profile", 'name' => "Profile"], 
+            ['name' => "Avatar"]
+        ];
+
+        return view('profile.avatar', [
+            "user" => $user,
+            "breadcrumbs" => $breadcrumbs
+        ]);
+    }
+
+    public function avatarUpdate() {
+        
+        request()->validate([
+            'avatar' => ['required', "string", "max:255"],
+        ]);
+
+        Auth::user()->update([
+            'photo' => request('avatar')
+        ]);
+
+        return redirect()->back();
 
     }
 

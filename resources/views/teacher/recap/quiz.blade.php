@@ -30,7 +30,7 @@
                         @if(!$user->multipleChoiceAnswers->where("task_id", $quiz->id)->isEmpty())
                             <tr>
                                 <td class="border border-neutral-800 text-base">{{$counter++}}</td>
-                                <td class="border border-neutral-800 text-base"><img class="w-8 aspect-square" src="{{asset("photo_profile/" . $user->photo)}}" alt="profile picture"></td>
+                                <td class="border border-neutral-800 text-base"><img class="w-8 aspect-square" src="{{asset($user->photo)}}" alt="profile picture"></td>
                                 <td class="border border-neutral-800 text-base">{{$user->name}}</td>
                                 <td class="border border-neutral-800 text-base">{{100 / $user->multipleChoiceAnswers->where("task_id", $quiz->id)->count() * $user->multipleChoiceAnswers->where("task_id", $quiz->id)->where("is_correct", true)->count()}}</td>
                                 <td class="border border-neutral-800 text-base">{{$user->multipleChoiceAnswers->first()->created_at->setTimezone('Asia/Jakarta')->format('d M Y (H:i T)')}}</td>

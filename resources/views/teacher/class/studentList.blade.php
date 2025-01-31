@@ -31,7 +31,7 @@
                             <tr>
                                 {{-- {{dd($user->classScores->sum("score"))}} --}}
                                 <td class="border border-neutral-800 text-base">{{$counter++}}</td>
-                                <td class="border border-neutral-800 text-base"><img class="w-8 aspect-square" src="{{asset("photo_profile/" . $user->photo)}}" alt="profile picture"></td>
+                                <td class="border border-neutral-800 text-base"><img class="w-8 aspect-square" src="{{asset($user->photo)}}" alt="profile picture"></td>
                                 <td class="border border-neutral-800 text-base">{{$user->name}}</td>
                                 <td class="border border-neutral-800 text-base">
                                     @php

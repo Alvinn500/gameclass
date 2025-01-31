@@ -1,7 +1,7 @@
 <x-layout title="{{$title}}">
     <main class="h-full flex">
         <div> 
-            <x-sidebar class="fixed duration-700 ease-in-out" dashboardUrl="teacher" classUrl="teacher/class" discussioniUrl="teacher/discussion" profileSettingUrl="profile"/>
+            <x-sidebar class="fixed duration-700 ease-in-out" dashboardUrl="teacher" classUrl="teacher/class" profileSettingUrl="profile"/>
         </div>
         <div class="text-white flex-1 m-0 lg:ml-64 relative">
             <div class="flex justify-between items-center p-6 mb-5 bg-neutral-900 h-[69px] border-b border-neutral-800">
@@ -13,7 +13,10 @@
                     </div>
                     <h2 class="font-semibold text-base">{{$title}}</h2>
                 </div>
-                <h2 class="font-medium text-gray-300">{{Auth::user()->name}}</h2>
+                <div class="flex gap-2">
+                    <img class="w-6" src="{{asset(Auth::user()->photo)}}" alt="user avatar image">
+                    <h2 class="font-medium text-gray-300">{{Auth::user()->name}}</h2>
+                </div>
             </div>
             <div class="mx-6">
                 {{$slot}}

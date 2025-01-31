@@ -24,7 +24,7 @@
                     @foreach ($subject->subjectReadeds as $subjectReaded) 
                         <tr>
                             <td class="border border-neutral-800 text-base">{{$loop->iteration}}</td>
-                            <td class="border border-neutral-800 text-base"><img class="w-8 aspect-square" src="{{asset("photo_profile/" . $subjectReaded->user->photo)}}" alt="profile picture"></td>
+                            <td class="border border-neutral-800 text-base"><img class="w-8 aspect-square" src="{{asset($subjectReaded->user->photo)}}" alt="profile picture"></td>
                             <td class="border border-neutral-800 text-base">{{$subjectReaded->user->name}}</td>
                             <td class="border border-neutral-800 text-base">{{$subjectReaded->created_at->setTimezone('Asia/Jakarta')->format('d M Y (H:i T)')}}</td>
                             <td class="border border-neutral-800 text-base">{{$subjectReaded->score}} XP</td>
