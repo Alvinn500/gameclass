@@ -74,6 +74,10 @@ Route::middleware('auth', EnsureTeacherRole::class)->group(function () {
     Route::get("/teacher/recap/{lesson}/{upload}/upload", [RecapController::class, 'upload']);
     Route::get("/teacher/recap/{user}/{upload}/upload/answer", [RecapController::class, 'uploadAnswer']);
     Route::patch("/teacher/recap/{user}/{upload}/upload/answer", [RecapController::class, 'uploadUpdate']);
+    // recap game
+    Route::get("/teacher/recap/{lesson}/{game}/game", [RecapController::class, 'game']);
+    Route::get("/teacher/recap/{user}/{game}/game/answer", [RecapController::class, 'gameAnswer']);
+    Route::patch("/teacher/recap/{user}/{game}/game/answer", [RecapController::class, 'gameUpdate']);
     // class student list
     Route::get("/teacher/{class}/student", [ClassController::class, 'studentList']);
     // class setting

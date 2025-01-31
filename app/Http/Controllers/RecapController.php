@@ -200,7 +200,7 @@ class RecapController extends Controller
             ['link' => "/teacher/class", 'name' => "Kelas"],
             ['link' => "/teacher/class/$class->id", 'name' => $class->study_name . " - " . $class->class],
             ['link' => "/teacher/$class->id/recap", 'name' => "Rekap Nilai"],
-            ['link' => "/teacher/recap/$upload->lesson->id/$upload->id/upload", 'name' => $upload->title],
+            ['link' => "/teacher/recap/" . $upload->lesson->id . "/$upload->id/upload", 'name' => $upload->title],
             ['name' => $user->name]
         ];
         // dd($upload->upload->answer);
@@ -229,6 +229,82 @@ class RecapController extends Controller
 
         return redirect()->back();
 
+    }
+
+    public function game(Lesson $lesson, Task $game) {
+
+        $class = $game->lesson->class;
+        $users = $class->users()->where("role", "student")->get();
+
+
+        $breadcrumbs = [
+            ['link' => "/teacher/class", 'name' => "Kelas"],
+            ['link' => "/teacher/class/$class->id", 'name' => $class->study_name . " - " . $class->class],
+            ['link' => "/teacher/$class->id/recap", 'name' => "Rekap Nilai"],
+            ['name' => $game->title]
+        ];
+
+        return view('teacher.recap.game', [
+            "class" => $class,
+            "breadcrumbs" => $breadcrumbs,
+            "game" => $game,
+            "users" => $users,
+            'lesson' => $lesson,
+        ]);
+
+    }
+
+    public function gameAnswer(User $user, Task $game) {
+
+        $class = $game->lesson->class;
+        $memory = $game->memoryGames()->where('task_id', $game->id)->first();
+
+        $XP = $user->memoryGameScores->where("task_id", $game->id)->first()->XP;
+        $score = $user->memoryGameScores->where("task_id", $game->id)->first()->score;
+
+        $breadcrumbs = [
+            ['link' => "/teacher/class", 'name' => "Kelas"],
+            ['link' => "/teacher/class/$class->id", 'name' => $class->study_name . " - " . $class->class],
+            ['link' => "/teacher/$class->id/recap", 'name' => "Rekap Nilai"],
+            ['link' => "/teacher/recap/" . $game->lesson->id . "/$game->id/game", 'name' => $game->title],
+            ['name' => $user->name]
+        ];
+
+        return view('teacher.recap.gameAnswer', [
+            "class" => $class,
+            "breadcrumbs" => $breadcrumbs,
+            "memory" => $memory,
+            "user" => $user,
+            "game" => $game,
+            "XP" => $XP,
+            "score" => $score
+        ]);
+
+    }
+
+    public function gameUpdate(User $user, Task $game) {
+
+        request()->validate([
+            "score" => "required|numeric|min:0|max:100",
+            "comment" => "required"
+        ]);
+        
+        $XP = 0; 
+
+        if(request()->score == 50) {
+            $XP = $user->memoryGameScores->where("task_id", $game->id)->first()->XP;
+        } else {
+            $XP = $user->memoryGameScores->where("task_id", $game->id)->first()->XP + 400 / 100 * request()->score;
+        }
+
+        $user->memoryGameScores()->where("task_id", $game->id)->update([
+            "score" => request()->score,
+            "XP" => $XP,
+            "comment" => request()->comment,
+            "status" => true
+        ]);
+
+        return redirect()->back();
     }
 
 }

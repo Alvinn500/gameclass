@@ -48,6 +48,12 @@
                                 {{$counter++}}. Upload: {{$upload->title}}
                             </a>
                         @endforeach
+                    
+                        @foreach ($lesson->tasks->where("type", "5") as $game)
+                            <a href="/teacher/recap/{{$lesson->id}}/{{$game->id}}/game" class="text-sm font-semibold">
+                                {{$counter++}}. game: {{$game->title}}
+                            </a>
+                        @endforeach
                     </div>
                 </div>    
             @endforeach
