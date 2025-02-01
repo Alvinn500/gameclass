@@ -94,30 +94,32 @@
         </div>
     </div>
 
-    <div id="parent_edit_upload_overlay" class="fixed hidden z-50 bg-black bg-opacity-70 w-full h-full top-0 left-0 overflow-scroll">
-        <div id="edit_upload_overlay" class="flex h-full justify-center items-center py-6">
-            <form action="/upload/question/edit/{{$upload->id}}" method="POST" enctype="multipart/form-data" class="bg-main p-4 rounded-xl w-[80%] md:w-[60%]">
-                @csrf
-                @method("PATCH")
-                <div class="flex justify-between">
-                    <h2 class="text-sm md:text-base font-semibold">Buat Tugas</h2>
-                    <img id="edit_upload_close" class="cursor-pointer" src="{{asset("img/close.svg")}}" alt="close image">
-                </div>
-                <span class="block h-[0.0625rem] mx-auto w-full bg-gray-500 my-4"></span>
-                <div class="flex flex-col gap-2 mb-4">
-                    <label for="question" class="text-xs md:text-sm font-semibold">Deskripsi Tugas</label>
-                    <textarea id="question" name="question" class="bg-main focus:outline-none border border-gray-400 rounded-lg p-2.5 text-sm">{{$upload->question}}</textarea>
-                </div>
-                <div class="flex gap-2">
-                    <div class="flex flex-col gap-2 mb-1 lg:mb-0">
-                        <lable for="file" class="text-xs lg:text-sm font-semibold">Gambar (opsional)</lable>
-                        <input type="file" name="file" id="file" class="py-2.5 px-3 border border-gray-500 rounded-xl text-sm">
+    @if($upload)
+        <div id="parent_edit_upload_overlay" class="fixed hidden z-50 bg-black bg-opacity-70 w-full h-full top-0 left-0 overflow-scroll">
+            <div id="edit_upload_overlay" class="flex h-full justify-center items-center py-6">
+                <form action="/upload/question/edit/{{$upload->id}}" method="POST" enctype="multipart/form-data" class="bg-main p-4 rounded-xl w-[80%] md:w-[60%]">
+                    @csrf
+                    @method("PATCH")
+                    <div class="flex justify-between">
+                        <h2 class="text-sm md:text-base font-semibold">Buat Tugas</h2>
+                        <img id="edit_upload_close" class="cursor-pointer" src="{{asset("img/close.svg")}}" alt="close image">
                     </div>
-                    <div class="flex items-end">
-                        <button type="submit" class="uppercase px-8 py-3.5 font-semibold rounded-lg w-full lg:w-auto block text-xs bg-violet-800">Tambah Pertanyaan</button>
+                    <span class="block h-[0.0625rem] mx-auto w-full bg-gray-500 my-4"></span>
+                    <div class="flex flex-col gap-2 mb-4">
+                        <label for="question" class="text-xs md:text-sm font-semibold">Deskripsi Tugas</label>
+                        <textarea id="question" name="question" class="bg-main focus:outline-none border border-gray-400 rounded-lg p-2.5 text-sm">{{$upload->question}}</textarea>
                     </div>
-                </div>
-            </form>
+                    <div class="flex gap-2">
+                        <div class="flex flex-col gap-2 mb-1 lg:mb-0">
+                            <lable for="file" class="text-xs lg:text-sm font-semibold">Gambar (opsional)</lable>
+                            <input type="file" name="file" id="file" class="py-2.5 px-3 border border-gray-500 rounded-xl text-sm">
+                        </div>
+                        <div class="flex items-end">
+                            <button type="submit" class="uppercase px-8 py-3.5 font-semibold rounded-lg w-full lg:w-auto block text-xs bg-violet-800">Tambah Pertanyaan</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
+    @endif
 </x-teacher-layout>

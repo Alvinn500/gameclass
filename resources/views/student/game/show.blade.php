@@ -4,27 +4,29 @@
             <x-sidebar dashboardUrl="student" discussioniUrl="student/discussion" classUrl="student/class" profileSettingUrl="profile"/>
         </div>
         <div class="m-0 lg:ml-64 pt-3">
-            <div id="start">
-                <div class="bg-semiblack mx-4 relative flex lg:hidden items-center mb-2 p-2 rounded-lg">                
-                    <img id="openSidebar" class="w-6 cursor-pointer block lg:hidden" src="{{asset("image/open-sidebar.png")}}" alt="">
-                </div>
-                <div class="flex justify-center items-center dark-green mx-4 rounded-lg h-[87.5vh] lg:h-[96vh]">
-                    <div class="w-[40%]">
-                        <img class="w-72 mx-auto" src="{{asset("image/memory-game.png")}}" alt="">
+            @if($game && $game->answers->where('user_id', Auth::user()->id)->count() < 0)
+                <div id="start">
+                    <div class="bg-semiblack mx-4 relative flex lg:hidden items-center mb-2 p-2 rounded-lg">                
+                        <img id="openSidebar" class="w-6 cursor-pointer block lg:hidden" src="{{asset("image/open-sidebar.png")}}" alt="">
                     </div>
-                    <div class="w-[60%] space-y-2">
-                        <h1 class="text-white uppercase text-5xl font-bold">Memory Game</h1>
-                        @if($game === null)
-                            {{-- <p class="text-red-500 text-sm font-semibold">Game belum di buat</p> --}}
-                            <p class="text-white font-semibold">Game belum di buat Balik ke <a href="/student/class/{{$class->id}}" class="text-lime-500 font-semibold">kelas</a></p>
-                        @endif
-                        <div class="space-y-3 space-x-1">
-                            <button {{$game == null ? 'disabled' : ''}} id="startGame" class="uppercase hover:scale-105 shadow-md duration-300 ease-in-out px-4 text-sm py-3 rounded-md text-white bg-violet-800 font-semibold" onclick="hideshow('start', 'game')">Mulai</button>
-                            <button id="tutorialButton" class="uppercase hover:scale-105 shadow-md duration-300 ease-in-out px-4 text-sm py-3 rounded-md text-white bg-yellow-500 font-semibold">Tutorial</button>
+                    <div class="flex justify-center items-center dark-green mx-4 rounded-lg h-[87.5vh] lg:h-[96vh]">
+                        <div class="w-[40%]">
+                            <img class="w-72 mx-auto" src="{{asset("image/memory-game.png")}}" alt="">
+                        </div>
+                        <div class="w-[60%] space-y-2">
+                            <h1 class="text-white uppercase text-5xl font-bold">Memory Game</h1>
+                            @if($game === null)
+                                {{-- <p class="text-red-500 text-sm font-semibold">Game belum di buat</p> --}}
+                                <p class="text-white font-semibold">Game belum di buat Balik ke <a href="/student/class/{{$class->id}}" class="text-lime-500 font-semibold">kelas</a></p>
+                            @endif
+                            <div class="space-y-3 space-x-1">
+                                <button {{$game == null ? 'disabled' : ''}} id="startGame" class="uppercase hover:scale-105 shadow-md duration-300 ease-in-out px-4 text-sm py-3 rounded-md text-white bg-violet-800 font-semibold" onclick="hideshow('start', 'game')">Mulai</button>
+                                <button id="tutorialButton" class="uppercase hover:scale-105 shadow-md duration-300 ease-in-out px-4 text-sm py-3 rounded-md text-white bg-yellow-500 font-semibold">Tutorial</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @endif
             <div id="gameOverlay" class="hidden justify-center items-center bg-main bg-opacity-75 absolute top-0 left-0 w-full h-full z-50">
                 <div id="gameModal" class="rounded-lg shadow-sm w-96">
                     <div class="modalGradient rounded-t-lg px-4 pt-4">

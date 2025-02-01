@@ -14,11 +14,9 @@
             <div class="w-full sm:w-[60%] p-4 sm:pr-2 lg:pr-4 flex flex-col justify-center items-center sm:items-start gap-4">
                 <h1 class="font-bold text-center sm:text-left text-lg sm:text-xl md:text-2xl lg:text-3xl">{{$task->type === 1 ? $task->title : "Kamu sudah mengerjakan soal tes $task->title"}}</h1>
                 <p class="text-sm sm:text-base font-semibold">kamu mendapatkan reward {{$rewerdXP}} xp</p>
-                <div>
-                    <div class="bg-yellow-400 inline-block text-center py-5 px-16 sm:px-20 md:px-24 lg:px-28 md:space-y-3 lg:space-y-4">
-                        <h2 class="font-bold text-2xl text-black">Nilaimu</h2>
-                        <h3 class="font-bold text-3xl md:text-4xl lg:text-5xl text-black">{{$grade}}</h3>
-                    </div>
+                <div class="bg-yellow-400 inline-block text-center py-5 px-16 sm:px-20 md:px-24 lg:px-28 md:space-y-3 lg:space-y-4">
+                    <h2 class="font-bold text-2xl text-black">Nilaimu</h2>
+                    <h3 class="font-bold text-3xl md:text-4xl lg:text-5xl text-black">{{$grade}}</h3>
                 </div>
                 @if($task->type === 2)
                     <p class="text-sm text-center sm:text-left">Kunci jawaban tes kamu tidak di tampilkan karena soal bersifat rahasia</p>

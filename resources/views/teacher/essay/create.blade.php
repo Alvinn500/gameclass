@@ -45,7 +45,7 @@
                     </div>
                     <div id="essay{{$essay->id}}" class="bg-semiblack hidden px-3 py-4 rounded-b-2xl">
                         @if($essay->image)
-                            <img class="aspect-video h-[50%] mx-auto mb-2" src="{{asset("essays/$essay->image")}}" alt="question image">
+                            <img class="h-44 mx-auto mb-2" src="{{asset("essays/$essay->image")}}" alt="question image">
                         @endif
 
                         <div class="flex mt-2">  

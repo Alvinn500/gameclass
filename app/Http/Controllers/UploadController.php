@@ -7,6 +7,7 @@ use App\Models\Class_listing;
 use App\Models\Lesson;
 use App\Models\Task;
 use App\Models\Upload;
+use Illuminate\Support\Facades\Auth;
 
 class UploadController extends Controller
 {
@@ -15,7 +16,7 @@ class UploadController extends Controller
 
         $upload = $task->upload;
         
-        $uploadAnswered = $task->upload->scores->count();
+        $uploadAnswered = $task->upload?->scores->count() ?? 0;
         
         $breadcrumbs = [
             ['link' => "/teacher/class", 'name' => "Kelas"],

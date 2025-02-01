@@ -11,6 +11,7 @@ use Illuminate\Support\Arr;
 use App\Models\MemoryGameAnswer;
 use App\Models\MemoryGameScore;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Activity;
 
 class SMemoryGameController extends Controller
 {

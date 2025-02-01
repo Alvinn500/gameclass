@@ -8,6 +8,8 @@ use App\Models\Lesson;
 use App\Models\Task;
 use App\Models\MemoryGame;
 use Illuminate\Support\Facades\File;
+use App\Models\Activity;
+use Illuminate\Support\Facades\Auth;
 
 
 class MemoryGameController extends Controller

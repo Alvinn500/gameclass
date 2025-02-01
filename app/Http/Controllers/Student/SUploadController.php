@@ -17,15 +17,17 @@ class SUploadController extends Controller
     
     public function show(Class_listing $class,Lesson $lesson,Task $task) {
 
+        $uploadAnswered = $task->upload?->answer()->where("user_id", Auth::user()->id)->get();
+        $user = Auth::user();
+        
         $breadcrumbs = [
             ['link' => "/student/class", 'name' => "Kelas"],
             ['link' => "/student/class/$class->id", 'name' => $class->study_name . " - " . $class->class],
             ['name' => $task->title],
         ];
 
-        $uploadAnswered = $task->upload->answer()->where("user_id", Auth::user()->id)->get();
-        
-        if(!$uploadAnswered->isEmpty()) {
+        // dd($task->upload);
+        if($task->upload?->scores->where("user_id", Auth::user()->id)->count() > 0) {
         
             return redirect("/student/$class->id/$lesson->id/upload/$task->id/result");
         }
@@ -33,7 +35,8 @@ class SUploadController extends Controller
         return view('student.upload.show', [
             'class' => $class,
             'task' => $task,
-            'breadcrumbs' => $breadcrumbs
+            'breadcrumbs' => $breadcrumbs,
+            'user' => $user,
         ]);
 
     }
