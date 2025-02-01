@@ -30,6 +30,9 @@
             <div class="flex flex-col gap-4">
                 @foreach ($task->multipleChoices as $quiz)
                     <div class="p-4 bg-main rounded-xl space-y-2">
+                        @if($quiz->image)
+                            <img class="h-44" src="{{asset("mutiple_choices/$quiz->image")}}" alt="question image">
+                        @endif
                         <h3 class="text-lg font-semibold">{{$quiz->question}}</h3>
                         <div>
                             <p class="{{$quiz->answer == 'a' ? "text-lime-500" : ""}}">A. {{$quiz->options['a']}}</p>

@@ -51,7 +51,7 @@
                     </div>
                     <div id="quizOption{{$quiz->id}}" class="bg-semiblack hidden px-3 py-4 rounded-b-2xl">
                         @if($quiz->image)
-                            <img class="w-44 mx-auto mb-2" src="{{asset("mutiple_choices/$quiz->image")}}" alt="question image">
+                            <img class="h-44 mx-auto mb-2" src="{{asset("mutiple_choices/$quiz->image")}}" alt="question image">
                         @endif
                         
                         @foreach ($quiz->options as $key => $option )
