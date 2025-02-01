@@ -28,8 +28,8 @@ class SEssayController extends Controller
             ['link' => "/student/class/$class->id", 'name' => $class->study_name . " - " . $class->class],
             ['name' => $task->title],
         ];
-
-        if($essays->isEmpty()) {
+        
+        if($task->essayScores->where('user_id', Auth::user()->id)->count()) {
             return redirect("/student/$class->id/$lesson->id/essay/$task->id/result");
         }
 

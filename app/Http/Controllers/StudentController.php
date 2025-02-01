@@ -123,9 +123,9 @@ class StudentController extends Controller
         $subjedId = $lessons->flatMap->subjects->pluck('id');
         $subjectReadeds = SubjectReaded::whereIn('subject_id', $subjedId)->where('user_id', $user->id)->get();
         
-        $score = $class->scores()->where('user_id', $user->id)->first()->score + $class->essayScores()->where('user_id', $user->id)->first()->XP + $class->uploadScores()->where('user_id', $user->id)->first()->XP + $class->memoryGameScores()->where('user_id', $user->id)->first()->XP;
+        $score = $class->scores()->where('user_id', $user->id)->first()->score ?? 0 + $class->essayScores()->where('user_id', $user->id)->first()?->XP ?? 0 + $class->uploadScores()->where('user_id', $user->id)->first()?->XP ?? 0 + $class->memoryGameScores()->where('user_id', $user->id)->first()?->XP ?? 0;
         $total_xp = $user->classScores->sum('score') + $user->essayScores->sum('XP') + $user->uploadScores->sum('XP') + $user->memoryGameScores->sum('XP');
-        // dd($score->score ?? 0);
+        
         
         $totalSubject = $lessons->flatMap->subjects->count();
         $totalQuiz = $lessons->flatMap->tasks->filter(function ($task) {
@@ -135,7 +135,7 @@ class StudentController extends Controller
         $totalUploadTask = $lessons->flatMap->tasks->where("type", "4")->count();
         $totalMemoryGameTask = $lessons->flatMap->tasks->where("type", "5")->count();
 
-        $readed = $subjectReadeds->count('is_readed');
+        $readed = $subjectReadeds->where("is_readed", true)->count();
         $quizAnswered = $user->multipleChoiceAnswers->whereIn('task_id', $taskId)->pluck('task_id')->unique()->count();
         $essayAnswered = $lessons->flatMap->tasks->where("type", "3")->whereIn('id', $user->essayScores->pluck('task_id'))->count();
         $uploaded = $class->uploadScores()->where('user_id', $user->id)->count();

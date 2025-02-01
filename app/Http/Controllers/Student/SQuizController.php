@@ -29,7 +29,7 @@ class SQuizController extends Controller
             ['name' => $task->title],
         ];
 
-        if($quizzes->isEmpty()) {
+        if($task->multipleChoiceAnswers->where('user_id', Auth::user()->id)->count() > 0) {
             return redirect("/student/$class->id/$lesson->id/quiz/$task->id/result");
         }
 

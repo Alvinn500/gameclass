@@ -93,7 +93,7 @@ class SubjectController extends Controller
     public function show(Lesson $lesson, Subject $subject) {
 
         $class = $lesson->class;
-        $studentReaded = $subject->SubjectReadeds->count();
+        $studentReaded = $subject->SubjectReadeds->where('is_readed', true)->count();
 
         $breadcrumbs = [
             ['link' => "/teacher/class", 'name' => "Kelas"],
@@ -162,6 +162,12 @@ class SubjectController extends Controller
         $class = $lesson->class;
     
         $subject->delete();
+
+        Activity::create([
+            'description' => "menghapus materi: " . $subject->title,
+            'user_id' => Auth::user()->id,
+            "class_id" => $class->id
+        ]);
 
         return redirect("/teacher/class/$class->id");
     }
