@@ -4,7 +4,7 @@
         classPath="/teacher/class/{{$class->id}}" 
         activityPath="/teacher/{{$class->id}}/activity" 
         gradePath="/teacher/{{$class->id}}/recap" 
-        studentPath="/teacher/{{$class->id}}/student" 
+        studentPath="/teacher/{{$class->id}}/list/student" 
         settingPath="/teacher/{{$class->id}}/setting"
     />
     <div>
@@ -20,6 +20,7 @@
                         <th class="border border-neutral-800 uppercase text-sm">Level</th>
                         <th class="border border-neutral-800 uppercase text-sm">Email</th>
                         <th class="border border-neutral-800 uppercase text-sm">Nomor Telepon</th>
+                        <th class="border border-neutral-800 uppercase text-sm">Opsi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -82,8 +83,32 @@
                                 </td>
                                 <td class="border border-neutral-800 text-sm">{{$user->email}}</td>
                                 <td class="border border-neutral-800 text-sm">{{$user->phone}}</td>
+                                <td class="border border-neutral-800 text-sm relative flex justify-center">
+                                    <div class="tooltip absolute hidden bg-white rounded-xl w-fit -top-14 left-1.5 z-50">
+                                        <p class="text-black font-semibold text-xs px-4 py-2">Keluarkan Dari Kelas</p>
+                                    </div>
+                                    <button id="deleteUser">
+                                        <img id="item" class="w-8 cursor-pointer" src="{{asset('image/user-delete.png')}}" alt="delete student icon">
+                                    </button>
+                                    {{-- <a href="/teacher/class/{{$class->id}}/student/{{$user->id}}">
+                                        <img class="w-8 mx-auto" src="{{asset('image/user-delete.png')}}" alt="delete student icon">
+                                    </a> --}}
+                                </td>
                             </tr>
                         @endif
+                        <div id="confirm_overlay" class="fixed hidden justify-center items-center z-50 bg-black bg-opacity-45 w-full h-full top-0 left-0">
+                            <div id="confirm_modal" class="bg-neutral-900 rounded-lg p-4 w-96 flex flex-col gap-4">
+                                <h2 class="font-semibold text-center">Keluarkan Siswa</h2>
+                                <p class="text-center text-sm text-gray-400">Apakah anda yakin ingin mengeluarkan siswa dari kelas ini?</p>
+                                <div class="flex justify-between gap-2">
+                                    <button id="unconfirm" class="border border-lime-500 py-2.5 px-14 rounded-lg shadow-lg text-xs font-semibold uppercase">Batal</button>
+                                    <form action="/teacher/leave/class/{{$class->id}}/{{$user->id}}" method="post">
+                                        @csrf
+                                        <button id="confirm" class="bg-red-600 py-2.5 px-16 rounded-lg shadow-lg text-xs font-semibold uppercase">Iya</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     @endforeach
                 </tbody>
             </table>

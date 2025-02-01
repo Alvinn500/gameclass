@@ -4,7 +4,7 @@
         classPath="/teacher/class/{{$class->id}}" 
         activityPath="/teacher/{{$class->id}}/activity" 
         gradePath="/teacher/recap/{{$lesson->id}}/{{$task->id}}/quiz" 
-        studentPath="/teacher/{{$class->id}}/student" 
+        studentPath="/teacher/{{$class->id}}/list/student" 
         settingPath="/teacher/{{$class->id}}/setting"
     />
     <div>
@@ -51,11 +51,11 @@
                     </div>
                     <div id="quizOption{{$quiz->id}}" class="bg-semiblack hidden px-3 py-4 rounded-b-2xl">
                         @if($quiz->image)
-                            <img class="aspect-video h-[50%] mx-auto mb-2" src="{{asset("mutiple_choices/$quiz->image")}}" alt="question image">
+                            <img class="w-44 mx-auto mb-2" src="{{asset("mutiple_choices/$quiz->image")}}" alt="question image">
                         @endif
-
+                        
                         @foreach ($quiz->options as $key => $option )
-                            <div class="flex gap-1.5">
+                            <div class="{{$quiz->answer == $key ? "text-lime-500" : ""}} flex gap-1.5">
                                 <h3>{{$key}}.</h3>
                                 <p>{{$option}}</p>
                             </div>

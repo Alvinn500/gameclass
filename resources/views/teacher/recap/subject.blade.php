@@ -4,7 +4,7 @@
         classPath="/teacher/lesson/{{$lesson->id}}/subject/{{$subject->id}}" 
         activityPath="/teacher/{{$class->id}}/activity" 
         gradePath="/teacher/{{$class->id}}/recap" 
-        studentPath="/teacher/{{$class->id}}/student" 
+        studentPath="/teacher/{{$class->id}}/list/student" 
         settingPath="/teacher/{{$class->id}}/setting"
     />
     <div>
@@ -21,7 +21,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($subject->subjectReadeds as $subjectReaded) 
+                    @foreach ($subject->subjectReadeds->where('is_readed', true) as $subjectReaded) 
                         <tr>
                             <td class="border border-neutral-800 text-base">{{$loop->iteration}}</td>
                             <td class="border border-neutral-800 text-base"><img class="w-8 aspect-square" src="{{asset($subjectReaded->user->photo)}}" alt="profile picture"></td>

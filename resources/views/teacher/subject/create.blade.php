@@ -4,7 +4,7 @@
         classPath="/teacher/class/{{$class->id}}" 
         activityPath="/teacher/{{$class->id}}/activity" 
         gradePath="/teacher/{{$class->id}}/recap" 
-        studentPath="/teacher/{{$class->id}}/student" 
+        studentPath="/teacher/{{$class->id}}/list/student" 
         settingPath="/teacher/{{$class->id}}/setting"
     />
     <div>
@@ -44,7 +44,7 @@
                             <option value="justify"></option> 
                         </select>
                     </div>
-                    <div id="editor"></div>
+                    <div id="editor">{!! old('content') !!}</div>
                 </div>
                 <input type="hidden" value="" name="content" id="content">
                 <x-form-error name="content"/>

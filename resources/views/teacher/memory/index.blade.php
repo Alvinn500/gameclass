@@ -3,8 +3,8 @@
     <x-teacher-sub-nav 
         classPath="/teacher/class/{{$class->id}}" 
         activityPath="/teacher/{{$class->id}}/activity" 
-        gradePath="/teacher/recap/{{$lesson->id}}/{{$task->id}}/upload" 
-        studentPath="/teacher/{{$class->id}}/student" 
+        gradePath="/teacher/recap/{{$lesson->id}}/{{$task->id}}/game" 
+        studentPath="/teacher/{{$class->id}}/list/student" 
         settingPath="/teacher/{{$class->id}}/setting"
     />
     <div>

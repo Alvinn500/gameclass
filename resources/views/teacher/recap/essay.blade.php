@@ -4,7 +4,7 @@
         classPath="/teacher/{{$class->id}}/{{$lesson->id}}/{{$essay->id}}/essay/create" 
         activityPath="/teacher/{{$class->id}}/activity" 
         gradePath="/teacher/{{$class->id}}/recap" 
-        studentPath="/teacher/{{$class->id}}/student" 
+        studentPath="/teacher/{{$class->id}}/list/student" 
         settingPath="/teacher/{{$class->id}}/setting"
     />
     <div>

@@ -4,7 +4,7 @@
         classPath="/teacher/class/{{$class->id}}" 
         activityPath="/teacher/{{$class->id}}/activity" 
         gradePath="/teacher/recap/{{$lesson->id}}/{{$subject->id}}/subject" 
-        studentPath="/teacher/{{$class->id}}/student" 
+        studentPath="/teacher/{{$class->id}}/list/student" 
         settingPath="/teacher/{{$class->id}}/setting"
     />
     <div>
@@ -16,11 +16,11 @@
                     {!! $subject->content !!}
                 </div>
             </div>
-            <div class="order-1 sm:order-2 w-full sm:w-[30%] lg:w-[25%] space-y-3">
-                <div class="dark-purple h-fit rounded-2xl p-4 space-y-3">
+            <div class="order-1 sm:order-2 w-full sm:w-[30%] lg:w-[25%] flex flex-col gap-3">
+                <div class="{{$subject->assignment ? "block " : "hidden "}} dark-purple h-fit rounded-2xl p-4 space-y-3">
                     <h2 class="font-bold text-xl">Berkas Lampiran</h2>
                     <p class="font-medium">{{$subject->assignment}}</p>
-                    <a href="/student/download{{$subject->assignment}}" class="bg-violet-800 text-white py-2.5 px-5 text-sm font-semibold rounded-lg inline-block">Download</a>
+                    <a href="/teacher/download/{{$subject->assignment}}" class="bg-violet-800 text-white py-2.5 px-5 text-sm font-semibold rounded-lg inline-block">Download</a>
                 </div>
                 <div class="h-fit dark-green rounded-2xl p-4">
                     <h2 class="font-bold mb-2 text-4xl lg:text-5xl">{{$studentReaded}}</h2>

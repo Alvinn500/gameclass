@@ -15,7 +15,7 @@
     <div class="{{$subject->assignment ? "block " : "hidden "}}bg-main rounded-xl py-7 px-5 mb-6">
         <h3 class="text-xl font-medium">Berkas Lampiran</h3>
         <p class="text-lg font-light mb-5 mt-1">{{$subject->assignment}}</p>
-        <a href="/student/download/{{$subject->assignment}}" class="bg-purple text-white py-2.5 px-5 text-sm font-semibold rounded-lg">Download</a>
+        <a href="/student/download/{{$subject->assignment}}" class="bg-violet-800 text-white py-2.5 px-5 text-sm font-semibold rounded-lg">Download</a>
     </div>
 
     

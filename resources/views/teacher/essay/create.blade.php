@@ -4,7 +4,7 @@
         classPath="/teacher/class/{{$class->id}}" 
         activityPath="/teacher/{{$class->id}}/activity" 
         gradePath="/teacher/recap/{{$lesson->id}}/{{$task->id}}/essay" 
-        studentPath="/teacher/{{$class->id}}/student" 
+        studentPath="/teacher/{{$class->id}}/list/student" 
         settingPath="/teacher/{{$class->id}}/setting"
     />
     <div>
@@ -14,7 +14,7 @@
             <button id="editEssay" class="uppercase block text-xs px-4 py-3 rounded-lg font-bold bg-violet-800">edit judul soal Essay</button>
         </div>
 
-        <div id="modalEditTaskEssay" class="fixed hidden justify-center items-center w-full h-screen bg-black bg-opacity-70 top-0 left-0 ">
+        <div id="modalEditTaskEssay" class="fixed z-50 hidden justify-center items-center w-full h-screen bg-black bg-opacity-70 top-0 left-0 ">
             <div class="bg-main rounded-xl w-2/3 sm:w-2/5 lg:w-1/3 inline-block">
                 <form id="editForm" action="/essay/edit/{{$task->id}}" method="POST" class="flex flex-col p-4 gap-4">
                     @csrf
