@@ -79,7 +79,8 @@ Route::middleware('auth', EnsureTeacherRole::class)->group(function () {
     Route::get("/teacher/recap/{user}/{game}/game/answer", [RecapController::class, 'gameAnswer']);
     Route::patch("/teacher/recap/{user}/{game}/game/answer", [RecapController::class, 'gameUpdate']);
     // class student list
-    Route::get("/teacher/{class}/student", [ClassController::class, 'studentList']);
+    Route::get("/teacher/{class}/list/student", [ClassController::class, 'studentList']);
+    Route::post("teacher/leave/class/{class}/{user}", [ClassController::class, 'leave']);
     // class setting
     Route::get("/teacher/{class}/setting", [ClassController::class, 'setting']);
     Route::patch("/teacher/{class}/setting", [ClassController::class, 'settingUpdate']);
@@ -99,6 +100,7 @@ Route::middleware('auth', EnsureTeacherRole::class)->group(function () {
     Route::get("/teacher/lesson/{lesson}/subject/edit/{subject}", [SubjectController::class, 'edit']);
     Route::patch("/teacher/lesson/{lesson}/subject/edit/{subject}", [SubjectController::class, 'update']);
     Route::delete("/teacher/lesson/{lesson}/subject/delete/{subject}", [SubjectController::class, 'destroy']);
+    Route::get("teacher/download/{filename}", [SubjectController::class, 'download']);
     
 
     // teacher task

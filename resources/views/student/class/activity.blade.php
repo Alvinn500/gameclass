@@ -9,6 +9,9 @@
     <div class="bg-neutral-900 mt-4 rounded-lg p-6 space-y-3">
         <h1 class="text-sm font-semibold">AKTIVITAS</h1>
         <div class="border-l-2 border-lime-500">
+            @if($activities->count() == 0)
+                <h2 class="ml-4 py-1 text-sm text-gray-400 font-semibold">Belum ada aktivitas</h2>
+            @endif
             @foreach ($activities as $activity)
                 <div class="ml-4 py-1 flex items-center gap-6">
                     <img class="h-7" src="{{asset($activity->user->photo)}}" alt="user profile image">

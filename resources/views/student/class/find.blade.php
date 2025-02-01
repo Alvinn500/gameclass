@@ -11,7 +11,7 @@
                     <p class="font-medium text-gray-400 text-sm mt-1 mb-2">{{$class->class}}</p>
                     <form action="/student/class/join/{{$class->id}}" method="POST">
                         @csrf
-                        <button type="submit" class="inline-block font-bold text-xs text-white px-8 py-2.5 bg-orange-500 rounded-md uppercase">
+                        <button type="submit" class="inline-block font-bold text-xs text-white px-8 py-2.5 bg-violet-800 rounded-md uppercase">
                             Bergabung Ke Kelas
                         </button>
                     </form>

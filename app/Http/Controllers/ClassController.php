@@ -245,7 +245,6 @@ class ClassController extends Controller
 
         $breadcrumbs = [
             ['link' => "/student/class", 'name' => "Kelas"],
-            ['link' => "/student/class/$class->id", 'name' => $class->study_name . " - " . $class->class],
             ['name' => "Informasi"]
         ];
 
@@ -260,6 +259,10 @@ class ClassController extends Controller
 
         $user->classes()->detach($class->id);
 
-        return redirect("/student/class");
+        if($user->role == "teacher") {
+            return redirect("/teacher/$class->id/list/student");
+        }else {
+            return redirect("/student/class");
+        }
     }
 }

@@ -136,8 +136,42 @@ class TaskController extends Controller
     }
 
     public function destroy(Task $task) {
+        
+        $class = $task->lesson->class;
 
         $task->delete();
+
+        if($task->type == 1 || $task->type == 2) {
+            Activity::create([
+                'description' => "menghapus soal quiz: " . $task->title,
+                'user_id' => Auth::user()->id,
+                "class_id" => $class->id
+            ]);
+        }
+
+        if($task->type == 3) {
+            Activity::create([
+                'description' => "menghapus soal essay: " . $task->title,
+                'user_id' => Auth::user()->id,
+                "class_id" => $class->id
+            ]);
+        }
+
+        if($task->type == 4) {
+            Activity::create([
+                'description' => "menghapus soal tugas: " . $task->title,
+                'user_id' => Auth::user()->id,
+                "class_id" => $class->id
+            ]);
+        }
+
+        if($task->type == 5) {
+            Activity::create([
+                'description' => "menghapus memory game: " . $task->title,
+                'user_id' => Auth::user()->id,
+                "class_id" => $class->id
+            ]);
+        }
 
         return redirect("/teacher/class/" . $task->lesson->class->id);
     }

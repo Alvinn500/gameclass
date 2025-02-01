@@ -108,15 +108,14 @@ lessons.forEach((lesson) => {
 
 // badge tooltip
 
-const badge = document.querySelectorAll("#badge");
+const item = document.querySelectorAll("#item");
 const tooltip = document.querySelectorAll(".tooltip");
 
-badge.forEach((badge, index) => {
-    badge.addEventListener("mouseover", () => {
-        console.log("mouseover");
+item.forEach((item, index) => {
+    item.addEventListener("mouseover", () => {
         tooltip[index].classList.remove("hidden");
     });
-    badge.addEventListener("mouseout", () => {
+    item.addEventListener("mouseout", () => {
         tooltip[index].classList.add("hidden");
     });
 });
@@ -309,6 +308,15 @@ if (editEssay) {
     });
 }
 
+if (modalEditTaskEssay) {
+    modalEditTaskEssay.addEventListener("click", (event) => {
+        if (event.target == modalEditTaskEssay) {
+            modalEditTaskEssay.classList.add("hidden");
+            modalEditTaskEssay.classList.remove("flex");
+        }
+    });
+}
+
 // manipulasi add upload
 const addUpload = document.getElementById("addUpload");
 const parentUploadOverlay = document.getElementById("parent_upload_overlay");
@@ -442,6 +450,7 @@ if (scoreClose) {
 }
 
 // modal confirm class
+const deleteUser = document.getElementById("deleteUser");
 const deleteClass = document.getElementById("deleteClass");
 const confirmOverlay = document.getElementById("confirm_overlay");
 const confirmModal = document.getElementById("confirm_modal");
@@ -451,6 +460,13 @@ const leaveClass = document.getElementById("leaveClass");
 if (deleteClass) {
     deleteClass.addEventListener("click", () => {
         confirmOverlay.classList.remove("hidden");
+    });
+}
+
+if (deleteUser) {
+    deleteUser.addEventListener("click", () => {
+        confirmOverlay.classList.remove("hidden");
+        confirmOverlay.classList.add("flex");
     });
 }
 
@@ -470,7 +486,17 @@ if (confirmModal) {
 
 if (unconfirm) {
     unconfirm.addEventListener("click", () => {
+        console.log("unconfirm");
         confirmOverlay.classList.add("hidden");
+    });
+}
+
+if (confirmOverlay) {
+    confirmOverlay.addEventListener("click", (event) => {
+        if (event.target == confirmOverlay) {
+            confirmOverlay.classList.add("hidden");
+            confirmOverlay.classList.remove("flex");
+        }
     });
 }
 

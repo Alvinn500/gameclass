@@ -10,6 +10,7 @@ use App\Models\Task;
 use Illuminate\Support\Arr;
 use App\Models\MemoryGameAnswer;
 use App\Models\MemoryGameScore;
+use Illuminate\Support\Facades\Auth;
 
 class SMemoryGameController extends Controller
 {
@@ -17,9 +18,9 @@ class SMemoryGameController extends Controller
     public function show(Class_listing $class, Lesson $lesson, Task $task) 
     {
 
-        $game = $task->memoryGames()->first();
+        $game = $task->memoryGames->first();
         $gameImages = [];
-        
+        // dd($game === null);
         if($game) {
             $gameImages = Arr::shuffle($game->images);
         }

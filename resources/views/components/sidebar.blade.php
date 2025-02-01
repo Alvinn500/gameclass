@@ -12,7 +12,7 @@
                 <i class="fa fa-home" aria-hidden="true"></i>
                 <p class="font-medium">Dashboard</p>
             </a>
-            <a href="/{{$classUrl}}" class="flex items-center py-3 space-x-2 px-6 rounded-lg {{preg_match('/class|lesson|task|quiz|essay|upload|leaderboard|activity|recap|game/', request()->path()) ? 'sidebar-focus' : ''}}">
+            <a href="/{{$classUrl}}" class="flex items-center py-3 space-x-2 px-6 rounded-lg {{preg_match('/class|lesson|task|quiz|essay|upload|leaderboard|activity|recap|game|information|setting|list/', request()->path()) ? 'sidebar-focus' : ''}}">
                 <i class="fas fa-chalkboard-teacher "></i>
                 <p class="font-medium">Kelas</p>
             </a>

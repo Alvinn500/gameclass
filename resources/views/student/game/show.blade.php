@@ -4,7 +4,7 @@
             <x-sidebar dashboardUrl="student" discussioniUrl="student/discussion" classUrl="student/class" profileSettingUrl="profile"/>
         </div>
         <div class="m-0 lg:ml-64 pt-3">
-            <div id="start" class="{{$game && $game->answers->count() > 0 ? 'hidden' : ''}}">
+            <div id="start">
                 <div class="bg-semiblack mx-4 relative flex lg:hidden items-center mb-2 p-2 rounded-lg">                
                     <img id="openSidebar" class="w-6 cursor-pointer block lg:hidden" src="{{asset("image/open-sidebar.png")}}" alt="">
                 </div>
@@ -12,10 +12,14 @@
                     <div class="w-[40%]">
                         <img class="w-72 mx-auto" src="{{asset("image/memory-game.png")}}" alt="">
                     </div>
-                    <div class="w-[60%]">
+                    <div class="w-[60%] space-y-2">
                         <h1 class="text-white uppercase text-5xl font-bold">Memory Game</h1>
+                        @if($game === null)
+                            {{-- <p class="text-red-500 text-sm font-semibold">Game belum di buat</p> --}}
+                            <p class="text-white font-semibold">Game belum di buat Balik ke <a href="/student/class/{{$class->id}}" class="text-lime-500 font-semibold">kelas</a></p>
+                        @endif
                         <div class="space-y-3 space-x-1">
-                            <button id="startGame" class="uppercase hover:scale-105 shadow-md duration-300 ease-in-out px-4 text-sm py-3 rounded-md text-white bg-violet-800 font-semibold" onclick="hideshow('start', 'game')">Mulai</button>
+                            <button {{$game == null ? 'disabled' : ''}} id="startGame" class="uppercase hover:scale-105 shadow-md duration-300 ease-in-out px-4 text-sm py-3 rounded-md text-white bg-violet-800 font-semibold" onclick="hideshow('start', 'game')">Mulai</button>
                             <button id="tutorialButton" class="uppercase hover:scale-105 shadow-md duration-300 ease-in-out px-4 text-sm py-3 rounded-md text-white bg-yellow-500 font-semibold">Tutorial</button>
                         </div>
                     </div>
@@ -87,7 +91,7 @@
                     </div>
                 </div>
             @endif
-            @if($game && $game->answers->count() > 0)
+            @if($game && $game->answers->where('user_id', Auth::user()->id)->count() > 0)
                 <div class="mx-6">
                     <x-breadcrumbs :breadcrumbs="$breadcrumbs"/>
                     <div class="flex flex-col sm:flex-row rounded-xl pb-8 sm:pb-0 bg-neutral-900">
@@ -125,11 +129,11 @@
                     </div>
                 </div>
             @endif
-            @if($gameImages == null)
-                <div class="flex justify-center items-center h-80">
+            {{-- @if($gameImages == null)
+                <div class="flex justify-center items-center h-screen">
                     <p class="text-white font-semibold">Game belum di buat Balik ke <a href="/student/class/{{$class->id}}" class="text-lime-500 font-semibold">kelas</a></p>
                 </div>
-            @endif
+            @endif --}}
         </div>
         </main>
         @vite('resources/js/main.js')

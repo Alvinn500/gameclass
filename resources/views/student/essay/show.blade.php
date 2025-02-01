@@ -18,9 +18,13 @@
                     </div>
                     <div class="w-full sm:w-[49%] flex gap-3 justify-center flex-col items-center sm:items-start">
                         <h1 class="font-bold text-2xl md:text-3xl uppercase">quiz</h1>
+                        @if($totalEssay === 0)
+                            <p class="text-red-500 text-sm font-semibold">Belum ada soal</p>
+                        @else
                         <p class="text-base font-semibold">Jumlah Soal {{$totalEssay}}</p>
+                        @endif
                         <div>
-                            <button class="bg-violet-800 px-10 md:px-14 py-2.5 md:py-3 rounded-lg" onclick="hideshow('start','end')">Mulai quiz</button>
+                            <button {{$totalEssay === 0 ? 'disabled' : ''}} class="bg-violet-800 px-10 md:px-14 py-2.5 md:py-3 rounded-lg" onclick="hideshow('start','end')">Mulai quiz</button>
                         </div>
                     </div>
                 </div>
