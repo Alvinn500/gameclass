@@ -3,7 +3,7 @@
         <div class="flex mx-auto md:mx-0 dark-purple rounded-xl w-full md:w-[70%] md:min-w-[298.73px] duration-600 ease-in-out">
             <div class="w-3/5 flex flex-col">
                 <div class="px-5 pt-5 mb-3">
-                    <h3 class="uppercase text-xl font-medium">student</h3>
+                    <h3 class="uppercase text-xl font-medium">{{$user->name}}</h3>
                     <h3 class="uppercase text-3xl font-semibold text-lime-500">{{$emblem}}</h3>
                 </div>
                 <span class="block h-[0.0625rem] mx-auto w-[90%] bg-gray-600"></span>

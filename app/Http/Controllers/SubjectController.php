@@ -193,7 +193,7 @@ class SubjectController extends Controller
             "user_id" => $user->id,
         ]);
 
-        $score->score += 200;
+        $score->XP += 200;
         $score->save();
 
         return redirect('/student/class/' . $lesson->class->id);

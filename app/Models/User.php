@@ -70,7 +70,7 @@ class User extends Authenticatable
         return $this->hasMany(EssayScore::class);
     }
 
-    public function uploadAswers() {
+    public function uploadAnswers() {
         return $this->hasMany(UploadAnswer::class);
     }
 

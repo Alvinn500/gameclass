@@ -19,7 +19,7 @@ class SUploadController extends Controller
 
         $uploadAnswered = $task->upload?->answer()->where("user_id", Auth::user()->id)->get();
         $user = Auth::user();
-        
+        // dd($user);
         $breadcrumbs = [
             ['link' => "/student/class", 'name' => "Kelas"],
             ['link' => "/student/class/$class->id", 'name' => $class->study_name . " - " . $class->class],
@@ -48,7 +48,7 @@ class SUploadController extends Controller
         ]);
 
         $upload = $task->upload;
-
+        
         if(request()->hasFile("file")) {
             $file = request()->file("file");
             $filename = $file->getClientOriginalName();
@@ -78,16 +78,19 @@ class SUploadController extends Controller
 
     public function result(Class_listing $class, Lesson $lesson, Task $task) {
 
+        $user = Auth::user();
+        
         $breadcrumbs = [
             ['link' => "/student/class", 'name' => "Kelas"],
             ['link' => "/student/class/$class->id", 'name' => $class->study_name . " - " . $class->class],
             ['name' => $task->title],
         ];
-        
+        // dd($task->upload->scores->where("user_id", Auth::user()->id)->first());
         return view('student.upload.result', [
             'class' => $class,
             'task' => $task,
-            'breadcrumbs' => $breadcrumbs
+            'breadcrumbs' => $breadcrumbs,
+            'user' => $user
         ]);
     }
 

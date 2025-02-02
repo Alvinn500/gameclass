@@ -17,15 +17,15 @@
                 <h2>Reward</h2>
                 <h2>Nilai</h2>
                 <h2>Komentar</h2>
-                <button id="updateScore" class="bg-violet-800 text-sm font-semibold uppercase py-2 px-4 rounded-lg mt-2">{{$user->uploadScore->where("upload_id", $upload->upload->id)->first()->status ? "ubah nilai" : "beri nilai"}}</button>
+                <button id="updateScore" class="bg-violet-800 text-sm font-semibold uppercase py-2 px-4 rounded-lg mt-2">{{$user->uploadScores->where("upload_id", $upload->upload->id)->first()->status ? "ubah nilai" : "beri nilai"}}</button>
             </div>
             <div class="flex flex-col gap-1">
                 <p>: {{$upload->title}}</p>
                 <p>: {{$user->name}}</p>
-                <p>: {{$user->uploadScore->where("upload_id", $upload->upload->id)->first()->created_at->setTimezone('Asia/Jakarta')->format('d M Y (H:i T)')}}</p>
+                <p>: {{$user->uploadScores->where("upload_id", $upload->upload->id)->first()->created_at->setTimezone('Asia/Jakarta')->format('d M Y (H:i T)')}}</p>
                 <p>: {{$upload->upload->score->XP}} XP</p>
                 <p>: {{$upload->upload->score->score}}</p>
-                <p>: {{$user->uploadScore->where("upload_id", $upload->upload->id)->first()->comment ?? "-"}}</p>
+                <p>: {{$user->uploadScores->where("upload_id", $upload->upload->id)->first()->comment ?? "-"}}</p>
             </div>
         </div>
         <h2 class="my-4 text-sm font-semibold">HASIL JAWABAN {{$upload->title}}</h2>

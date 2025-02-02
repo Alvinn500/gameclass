@@ -97,7 +97,7 @@ class SQuizController extends Controller
                 "user_id" => Auth::user()->id,
             ]);
 
-            $DBscore->score += $score;
+            $DBscore->XP += $score;
             $DBscore->save();
         }   
 

@@ -2,8 +2,8 @@
     <div class="md:flex grid grid-rows-2 gap-8 mb-0 md:mb-8">
         <div class="mx-auto md:mx-0 dark-purple rounded-xl w-full md:w-3/5 md:min-w-[298.73px] duration-600 ease-in-out">
             <div class="px-5 pt-5 mb-3">
-                <h3 class="uppercase text-2xl">guru</h3>
-                <h3 class="uppercase text-2xl font-semibold text-yellow-400">guru</h3>
+                <h3 class="uppercase text-2xl">{{$user->name}}</h3>
+                <h3 class="uppercase text-2xl font-semibold text-yellow-400">{{$user->role === "teacher" ? "Guru" : "Siswa"}}</h3>
             </div>
             <span class="block h-[0.0625rem] mx-auto w-[97%] bg-gray-400"></span>
             <div class="grid grid-cols-2 p-5 h-40">

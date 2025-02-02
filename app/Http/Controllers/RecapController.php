@@ -220,7 +220,7 @@ class RecapController extends Controller
             "comment" => "required"
         ]);
 
-        $user->uploadScore()->where("upload_id", $upload->upload->id)->update([
+        $user->uploadScores()->where("upload_id", $upload->upload->id)->update([
            "score" => request()->score,
            "XP" => 500 / 100 * request()->score,
            "comment" => request()->comment,
