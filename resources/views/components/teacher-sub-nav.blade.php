@@ -4,6 +4,6 @@
         <li><a class="uppercase text-xs block sm:inline-block text-gray-600 py-3 px-4 font-bold {{strpos(request()->path(), "activity") ? "sub-nav-focus text-white py-3 px-4 rounded-lg" : "" }}" href="{{$activityPath}}">aktivitas</a></li>
         <li><a class="uppercase text-xs block sm:inline-block text-gray-600 py-3 px-4 font-bold {{strpos(request()->path(), "recap") ? "sub-nav-focus text-white py-3 px-4 rounded-lg" : "" }}" href="{{$gradePath}}">rekap nilai</a></li>
         <li><a class="uppercase text-xs block sm:inline-block text-gray-600 py-3 px-4 font-bold {{strpos(request()->path(), "student") ? "sub-nav-focus text-white py-3 px-4 rounded-lg" : "" }}" href="{{$studentPath}}">daftar siswa</a></li>
-        <li><a class="uppercase text-xs block sm:inline-block text-gray-600 py-3 px-4 font-bold {{strpos(request()->path(), "setting") ? "sub-nav-focus text-white py-3 px-4 rounded-lg" : "" }}" href="{{$settingPath}}">pengatuean</a></li>
+        <li><a class="uppercase text-xs block sm:inline-block text-gray-600 py-3 px-4 font-bold {{strpos(request()->path(), "setting") ? "sub-nav-focus text-white py-3 px-4 rounded-lg" : "" }}" href="{{$settingPath}}">pengaturan</a></li>
     </ul>
 </nav>
