@@ -14,8 +14,8 @@
 
     <main class="container md:px-12 lg:px-24 mx-auto">
 
-        <section id="home-section" class="flex flex-col lg:flex-row gap-6 my-28">           
-                <div class="flex w-full lg:w-[70%] mx-auto flex-col gap-5 justify-center items-center text-white order-2 px-4 lg:order-1 text-center lg:text-start ">
+        <section id="home-section" class="flex flex-col gap-6 my-28 md:justify-center md:my-0 md:h-[90vh]">           
+                <div class="flex w-full lg:w-[70%] mx-auto flex-col gap-5 justify-center items-center text-white order-2 px-4 lg:order-1">
                     <div class="flex gap-3 justify-center lg:justify-start">
                         {{-- <img class ="h-10" src="{{asset("image/logo.png")}}" alt="logo"> --}}
                         <h1 class="font-permanentMarker font-bold text-5xl md:text-6xl xl:text-7xl text-lime-500">PLAYED</h1>
