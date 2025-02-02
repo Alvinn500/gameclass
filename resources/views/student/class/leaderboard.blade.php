@@ -16,19 +16,19 @@
                 <h2 class="uppercase">skor</h2>
             </div>
             <div class="flex flex-col gap-4">
-                @if($scores->isEmpty())
+                @if($leaderboards->isEmpty())
                 <div class="flex justify-between px-3 py-3 dark-green border-r-4 border-lime-500">
                     <h3 class="text-gray-400 text-sm">Belum ada siswa yang mendapatkan skor</h3>
                 </div>
                 @endif
-                @foreach ($scores as $score)
+                @foreach ($leaderboards as $leaderboard)
                     <div class="flex justify-between px-3 py-3 dark-green border-r-4 border-lime-500">
                         <div class="flex gap-6">
-                            <img class="aspect-square w-7" src="{{asset($score->user->photo)}}" alt="photo profile">
-                            <h3>{{$score->user->name}}</h3>
+                            <img class="aspect-square w-7" src="{{asset($user->where('id', $leaderboard['user_id'])->first()->photo)}}" alt="photo profile">
+                            <h3>{{$user->where('id', $leaderboard['user_id'])->first()->name}}</h3>
                         </div>
                         <div> 
-                            <p>{{$score->score + $score->user->essayScores->sum("XP") + $score->user->uploadScores->sum("XP") + $score->user->memoryGameScores->sum("XP")}}</p>
+                            <p>{{$leaderboard["total_xp"]}}</p>
                         </div>
                     </div>
                 @endforeach

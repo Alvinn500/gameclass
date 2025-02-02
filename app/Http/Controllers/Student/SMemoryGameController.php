@@ -11,6 +11,7 @@ use Illuminate\Support\Arr;
 use App\Models\MemoryGameAnswer;
 use App\Models\MemoryGameScore;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Activity;
 
 class SMemoryGameController extends Controller
 {
@@ -24,7 +25,7 @@ class SMemoryGameController extends Controller
         if($game) {
             $gameImages = Arr::shuffle($game->images);
         }
-        
+        // dd($game->answers->where('user_id', Auth::user()->id)->count());
         $breadcrumbs = [
             ['link' => "/student/class/", 'name' => 'Kelas' ],
             ['link' => "/student/class/{$class->id}", 'name' => $class->study_name],

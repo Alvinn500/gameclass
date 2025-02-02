@@ -23,7 +23,8 @@ class TeacherController extends Controller
             "totalClass" => $totalClass, 
             "totalStudent" => $totalStudent, 
             "totalSubject" => $totalSubject,
-            "totalQuiz" => $totalQuiz
+            "totalQuiz" => $totalQuiz,
+            "user" => $user
         ]);
 
     }

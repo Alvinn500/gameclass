@@ -91,7 +91,7 @@
                 <div class="flex justify-evenly mb-4">
                     <div class="text-center">
                         <h4 class="font-medium text-base">Skor</h4>
-                        <p class="text-yellow-400 font-semibold text-lg">{{$score ?? 0}}</p>
+                        <p class="text-yellow-400 font-semibold text-lg">{{$xp}}</p> 
                     </div>
                     <div class="text-center">
                         <h4 class="font-medium text-base">Total XP</h4>
@@ -106,33 +106,33 @@
                 <h4 class="bg-secondary text-center p-2 text-lg font-medium">{{$emblem}}</h4>
                 <div class="flex justify-center px-5 gap-2 py-4">
                     @if($total_xp > 500)
-                        <img class="w-full aspect-square" src="{{asset("image/badge/1.png")}}" alt="badge">
+                        <img class="w-12 aspect-square" src="{{asset("image/badge/1.png")}}" alt="badge">
                     @else
-                        <img class="w-full aspect-square" src="{{asset("image/badge/1-gs.png")}}" alt="badge">
+                        <img class="w-12 aspect-square" src="{{asset("image/badge/1-gs.png")}}" alt="badge">
                     @endif
 
                     @if($total_xp > 1000)
-                        <img class="w-full aspect-square" src="{{asset("image/badge/2.png")}}" alt="badge">
+                        <img class="w-12 aspect-square" src="{{asset("image/badge/2.png")}}" alt="badge">
                     @else
-                        <img class="w-full aspect-square" src="{{asset("image/badge/2-gs.png")}}" alt="badge">
+                        <img class="w-12 aspect-square" src="{{asset("image/badge/2-gs.png")}}" alt="badge">
                     @endif
 
                     @if($total_xp > 2000)
-                        <img class="w-full aspect-square" src="{{asset("image/badge/3.png")}}" alt="badge">
+                        <img class="w-12 aspect-square" src="{{asset("image/badge/3.png")}}" alt="badge">
                     @else
-                        <img class="w-full aspect-square" src="{{asset("image/badge/3-gs.png")}}" alt="badge">
+                        <img class="w-12 aspect-square" src="{{asset("image/badge/3-gs.png")}}" alt="badge">
                     @endif
 
                     @if($total_xp > 4000)
-                        <img class="w-full aspect-square" src="{{asset("image/badge/4.png")}}" alt="badge">
+                        <img class="w-12 aspect-square" src="{{asset("image/badge/4.png")}}" alt="badge">
                     @else
-                        <img class="w-full aspect-square" src="{{asset("image/badge/4-gs.png")}}" alt="badge">
+                        <img class="w-12 aspect-square" src="{{asset("image/badge/4-gs.png")}}" alt="badge">
                     @endif
 
                     @if($total_xp > 8000)
-                        <img class="w-full aspect-square" src="{{asset("image/badge/5.png")}}" alt="badge">
+                        <img class="w-12 aspect-square" src="{{asset("image/badge/5.png")}}" alt="badge">
                     @else
-                        <img class="w-full aspect-square" src="{{asset("image/badge/5-gs.png")}}" alt="badge">
+                        <img class="w-12 aspect-square" src="{{asset("image/badge/5-gs.png")}}" alt="badge">
                     @endif
                 </div>
             </div>

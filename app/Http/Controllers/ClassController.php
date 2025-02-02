@@ -8,6 +8,10 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\MultipleChoiceAnswer;
+use App\Models\ClassScore;
+use App\Models\EssayScore;
+use App\Models\UploadScore;
+use App\Models\MemoryGameScore;
 
 class ClassController extends Controller
 {
@@ -69,7 +73,7 @@ class ClassController extends Controller
         $lessons = $class->lessons()->get();
         $lesson = lesson::find(request()->lesson_id);
         $quizzes = $class->lessons->flatMap->tasks->where("type", "1");
-        // dd($lessons->flatMap->tasks->where("type", "2"));
+        
         $breadcrumbs = [
             ['link' => "/teacher/class", 'name' => "Kelas"],
             ['name' => $class->class],
@@ -102,11 +106,27 @@ class ClassController extends Controller
 
     public function leaderboard(Class_listing $class) {
         
-        $users = $class->users->where("role", "student");
-        $lessons = $class->lessons()->get();
-        $taskId = $lessons->flatMap->tasks->pluck('id');
-         
-        $scores = $class->scores()->orderBy('score', 'desc')->get();
+        $user = User::where('role', 'student')->get();
+
+        $student = User::where('role', 'student')
+            ->with([
+                'classScores' => fn($query) => $query->where('class_id', $class->id),
+                'essayScores' => fn($query) => $query->where('class_id', $class->id),
+                'uploadScores' => fn($query) => $query->where('class_id', $class->id),
+                'memoryGameScores' => fn($query) => $query->where('class_id', $class->id),
+            ])
+            ->get();
+
+        $leaderboards = $student->map(function ($student) {
+            return [
+                'user_id' => $student->id,
+                'total_xp' => 
+                    $student->classScores->sum('score') + 
+                    $student->essayScores->sum('XP') + 
+                    $student->uploadScores->sum('XP') + 
+                    $student->memoryGameScores->sum('XP'),
+            ];
+        })->sortByDesc('total_xp')->values();
         
         $breadcrumbs = [
             ['link' => "/student/class", 'name' => "Kelas"],
@@ -116,10 +136,8 @@ class ClassController extends Controller
         return view('student.class.leaderboard', [
             "breadcrumbs" => $breadcrumbs, 
             "class" => $class, 
-            "users" => $users, 
-            "scores" => $scores
-            // "subjectScore" => $subjectScore,
-            // "quizScore" => $quizScore
+            "leaderboards" => $leaderboards,
+            "user" => $user
         ]);
 
     }
@@ -127,7 +145,7 @@ class ClassController extends Controller
     public function TeacherActivity(Class_listing $class) {
 
         $activities = $class->activity()->orderBy('created_at', 'desc')->get();
-        // dd($class);
+        
         $breadcrumbs = [
             ['link' => "/teacher/class", 'name' => "Kelas"],
             ['link' => "/teacher/class/$class->id", 'name' => $class->study_name],

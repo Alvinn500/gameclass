@@ -32,6 +32,6 @@
         method="POST"
     > 
         @csrf
-        <button type="submit" class="uppercase bg-yellow-400 w-full py-3 rounded-lg text-xs text-secondary font-bold">saya sudah mempelajari materi</button>
+        <button type="submit" class="uppercase bg-yellow-400 w-full py-3 mb-6 rounded-lg text-xs text-secondary font-bold">saya sudah mempelajari materi</button>
     </form>        
 </x-student-layout>

@@ -35,7 +35,12 @@ class StudentController extends Controller
             }
         }
         
-        $total_xp =  $user->classScores->sum('score') + $user->essayScores->sum('XP') + $user->uploadScores->sum('XP') + $user->memoryGameScores->sum('XP');
+        $totalClassScore = $user->classScores?->sum("score") ?? 0;
+        $totalEssayScore = $user->essayScores?->sum("XP") ?? 0;
+        $totalUploadScore = $user->uploadScores?->sum("XP") ?? 0;
+        $totalMemoryGameScore = $user->memoryGameScores?->sum("XP") ?? 0;
+
+        $total_xp =  $totalClassScore + $totalEssayScore + $totalUploadScore + $totalMemoryGameScore;
         $level = 0;
         $emblem = ""; 
         $classes = $user->classes()->orderBy('created_at', 'desc')->limit(2)->get();
@@ -96,6 +101,7 @@ class StudentController extends Controller
             'emblem' => $emblem,
             'total_mission' => $total_mission, 
             'ongoing_mission' => $ongoing_mission,
+            "user" => $user
         ]);
 
     }
@@ -122,9 +128,23 @@ class StudentController extends Controller
         $taskId = $lessons->flatMap->tasks->pluck('id');
         $subjedId = $lessons->flatMap->subjects->pluck('id');
         $subjectReadeds = SubjectReaded::whereIn('subject_id', $subjedId)->where('user_id', $user->id)->get();
+        // dd($class->essayScores()->where('user_id', $user->id)->first()?->XP ?? 0);
+        // dd($class->scores()->where('user_id', $user->id)->first()?->score ?? 0 + $class->essayScores()->where('user_id', $user->id)->first()?->XP ?? 0 + $class->uploadScores()->where('user_id', $user->id)->first()?->XP ?? 0 + $class->memoryGameScores()->where('user_id', $user->id)->first()?->XP ?? 0);
         
-        $score = $class->scores()->where('user_id', $user->id)->first()->score ?? 0 + $class->essayScores()->where('user_id', $user->id)->first()?->XP ?? 0 + $class->uploadScores()->where('user_id', $user->id)->first()?->XP ?? 0 + $class->memoryGameScores()->where('user_id', $user->id)->first()?->XP ?? 0;
-        $total_xp = $user->classScores->sum('score') + $user->essayScores->sum('XP') + $user->uploadScores->sum('XP') + $user->memoryGameScores->sum('XP');
+        $classXP = $class->scores()->where('user_id', $user->id)->first()?->score ?? 0; 
+        $classEssayXP = $class->essayScores()->where('user_id', $user->id)->first()?->XP ?? 0;
+        $classUploadXP = $class->uploadScores()->where('user_id', $user->id)->first()?->XP ?? 0;
+        $classMemoryGameXP = $class->memoryGameScores()->where('user_id', $user->id)->first()?->XP ?? 0; 
+
+        $xp = $classXP + $classEssayXP + $classUploadXP + $classMemoryGameXP;
+        
+
+        $totalClassScore = $user->classScores?->sum("score") ?? 0;
+        $totalEssayScore = $user->essayScores?->sum("XP") ?? 0;
+        $totalUploadScore = $user->uploadScores?->sum("XP") ?? 0;
+        $totalMemoryGameScore = $user->memoryGameScores?->sum("XP") ?? 0;
+        
+        $total_xp = $totalClassScore + $totalEssayScore + $totalUploadScore + $totalMemoryGameScore;
         
         
         $totalSubject = $lessons->flatMap->subjects->count();
@@ -185,7 +205,7 @@ class StudentController extends Controller
             "lessons" => $lessons, 
             "breadcrumbs" => $breadcrumbs, 
             "total_xp" => $total_xp,
-            "score" => $score, 
+            "xp" => $xp, 
             "total_mission" => $total_mission, 
             "completed_mission" => $completed_mission, 
             "ongoing_mission" => $ongoing_mission,

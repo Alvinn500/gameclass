@@ -14,22 +14,22 @@
 
     <main class="container md:px-12 lg:px-24 mx-auto">
 
-        <section id="home-section" class="flex flex-col lg:flex-row gap-6 mb-28 h-[85vh]">           
-                <div class="flex w-full lg:w-[60%] flex-col gap-5 justify-center text-white order-2 px-4 lg:order-1 text-center lg:text-start ">
+        <section id="home-section" class="flex flex-col gap-6 my-28 md:justify-center md:my-0 md:h-[90vh]">           
+                <div class="flex w-full lg:w-[70%] mx-auto flex-col gap-5 justify-center items-center text-white order-2 px-4 lg:order-1">
                     <div class="flex gap-3 justify-center lg:justify-start">
                         {{-- <img class ="h-10" src="{{asset("image/logo.png")}}" alt="logo"> --}}
-                        <h1 class="font-permanentMarker font-bold text-2xl sm:text-3xl md:text-4xl xl:text-5xl text-lime-500">PLAYED</h1>
+                        <h1 class="font-permanentMarker font-bold text-5xl md:text-6xl xl:text-7xl text-lime-500">PLAYED</h1>
                     </div>
-                    <h2 class="font-semibold text-xl sm:text-2xl md:text-3xl">Cara Seru Belajar Bersama Teman Sekelas!</h2>
+                    <h2 class="font-semibold text-xl text-center sm:text-2xl md:text-3xl">Cara Seru Belajar Bersama Teman Sekelas!</h2>
                     <div class="space-x-3">
                         <a href="register" class="uppercase inline-block bg-indigo-600 text-sm py-4 px-6 font-medium">Daftar</a> 
                         <a href="/login" class="uppercase inline-block border border-white text-sm py-4 px-6 font-medium">Masuk</a>
                     </div>
                 </div>
 
-                <div class="w-full lg:w-[40%] flex justify-center items-center order-1 lg:order-2 -mt-14 lg:mt-0">
+                {{-- <div class="w-full lg:w-[40%] flex justify-center items-center order-1 lg:order-2 -mt-14 lg:mt-0">
                     <img class="xl:-mt-16 h-80 md:w-96 mx-auto" src="{{asset("img/vector/kids wearing masks at school-bro (2).svg")}}" alt="image">
-                </div>
+                </div> --}}
         </section>
 
         <section class="mb-28 md:mb-36" id="about-section">

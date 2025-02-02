@@ -17,7 +17,7 @@
                         <img class="mx-auto w-[60%] sm:w-[80%]" src="{{asset("img/vector/Online test-pana.svg")}}" alt="image">
                     </div>
                     <div class="w-full sm:w-[49%] flex gap-3 justify-center flex-col items-center sm:items-start">
-                        <h1 class="font-bold text-2xl md:text-3xl uppercase">quiz</h1>
+                        <h1 class="font-bold text-2xl md:text-3xl uppercase">{{$task->title}}</h1>
                         @if($totalEssay === 0)
                             <p class="text-red-500 text-sm font-semibold">Belum ada soal</p>
                         @else
