@@ -34,9 +34,9 @@
                     @csrf
                     @foreach ($quizzes as $quiz)    
                         <div id="Q{{$i}}" style="display: none" class="flex-col items-center sm:flex-row">
-                            <div class="w-full sm:w-[50%] h-32 flex flex-col gap-8 justify-center items-center">
+                            <div class="w-full sm:w-[50%] flex flex-col gap-8 justify-center items-center">
                                 @if($quiz->image)
-                                    <img class="h-44 mx-auto" src="{{asset("mutiple_choices/$quiz->image")}}" alt="question image">
+                                    <img class="h-32 md:h-44 object-contain mx-auto" src="{{asset("mutiple_choices/$quiz->image")}}" alt="question image">
                                 @endif
                                 <h1 class="font-semibold text-neutral-800">{{$quiz->question}}</h1>
                             </div>

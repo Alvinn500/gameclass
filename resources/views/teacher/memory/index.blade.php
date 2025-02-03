@@ -51,8 +51,8 @@
                            <div class="flex items-center gap-2">
                                <div class="flex flex-col gap-2 mb-1 lg:mb-0">
                                    <lable for="image" class="text-xs lg:text-sm font-semibold text-neutral-800">Gambar</lable>
-                                   <div class="flex items-center gap-2">
-                                       <input type="file" name="images[]" multiple id="image" class="py-2.5 px-3 border border-neutral-300 text-neutral-800 rounded-xl text-sm">
+                                   <div class="flex flex-col sm:flex-row items-center gap-2">
+                                       <input type="file" name="images[]" multiple id="image" class="w-full py-2.5 px-3 border border-neutral-300 text-neutral-800 rounded-xl text-sm">
                                        <button type="submit" class="uppercase px-8 py-3.5 font-semibold rounded-lg w-full lg:w-auto block text-xs bg-indigo-600">Tambah Pertanyaan</button>
                                    </div>
                                    <x-form-error name="images"/>

@@ -7,7 +7,7 @@
         informationPath="/student/{{$class->id}}/information" 
     /> 
     <div>
-        <h1 class="text-sm font-semibold my-4">AKTIVITAS</h1>
+        <h1 class="text-sm font-bold text-neutral-800 my-4">AKTIVITAS</h1>
         <div class="flex flex-col md:flex-row gap-6 bg-white shadow-md p-6 rounded-xl">
             <div class="w-full md:w-1/3 flex items-center justify-center">
                 <img class="mx-auto md:mx-0 w-56 rounded-lg" src="{{asset("logo_class/" . $class->logo_class)}}" alt="logo class">

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Class_listing;
 use App\Models\Task;
 use App\Models\Lesson;
-use App\models\Essay;
+use App\Models\Essay;
 
 class EssayController extends Controller
 {

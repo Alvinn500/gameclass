@@ -47,7 +47,7 @@
             </div>
             @if($gameImages != null)
                 <div id="game" style="display: none" class="flex flex-col gap-4 mx-6 relative">
-                    <div class="sticky z-50 top-0 left-0 w-full">
+                    <div class="sticky z-30 top-0 left-0 w-full">
                         <div class="bg-white shadow-md relative flex justify-between items-center px-3 py-2 mt-1 rounded-md">
                             <div class="flex gap-2">
                                 <img id="humburger-dashboard" class="w-6 cursor-pointer block lg:hidden" src="{{asset("image/open-sidebar.png")}}" alt="icon open sidebar">
@@ -106,14 +106,14 @@
                         </div> --}}
                         <div class="w-full p-4 sm:pr-2 lg:pr-4 flex flex-col justify-center items-center gap-4">
                             <h1 class="font-bold text-center text-neutral-800 sm:text-left text-lg sm:text-xl md:text-2xl lg:text-3xl">{{$task->type === 1 ? $task->title : "Kamu sudah mengerjakan soal tes $task->title"}}</h1>
-                            <p class="text-sm sm:text-base text-neutral-800 font-semibold">kamu mendapatkan reward {{$task->memoryGameScores->first()->XP}} XP</p>
+                            <p class="text-sm sm:text-base text-neutral-800 font-semibold">kamu mendapatkan reward {{$task->memoryGameScores->where('user_id', Auth::user()->id)->first()->XP}} XP</p>
                             <div>
                                 <div class="bg-yellow-400 inline-block text-center py-5 px-16 sm:px-20 md:px-24 lg:px-28 md:space-y-3 lg:space-y-4">
                                     <h2 class="font-bold text-2xl text-neutral-800k">Nilaimu</h2>
-                                    <h3 class="font-bold text-3xl md:text-4xl lg:text-5xl text-neutral-800k">{{$task->memoryGameScores->first()->score}}</h3>
+                                    <h3 class="font-bold text-3xl md:text-4xl lg:text-5xl text-neutral-800k">{{$task->memoryGameScores->where('user_id', Auth::user()->id)->first()->score}}</h3>
                                 </div>
                             </div>
-                            @if($task->memoryGameScores->first()->status === 0)
+                            @if($task->memoryGameScores->where('user_id', Auth::user()->id)->first()->status === 0)
                                 <p class="text-sm text-center font-semibold sm:text-left text-lime-500">Jawabanmu belum dikoreksi, jadi ada kemungkinan nilaimu akan bertambah</p>
                             @endif
                         </div>

@@ -42,7 +42,7 @@
         </div>
 
         <div class="flex flex-col md:flex-row gap-4 mb-4">
-            <div class="order-2 md:order-1 w-full md:w-[70%] lg:w-[75%] space-y-2">
+            <div class="w-full md:w-[70%] lg:w-[75%] space-y-2">
                 @foreach ($quizzes as $quiz )
                 <div>
                     <div id="quiz" data-quizId="{{$quiz->id}}" class="flex justify-between items-center bg-main shadow-md px-3 py-4 rounded-2xl hover:bg-neutral-200">
@@ -73,7 +73,7 @@
                 </div>
                 @endforeach
             </div>
-            <div class="order-1 md:order-2 w-full md:w-[30%] lg:w-[25%] h-fit dark-green shadow-md rounded-2xl p-4">
+            <div class="w-full md:w-[30%] lg:w-[25%] h-fit dark-green shadow-md rounded-2xl p-4">
                 <h2 class="font-bold mb-2 text-4xl lg:text-5xl text-neutral-800">{{$studentAnswered}}</h2>
                 <p class="text-sm text-neutral-800 mb-4">Siswa telah mengerjakan Soal {{$task->type === 1 ? "Quiz" : "Test"}}</p>
                 <a href="/teacher/recap/{{$lesson->id}}/{{$task->id}}/quiz" class="uppercase text-center block text-xs px-4 py-3 rounded-lg font-bold bg-yellow-500 text-white">lihat hasil</a>

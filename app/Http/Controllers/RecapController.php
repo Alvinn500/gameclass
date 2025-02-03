@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Class_listing;
-use App\Models\lesson;
+use App\Models\Lesson;
 use App\Models\Subject;
 use App\Models\Task;
 use App\Models\User;
@@ -291,7 +291,7 @@ class RecapController extends Controller
         
         $XP = 0; 
 
-        if(request()->score == 50) {
+        if(request()->score <= 50) {
             $XP = $user->memoryGameScores->where("task_id", $game->id)->first()->XP;
         } else {
             $XP = $user->memoryGameScores->where("task_id", $game->id)->first()->XP + 400 / 100 * request()->score;

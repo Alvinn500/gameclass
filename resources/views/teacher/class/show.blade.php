@@ -8,7 +8,7 @@
         settingPath="/teacher/{{$class->id}}/setting"
     />
     <div class="h-full px-2 mt-5 relative">
-        <h4 class="text-base font-semibold mb-5">CP</h4>
+        <h4 class="text-base font-semibold mb-5 text-neutral-800">CP</h4>
         <div class="flex flex-col md:flex-row gap-6 h-full">
             <div class="flex flex-col gap-4 w-full md:w-[74%] order-2 md:order-1">
                 @foreach ($lessons as $lesson )

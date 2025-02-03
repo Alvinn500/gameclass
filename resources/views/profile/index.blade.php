@@ -1,6 +1,6 @@
 @if($user->role == 'student')
     <x-student-layout title="Profil">
-        <div class="w-11/12 mx-auto dark-blue shadow-md rounded-lg p-4 my-6">
+        <div class="w-full mx-auto bg-white shadow-md rounded-lg p-4 my-6">
             <form action="" method="POST">
                 @csrf  
                 <div class="text-center mb-8">
@@ -27,7 +27,7 @@
     </x-student-layout>
 @else
     <x-teacher-layout title="Profil">
-        <div class="w-11/12 mx-auto dark-blue shadow-md rounded-lg p-4 my-6">
+        <div class="w-full mx-auto bg-white shadow-md rounded-lg p-4 my-6">
             <form action="" method="POST">
                 @csrf  
                 <div class="text-center mb-8">

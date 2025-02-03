@@ -5,13 +5,14 @@
         </div>
         <div class="text-white flex-1 m-0 lg:ml-64 relative">
             <div class="flex justify-between items-center p-6 mb-5 bg-white h-[69px] border-b border-neutral-300">
-                <div class="flex">
-                    <div class="flex flex-col space-y-1.5 pr-4 lg:hidden cursor-pointer" id="humburger-dashboard">
+                <div class="flex items-center gap-1">
+                    <img class="h-6 object-contain cursor-pointer block lg:hidden" id="humburger-dashboard" src="{{asset("image/open-sidebar.png")}}" alt="icon open sidebar">
+                    {{-- <div class="flex flex-col space-y-1.5 pr-4 lg:hidden cursor-pointer" id="humburger-dashboard">
                         <span class="duration-500 ease-in h-[0.187rem] w-9 bg-white inline-block rounded-full"></span>
                         <span class="duration-500 ease-in h-[0.187rem] w-9 bg-white inline-block rounded-full"></span>
                         <span class="duration-500 ease-in h-[0.187rem] w-9 bg-white inline-block rounded-full"></span>
-                    </div>
-                    <h2 class="font-semibold text-base text-neutral-800">{{$title}}</h2>
+                    </div> --}}
+                    <h2 class="font-semibold text-neutral-800 text-sm md:text-base lg:text-lg">{{$title}}</h2>
                 </div>
                 <div class="flex gap-2">
                     <img class="w-6" src="{{asset(Auth::user()->photo)}}" alt="user avatar image">

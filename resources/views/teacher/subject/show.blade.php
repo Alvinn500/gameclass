@@ -10,13 +10,13 @@
     <div class="mb-4">
         <h1 class="px-4 text-sm font-semibold my-4 uppercase text-neutral-800">Materi</h1>
         <div class="flex flex-col sm:flex-row gap-4">
-            <div class="order-2 sm:order-1 w-full sm:w-[70%] lg:w-[75%]">
+            <div class="w-full sm:w-[70%] lg:w-[75%]">
                 <div class="bg-main shadow-md text-neutral-800 px-4 py-6 rounded-2xl space-y-2 min-h-36">
                     <h2 class="font-semibold text-3xl mb-4">{{$subject->title}}</h2>
                     {!! $subject->content !!}
                 </div>
             </div>
-            <div class="order-1 sm:order-2 w-full sm:w-[30%] lg:w-[25%] flex flex-col gap-3">
+            <div class="w-full sm:w-[30%] lg:w-[25%] flex flex-col gap-3">
                 <div class="{{$subject->assignment ? "block " : "hidden "}} dark-purple shadow-md h-fit rounded-2xl p-4 space-y-3">
                     <h2 class="font-bold text-xl text-neutral-800">Berkas Lampiran</h2>
                     <p class="font-medium text-neutral-800">{{$subject->assignment}}</p>

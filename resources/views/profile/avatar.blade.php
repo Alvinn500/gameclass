@@ -1,18 +1,18 @@
 @if($user->role == 'student')
     <x-student-layout title="Profil">
-        <div class="w-11/12 mx-auto">
+        <div class="w-full mx-auto">
             <x-breadcrumbs :breadcrumbs="$breadcrumbs"/>
         </div>
-        <div class="w-11/12 mx-auto dark-blue shadow-md mb-4 rounded-lg p-4 space-y-4">
+        <div class="w-full mx-auto bg-white shadow-md mb-4 py-4 rounded-lg">
             <div class="text-center mb-8">
                 <img class="rounded-full w-36 mx-auto mb-2" src="{{asset($user->photo)}}" alt="Photo profile">
                 <p class="text-xl font-semibold text-neutral-800">{{$user->name}}</p>    
             </div>
-            <div class="mx-48">
+            <div class="mb-4 w-[60%] mx-auto">
                 <x-form-error name="avatar"/>
                 <h1 class="font-semibold text-neutral-800">Pilih Avatar</h1>
             </div>
-            <div class="grid grid-cols-5 gap-4 w-[60%] mx-auto">
+            <div class="grid grid-cols-4 md:grid-cols-5 gap-4 w-[60%] mx-auto">
                 <form action="" method="POST">
                     @csrf
                     <input type="hidden" name="avatar" value="image/avatar/ava1.png">
@@ -68,10 +68,10 @@
     </x-student-layout>
 @else
     <x-teacher-layout title="Profil">
-        <div class="w-11/12 mx-auto">
+        <div class="w-full mx-auto">
             <x-breadcrumbs :breadcrumbs="$breadcrumbs"/>
         </div>
-        <div class="w-11/12 mx-auto dark-blue shadow-md mb-4 rounded-lg p-4 space-y-4">
+        <div class="w-full mx-auto bg-white shadow-md mb-4 py-4 rounded-lg">
             <div class="text-center mb-8">
                 <img class="rounded-full w-36 mx-auto mb-2" src="{{asset($user->photo)}}" alt="Photo profile">
                 <p class="text-xl font-semibold text-neutral-800">{{$user->name}}</p>    

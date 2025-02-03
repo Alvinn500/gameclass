@@ -34,11 +34,11 @@
     </div>
     <div>
         <h3 class="font-semibold my-4 text-neutral-800">Kelas Terbaru</h3>
-        <div class="mb-4 flex gap-2">
+        <div class="mb-4 flex flex-col sm:flex-row gap-2">
             @foreach ($classes as $class )
                 <a href="/teacher/class/{{$class->id}}" class="flex bg-main shadow-md p-4 rounded-lg items-center gap-4 w-full sm:w-1/2 md:w-1/3">
                     <img class="ratio-16x9 h-10 rounded-md" src="{{asset("logo_class/" . $class->logo_class)}}" alt="class image">
-                    <h3 class="text-neutral-800 font-medium">{{$class->study_name}}</h3>
+                    <h3 class="text-neutral-800 font-medium text-sm lg:text-base">{{$class->study_name}}</h3>
                 </a>
             @endforeach
         </div> 

@@ -128,7 +128,7 @@
         </section>
     </main>
 
-    <footer class="text-gray-400 h-72 bg-white shadow-sm w-full flex items-center justify-center text-sm ">
+    <footer class="text-gray-400 container h-72 bg-white shadow-sm w-full flex items-center justify-center text-xs sm:text-sm">
             <p>
                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                 Copyright &copy;<script>

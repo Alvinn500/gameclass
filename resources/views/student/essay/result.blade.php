@@ -35,7 +35,7 @@
                         <p class="text-yellow-500 uppercase text-sm font-medium">pertanyaan no {{$loop->iteration}}</p>
                         <h3 class="text-base font-semibold text-neutral-800">{{$essay->question}}</h3>
                         @if($essay->image)
-                            <img class="rounded-xl w-64" src="{{asset("essays/$essay->image")}}" alt="img">
+                            <img class="rounded-xl h-40 sm:h-48 md:h-56" src="{{asset("essays/$essay->image")}}" alt="img">
                         @endif
                         @foreach ($essay->answers->where('user_id', Auth::user()->id) as $answer)
                             <div class="bg-main rounded-md border border-neutral-300 p-4">

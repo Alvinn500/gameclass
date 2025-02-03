@@ -1,6 +1,6 @@
 <x-student-layout title="Dashboard">
-    <div class="grid grid-rows-2  md:flex  gap-8 mb-0 md:mb-8 mt-14 md:mt-0">
-        <div class="flex mx-auto md:mx-0 dark-purple shadow-md rounded-xl w-full md:w-[70%] md:min-w-[298.73px] duration-600 ease-in-out">
+    <div class="flex flex-col md:flex-row gap-8 mb-0 md:mb-8 mt-14 md:mt-0">
+        <div class="flex mx-auto md:mx-0 bg-white shadow-md rounded-xl w-full md:w-[70%] md:min-w-[298.73px] duration-600 ease-in-out">
             <div class="w-3/5 flex flex-col">
                 <div class="px-5 pt-5 mb-3">
                     <h3 class="uppercase text-xl text-neutral-800 font-medium">{{$user->name}}</h3>
@@ -89,21 +89,21 @@
                     </div>
                 </div>
             </div>
-            <div class="w-[30%] lg:w-2/5">
+            <div class="w-[30%]">
                 <img class="w-full -mt-10 mx-auto" src="{{asset("img/character/$level.png")}}" alt="character">
             </div>
             
         </div>
         <div class="h-1/2 w-full md:w-[30%]">
             <div class="flex flex-col justify-center lg:justify-normal gap-4 md:gap-6 w-full ">
-                <div class="dark-green shadow-md p-5 rounded-xl sm:min-w-[180px] lg:min-w-[140px] xl:min-w-[180px] w-full h-[9.5rem]">
+                <div class="bg-white shadow-md p-5 rounded-xl sm:min-w-[180px] lg:min-w-[140px] xl:min-w-[180px] w-full h-[9.5rem]">
                     <div class="flex items-center gap-2 mb-5">
                         <i class="fas fa-dot-circle text-lime-500 text-sm"></i>
                         <h3 class="text-sm text-neutral-800 uppercase font-bold">total xp</h3>
                     </div>
                     <p class="text-3xl text-neutral-800 font-semibold text-center">{{$total_xp}}</p>
                 </div>
-                <div class="dark-green shadow-md p-5 rounded-xl sm:min-w-[180px] lg:min-w-[140px] xl:min-w-[180px] w-full h-[9.5rem]">
+                <div class="bg-white shadow-md p-5 rounded-xl sm:min-w-[180px] lg:min-w-[140px] xl:min-w-[180px] w-full h-[9.5rem]">
                     <div class="flex items-center gap-2 mb-5">
                         <i class="fas fa-dot-circle text-lime-500 text-sm"></i>
                         <h3 class="text-sm text-neutral-800 uppercase font-bold">level</h3>
@@ -119,13 +119,13 @@
             </div>
         </div>
     </div>
-    <div class="-mt-32 sm:-mt-40 md:mt-0 ">
-        <h3 class="font-semibold mb-4 text-neutral-800">Kelas Terbaru</h3>
-        <div class="mb-4 flex gap-3">
+    <div>
+        <h3 class="font-semibold my-4 text-neutral-800">Kelas Terbaru</h3>
+        <div class="mb-4 flex flex-col sm:flex-row gap-3">
             @foreach ($classes as $class )
                 <a href="/student/class/{{$class->id}}" class="flex bg-white shadow-md p-4 rounded-lg items-center gap-4 w-full sm:w-3/5 md:w-1/3">
                     <img class="ratio-16x9 h-10 rounded-md" src="{{asset("logo_class/$class->logo_class")}}" alt="class image">
-                    <h3 class="text-neutral-800 font-medium">{{$class->study_name}}</h3>
+                    <h3 class="text-neutral-800 text-sm lg:text-base font-semibold">{{$class->study_name}}</h3>
                 </a>
             @endforeach
         </div> 

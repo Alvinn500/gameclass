@@ -35,7 +35,7 @@ class StudentController extends Controller
             }
         }
         
-        $totalClassScore = $user->classScores?->sum("score") ?? 0;
+        $totalClassScore = $user->classScores?->sum("XP") ?? 0;
         $totalEssayScore = $user->essayScores?->sum("XP") ?? 0;
         $totalUploadScore = $user->uploadScores?->sum("XP") ?? 0;
         $totalMemoryGameScore = $user->memoryGameScores?->sum("XP") ?? 0;
@@ -113,6 +113,12 @@ class StudentController extends Controller
     {
         
         $user = Auth::user();
+        $userExists = $user->classes()->where('class_listing_id', $class->id)->exists();
+
+        if ($userExists) {
+            return redirect("/student/class/$class->id");
+        }
+
         $user->classes()->attach($class->id);
 
         return redirect("/student/class/$class->id");
@@ -131,7 +137,7 @@ class StudentController extends Controller
         // dd($class->essayScores()->where('user_id', $user->id)->first()?->XP ?? 0);
         // dd($class->scores()->where('user_id', $user->id)->first()?->score ?? 0 + $class->essayScores()->where('user_id', $user->id)->first()?->XP ?? 0 + $class->uploadScores()->where('user_id', $user->id)->first()?->XP ?? 0 + $class->memoryGameScores()->where('user_id', $user->id)->first()?->XP ?? 0);
         
-        $classXP = $class->scores()->where('user_id', $user->id)->first()?->score ?? 0; 
+        $classXP = $class->scores()->where('user_id', $user->id)->first()?->XP ?? 0; 
         $classEssayXP = $class->essayScores()->where('user_id', $user->id)->first()?->XP ?? 0;
         $classUploadXP = $class->uploadScores()->where('user_id', $user->id)->first()?->XP ?? 0;
         $classMemoryGameXP = $class->memoryGameScores()->where('user_id', $user->id)->first()?->XP ?? 0; 
@@ -139,7 +145,7 @@ class StudentController extends Controller
         $xp = $classXP + $classEssayXP + $classUploadXP + $classMemoryGameXP;
         
 
-        $totalClassScore = $user->classScores?->sum("score") ?? 0;
+        $totalClassScore = $user->classScores?->sum("XP") ?? 0;
         $totalEssayScore = $user->essayScores?->sum("XP") ?? 0;
         $totalUploadScore = $user->uploadScores?->sum("XP") ?? 0;
         $totalMemoryGameScore = $user->memoryGameScores?->sum("XP") ?? 0;

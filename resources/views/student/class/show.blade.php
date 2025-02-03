@@ -101,8 +101,8 @@
                         <h4 class="font-medium text-neutral-800 text-base">Level</h4>
                         <p class="text-lime-500 font-semibold text-lg">{{$level}}</p>
                     </div>
-                </div>
-                <img class="w-[45%] sm:w-[58%] mx-auto mb-4" src="{{asset("img/character/2.png")}}" alt="character">
+                </div> 
+                <img class="w-[45%] sm:w-[58%] mx-auto mb-4" src="{{asset("img/character/$level.png")}}" alt="character">
                 <h4 class="bg-neutral-200 text-neutral-800 text-center p-2 text-lg font-medium">{{$emblem}}</h4>
                 <div class="flex justify-center px-5 gap-2 py-4">
                     @if($total_xp > 500)

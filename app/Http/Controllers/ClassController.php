@@ -91,7 +91,8 @@ class ClassController extends Controller
     public function find() {
 
         $classes = Class_Listing::all();
-
+        $user = Auth::user();
+        
         $breadcrumbs = [
             ['link' => "/student/class", 'name' => "Kelas"],
             ['name' => "Temukan Kelas"]
@@ -99,16 +100,17 @@ class ClassController extends Controller
 
         return view('student.class.find', [
             "classes" => $classes,
-            "breadcrumbs" => $breadcrumbs
+            "breadcrumbs" => $breadcrumbs,
+            "user" => $user
         ]);
 
     }
 
     public function leaderboard(Class_listing $class) {
         
-        $user = User::where('role', 'student')->get();
+        $user = $class->users()->where('role', 'student')->get();
 
-        $student = User::where('role', 'student')
+        $student = $class->users()->where('role', 'student')
             ->with([
                 'classScores' => fn($query) => $query->where('class_id', $class->id),
                 'essayScores' => fn($query) => $query->where('class_id', $class->id),
@@ -116,12 +118,12 @@ class ClassController extends Controller
                 'memoryGameScores' => fn($query) => $query->where('class_id', $class->id),
             ])
             ->get();
-
+            
         $leaderboards = $student->map(function ($student) {
             return [
                 'user_id' => $student->id,
                 'total_xp' => 
-                    $student->classScores->sum('score') + 
+                    $student->classScores->sum('XP') + 
                     $student->essayScores->sum('XP') + 
                     $student->uploadScores->sum('XP') + 
                     $student->memoryGameScores->sum('XP'),

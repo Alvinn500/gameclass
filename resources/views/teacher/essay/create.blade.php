@@ -34,7 +34,7 @@
         </div>
 
         <div class="flex flex-col md:flex-row gap-4 mb-4">
-            <div class="order-2 md:order-1 w-full md:w-[70%] lg:w-[75%] space-y-2">
+            <div class="w-full md:w-[70%] lg:w-[75%] space-y-2">
                 @foreach ($essays as $essay )
                 <div>
                     <div id="essay" data-essayId="{{$essay->id}}" class="flex justify-between bg-main shadow-md px-3 py-4 rounded-2xl hover:bg-neutral-200">
@@ -60,7 +60,7 @@
                 </div>
                 @endforeach
             </div>
-            <div class="order-1 md:order-2 w-full md:w-[30%] lg:w-[25%] h-fit dark-green shadow-md rounded-2xl p-4">
+            <div class="w-full md:w-[30%] lg:w-[25%] h-fit dark-green shadow-md rounded-2xl p-4">
                 <h2 class="font-bold mb-2 text-4xl lg:text-5xl text-neutral-800">{{$studentAnswered}}</h2>
                 <p class="text-sm mb-4 text-neutral-800">Siswa telah mengerjakan Soal {{$task->type === 1 ? "Quiz" : "Test"}}</p>
                 <a href="/teacher/recap/{{$lesson->id}}/{{$task->id}}/essay" class="uppercase text-center block text-xs px-4 py-3 rounded-lg font-bold bg-yellow-500 text-white">lihat hasil</a>
@@ -80,8 +80,8 @@
                         <label for="essay" class="text-xs md:text-sm font-semibold text-neutral-800">Pertanyaan</label>
                         <textarea id="essay" name="question" class="bg-main focus:outline-none border border-neutral-300 text-neutral-800 rounded-lg p-2.5 text-sm"></textarea>
                     </div>
-                    <div class="flex gap-2">
-                        <div class="flex flex-col gap-2 mb-1 lg:mb-0">
+                    <div class="flex flex-col sm:flex-row gap-2">
+                        <div class="flex flex-col gap-2">
                             <lable for="image" class="text-xs lg:text-sm font-semibold text-neutral-800">Gambar (opsional)</lable>
                             <input type="file" name="image" id="image" class="py-2.5 px-3 border border-neutral-300 text-neutral-800 rounded-xl text-sm">
                         </div>
@@ -107,8 +107,8 @@
                         <label for="essay" class="text-xs md:text-sm font-semibold text-neutral-800">Pertanyaan</label>
                         <textarea id="inputEditEssay" name="question" class="bg-main focus:outline-none border border-neutral-300 text-neutral-800 rounded-lg p-2.5 text-sm"></textarea>
                     </div>
-                    <div class="flex gap-2">
-                        <div class="flex flex-col gap-2 mb-1 lg:mb-0">
+                    <div class="flex flex-col sm:flex-row gap-2">
+                        <div class="flex flex-col gap-2 lg:mb-0">
                             <lable for="image" class="text-xs lg:text-sm font-semibold text-neutral-800">Gambar (opsional)</lable>
                             <input type="file" name="image" id="editImage" class="py-2.5 px-3 border border-neutral-300 text-neutral-800 rounded-xl text-sm">
                         </div>

@@ -1,8 +1,8 @@
 <x-student-layout title="Temukan Kelas">
     <x-breadcrumbs :breadcrumbs="$breadcrumbs"/>
-    <div class="grid grid-cols-2 gap-7">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-7 mb-6">
         @foreach ($classes as $class)
-            <div class="flex items-center gap-5 bg-main shadow-md px-7 pt-5 pb-6 rounded-xl w-full">
+            <div class="{{$user->classes()->where('class_listing_id', $class->id)->exists() ? 'hidden' : ''}} flex items-center gap-5 bg-main shadow-md px-7 pt-5 pb-6 rounded-xl w-full">
                 <div>
                     <img class="aspect-square w-14 rounded-lg" src="{{asset('logo_class/' . $class->logo_class)}}" alt="logo class">
                 </div>

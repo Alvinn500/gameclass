@@ -42,7 +42,7 @@
                                 <label for="essay{{$essay->id}}" class="font-semibold text-neutral-800">{{$loop->iteration}}. {{$essay->question}}</label>
                                 <div>
                                     @if($essay->image)
-                                        <img class="w-64 py-2 rounded-xl" src="{{asset("essays/$essay->image")}}" alt="image">
+                                        <img class="h-40 sm:h-48 md:h-56 py-2 rounded-xl" src="{{asset("essays/$essay->image")}}" alt="image">
                                     @endif
                                 </div>
                                 <textarea 

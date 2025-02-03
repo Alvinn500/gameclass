@@ -88,7 +88,7 @@ class UploadController extends Controller
 
     public function downloadAnswer($filename) {
 
-        $filepath = public_path('uploads/' . $filename);
+        $filepath = base_path('public/uploads/' . $filename);
 
         if(!file_exists($filepath)) {
             abort(404, 'File not found');

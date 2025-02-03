@@ -77,27 +77,27 @@ section {
 }
 
 .orange-white {
-    background: linear-gradient(90deg, #fb923c 55%, #fff 280%);
+    @apply bg-white;
 }
 
 .dark-white {
-    background: linear-gradient(138deg, #fff -80%, #121212 20%);
+    @apply bg-white;
 }
 
 .dark-purple {
-    background: linear-gradient(144deg, #fff 38%, #2e193a 150%);
+    @apply bg-white;
 }
 
 .dark-blue {
-    background: linear-gradient(144deg, #fff 38%, rgba(10, 12, 45, 1) 150%);
+    @apply bg-white;
 }
 
 .gradient-diskusi {
-    background-image: linear-gradient(310deg, #fff 30%, #3a416f 250%);
+    @apply bg-white;
 }
 
 .dark-green {
-    background: linear-gradient(144deg, #fff 38%, #0f2c3b 150%);
+    @apply bg-white;
 }
 
 .canvas {
