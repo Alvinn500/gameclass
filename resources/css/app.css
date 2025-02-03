@@ -28,7 +28,7 @@ body {
 }
 
 .nav-active {
-    @apply text-lime-500 ease-in duration-300;
+    @apply text-indigo-800 ease-in duration-300;
 }
 
 .nav-active::after {
@@ -39,17 +39,17 @@ body {
     transform: translateX(-50%) scaleX(0);
     transform-origin: center;
     height: 2px;
-    background-color: #84cc16;
+    background-color: #4338ca;
     width: 100%;
     animation: grow-line-center 0.3s ease-in forwards;
 }
 
 .sidebar-focus {
-    @apply bg-indigo-600;
+    @apply bg-neutral-200 text-white;
 }
 
 .sub-nav-focus {
-    background-color: #ffffff0e;
+    @apply bg-neutral-200;
 }
 
 .humburger-active > span:nth-child(1) {
@@ -85,19 +85,19 @@ section {
 }
 
 .dark-purple {
-    background: linear-gradient(144deg, #171717 38%, #2e193a 150%);
+    background: linear-gradient(144deg, #fff 38%, #2e193a 150%);
 }
 
 .dark-blue {
-    background: linear-gradient(144deg, #171717 38%, rgba(10, 12, 45, 1) 150%);
+    background: linear-gradient(144deg, #fff 38%, rgba(10, 12, 45, 1) 150%);
 }
 
 .gradient-diskusi {
-    background-image: linear-gradient(310deg, #171717 30%, #3a416f 250%);
+    background-image: linear-gradient(310deg, #fff 30%, #3a416f 250%);
 }
 
 .dark-green {
-    background: linear-gradient(144deg, #171717 38%, #0f2c3b 150%);
+    background: linear-gradient(144deg, #fff 38%, #0f2c3b 150%);
 }
 
 .canvas {
@@ -176,5 +176,36 @@ section {
 }
 
 .modalGradient {
-    background: linear-gradient(180deg, #262626 -10%, #171717 100%);
+    background: linear-gradient(180deg, #e5e5e5 -10%, #fff 100%);
+}
+
+/* custom datatables */
+
+.dt-search label {
+    @apply text-neutral-800 font-semibold;
+}
+
+#dt-search-0 {
+    @apply text-neutral-800 text-sm p-2;
+}
+
+.dt-search input:focus {
+    @apply outline-none;
+}
+
+.dt-length label {
+    @apply text-neutral-800 font-medium;
+}
+
+#dt-length-0 {
+    @apply text-neutral-800 bg-neutral-50 font-medium;
+}
+
+#example_info {
+    @apply text-neutral-600 font-medium text-sm;
+}
+
+div.dt-container .dt-paging button.dt-paging-button.current {
+    @apply text-neutral-800 text-sm !important;
+    /* color: black !important; */
 }

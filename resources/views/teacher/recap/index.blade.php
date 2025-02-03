@@ -8,11 +8,16 @@
         settingPath="/teacher/{{$class->id}}/setting"
     />
     <div>
-        <h1 class="uppercase font-semibold text-sm my-4">Rekap nilai</h1>
+        <h1 class="uppercase font-semibold text-sm my-4 text-neutral-800">Rekap nilai</h1>
         <div class="space-y-4">
+            @if($lessons->count() == 0)
+                <div class="bg-main shadow-md rounded-xl p-6">
+                    <h2 class="py-1 text-sm text-neutral-500 font-semibold">Belum ada rekap nilai</h2>
+                </div>
+            @endif
             @foreach ($lessons as $lesson)
-                <div class="bg-neutral-900 rounded-xl p-6">
-                    <h2 class="font-semibold">{{$lesson->name}}</h2>
+                <div class="bg-main shadow-md rounded-xl p-6">
+                    <h2 class="font-semibold text-neutral-800">{{$lesson->name}}</h2>
                     <span class="block h-[0.0625rem] my-4 mx-auto w-full bg-gray-600"></span>
                     <div class="flex flex-col gap-2 font-medium">
                         @php
@@ -20,37 +25,37 @@
                         @endphp
         
                         @foreach ($lesson->subjects as $subject)
-                            <a href="/teacher/recap/{{$lesson->id}}/{{$subject->id}}/subject" class="text-sm font-semibold">
+                            <a href="/teacher/recap/{{$lesson->id}}/{{$subject->id}}/subject" class="text-sm font-semibold text-neutral-800">
                                 {{$counter++}}. Materi: {{$subject->title}}
                             </a>
                         @endforeach
                     
                         @foreach ($lesson->tasks->where("type", "1") as $quiz)
-                            <a href="/teacher/recap/{{$lesson->id}}/{{$quiz->id}}/quiz" class="text-sm font-semibold">
+                            <a href="/teacher/recap/{{$lesson->id}}/{{$quiz->id}}/quiz" class="text-sm font-semibold text-neutral-800">
                                 {{$counter++}}. Quiz: {{$quiz->title}}
                             </a>
                         @endforeach
         
                         @foreach ($lesson->tasks->where("type", "2") as $quiz)
-                            <a href="/teacher/recap/{{$lesson->id}}/{{$quiz->id}}/quiz" class="text-sm font-semibold">
+                            <a href="/teacher/recap/{{$lesson->id}}/{{$quiz->id}}/quiz" class="text-sm font-semibold text-neutral-800">
                                 {{$counter++}}. Test: {{$quiz->title}}
                             </a>
                         @endforeach
         
                         @foreach ($lesson->tasks->where("type", "3") as $essay)
-                            <a href="/teacher/recap/{{$lesson->id}}/{{$essay->id}}/essay" class="text-sm font-semibold">
+                            <a href="/teacher/recap/{{$lesson->id}}/{{$essay->id}}/essay" class="text-sm font-semibold text-neutral-800">
                                 {{$counter++}}. Essay: {{$essay->title}}
                             </a>
                         @endforeach
         
                         @foreach ($lesson->tasks->where("type", "4") as $upload)
-                            <a href="/teacher/recap/{{$lesson->id}}/{{$upload->id}}/upload" class="text-sm font-semibold">
+                            <a href="/teacher/recap/{{$lesson->id}}/{{$upload->id}}/upload" class="text-sm font-semibold text-neutral-800">
                                 {{$counter++}}. Upload: {{$upload->title}}
                             </a>
                         @endforeach
                     
                         @foreach ($lesson->tasks->where("type", "5") as $game)
-                            <a href="/teacher/recap/{{$lesson->id}}/{{$game->id}}/game" class="text-sm font-semibold">
+                            <a href="/teacher/recap/{{$lesson->id}}/{{$game->id}}/game" class="text-sm font-semibold text-neutral-800">
                                 {{$counter++}}. game: {{$game->title}}
                             </a>
                         @endforeach

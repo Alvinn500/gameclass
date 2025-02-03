@@ -20,8 +20,8 @@ export default {
             },
             backgroundColor: {
                 primary: "#c539ff",
-                secondary: "#121212",
-                main: "#171717 ",
+                secondary: "#fafafa",
+                main: "#fff ",
                 semigray: "rgba(255, 255, 255, 0.1)",
                 whiteSubNav: "#2d3144",
                 semiblack: "#141414",
@@ -29,7 +29,7 @@ export default {
             },
             textColor: {
                 primary: "#c539ff",
-                secondary: "#121212",
+                secondary: "#",
                 main: "#191b2a ",
                 breadcrumb: "#84cc16",
             },

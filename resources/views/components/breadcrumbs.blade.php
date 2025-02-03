@@ -1,4 +1,4 @@
-<nav class="bg-semiblack py-2.5 px-4 rounded-lg mb-4">
+<nav class="bg-main shadow-md py-2.5 px-4 rounded-lg mb-4">
     <ul class="flex gap-2">
         @foreach ($breadcrumbs as $breadcrumb)
             <li class="text-gray-500 text-sm">

@@ -13,8 +13,8 @@
 
         <section class="container md:px-12 lg:px-24 mx-auto flex justify-center items-center">
             <div class=" text-white w-[70%]">
-                <h4 class="mt-3 mb-2 text-white text-2xl font-bold text-center">Buat Akun</h4>
-                <h6 class="mb-4 small text-gray-500 text-sm font-light text-center">Sudah memiliki akun? <a href="/login" class="text-lime-500 font-semibold">Login</a></h6>
+                <h4 class="mt-3 mb-2 text-indigo-800 text-2xl font-bold text-center">Buat Akun</h4>
+                <h6 class="mb-4 text-neutral-600 text-sm font-semibold text-center">Sudah memiliki akun? <a href="/login" class="text-lime-500 font-semibold">Login</a></h6>
 
                 @error('email')
                     <div class="text-sm font-light text-red-600">{{$message}}</div>
@@ -28,36 +28,36 @@
                     @csrf
                     <div>
                         <div class="mb-6 mt-3 flex flex-col gap-3">
-                            <label class="text-gray-300 text-sm font-semibold">Nama Lengkap</label>
-                            <input value="{{old("name")}}" type="text" name="name" class="bg-neutral-900 w-full p-3 text-sm placeholder:text-gray-500 focus:outline-none text-white" placeholder="Masukkan Nama" aria-describedby="username-addon" required>
+                            <label class="text-neutral-800 text-sm font-semibold">Nama Lengkap</label>
+                            <input value="{{old("name")}}" type="text" name="name" class="bg-white border border-neutral-300 rounded-md w-full p-3 text-sm placeholder:text-gray-500 focus:outline-none text-white" placeholder="Masukkan Nama" aria-describedby="username-addon" required>
                         </div>
                         <div class="mb-6 mt-3 flex flex-col gap-3">
-                            <label class="text-gray-300 text-sm font-semibold">Email Kamu</label>
-                            <input value="{{old("email")}}" type="email" name="email" class="bg-neutral-900 w-full p-3 text-sm placeholder:text-gray-500 focus:outline-none text-white" placeholder="Masukkan alamat e-mail" aria-label="username" aria-describedby="username-addon" required>
+                            <label class="text-neutral-800 text-sm font-semibold">Email Kamu</label>
+                            <input value="{{old("email")}}" type="email" name="email" class="bg-white border border-neutral-300 rounded-md w-full p-3 text-sm placeholder:text-gray-500 focus:outline-none text-white" placeholder="Masukkan alamat e-mail" aria-label="username" aria-describedby="username-addon" required>
                         </div>
                         <div class="mb-6 mt-3 flex flex-col gap-3">
-                            <label class="text-gray-300 text-sm font-semibold">Nomor Telepon Kamu</label>
-                            <input value="{{old("phone")}}" type="number" name="phone" class="bg-neutral-900 w-full p-3 text-sm placeholder:text-gray-500 focus:outline-none text-white" placeholder="Masukkan Nomor Telp" aria-label="username" aria-describedby="username-addon" required>
+                            <label class="text-neutral-800 text-sm font-semibold">Nomor Telepon Kamu</label>
+                            <input value="{{old("phone")}}" type="number" name="phone" class="bg-white border border-neutral-300 rounded-md w-full p-3 text-sm placeholder:text-gray-500 focus:outline-none text-white" placeholder="Masukkan Nomor Telp" aria-label="username" aria-describedby="username-addon" required>
                         </div>
                         <div class="mb-6 mt-3 flex flex-col gap-3">
-                            <label class="text-gray-300 text-sm font-semibold">Buat Password</label>
-                            <input  type="password" name="password" class="bg-neutral-900 w-full p-3 text-sm placeholder:text-gray-500 focus:outline-none text-white" placeholder="Password" aria-label="Buat Password" aria-describedby="password-addon" required autocomplete="off">
+                            <label class="text-neutral-800 text-sm font-semibold">Buat Password</label>
+                            <input  type="password" name="password" class="bg-white border border-neutral-300 rounded-md w-full p-3 text-sm placeholder:text-gray-500 focus:outline-none text-white" placeholder="Password" aria-label="Buat Password" aria-describedby="password-addon" required autocomplete="off">
                         </div>
                         <div class="mb-6 mt-3 flex flex-col gap-3">
-                            <label class="text-gray-300 text-sm font-semibold">Konfirmasi Password</label>
-                            <input type="password" name='password_confirmation' class="bg-neutral-900 w-full p-3 text-sm placeholder:text-gray-500 focus:outline-none text-white" placeholder="Konfirmasi Password" aria-describedby="password-addon" required autocomplete="off">
+                            <label class="text-neutral-800 text-sm font-semibold">Konfirmasi Password</label>
+                            <input type="password" name='password_confirmation' class="bg-white border border-neutral-300 rounded-md w-full p-3 text-sm placeholder:text-gray-500 focus:outline-none text-white" placeholder="Konfirmasi Password" aria-describedby="password-addon" required autocomplete="off">
                         </div>
                         <div class="mb-5 mt-3 flex gap-x-4">
                             <div class="flex justify-center gap-x-2">
-                                <label class="text-gray-300 text-sm font-semibold">Daftar Sebagai</label>
-                                <input class=""  type="radio" name="role" id="flexRadioDefault2" value="student" required>
-                                <label class="" for="flexRadioDefault2">
+                                <label class="text-neutral-800 text-sm font-semibold">Daftar Sebagai</label>
+                                <input type="radio" name="role" id="flexRadioDefault2" value="student" required>
+                                <label class="text-neutral-800 font-medium uppercase text-sm" for="flexRadioDefault2">
                                     Siswa
                                 </label>
                             </div>
                             <div class="flex justify-center gap-x-2">
-                                <input class=""  type="radio" name="role" id="flexRadioDefault1" value="teacher" required>
-                                <label class="" for="flexRadioDefault1">
+                                <input type="radio" name="role" id="flexRadioDefault1" value="teacher" required>
+                                <label class="text-neutral-800 font-medium uppercase text-sm" for="flexRadioDefault1">
                                     Guru
                                 </label>
                             </div>

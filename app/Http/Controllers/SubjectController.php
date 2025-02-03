@@ -60,6 +60,7 @@ class SubjectController extends Controller
 
 
     public function store(Lesson $lesson) {
+        
         request()->validate([
             'title' => ['required', 'min:3'],
             'content' => ['required'],
@@ -117,7 +118,7 @@ class SubjectController extends Controller
         $breadcrumbs = [
             ['link' => "/teacher/class", 'name' => "Kelas"],
             ['link' => "/teacher/class/$class->id", 'name' => $class->study_name . "-" . $class->class],
-            ['name' => "Edit Materi: {{$subject->title}}"],
+            ['name' => "Edit Materi: $subject->title"],
         ];
 
         return view('teacher.subject.edit', [

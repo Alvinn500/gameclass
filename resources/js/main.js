@@ -159,6 +159,7 @@ quizzes.forEach((quiz) => {
         quiz.children[1].classList.toggle("rotate-90");
         quiz.classList.toggle("rounded-2xl");
         quiz.classList.toggle("rounded-t-2xl");
+        quiz.classList.toggle("bg-neutral-200");
         quizOption.classList.toggle("hidden");
     });
 });
@@ -256,6 +257,9 @@ essays.forEach((essay) => {
     essay.addEventListener("click", () => {
         const essayId = essay.getAttribute("data-essayId");
         document.getElementById(`essay${essayId}`).classList.toggle("hidden");
+        essay.classList.toggle("rounded-2xl");
+        essay.classList.toggle("rounded-t-2xl");
+        essay.classList.toggle("bg-neutral-200");
         essay.children[1].children[0].classList.toggle("rotate-90");
     });
 });

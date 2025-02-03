@@ -8,19 +8,19 @@
         settingPath="/teacher/{{$class->id}}/setting"
     />
     <div>
-        <h1 class="my-4 text-sm font-semibold">DAFTAR SISWA</h1>
-        <div class="min-w-full p-4 rounded-xl bg-neutral-900">
-            <table id="example" class="min-w-full">
+        <h1 class="my-4 text-sm font-semibold text-neutral-800">DAFTAR SISWA</h1>
+        <div class="min-w-full px-4 pt-4 pb-2 mb-4 rounded-xl bg-main shadow-md">
+            <table id="example" class="min-w-full text-neutral-800">
                 <thead>
                     <tr>
-                        <th class="border border-neutral-800 uppercase text-sm">No</th>
-                        <th class="border border-neutral-800 uppercase text-sm">PP</th>
-                        <th class="border border-neutral-800 uppercase text-sm">Nama</th>
-                        <th class="border border-neutral-800 uppercase text-sm">Skor</th>
-                        <th class="border border-neutral-800 uppercase text-sm">Level</th>
-                        <th class="border border-neutral-800 uppercase text-sm">Email</th>
-                        <th class="border border-neutral-800 uppercase text-sm">Nomor Telepon</th>
-                        <th class="border border-neutral-800 uppercase text-sm">Opsi</th>
+                        <th class="border-b uppercase text-sm">No</th>
+                        <th class="border-b uppercase text-sm">PP</th>
+                        <th class="border-b uppercase text-sm">Nama</th>
+                        <th class="border-b uppercase text-sm">Skor</th>
+                        <th class="border-b uppercase text-sm">Level</th>
+                        <th class="border-b uppercase text-sm">Email</th>
+                        <th class="border-b uppercase text-sm">Nomor Telepon</th>
+                        <th class="border-b uppercase text-sm">Opsi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,10 +31,10 @@
                         @if($user)
                             <tr>
                                 {{-- {{dd($user->classScores->sum("score"))}} --}}
-                                <td class="border border-neutral-800 text-base">{{$counter++}}</td>
-                                <td class="border border-neutral-800 text-base"><img class="w-8 aspect-square" src="{{asset($user->photo)}}" alt="profile picture"></td>
-                                <td class="border border-neutral-800 text-base">{{$user->name}}</td>
-                                <td class="border border-neutral-800 text-base">
+                                <td class="border-b text-base">{{$counter++}}</td>
+                                <td class="border-b text-base"><img class="w-8 aspect-square" src="{{asset($user->photo)}}" alt="profile picture"></td>
+                                <td class="border-b text-base">{{$user->name}}</td>
+                                <td class="border-b text-base">
                                     @php
                                         $total = 0;
 
@@ -53,7 +53,7 @@
                                     {{$total}}
                                     {{-- {{$user->uploadScores->sum("XP") + $user->essayScore->sum("XP") + $user->classScores->sum("score")}} --}}
                                 </td>
-                                <td class="border border-neutral-800 text-base">
+                                <td class=" border-b text-neutral-800 text-base">
                                     @php
                                         $totalXP = $user->uploadScores->sum("XP") ?? 0 + $user->essayScores->sum("XP") ?? 0 + $user->classScores->sum("score") ?? 0;
                                         $level = 0;
@@ -81,14 +81,14 @@
                                     @endphp
                                     {{$level}}
                                 </td>
-                                <td class="border border-neutral-800 text-sm">{{$user->email}}</td>
-                                <td class="border border-neutral-800 text-sm">{{$user->phone}}</td>
-                                <td class="border border-neutral-800 text-sm relative flex justify-center">
-                                    <div class="tooltip absolute hidden bg-white rounded-xl w-fit -top-14 left-1.5 z-50">
-                                        <p class="text-black font-semibold text-xs px-4 py-2">Keluarkan Dari Kelas</p>
+                                <td class=" border-b text-neutral-800 text-sm">{{$user->email}}</td>
+                                <td class=" border-b text-neutral-800 text-sm">{{$user->phone}}</td>
+                                <td class=" border-b text-sm relative">
+                                    <div class="tooltip absolute hidden bg-neutral-200 rounded-xl w-fit -top-14 left-1.5 z-50">
+                                        <p class="text-neutral-800 font-semibold text-xs px-4 py-2">Keluarkan Dari Kelas</p>
                                     </div>
                                     <button id="deleteUser">
-                                        <img id="item" class="w-8 cursor-pointer" src="{{asset('image/user-delete.png')}}" alt="delete student icon">
+                                        <img id="item" class="w-8 cursor-pointer" src="{{asset('image/delete-user.png')}}" alt="delete student icon">
                                     </button>
                                     {{-- <a href="/teacher/class/{{$class->id}}/student/{{$user->id}}">
                                         <img class="w-8 mx-auto" src="{{asset('image/user-delete.png')}}" alt="delete student icon">
@@ -97,11 +97,11 @@
                             </tr>
                         @endif
                         <div id="confirm_overlay" class="fixed hidden justify-center items-center z-50 bg-black bg-opacity-45 w-full h-full top-0 left-0">
-                            <div id="confirm_modal" class="bg-neutral-900 rounded-lg p-4 w-96 flex flex-col gap-4">
-                                <h2 class="font-semibold text-center">Keluarkan Siswa</h2>
-                                <p class="text-center text-sm text-gray-400">Apakah anda yakin ingin mengeluarkan siswa dari kelas ini?</p>
+                            <div id="confirm_modal" class="bg-white rounded-lg p-4 w-96 flex flex-col gap-4">
+                                <h2 class="font-semibold text-center text-neutral-800">Keluarkan Siswa</h2>
+                                <p class="text-center text-sm text-neutral-500">Apakah anda yakin ingin mengeluarkan siswa dari kelas ini?</p>
                                 <div class="flex justify-between gap-2">
-                                    <button id="unconfirm" class="border border-lime-500 py-2.5 px-14 rounded-lg shadow-lg text-xs font-semibold uppercase">Batal</button>
+                                    <button id="unconfirm" class="bg-indigo-600 py-2.5 px-14 rounded-lg shadow-lg text-xs font-semibold uppercase">Batal</button>
                                     <form action="/teacher/leave/class/{{$class->id}}/{{$user->id}}" method="post">
                                         @csrf
                                         <button id="confirm" class="bg-red-600 py-2.5 px-16 rounded-lg shadow-lg text-xs font-semibold uppercase">Iya</button>

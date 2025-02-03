@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Class_listing;
 use App\Models\Lesson;
-use App\Models\multipleChoice;
+use App\Models\MultipleChoice;
 use App\Models\Task;
 use App\Models\Activity;
 use App\Models\MultipleChoiceAnswer;
@@ -25,7 +25,7 @@ class QuizController extends Controller
         ];
 
         $quizzes = $task->multipleChoices()->get();
-
+        
         return view('teacher.quiz.create', [
             'class' => $class,
             'lesson' => $lesson,
@@ -63,7 +63,7 @@ class QuizController extends Controller
             "e" => request()->e
         ];
         
-        $quiz = multipleChoice::create([
+        $quiz = MultipleChoice::create([
             "question" => request()->question,
             "options" => $options,
             "answer" => request()->answare,
@@ -74,7 +74,7 @@ class QuizController extends Controller
         return redirect("/teacher/$class->id/$lesson->id/$task->id/quiz/create");
     }
 
-    public function update(multipleChoice $quiz) {
+    public function update(MultipleChoice $quiz) {
         
         request()->validate([
             "question" => ["required", "min:3"],
@@ -109,7 +109,8 @@ class QuizController extends Controller
         return redirect()->back();
     }
 
-    public function destroy(multipleChoice $quiz) {
+
+    public function destroy(MultipleChoice $quiz) {
 
         $quiz->delete();
 

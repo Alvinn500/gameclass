@@ -8,8 +8,8 @@
         settingPath="/teacher/{{$class->id}}/setting"
     />
     <div>
-        <div class="dark-purple rounded-xl flex gap-2 px-3 py-4 my-4">
-            <button id="ButtonEditTask" class="uppercase block text-xs px-4 py-3 rounded-lg font-bold bg-violet-800">edit judul Tugas</button>
+        <div class="dark-purple shadow-md rounded-xl flex gap-2 px-3 py-4 my-4">
+            <button id="ButtonEditTask" class="uppercase block text-xs px-4 py-3 rounded-lg font-bold bg-indigo-600">edit judul Tugas</button>
         </div>
 
         <div id="modalEditTask" class="fixed z-50 hidden justify-center items-center w-full h-screen bg-black bg-opacity-70 top-0 left-0 ">
@@ -17,10 +17,10 @@
                 <form id="editForm" action="/upload/edit/{{$task->id}}" method="POST" class="flex flex-col p-4 gap-4">
                     @csrf
                     @method("PATCH")
-                    <label class="text-sm font-medium" for="inputTask">Judul Tugas</label>
-                    <input id="inputTask" class="bg-main focus:outline-none border border-white rounded-lg p-2.5 text-sm" type="text"  name="title" value="{{$task->title}}" placeholder="Masukan judul task">
+                    <label class="text-sm font-medium text-neutral-800" for="inputTask">Judul Tugas</label>
+                    <input id="inputTask" class="bg-main focus:outline-none font-medium border border-neutral-200 text-neutral-800 placeholder:text-neutral-500 rounded-lg p-2.5 text-sm" type="text"  name="title" value="{{$task->title}}" placeholder="Masukan judul task">
                     <div class="flex justify-between">
-                        <button type="submit" class="bg-violet-800 py-3 px-4 rounded-lg shadow-lg text-xs font-semibold">SIMPAN</button>
+                        <button type="submit" class="bg-indigo-600 py-3 px-4 rounded-lg shadow-lg text-xs font-semibold">SIMPAN</button>
                         <button form="deleteForm" class="bg-red-600 py-3 px-4 rounded-lg shadow-lg text-xs font-semibold">HAPUS QUIZ</button>
                     </div>
                 </form>
@@ -31,13 +31,13 @@
             </div>
         </div>
 
-        <h1 class="px-4 text-sm font-semibold my-4 uppercase">TUGAS {{$task->title}}</h1>
+        <h1 class="px-4 text-sm font-semibold my-4 uppercase text-neutral-800">TUGAS {{$task->title}}</h1>
         
         <div class="flex flex-col md:flex-row gap-4">
             @if(!$memory)
-                <div class="bg-main px-6 py-8 rounded-2xl w-full md:w-[70%] lg:w-[75%]">
+                <div class="bg-main shadow-md px-6 py-8 rounded-2xl w-full md:w-[70%] lg:w-[75%]">
                     <div id="emptyGame" class="space-y-4">
-                        <h2 class="text-gray-500">Anda belum membuat game</h2>
+                        <h2 class="text-neutral-500">Anda belum membuat game</h2>
                         <span class="block h-[0.0625rem] mx-auto w-full bg-gray-600"></span>
                         <x-form-error name="images"/>
                         <x-form-error name="images.*"/>
@@ -46,14 +46,14 @@
                     <div id="addImageGame" class="hidden">
                         <form action="" method="POST" enctype="multipart/form-data">
                            @csrf
-                           <h2 class="text-sm md:text-base font-semibold">Tambahkan 6 Gambar</h2>
+                           <h2 class="text-sm md:text-base font-semibold text-neutral-800">Tambahkan 6 Gambar</h2>
                            <span class="block h-[0.0625rem] mx-auto w-full bg-gray-500 my-4"></span>
                            <div class="flex items-center gap-2">
                                <div class="flex flex-col gap-2 mb-1 lg:mb-0">
-                                   <lable for="image" class="text-xs lg:text-sm font-semibold">Gambar</lable>
+                                   <lable for="image" class="text-xs lg:text-sm font-semibold text-neutral-800">Gambar</lable>
                                    <div class="flex items-center gap-2">
-                                       <input type="file" name="images[]" multiple id="image" class="py-2.5 px-3 border border-gray-500 rounded-xl text-sm">
-                                       <button type="submit" class="uppercase px-8 py-3.5 font-semibold rounded-lg w-full lg:w-auto block text-xs bg-violet-800">Tambah Pertanyaan</button>
+                                       <input type="file" name="images[]" multiple id="image" class="py-2.5 px-3 border border-neutral-300 text-neutral-800 rounded-xl text-sm">
+                                       <button type="submit" class="uppercase px-8 py-3.5 font-semibold rounded-lg w-full lg:w-auto block text-xs bg-indigo-600">Tambah Pertanyaan</button>
                                    </div>
                                    <x-form-error name="images"/>
                                </div>
@@ -63,31 +63,31 @@
                 </div>
             @endif
             @if($memory)     
-                <div class="order-2 md:order-1 w-full px-4 py-5 rounded-2xl mb-6 bg-main md:w-[70%] lg:w-[75%] space-y-2">
+                <div class="order-2 md:order-1 w-full px-4 py-5 rounded-2xl mb-6 bg-main shadow-md md:w-[70%] lg:w-[75%] space-y-2">
                     @if(!$memory->questions)
                         <div class="flex flex-col gap-3 justify-between">
-                            <h1 class="font-medium text-sm">Buat pertanyaan masing masing gambar <span class="text-lime-500">(contoh: Apa fungsi dari gambar tersebut)</span></h1>
+                            <h1 class="font-medium text-sm text-neutral-800">Buat pertanyaan masing masing gambar <span class="text-lime-500">(contoh: Apa fungsi dari gambar tersebut)</span></h1>
                             <form action="" method="POST" class="flex flex-col gap-4">
                                 @csrf
                                 @if($memory)
                                     @foreach (array_slice($memory->images, 0, 6) as $key => $image)
                                         <div class="flex flex-col gap-2">
-                                            <div class="w-[40%] flex justify-center items-center bg-neutral-800 p-8 rounded-lg">
+                                            <div class="w-[40%] flex justify-center items-center bg-neutral-200 p-8 rounded-lg">
                                                 <img class="w-[60%] rounded-lg" src="{{asset("$image")}}" alt="image memory game {{$key}}">
                                             </div>
-                                            <input type="text" name="question{{$key}}" id="question{{$key}}" value="{{old("question$key")}}" placeholder="Apa fungsi dari gambar di atas?" class="bg-neutral-900 border border-gray-400 focus:outline-none p-2 text-sm rounded-md placeholder:text-gray-400">
+                                            <input type="text" name="question{{$key}}" id="question{{$key}}" value="{{old("question$key")}}" placeholder="Apa fungsi dari gambar di atas?" class="bg-white text-neutral-800 border border-neutral-300 focus:outline-none p-2 text-sm rounded-md placeholder:text-neutral-500">
                                         </div>
                                         <x-form-error name="question{{$key}}"/>
                                     @endforeach
                                 @endif  
                                 <div class="flex flex-col gap-2">
                                     <label for="time" class="text-sm font-medium">Berapa menit yang di berikan ke siswa untuk menegerjakan tugas ini?</label>
-                                    <div class="flex items-center gap-4 border border-gray-400 p-2 rounded-md w-28">
+                                    <div class="flex items-center gap-4 border border-neutral-300 p-2 rounded-md w-28">
                                         <img class="w-6" src="{{asset("image/time.png")}}" alt="">
-                                        <input type="text" name="time" id="time" value="00:00" placeholder="00:00" pattern="[0-9]{2}:[0-9]{2}" class="bg-neutral-900 focus:outline-none text-sm placeholder:text-gray-400 w-full"> 
+                                        <input type="text" name="time" id="time" value="00:00" placeholder="00:00" pattern="[0-9]{2}:[0-9]{2}" class="bg-white text-neutral-800 focus:outline-none text-sm placeholder:text-neutral-500 w-full"> 
                                     </div>
                                 </div>
-                                <button type="submit" class="bg-violet-800 text-sm font-semibold uppercase py-2 rounded-lg">Tambah Pertanyaan</button>
+                                <button type="submit" class="bg-indigo-600 text-sm font-semibold uppercase py-2 rounded-lg">Tambah Pertanyaan</button>
                             </form>
                         </div>
                     @endif
@@ -98,19 +98,19 @@
                                 @if($memory)
                                     @foreach (array_slice($memory->images, 0, 6) as $key => $image)
                                         <div class="flex flex-col gap-2">
-                                            <div class="w-[75%] mx-auto flex justify-center items-center bg-neutral-800 p-8 rounded-lg">
+                                            <div class="w-[75%] mx-auto flex justify-center items-center bg-neutral-200 p-8 rounded-lg">
                                                 <img class="w-[60%] rounded-lg" src="{{asset("$image")}}" alt="image memory game {{$key}}">
                                             </div>
-                                            <p class="text-sm text-center font-medium"><span class="font-semibold text-lime-500">Pertanyaan:</span> {{$memory->questions[$key]}}</p>
+                                            <p class="text-sm text-center font-medium text-neutral-800"><span class="font-semibold text-lime-500">Pertanyaan:</span> {{$memory->questions[$key]}}</p>
                                         </div>
                                     @endforeach
                                 @endif  
                             </div>
                             <div class="flex flex-col gap-2 mt-6">
-                                <h2 class="text-sm font-medium">Waktu pengerjakan?</h2>
-                                <div class="flex items-center gap-4 border border-gray-400 p-2 rounded-md w-28">
+                                <h2 class="text-sm font-medium text-neutral-800">Waktu pengerjakan?</h2>
+                                <div class="flex items-center gap-4 border border-neutral-300 p-2 rounded-md w-28">
                                     <img class="w-6" src="{{asset("image/time.png")}}" alt="">
-                                    <P>{{$memory->time}}</P>
+                                    <P class="text-neutral-800">{{$memory->time}}</P>
                                 </div>
                             </div>
                             <div class="flex flex-col mt-2 gap-3">  
@@ -128,10 +128,10 @@
                 </div>
             @endif
 
-            <div class="order-1 md:order-2 w-full md:w-[30%] lg:w-[25%] h-fit dark-green rounded-2xl p-4">
-                <h2 class="font-bold mb-2 text-4xl lg:text-5xl">{{"0"}}</h2>
-                <p class="text-sm mb-4">Siswa telah menyelesaikan game</p>
-                <a href="/teacher/recap/{{$lesson->id}}/{{$task->id}}/game" class="uppercase text-center block text-xs px-4 py-3 rounded-lg font-bold bg-yellow-500 text-black">lihat hasil</a>
+            <div class="order-1 md:order-2 w-full md:w-[30%] lg:w-[25%] h-fit dark-green shadow-md rounded-2xl p-4">
+                <h2 class="font-bold mb-2 text-4xl lg:text-5xl text-neutral-800">{{"0"}}</h2>
+                <p class="text-sm mb-4 text-neutral-800">Siswa telah menyelesaikan game</p>
+                <a href="/teacher/recap/{{$lesson->id}}/{{$task->id}}/game" class="uppercase text-center block text-xs px-4 py-3 rounded-lg font-bold bg-yellow-500 text-white">lihat hasil</a>
             </div>
         </div>
     </div>
@@ -142,35 +142,35 @@
                 @csrf
                 @method("PATCH")
                 <div class="flex justify-between">
-                    <h2 class="text-sm md:text-base font-semibold">Edit Soal</h2>
+                    <h2 class="text-sm md:text-base font-semibold text-neutral-800">Edit Soal</h2>
                     <img id="edit_challenge_close" class="cursor-pointer" src="{{asset("img/close.svg")}}" alt="close image">
                 </div>
                 <span class="block h-[0.0625rem] mx-auto w-full bg-gray-500 my-4"></span>
                 <div class="flex flex-col gap-6">
                     <div class="flex flex-col gap-2 mb-1 lg:mb-0">
-                        <lable for="image" class="text-xs lg:text-sm font-medium">Ganti gambar</lable>
-                        <input type="file" name="images[]" multiple id="image" class="py-2.5 px-3 border border-gray-500 rounded-xl text-sm">
+                        <lable for="image" class="text-xs lg:text-sm font-medium text-neutral-800">Ganti gambar</lable>
+                        <input type="file" name="images[]" multiple id="image" class="py-2.5 px-3 text-neutral-800 border border-neutral-300 rounded-xl text-sm">
                         <x-form-error name="images"/>
                     </div>
                     @if($memory)
                        @foreach (array_slice($memory->images, 0, 6) as $key => $image)
                            <div class="flex flex-col gap-3">
-                               <div class="w-[40%] flex justify-center items-center bg-neutral-800 p-8 rounded-lg">
+                               <div class="w-[40%] flex justify-center items-center bg-neutral-200 p-8 rounded-lg">
                                    <img class="w-[60%] rounded-lg" src="{{asset("$image")}}" alt="image memory game {{$key}}">
                                </div>
-                               <input type="text" name="question{{$key}}" id="question{{$key}}" value="{{$memory->questions[$key] ?? ''}}" placeholder="Apa fungsi dari gambar di atas?" class="bg-neutral-900 border border-gray-400 focus:outline-none p-2 text-sm rounded-md placeholder:text-gray-400">
+                               <input type="text" name="question{{$key}}" id="question{{$key}}" value="{{$memory->questions[$key] ?? ''}}" placeholder="Apa fungsi dari gambar di atas?" class="bg-main text-neutral-800 border border-neutral-300 focus:outline-none p-2 text-sm rounded-md placeholder:text-neutral-500">
                            </div>
                            <x-form-error name="question{{$key}}"/>
                        @endforeach
                    @endif  
                    <div class="flex flex-col gap-2">
                        <label for="time" class="text-sm font-medium">Berapa menit yang di berikan ke siswa untuk menegerjakan tugas ini?</label>
-                       <div class="flex items-center gap-4 border border-gray-400 p-2 rounded-md w-28">
+                       <div class="flex items-center gap-4 border border-neutral-300 p-2 rounded-md w-28">
                            <img class="w-6" src="{{asset("image/time.png")}}" alt="">
-                           <input type="text" name="time" id="time" value="{{$memory->time??"00:00"}}" placeholder="00:00" pattern="[0-9]{2}:[0-9]{2}" class="bg-neutral-900 focus:outline-none text-sm placeholder:text-gray-400 w-full"> 
+                           <input type="text" name="time" id="time" value="{{$memory->time??"00:00"}}" placeholder="00:00" pattern="[0-9]{2}:[0-9]{2}" class="bg-main text-neutral-800 focus:outline-none text-sm placeholder:text-neutral-500 w-full"> 
                        </div>
                    </div>
-                   <button type="submit" class="uppercase px-8 py-3.5 font-bold rounded-lg w-full lg:w-auto block text-xs bg-violet-800">Edit Game</button>
+                   <button type="submit" class="uppercase px-8 py-3.5 font-bold rounded-lg w-full lg:w-auto block text-xs bg-indigo-600">Edit Game</button>
                 </div>
             </form>
         </div>

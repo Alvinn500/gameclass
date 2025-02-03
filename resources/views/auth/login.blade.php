@@ -16,8 +16,8 @@
             <div class="flex justify-center items-center h-[90vh] w-full px-4 sm:px-0">
                 <div class="space-y-4"> 
                     <div class="space-y-2">
-                        <h4 class="text-center text-white text-2xl font-bold">Selamat Datang</h4>
-                        <p class="text-center text-gray-500 text-sm font-light">Masukan email dan panssword untuk mengakses akun kamu</p>                       
+                        <h4 class="text-center text-indigo-800 text-2xl font-bold">Selamat Datang</h4>
+                        <p class="text-center text-gray-800 text-sm font-light">Masukan email dan panssword untuk mengakses akun kamu</p>                       
                     </div>
                     
                     @error('email')
@@ -27,19 +27,19 @@
                     <form method="POST" action="login" class="space-y-6">
                         @csrf
                         <div class="flex flex-col gap-2">
-                            <label class="text-white">Email</label>
-                            <input type="email" name="email" value="{{old('email')}}" class="bg-neutral-900 rounded-md w-full p-3 text-sm placeholder:text-gray-500 focus:outline-none text-white" placeholder="Masukkan Email" required>
+                            <label class="text-neutral-800 font-semibold text-sm">Email</label>
+                            <input type="email" name="email" value="{{old('email')}}" class="bg-white border border-neutral-300 rounded-md w-full p-3 text-sm placeholder:text-gray-500 focus:outline-none text-neutral-800" placeholder="Masukkan Email" required>
                         </div>
                         <div class="flex flex-col gap-2"> 
-                            <label class="text-white">Password</label>
-                            <input type="password" name="password" class="bg-neutral-900 rounded-md w-full p-3 text-sm placeholder:text-gray-500 focus:outline-none text-white" placeholder="Masukkan Password" required>
+                            <label class="text-neutral-800 font-semibold text-sm">Password</label>
+                            <input type="password" name="password" class="bg-white border border-neutral-300 rounded-md w-full p-3 text-sm placeholder:text-gray-500 focus:outline-none text-neutral-800" placeholder="Masukkan Password" required>
                         </div>
     
                         <div class="text-left">
                             <button type="submit" class="uppercase w-full bg-indigo-600 text-sm rounded-md py-3.5 px-6 font-medium text-white">Masuk</button>
                         </div>
                     </form>
-                    <p class="text-center text-gray-500 text-sm font-light">Belum memiliki akun? <a href="register" class="text-lime-500 font-semibold">Daftar</a></p>
+                    <p class="text-center text-neutral-800 text-sm font-light">Belum memiliki akun? <a href="register" class="text-lime-500 font-semibold">Daftar</a></p>
                 </div>
             </div>
         </section>

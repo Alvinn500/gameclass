@@ -48,7 +48,7 @@ Chart.register({
         let fontSize = (height / 114).toFixed(2);
         ctx.font = fontSize + "em sans-serif";
         ctx.textBaseline = "middle";
-        ctx.fillStyle = "#fff";
+        ctx.fillStyle = "#171717";
 
         let text = `${completedMission}/${totalMission}`; // Ubah teks jika perlu
         let textX = Math.round((width - ctx.measureText(text).width) / 2);
