@@ -203,7 +203,7 @@ class SubjectController extends Controller
 
     public function download($filename) {
         
-        $filepath = public_path('subject/' . $filename);
+        $filepath =  base_path('public/subject/' . $filename);
 
         if(!file_exists($filepath)) {
             abort(404, 'File not found');

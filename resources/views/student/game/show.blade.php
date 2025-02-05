@@ -4,7 +4,7 @@
             <x-sidebar dashboardUrl="student" discussioniUrl="student/discussion" classUrl="student/class" profileSettingUrl="profile"/>
         </div>
         <div class="ml-0 lg:ml-64 pt-3">
-            @if($game && $game->answers->where('user_id', Auth::user()->id)->count() <= 0)
+            @if($game && $game->answers->where('user_id', Auth::user()->id)->count() <= 0 || $game === null)
                 <div id="start">
                     <div class="bg-white shadow-md mx-4 relative flex lg:hidden items-center mb-2 p-2 rounded-lg">                
                         <img id="openSidebar" class="w-6 cursor-pointer block lg:hidden" src="{{asset("image/open-sidebar.png")}}" alt="">
