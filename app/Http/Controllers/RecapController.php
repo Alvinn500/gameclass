@@ -131,7 +131,8 @@ class RecapController extends Controller
         
         $XP = $user->essayScores->where("task_id", $essay->id)->first()->XP;
         $score = $user->essayScores->where("task_id", $essay->id)->first()->score;
-
+        $comment = $user->essayScores->where("task_id", $essay->id)->first()->comment ?? "-";
+    
         $breadcrumbs = [
             ['link' => "/teacher/class", 'name' => "Kelas"],
             ['link' => "/teacher/class/$class->id", 'name' => $class->study_name . " - " . $class->class],
@@ -146,7 +147,8 @@ class RecapController extends Controller
             "user" => $user,
             "essay" => $essay,
             "XP" => $XP,
-            "score" => $score
+            "score" => $score,
+            "comment" => $comment
         ]);
     }
 
@@ -195,6 +197,7 @@ class RecapController extends Controller
     public function uploadAnswer(User $user , Task $upload) {
 
         $class = $upload->lesson->class;
+        $comment = $user->uploadScores->where("task_id", $upload->id)->first()->comment ?? "-";
 
         $breadcrumbs = [
             ['link' => "/teacher/class", 'name' => "Kelas"],
@@ -203,12 +206,13 @@ class RecapController extends Controller
             ['link' => "/teacher/recap/" . $upload->lesson->id . "/$upload->id/upload", 'name' => $upload->title],
             ['name' => $user->name]
         ];
-        // dd($upload->upload->answer);
+        
         return view("teacher.recap.uploadAnswer", [
             "class" => $class,
             "breadcrumbs" => $breadcrumbs,
             "user" => $user,
-            "upload" => $upload
+            "upload" => $upload,
+            "comment" => $comment
         ]);
 
     }
@@ -258,6 +262,7 @@ class RecapController extends Controller
 
         $class = $game->lesson->class;
         $memory = $game->memoryGames()->where('task_id', $game->id)->first();
+        $comment = $user->memoryGameScores->where("task_id", $game->id)->first()->comment ?? "-";
 
         $XP = $user->memoryGameScores->where("task_id", $game->id)->first()->XP;
         $score = $user->memoryGameScores->where("task_id", $game->id)->first()->score;
@@ -277,7 +282,8 @@ class RecapController extends Controller
             "user" => $user,
             "game" => $game,
             "XP" => $XP,
-            "score" => $score
+            "score" => $score,
+            "comment" => $comment
         ]);
 
     }

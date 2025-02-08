@@ -1,5 +1,3 @@
-import axios from "axios";
-
 // Humburger
 let humburgerDashboard = document.getElementById("humburger-dashboard");
 let sidebar = document.getElementById("sidebar");
@@ -8,9 +6,6 @@ if (humburgerDashboard) {
     humburgerDashboard.addEventListener("click", () => {
         humburgerDashboard.classList.toggle("humburger-active");
         sidebar.classList.toggle("-translate-x-96");
-        // setTimeout(() => {
-        //     sidebar.classList.toggle("absolute");
-        // }, 250);
     });
 }
 
@@ -29,7 +24,6 @@ if (closeSidebar) {
     closeSidebar.addEventListener("click", () => {
         humburgerDashboard.classList.toggle("humburger-active");
         sidebar.classList.toggle("-translate-x-96");
-        console.log("close");
     });
 }
 
@@ -50,17 +44,6 @@ if (addLesson) {
     addLesson.addEventListener("click", () => {
         modalCreate.classList.remove("hidden");
         modalCreate.classList.add("flex");
-    });
-}
-
-let modalEdit = document.getElementById("modalEdit");
-
-if (modalEdit) {
-    modalEdit.addEventListener("click", (event) => {
-        if (event.target == modalEdit) {
-            modalEdit.classList.add("hidden");
-            modalEdit.classList.remove("flex");
-        }
     });
 }
 
@@ -102,6 +85,7 @@ lessons.forEach((lesson) => {
         lesson.children[1].classList.toggle("rotate-90");
         lesson.classList.toggle("rounded-xl");
         lesson.classList.toggle("rounded-t-xl");
+        lesson.classList.toggle("bg-violet-700");
         content.classList.toggle("hidden");
     });
 });
@@ -119,279 +103,6 @@ item.forEach((item, index) => {
         tooltip[index].classList.add("hidden");
     });
 });
-
-// quiz modal
-const parentQuizOverlay = document.getElementById("parent_quiz_overlay");
-const quizOverlay = document.getElementById("quiz_overlay");
-const quizModal = document.getElementById("quiz_modal");
-const addQuiz = document.getElementById("addQuiz");
-const quizClose = document.getElementById("quiz_close");
-
-if (quizOverlay && quizModal) {
-    quizOverlay.addEventListener("click", (event) => {
-        if (event.target == quizOverlay) {
-            parentQuizOverlay.classList.toggle("hidden");
-        }
-    });
-}
-
-if (addQuiz) {
-    addQuiz.addEventListener("click", () => {
-        parentQuizOverlay.classList.toggle("hidden");
-    });
-}
-
-if (quizClose) {
-    quizClose.addEventListener("click", () => {
-        parentQuizOverlay.classList.toggle("hidden");
-    });
-}
-
-// manipulasi question
-
-const quizzes = document.querySelectorAll("#quiz");
-
-quizzes.forEach((quiz) => {
-    quiz.addEventListener("click", () => {
-        const quizId = quiz.getAttribute("data-quizId");
-        const quizOption = document.getElementById(`quizOption${quizId}`);
-
-        quiz.children[1].classList.toggle("rotate-90");
-        quiz.classList.toggle("rounded-2xl");
-        quiz.classList.toggle("rounded-t-2xl");
-        quiz.classList.toggle("bg-neutral-200");
-        quizOption.classList.toggle("hidden");
-    });
-});
-
-// manupalasi quiz
-const editQuiz = document.getElementById("editQuiz");
-
-if (editQuiz) {
-    editQuiz.addEventListener("click", () => {
-        modalEdit.classList.toggle("hidden");
-        modalEdit.classList.toggle("flex");
-    });
-}
-
-// manipulasi edit quiz
-const parentEditQuiz = document.getElementById("parent_edit_quiz_overlay");
-const editQuizOverlay = document.getElementById("edit_quiz_overlay");
-
-if (editQuizOverlay && parentEditQuiz) {
-    editQuizOverlay.addEventListener("click", (event) => {
-        if (event.target == editQuizOverlay) {
-            parentEditQuiz.classList.toggle("hidden");
-        }
-    });
-}
-
-const formEditQuiz = document.getElementById("formEditQuiz");
-const questionInput = document.getElementById(`editQuestion`);
-const a = document.getElementById(`editA`);
-const b = document.getElementById(`editB`);
-const c = document.getElementById(`editC`);
-const d = document.getElementById(`editD`);
-const e = document.getElementById(`editE`);
-const answareInput = document.getElementById(`editAnsware`);
-const editQuestion = document.querySelectorAll(`.buttonEditQuestion`);
-const editQuizClose = document.getElementById(`edit_quiz_close`);
-
-if (editQuizClose) {
-    editQuizClose.addEventListener("click", () => {
-        parentEditQuiz.classList.add("hidden");
-    });
-}
-
-if (editQuestion) {
-    editQuestion.forEach((question) => {
-        question.addEventListener("click", () => {
-            let options = JSON.parse(question.getAttribute("data-options"));
-
-            formEditQuiz.action =
-                "/quiz/question/edit/" + question.getAttribute("data-quizId");
-            questionInput.value = question.getAttribute("data-question");
-            a.value = options.a;
-            b.value = options.b;
-            c.value = options.c;
-            d.value = options.d;
-            e.value = options.e;
-            answareInput.value = question.getAttribute("data-answare");
-        });
-        question.addEventListener("click", () => {
-            parentEditQuiz.classList.remove("hidden");
-        });
-    });
-}
-
-// modal create essay
-const addEssay = document.getElementById("addEssay");
-const essayClose = document.getElementById("essay_close");
-const parrentEssayOverlay = document.getElementById("parent_essay_overlay");
-const essayOverlay = document.getElementById("essay_overlay");
-
-if (addEssay) {
-    addEssay.addEventListener("click", () => {
-        parrentEssayOverlay.classList.remove("hidden");
-    });
-}
-
-if (essayClose) {
-    essayClose.addEventListener("click", () => {
-        parrentEssayOverlay.classList.add("hidden");
-    });
-}
-
-if (essayOverlay) {
-    essayOverlay.addEventListener("click", (event) => {
-        if (event.target == essayOverlay) {
-            parrentEssayOverlay.classList.add("hidden");
-        }
-    });
-}
-
-// manipulasi essay
-const essays = document.querySelectorAll("#essay");
-
-essays.forEach((essay) => {
-    essay.addEventListener("click", () => {
-        const essayId = essay.getAttribute("data-essayId");
-        document.getElementById(`essay${essayId}`).classList.toggle("hidden");
-        essay.classList.toggle("rounded-2xl");
-        essay.classList.toggle("rounded-t-2xl");
-        essay.classList.toggle("bg-neutral-200");
-        essay.children[1].children[0].classList.toggle("rotate-90");
-    });
-});
-
-// manipulasi edit essay
-const buttonEditEssay = document.querySelectorAll("#buttonEditEssay");
-const parentEditEssayOverlay = document.getElementById(
-    "parent_edit_essay_overlay"
-);
-const editEssayOverlay = document.getElementById("edit_essay_overlay");
-const editEssayClose = document.getElementById("edit_essay_close");
-const inputEditEssay = document.getElementById("inputEditEssay");
-const formEditEssay = document.getElementById("formEditEssay");
-
-if (buttonEditEssay) {
-    buttonEditEssay.forEach((essay) => {
-        essay.addEventListener("click", () => {
-            inputEditEssay.value = essay.getAttribute("data-question");
-            formEditEssay.action =
-                "/essay/question/edit/" + essay.getAttribute("data-essayId");
-            console.log(essay.getAttribute("data-essayId"));
-            parentEditEssayOverlay.classList.toggle("hidden");
-            parentEditEssayOverlay.classList.toggle("flex");
-        });
-    });
-}
-
-if (editEssayOverlay) {
-    editEssayOverlay.addEventListener("click", (event) => {
-        if (event.target == editEssayOverlay) {
-            parentEditEssayOverlay.classList.add("hidden");
-        }
-    });
-}
-
-if (editEssayClose) {
-    editEssayClose.addEventListener("click", () => {
-        parentEditEssayOverlay.classList.add("hidden");
-    });
-}
-
-// manipulasi edit task essay
-const editEssay = document.getElementById("editEssay");
-const modalEditTaskEssay = document.getElementById("modalEditTaskEssay");
-
-if (editEssay) {
-    editEssay.addEventListener("click", () => {
-        modalEditTaskEssay.classList.toggle("hidden");
-        modalEditTaskEssay.classList.toggle("flex");
-    });
-}
-
-if (modalEditTaskEssay) {
-    modalEditTaskEssay.addEventListener("click", (event) => {
-        if (event.target == modalEditTaskEssay) {
-            modalEditTaskEssay.classList.add("hidden");
-            modalEditTaskEssay.classList.remove("flex");
-        }
-    });
-}
-
-// manipulasi add upload
-const addUpload = document.getElementById("addUpload");
-const parentUploadOverlay = document.getElementById("parent_upload_overlay");
-const uploadOverlay = document.getElementById("upload_overlay");
-const closeUpload = document.getElementById("upload_close");
-
-if (addUpload) {
-    addUpload.addEventListener("click", () => {
-        parentUploadOverlay.classList.remove("hidden");
-    });
-}
-
-if (uploadOverlay) {
-    uploadOverlay.addEventListener("click", (event) => {
-        if (event.target == uploadOverlay) {
-            parentUploadOverlay.classList.add("hidden");
-        }
-    });
-}
-
-if (closeUpload) {
-    closeUpload.addEventListener("click", () => {
-        parentUploadOverlay.classList.add("hidden");
-    });
-}
-
-// manipulasi edit upload modal
-const editUploadTask = document.getElementById("editUploadTask");
-const modalEditUpload = document.getElementById("modalEditUpload");
-const buttonEditUpload = document.getElementById("buttonEditUpload");
-const parent_edit_upload_overlay = document.getElementById(
-    "parent_edit_upload_overlay"
-);
-const edit_upload_overlay = document.getElementById("edit_upload_overlay");
-const edit_upload_close = document.getElementById("edit_upload_close");
-
-if (editUploadTask) {
-    editUploadTask.addEventListener("click", () => {
-        modalEditUpload.classList.remove("hidden");
-        modalEditUpload.classList.add("flex");
-    });
-}
-
-if (modalEditUpload) {
-    modalEditUpload.addEventListener("click", (event) => {
-        if (event.target == modalEditUpload) {
-            modalEditUpload.classList.add("hidden");
-            modalEditUpload.classList.remove("flex");
-        }
-    });
-}
-
-if (buttonEditUpload) {
-    buttonEditUpload.addEventListener("click", () => {
-        parent_edit_upload_overlay.classList.remove("hidden");
-    });
-}
-
-if (edit_upload_overlay) {
-    edit_upload_overlay.addEventListener("click", (event) => {
-        if (event.target == edit_upload_overlay) {
-            parent_edit_upload_overlay.classList.add("hidden");
-        }
-    });
-}
-
-if (edit_upload_close) {
-    edit_upload_close.addEventListener("click", () => {
-        parent_edit_upload_overlay.classList.add("hidden");
-    });
-}
 
 // hideshow multipleChoice
 document.addEventListener("DOMContentLoaded", () => {
@@ -490,7 +201,6 @@ if (confirmModal) {
 
 if (unconfirm) {
     unconfirm.addEventListener("click", () => {
-        console.log("unconfirm");
         confirmOverlay.classList.add("hidden");
     });
 }
@@ -511,7 +221,6 @@ const addImgaeGame = document.getElementById("addImageGame");
 
 if (addGame) {
     addGame.addEventListener("click", () => {
-        // console.log(emptyGame, addImgaeGame);
         addImgaeGame.classList.remove("hidden");
         emptyGame.classList.add("hidden");
     });
@@ -532,8 +241,40 @@ if (modalEditTask) {
     modalEditTask.addEventListener("click", (even) => {
         if (even.target == modalEditTask) {
             modalEditTask.classList.add("hidden");
-            modalEditTask.classList.remove("flex    ");
+            modalEditTask.classList.remove("flex");
         }
+    });
+}
+
+// manipulasi create challenge
+const buttonCreateChallenge = document.getElementById("buttonCreateChallenge");
+const create_challenge_overlay = document.getElementById(
+    "create_challenge_overlay"
+);
+const modal_create_challenge = document.getElementById(
+    "modal_create_challenge"
+);
+const create_challenge_close = document.getElementById(
+    "create_challenge_close"
+);
+
+if (buttonCreateChallenge) {
+    buttonCreateChallenge.addEventListener("click", () => {
+        create_challenge_overlay.classList.remove("hidden");
+    });
+}
+
+if (modal_create_challenge) {
+    modal_create_challenge.addEventListener("click", (event) => {
+        if (event.target == modal_create_challenge) {
+            create_challenge_overlay.classList.add("hidden");
+        }
+    });
+}
+
+if (create_challenge_close) {
+    create_challenge_close.addEventListener("click", () => {
+        create_challenge_overlay.classList.add("hidden");
     });
 }
 
@@ -564,3 +305,97 @@ if (edit_challenge_close) {
         edit_challenge_overlay.classList.add("hidden");
     });
 }
+
+// manipulasi edit quiz
+const parentEditQuiz = document.getElementById("parent_edit_quiz_overlay");
+const editQuizOverlay = document.getElementById("edit_quiz_overlay");
+
+if (editQuizOverlay && parentEditQuiz) {
+    editQuizOverlay.addEventListener("click", (event) => {
+        if (event.target == editQuizOverlay) {
+            parentEditQuiz.classList.toggle("hidden");
+        }
+    });
+}
+
+const buttonEditQuiz = document.querySelectorAll("#buttonEditChallenge");
+const formEditQuiz = document.getElementById("formEditQuiz");
+const editQuizQuestion = document.getElementById(`editQuizQuestion`);
+const editA = document.getElementById(`editA`);
+const editB = document.getElementById(`editB`);
+const editC = document.getElementById(`editC`);
+const editE = document.getElementById(`editD`);
+const editD = document.getElementById(`editE`);
+const editQuestionAnswer = document.getElementById(`editQuestionAnswer`);
+
+if (buttonEditQuiz) {
+    buttonEditQuiz.forEach((question) => {
+        question.addEventListener("click", () => {
+            let options = JSON.parse(question.dataset.options);
+
+            formEditQuiz.action = "/quiz/question/edit/" + question.dataset.id;
+            editQuizQuestion.value = question.dataset.question;
+            editA.value = options.a;
+            editB.value = options.b;
+            editC.value = options.c;
+            editD.value = options.d;
+            editE.value = options.e;
+            editQuestionAnswer.value = question.dataset.answare;
+        });
+        question.addEventListener("click", () => {
+            edit_challenge_overlay.classList.remove("hidden");
+        });
+    });
+}
+
+// manipulasi question
+
+const quizzes = document.querySelectorAll("#quiz");
+
+quizzes.forEach((quiz) => {
+    quiz.addEventListener("click", () => {
+        const quizId = quiz.getAttribute("data-quizId");
+        const quizOption = document.getElementById(`quizOption${quizId}`);
+
+        quiz.children[1].classList.toggle("rotate-90");
+        quiz.classList.toggle("rounded-2xl");
+        quiz.classList.toggle("rounded-t-2xl");
+        quiz.classList.toggle("bg-violet-700");
+        quizOption.classList.toggle("hidden");
+    });
+});
+
+// manipulasi edit essay
+const buttonEditEssay = document.querySelectorAll("#buttonEditEssay");
+const inputEditEssay = document.getElementById("inputEditEssay");
+const formEditEssay = document.getElementById("formEditEssay");
+
+if (buttonEditEssay) {
+    buttonEditEssay.forEach((essay) => {
+        essay.addEventListener("click", () => {
+            inputEditEssay.value = essay.dataset.question;
+            formEditEssay.action = "/essay/question/edit/" + essay.dataset.id;
+            edit_challenge_overlay.classList.toggle("hidden");
+            edit_challenge_overlay.classList.toggle("flex");
+        });
+
+        essay.addEventListener("click", () => {
+            edit_challenge_overlay.classList.remove("hidden");
+        });
+    });
+}
+
+// manipulasi essay
+const essays = document.querySelectorAll("#essay");
+
+essays.forEach((essay) => {
+    essay.addEventListener("click", () => {
+        const essayId = essay.getAttribute("data-essayId");
+        document.getElementById(`essay${essayId}`).classList.toggle("hidden");
+
+        essay.classList.toggle("rounded-2xl");
+        essay.classList.toggle("rounded-t-2xl");
+        essay.classList.toggle("bg-violet-700");
+        essay.children[1].children[0].classList.toggle("rotate-90");
+    });
+});

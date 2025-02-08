@@ -8,9 +8,9 @@
         settingPath="/teacher/{{$class->id}}/setting"
     />
     <div>
-        <h1 class="my-4 text-sm font-semibold text-neutral-800">SISWA YANG TELAH MEMBACA {{$subject->title}}</h1>
+        <h1 class="my-4 text-sm font-semibold text-main">SISWA YANG TELAH MEMBACA {{$subject->title}}</h1>
         <div class="min-w-full px-4 pt-4 pb-2 mb-4 rounded-xl bg-main shadow-md">
-            <table id="example" class="min-w-full text-neutral-800">
+            <table id="example" class="min-w-full text-main">
                 <thead>
                     <tr>
                         <th class="border-b uppercase text-sm">No</th>

@@ -8,9 +8,9 @@
         settingPath="/teacher/{{$class->id}}/setting"
     />
     <div>
-        <h1 class="my-4 text-sm font-semibold text-neutral-800">REKAP NILAI ESSAY {{$essay->title}}</h1>
+        <h1 class="my-4 text-sm font-semibold text-main">REKAP NILAI ESSAY {{$essay->title}}</h1>
         <div class="min-w-full px-4 pt-4 pb-2 mb-4 rounded-xl bg-main shadow-md">
-            <table id="example" class="min-w-full text-neutral-800">
+            <table id="example" class="min-w-full text-main">
                 <thead>
                     <tr>
                         <th class="border-b uppercase text-sm">No</th>
@@ -36,8 +36,8 @@
                                 <td class="border-b text-base">{{$user->essayScores->where("task_id", $essay->id)->first()->score}}</td>
                                 <td class="border-b text-base">{{$user->essayScores->where("task_id", $essay->id)->first()->created_at->setTimezone('Asia/Jakarta')->format('d M Y (H:i T)')}}</td>
                                 <td class="border-b text-base">{{$user->essayScores->where("task_id", $essay->id)->first()->XP}} XP</td>
-                                <td class="{{$user->essayScores->where("task_id", $essay->id)->first()->status ? "text-lime-500" : "text-red-500"}} border-b text-sm">{{$user->essayScores->where("task_id", $essay->id)->first()->status ? "Sudah dinilai" : "Belum dinilai"}}</td>
-                                <td class="border-b text-base"><a class="uppercase text-xs font-semibold bg-lime-500 py-2 px-6 rounded-md" href="/teacher/recap/{{$user->id}}/{{$essay->id}}/essay/answer">Lihat jawaban</a></td>
+                                <td class="{{$user->essayScores->where("task_id", $essay->id)->first()->status ? "text-link" : "text-red-500"}} border-b text-sm">{{$user->essayScores->where("task_id", $essay->id)->first()->status ? "Sudah dinilai" : "Belum dinilai"}}</td>
+                                <td class="border-b text-base"><a class="uppercase text-xs font-semibold bg-button py-2 px-6 rounded-md" href="/teacher/recap/{{$user->id}}/{{$essay->id}}/essay/answer">Lihat jawaban</a></td>
                             </tr>
                         @endif
                     @endforeach

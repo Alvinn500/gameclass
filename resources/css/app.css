@@ -28,7 +28,7 @@ body {
 }
 
 .nav-active {
-    @apply text-indigo-800 ease-in duration-300;
+    @apply text-violet-900 ease-in duration-300;
 }
 
 .nav-active::after {
@@ -39,17 +39,13 @@ body {
     transform: translateX(-50%) scaleX(0);
     transform-origin: center;
     height: 2px;
-    background-color: #4338ca;
+    background-color: #4c1d95;
     width: 100%;
     animation: grow-line-center 0.3s ease-in forwards;
 }
 
 .sidebar-focus {
-    @apply bg-neutral-200 text-white;
-}
-
-.sub-nav-focus {
-    @apply bg-neutral-200;
+    @apply bg-focus;
 }
 
 .humburger-active > span:nth-child(1) {
@@ -68,36 +64,8 @@ body {
     @apply translate-x-0;
 }
 
-.hover-fitur:hover > span {
-    @apply bg-neutral-900;
-}
-
 section {
     scroll-margin-top: 100px;
-}
-
-.orange-white {
-    @apply bg-white;
-}
-
-.dark-white {
-    @apply bg-white;
-}
-
-.dark-purple {
-    @apply bg-white;
-}
-
-.dark-blue {
-    @apply bg-white;
-}
-
-.gradient-diskusi {
-    @apply bg-white;
-}
-
-.dark-green {
-    @apply bg-white;
 }
 
 .canvas {
@@ -141,7 +109,7 @@ section {
     right: 50%;
     height: 0px;
     width: 0px;
-    border-top: solid 10px #fff;
+    border-top: solid 10px #8b5cf6;
     border-left: solid 8px transparent;
     border-right: solid 8px transparent;
 }
@@ -176,17 +144,17 @@ section {
 }
 
 .modalGradient {
-    background: linear-gradient(180deg, #e5e5e5 -10%, #fff 100%);
+    background: linear-gradient(180deg, #6d28d9 -10%, #7c3aed 100%);
 }
 
 /* custom datatables */
 
 .dt-search label {
-    @apply text-neutral-800 font-semibold;
+    @apply text-main font-semibold;
 }
 
 #dt-search-0 {
-    @apply text-neutral-800 text-sm p-2;
+    @apply text-main text-sm p-2;
 }
 
 .dt-search input:focus {
@@ -194,18 +162,17 @@ section {
 }
 
 .dt-length label {
-    @apply text-neutral-800 font-medium;
+    @apply text-main font-medium;
 }
 
 #dt-length-0 {
-    @apply text-neutral-800 bg-neutral-50 font-medium;
+    @apply text-main bg-main font-medium;
 }
 
 #example_info {
-    @apply text-neutral-600 font-medium text-sm;
+    @apply text-secondary font-medium text-sm;
 }
 
-div.dt-container .dt-paging button.dt-paging-button.current {
-    @apply text-neutral-800 text-sm !important;
-    /* color: black !important; */
+div.dt-container .dt-paging button.dt-paging-button {
+    @apply text-main text-sm !important;
 }

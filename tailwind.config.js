@@ -19,28 +19,32 @@ export default {
                 ],
             },
             backgroundColor: {
-                primary: "#c539ff",
-                secondary: "#fafafa",
-                main: "#fff ",
-                semigray: "rgba(255, 255, 255, 0.1)",
-                whiteSubNav: "#2d3144",
-                semiblack: "#141414",
-                indigoCustom: "#383d6e",
+                secondary: "#8b5cf6", //violet-500
+                main: "#7c3aed", // violet-600
+                hover: "#6d28d9", // violet-700
+                button: "#6d28d9", // violet-700
+                line: "#fff",
+                input: "#fff",
+                focus: "#8b5cf6", //violet-500
             },
             textColor: {
-                primary: "#c539ff",
-                secondary: "#",
-                main: "#191b2a ",
-                breadcrumb: "#84cc16",
+                title: "#4f46e5",
+                bgMain: "#7c3aed",
+                main: "#fff",
+                secondary: "#e5e5e5",
+                breadcrumb: "#fff",
+                input: "#262626",
+                placehodler: "#737373",
+                link: "#7dd3fc", // sky-300
             },
             gradientColorStops: {
-                primary: "#c539ff",
+                primary: "#8b5cf6", //violet-500,
                 secondary: "#121212",
                 main: "#191b2a ",
             },
             borderColor: {
-                primary: "#c539ff",
-                main: "#191b2a ",
+                primary: "#8b5cf6",
+                main: "#c4b5fd",
             },
             gridTemplateColumns: {
                 game: "repeat(4, minmax(100px, 1fr))",

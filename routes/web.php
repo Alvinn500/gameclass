@@ -106,25 +106,8 @@ Route::middleware('auth', EnsureTeacherRole::class)->group(function () {
     // teacher task
     Route::get("/teacher/{class}/{lesson}/task/create", [TaskController::class, 'create']); 
     Route::post("/teacher/{class}/{lesson}/task/create", [TaskController::class, 'store']);
-
-
-    // teacher task quiz
-    Route::patch("/quiz/edit/{task}", [TaskController::class, 'update']);
-    Route::delete("/quiz/delete/{task}", [TaskController::class, 'destroy']);
-
-
-    // teacher task essay
-    Route::patch("/essay/edit/{task}", [TaskController::class, 'update']);
-    Route::delete("/essay/delete/{task}", [TaskController::class, 'destroy']);
-
-
-    // teacher task uploads
-    Route::patch("/upload/edit/{task}", [TaskController::class, 'update']);
-    Route::delete("/upload/delete/{task}", [TaskController::class, 'destroy']);
-
-    // teacher task memory game
-    Route::patch("/memory/edit/{task}", [TaskController::class, 'update']);
-    Route::delete("/memory/delete/{task}", [TaskController::class, 'destroy']);
+    Route::patch("/task/edit/{task}", [TaskController::class, 'update']);
+    Route::delete("/task/delete/{task}", [TaskController::class, 'destroy']);
 
     // teacher quiz
     Route::get("/teacher/{class}/{lesson}/{task}/quiz/create", [QuizController::class, 'create']);

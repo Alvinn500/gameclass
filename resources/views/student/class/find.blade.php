@@ -7,11 +7,11 @@
                     <img class="aspect-square w-14 rounded-lg" src="{{asset('logo_class/' . $class->logo_class)}}" alt="logo class">
                 </div>
                 <div>
-                    <h1 class="font-semibold text-base text-neutral-800">{{$class->study_name}}</h1>
-                    <p class="font-medium text-neutral-600 text-sm mt-1 mb-2">{{$class->class}}</p>
+                    <h1 class="font-semibold text-base text-main">{{$class->study_name}}</h1>
+                    <p class="font-medium text-secondary text-sm mt-1 mb-2">{{$class->class}}</p>
                     <form action="/student/class/join/{{$class->id}}" method="POST">
                         @csrf
-                        <button type="submit" class="inline-block font-bold text-xs text-white px-8 py-2.5 bg-indigo-600 rounded-md uppercase">
+                        <button type="submit" class="inline-block font-bold text-xs text-main px-8 py-2.5 bg-button rounded-md uppercase">
                             Bergabung Ke Kelas
                         </button>
                     </form>

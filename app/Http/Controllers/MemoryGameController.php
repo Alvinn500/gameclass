@@ -10,6 +10,7 @@ use App\Models\MemoryGame;
 use Illuminate\Support\Facades\File;
 use App\Models\Activity;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 
 class MemoryGameController extends Controller
@@ -18,7 +19,8 @@ class MemoryGameController extends Controller
     public function index(Class_listing $class, Lesson $lesson, Task $task) {
 
         $memory = $task->memoryGames()->where('task_id', $task->id)->first();
-        // dd($memory->images);
+        $studentAnswered = DB::table('memory_game_scores')->where("task_id", $task->id)->select(DB::raw('COUNT(DISTINCT user_id) as unique_count'))->value('unique_count');
+       
         $breadcrumbs = [
             ["link" => "/teacher/class", "name" => "Kelas"],
             ['link' => "/teacher/class/$class->id", 'name' => $class->study_name . " - " . $class->class],
@@ -30,7 +32,8 @@ class MemoryGameController extends Controller
             "lesson" => $lesson,
             "task" => $task,
             "memory" => $memory,
-            "breadcrumbs" => $breadcrumbs
+            "breadcrumbs" => $breadcrumbs,
+            "studentAnswered" => $studentAnswered
         ]);
 
     }

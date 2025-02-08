@@ -8,8 +8,6 @@ if (document.getElementById("editor") || formSubject) {
         },
     });
 
-    quill.format("color", "#171717");
-
     formSubject.addEventListener("submit", (e) => {
         const content = document.querySelector("#content");
         console.log("edit content", quill.root.innerHTML);

@@ -1,25 +1,25 @@
 <x-student-layout title="Dashboard">
     <div class="flex flex-col md:flex-row gap-8 mb-0 md:mb-8 mt-14 md:mt-0">
-        <div class="flex gap-4 mx-auto md:mx-0 bg-white shadow-md rounded-xl w-full md:w-[70%] md:min-w-[298.73px] duration-600 ease-in-out">
+        <div class="flex gap-4 mx-auto md:mx-0 bg-main shadow-md rounded-xl w-full md:w-[70%] md:min-w-[298.73px] duration-600 ease-in-out">
             <div class="w-3/5 flex flex-col">
                 <div class="px-5 pt-5 mb-3">
-                    <h3 class="uppercase text-xl text-neutral-800 font-medium">{{$user->name}}</h3>
-                    <h3 class="uppercase text-3xl font-semibold text-lime-500">{{$emblem}}</h3>
+                    <h3 class="uppercase text-xl text-main font-medium">{{$user->name}}</h3>
+                    <h3 class="uppercase text-3xl font-semibold text-secondary">{{$emblem}}</h3>
                 </div>
-                <span class="block h-[0.0625rem] mx-auto w-[90%] bg-gray-600"></span>
+                <span class="block h-[0.0625rem] mx-auto w-[90%] bg-line"></span>
                 <div class="flex p-5 h-24">
                     <div class="h-16 w-1/2">
-                        <p class="text-sm mb-1 text-neutral-800">kelas</p>
-                        <p class="text-2xl text-neutral-800 font-medium">{{$totalClass}}</p>     
+                        <p class="text-sm mb-1 text-main">kelas</p>
+                        <p class="text-2xl text-main font-medium">{{$totalClass}}</p>     
                     </div>
                     <div class="h-16 w-1/2">
-                        <p class="text-sm mb-1 text-neutral-800">tantangan</p>
-                        <p class="text-2xl text-neutral-800 font-medium">{{$ongoing_mission}}/{{$total_mission}}</p>
+                        <p class="text-sm mb-1 text-main">tantangan</p>
+                        <p class="text-2xl text-main font-medium">{{$ongoing_mission}}/{{$total_mission}}</p>
                     </div>
                 </div>
-                <span class="block h-[0.0625rem] mx-auto w-[90%] bg-gray-600 mb-2"></span>
+                <span class="block h-[0.0625rem] mx-auto w-[90%] bg-line mb-2"></span>
                 <div>   
-                    <h4 class="px-5 text-neutral-800">Lencana</h4>
+                    <h4 class="px-5 text-main">Lencana</h4>
                     <div class="flex p-4 gap-2">
                         <div class="relative flex items-center">
                             <div class="tooltip absolute hidden bg-white rounded-xl w-56 -top-24 -left-20 z-50">
@@ -96,39 +96,33 @@
         </div>
         <div class="h-1/2 w-full md:w-[30%]">
             <div class="flex flex-col justify-center lg:justify-normal gap-4 md:gap-6 w-full ">
-                <div class="bg-white shadow-md p-5 rounded-xl sm:min-w-[180px] lg:min-w-[140px] xl:min-w-[180px] w-full h-[9.5rem]">
+                <div class="bg-main shadow-md p-5 rounded-xl sm:min-w-[180px] lg:min-w-[140px] xl:min-w-[180px] w-full h-[9.5rem]">
                     <div class="flex items-center gap-2 mb-5">
-                        <i class="fas fa-dot-circle text-lime-500 text-sm"></i>
-                        <h3 class="text-sm text-neutral-800 uppercase font-bold">total xp</h3>
+                        <i class="fas fa-dot-circle text-link text-sm"></i>
+                        <h3 class="text-sm text-main uppercase font-bold">total xp</h3>
                     </div>
-                    <p class="text-3xl text-neutral-800 font-semibold text-center">{{$total_xp}}</p>
+                    <p class="text-3xl text-main font-semibold text-center">{{$total_xp}}</p>
                 </div>
-                <div class="bg-white shadow-md p-5 rounded-xl sm:min-w-[180px] lg:min-w-[140px] xl:min-w-[180px] w-full h-[9.5rem]">
+                <div class="bg-main shadow-md p-5 rounded-xl sm:min-w-[180px] lg:min-w-[140px] xl:min-w-[180px] w-full h-[9.5rem]">
                     <div class="flex items-center gap-2 mb-5">
-                        <i class="fas fa-dot-circle text-lime-500 text-sm"></i>
-                        <h3 class="text-sm text-neutral-800 uppercase font-bold">level</h3>
+                        <i class="fas fa-dot-circle text-link text-sm"></i>
+                        <h3 class="text-sm text-main uppercase font-bold">level</h3>
                     </div>
-                    <p class="text-3xl text-neutral-800 font-semibold text-center">{{$level}}</p>
+                    <p class="text-3xl text-main font-semibold text-center">{{$level}}</p>
                 </div>
-                {{-- <div class="mx-auto md:mx-0 bg-main p-2 md:p-4 rounded-xl sm:min-w-[180px] lg:min-w-[140px] xl:min-w-[180px] w-1/3 h-[8.5rem]">
-                    <div class="gradient-diskusi w-full h-full rounded-lg pt-6 pl-3">
-                        <h3 class="text-xs md:text-sm mb-2 md:mb-4 font-semibold">Forum Diskusi</h3>
-                        <p class="text-xs md:text-sm font-normal md:font-medium">Jelajahi Forum</p>
-                    </div>
-                </div> --}}
             </div>
         </div>
     </div>
     <div>
-        <h3 class="font-semibold my-4 text-neutral-800">Kelas Terbaru</h3>
+        <h3 class="font-semibold my-4 text-main">Kelas Terbaru</h3>
         <div class="mb-4 flex flex-col sm:flex-row gap-3">
             @foreach ($classes as $class )
-                <a href="/student/class/{{$class->id}}" class="flex bg-white shadow-md p-4 rounded-lg items-center gap-4 w-full sm:w-3/5 md:w-1/3">
+                <a href="/student/class/{{$class->id}}" class="flex bg-main shadow-md p-4 rounded-lg items-center gap-4 w-full sm:w-3/5 md:w-1/3">
                     <img class="ratio-16x9 h-10 rounded-md" src="{{asset("logo_class/$class->logo_class")}}" alt="class image">
-                    <h3 class="text-neutral-800 text-sm lg:text-base font-semibold">{{$class->study_name}}</h3>
+                    <h3 class="text-main text-sm lg:text-base font-semibold">{{$class->study_name}}</h3>
                 </a>
             @endforeach
         </div> 
-        <a href="/student/class" class="w-full md:w-auto inline-block uppercase bg-indigo-600 text-white rounded-md px-4 py-3 font-semibold text-xs mb-6">LIHAT SEMUA KELAS</a>
+        <a href="/student/class" class="w-full md:w-auto inline-block uppercase bg-button text-main rounded-md px-4 py-3 font-semibold text-xs mb-6">LIHAT SEMUA KELAS</a>
     </div>
 </x-student-layout>
