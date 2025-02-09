@@ -17,7 +17,7 @@
                 <div class="space-y-4"> 
                     <div class="space-y-2">
                         <h4 class="text-center text-title text-2xl font-bold">Selamat Datang</h4>
-                        <p class="text-center text-secondary text-sm font-light">Masukan email dan panssword untuk mengakses akun kamu</p>                       
+                        <p class="text-center text-secondary text-sm font-light">Masukan email dan password untuk mengakses akun kamu</p>                       
                     </div>
                     
                     @error('email')

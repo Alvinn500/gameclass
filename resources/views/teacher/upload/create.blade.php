@@ -59,9 +59,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="w-full md:w-[30%] lg:w-[25%] h-fit dark-green shadow-md rounded-2xl p-4">
-                    <h2 class="font-bold mb-2 text-4xl lg:text-5xl text-neutral-800">{{$uploadAnswered}}</h2>
-                    <p class="text-sm mb-4 text-neutral-800">Siswa telah mengumpulkan tugas</p>
+                <div class="w-full md:w-[30%] lg:w-[25%] h-fit bg-main shadow-md rounded-2xl p-4">
+                    <h2 class="font-bold mb-2 text-4xl lg:text-5xl text-main">{{$uploadAnswered}}</h2>
+                    <p class="text-sm mb-4 text-main">Siswa telah mengumpulkan tugas</p>
                     <a href="/teacher/recap/{{$lesson->id}}/{{$task->id}}/upload" class="uppercase text-center block text-xs px-4 py-3 rounded-lg font-bold bg-yellow-500 text-white">lihat hasil</a>
                 </div>
             @endif

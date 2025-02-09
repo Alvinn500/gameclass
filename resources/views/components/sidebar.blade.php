@@ -2,7 +2,7 @@
     <div class="py-[1.13rem] px-4 border-b border-main flex justify-center items-center gap-8">
         <div class="flex gap-3 mr-10">
             <img class="h-8 ml-4" src="{{asset("image/logo.png")}}" alt="logo">
-            <h1 class="font-extrabold text-main text-xl">PL</h1>
+            <h1 class="font-extrabold text-main text-xl">PlayEd</h1>
         </div>
         <img id="close" class="w-6 cursor-pointer block lg:hidden" src="{{asset("image/minimize-sidebar.png")}}" alt="image minimize">
     </div>
